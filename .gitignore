@@ -1,9 +1,9 @@
 # exclude everything
 /node_modules
-public/course_support/*
-public/timetables/*
-public/img/course_images/*
-public/img/teacher_images/*
+/public/course_support/*
+/public/timetables/*
+/public/img/course_images/*
+/public/img/teacher_images/*
 
 # exception to the rule
 !public/course_support/.gitkeep 
