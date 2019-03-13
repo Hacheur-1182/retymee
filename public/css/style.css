@@ -1,0 +1,390 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  line-height: 150%; }
+
+* {
+  font-family: 'Open Sans', sans-serif; }
+
+.counter, #annim1, #annim2, #annim3, #annim4, #start-teaching {
+  animation-duration: 1.3s;
+  animation-delay: 0.3s;
+  animation-iteration-count: 1; }
+
+header {
+  background-color: white; }
+  header .col-md-3 h2 {
+    font-weight: bold;
+    color: #d0313b; }
+  header .col-md-3 h6 {
+    color: #111111;
+    font-weight: 600; }
+  header .b ion-icon {
+    color: #d0313b; }
+  header .a ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    header .a ul li {
+      float: right;
+      margin-left: 1.8em; }
+      header .a ul li a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #222222;
+        transition: 0.3s; }
+        header .a ul li a:hover {
+          color: #d0313b; }
+  header nav {
+    margin-left: -1.4em;
+    background-color: white; }
+    header nav #active {
+      color: #b52a32;
+      border-bottom: solid 2px #d0313b; }
+    header nav ul li {
+      margin-right: 1em; }
+      header nav ul li a {
+        color: #222222;
+        transition: 0.3s;
+        font-size: 15px;
+        font-weight: bold;
+        padding-top: 0;
+        padding-bottom: 0; }
+        header nav ul li a:hover {
+          color: #d0313b;
+          border-bottom: solid 2px #d0313b; }
+  header .col-md-5 ion-icon {
+    font-size: 25px; }
+
+#banner {
+  height: 30em;
+  position: relative; }
+  #banner #overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 30em;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(208, 49, 59, 0.2)); }
+  #banner .row {
+    padding-left: 5em;
+    padding-right: 5em; }
+    #banner .row .col1 h1, #banner .row .col1 h4 {
+      color: white; }
+    #banner .row .col1 h1 {
+      font-size: 75px;
+      font-weight: 1000;
+      margin-top: .8em; }
+    #banner .row .col1 h4 {
+      font-size: 30px; }
+  #banner a {
+    background-color: #d0313b;
+    margin-top: 1.5em;
+    color: white;
+    width: 20em; }
+    #banner a:hover {
+      background-color: #b52a32; }
+
+#header-bottom {
+  background: #CB356B;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(left, #BD3F32, #CB356B);
+  background: -o-linear-gradient(left, #BD3F32, #CB356B);
+  background: linear-gradient(to right, #BD3F32, #CB356B);
+  /* Chrome 10-25, Safari 5.1-6 */
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  color: white; }
+
+#log button i, #signUp button i {
+  color: #fff; }
+
+#log button .fa-google-plus, #signUp button .fa-google-plus {
+  color: #ea4335; }
+
+#log #facebook, #signUp #facebook {
+  background-color: #164675; }
+
+#log #google, #signUp #google {
+  color: rgba(0, 0, 0, 0.925);
+  background-color: #fff;
+  border-color: #ea4435ad; }
+
+#form-register input, #form-login input {
+  width: 100%; }
+
+#header-bottom {
+  padding-bottom: 2em;
+  padding-top: 2em; }
+
+#second-menu {
+  background-color: #d0313b;
+  padding-right: 4em;
+  padding-left: 4em; }
+  #second-menu nav {
+    margin-left: -1.4em;
+    background-color: #d0313b; }
+    #second-menu nav #active {
+      color: #b52a32; }
+    #second-menu nav ul li {
+      margin-right: 1em; }
+      #second-menu nav ul li a {
+        color: white;
+        transition: 0.3s;
+        font-size: 15px;
+        font-weight: bold; }
+        #second-menu nav ul li a:hover {
+          color: white; }
+  #second-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0; }
+    #second-menu ul li {
+      float: right;
+      margin-left: 2em; }
+      #second-menu ul li a {
+        text-decoration: none;
+        font-weight: bold;
+        color: white;
+        transition: 0.3s; }
+        #second-menu ul li a:hover {
+          color: white; }
+
+#ongoing-courses-concours, #ongoing-courses-exam {
+  background-color: #fafafa; }
+  #ongoing-courses-concours .col-md-3 .card, #ongoing-courses-exam .col-md-3 .card {
+    background-color: white;
+    box-shadow: 3px 3px 10px 8px #eeeeee; }
+  #ongoing-courses-concours #view-details, #ongoing-courses-exam #view-details {
+    position: relative;
+    top: -1em;
+    border-radius: 10px;
+    background-color: #d9534f;
+    width: 40px;
+    margin: 0;
+    margin-bottom: 0; }
+    #ongoing-courses-concours #view-details i, #ongoing-courses-exam #view-details i {
+      font-size: x-large;
+      padding: .6em; }
+    #ongoing-courses-concours #view-details .fa, #ongoing-courses-exam #view-details .fa {
+      color: #fff;
+      font-size: medium;
+      transition: 0.2s ease-in; }
+      #ongoing-courses-concours #view-details .fa:hover, #ongoing-courses-exam #view-details .fa:hover {
+        color: #fff;
+        transform: scale(1.3); }
+  #ongoing-courses-concours .fa, #ongoing-courses-exam .fa {
+    color: gray;
+    font-size: medium;
+    cursor: pointer; }
+    #ongoing-courses-concours .fa:hover, #ongoing-courses-exam .fa:hover {
+      color: orange; }
+  #ongoing-courses-concours .checked, #ongoing-courses-exam .checked {
+    color: orange; }
+  #ongoing-courses-concours h2, #ongoing-courses-exam h2 {
+    margin-top: 2em;
+    font-size: 40px; }
+  #ongoing-courses-concours .card-block, #ongoing-courses-exam .card-block {
+    padding: 15px; }
+  #ongoing-courses-concours #all-prepa-courses, #ongoing-courses-concours #all-exam-courses, #ongoing-courses-exam #all-prepa-courses, #ongoing-courses-exam #all-exam-courses {
+    background-color: #d0313b;
+    color: white; }
+    #ongoing-courses-concours #all-prepa-courses:hover, #ongoing-courses-concours #all-exam-courses:hover, #ongoing-courses-exam #all-prepa-courses:hover, #ongoing-courses-exam #all-exam-courses:hover {
+      background-color: #b52a32; }
+
+#count {
+  background: url("../img/count5.jpg") no-repeat;
+  background-attachment: fixed;
+  background-size: cover; }
+
+#university .card {
+  position: relative; }
+  #university .card img {
+    width: 100%;
+    height: 180px; }
+  #university .card .card-img-overlay {
+    position: absolute;
+    transition: .5s ease;
+    opacity: 0;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.5); }
+    #university .card .card-img-overlay h4 {
+      color: white;
+      margin-top: -.5em; }
+  #university .card:hover .card-img-overlay {
+    opacity: 1; }
+
+#university h2 {
+  color: #111111; }
+
+#university .row .slick-prev, #university .row .slick-next {
+  color: black; }
+
+#subscribe-section {
+  background: url("../img/header.jpg") no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  min-height: 100px; }
+  #subscribe-section .dark-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+    min-height: 100px;
+    height: 100%;
+    width: 100;
+    top: 0;
+    left: 0;
+    min-height: 100; }
+    #subscribe-section .dark-overlay h2 {
+      font-size: 40px; }
+
+#instructor img {
+  width: 130px;
+  height: 130px; }
+
+#instructor .card {
+  border: solid 2px #d0313b;
+  margin-top: 3.5em; }
+
+#be-instructor {
+  color: #222222;
+  background-color: #eeeeee; }
+  #be-instructor a {
+    border-radius: 10px; }
+
+#contact {
+  background-color: #fafafa; }
+  #contact form {
+    background-color: white;
+    padding: 1.5em;
+    box-shadow: 3px 3px 10px 8px #eeeeee;
+    padding: 1em; }
+    #contact form .col-md-6 {
+      margin-top: 1em; }
+  #contact h1 {
+    font-weight: bold;
+    color: #444444; }
+
+.contact-banner, .courses-banner, .course-description {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../img/writing.jpg");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  height: 30em; }
+  .contact-banner .row, .courses-banner .row, .course-description .row {
+    padding-left: 5em;
+    padding-right: 5em; }
+    .contact-banner .row .col1 h1, .contact-banner .row .col1 h4, .courses-banner .row .col1 h1, .courses-banner .row .col1 h4, .course-description .row .col1 h1, .course-description .row .col1 h4 {
+      color: white; }
+    .contact-banner .row .col1 h1, .courses-banner .row .col1 h1, .course-description .row .col1 h1 {
+      font-size: 75px;
+      font-weight: 1000;
+      margin-top: .8em; }
+    .contact-banner .row .col1 h4, .courses-banner .row .col1 h4, .course-description .row .col1 h4 {
+      font-size: 30px; }
+
+footer .container-fluid {
+  margin-top: 5em;
+  background-size: 100% 100%;
+  background-color: #333333; }
+  footer .container-fluid img {
+    height: 50px;
+    width: 50px; }
+
+.testimonial {
+  background: #fff;
+  text-align: center;
+  margin: 0 20px; }
+
+.testimonial .description {
+  padding: 40px 30px;
+  margin-bottom: 50px;
+  border-top: 2px solid #d0313b;
+  border-left: 2px solid #d0313b;
+  font-size: 16px;
+  color: #333333;
+  line-height: 30px;
+  text-align: left;
+  position: relative; }
+  .testimonial .description i {
+    font-size: 30px; }
+
+.testimonial .description:before {
+  font-weight: 900;
+  display: inline-block;
+  float: left;
+  padding: 0 15px 5px 0;
+  font-size: 30px;
+  color: #ff5a5f;
+  text-align: center;
+  position: relative;
+  top: 8px;
+  left: 0; }
+
+.testimonial .description:after {
+  content: "";
+  width: 50%;
+  height: 2px;
+  background: #d0313b;
+  position: absolute;
+  bottom: 0;
+  left: 0; }
+
+.testimonial .testimonial-content {
+  position: relative; }
+
+.testimonial .testimonial-content:before {
+  content: "";
+  width: 2px;
+  height: 20px;
+  background: #d0313b;
+  position: absolute;
+  top: -50px;
+  left: 50%; }
+
+.testimonial .testimonial-content:after {
+  content: "";
+  width: 2px;
+  height: 40px;
+  background: #d0313b;
+  position: absolute;
+  top: -70px;
+  left: 50%;
+  transform: skewX(-45deg);
+  transform-origin: 100% 100% 0; }
+
+.testimonial .pic {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 7px; }
+
+.testimonial .pic img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%; }
+
+.testimonial .title {
+  display: inline-block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #333333;
+  letter-spacing: 1px;
+  text-transform: capitalize; }
+
+.owl-theme .owl-controls {
+  margin-top: 30px; }
+
+.owl-theme .owl-controls .owl-page span {
+  width: 15px;
+  height: 10px;
+  border-radius: 0;
+  background: #ff5a5f;
+  opacity: 0.8;
+  transition: all 0.3s ease 0s; }
+
+.owl-theme .owl-controls .owl-page.active span {
+  width: 35px;
+  background: #2660a4; }

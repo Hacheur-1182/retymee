@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<link rel="stylesheet" href="/css/bootstrap.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12" id="chat-bloc">
+				
+			</div>
+			<div class="col-m-12">
+				<form action="" method="post" id="chat-b">
+					<div class="form-group">
+						<textarea name="" id="msg" cols="30" rows="10" class="form-control"></textarea>
+						<input type="submit" class="btn" id="send" value="Send">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+		var now = moment(new Date()).fromNow()
+		
+	  var socket = io.connect('http://localhost:3000', {query: 'pseudo=<%=user.username%>'});
+
+	  	$('#msg').keypress(function(event){
+		    var keycode = (event.keyCode ? event.keyCode : event.which);
+		    if(keycode == '13'){
+		        var username = "<%=user.username%>"
+		  		socket.emit("add",{
+		  			username: username,
+		  			msg: $("#msg").val()
+		  		});
+
+		  		$("#msg").val('');
+
+		  		return false
+			}
+		});
+	  
+	  $("form").submit(function(){
+	  		var username = "<%=user.username%>"
+	  		socket.emit("new message",{
+	  			username: username,
+	  			msg: $("#msg").val()
+	  		});
+
+	  		$("#msg").val('');
+
+	  		return false
+	  		
+	  })
+
+	  socket.on('addMessage', function(msg){
+	  		$("#chat-bloc").append("<p style='display:bloack'>"+msg.username+": "+msg.msg+"</p>")
+	  })
+
+	</script>
+
+</body>
+</html>

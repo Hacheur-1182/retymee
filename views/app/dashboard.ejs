@@ -1,0 +1,82 @@
+<%- include('../_layout/dashboard-header') %>
+
+    <section id="header" style="margin-left: 3em">
+        <div class="container-fluid">
+            <div class="row pt-3 pb-2">
+                <div class="col-md-12 text-center">
+                    <h1 class="text-white mt-1">Welcome to your Dashboard</h1>
+                    <h4 class="text-white">Here you can manage all your courses.</h4>
+                    <%if(user.image != "avatar.png"){%>
+                        <img src="/img/student_images/<%=user._id%>/<%=user.image%>" class="img-rounded" alt="">
+                    <%}else{%>
+                        <img src="/img/avatar.png" class="img-rounded" alt="">
+                    <%}%>
+                    <p class="text-white"><b><%=user.username%>&nbsp;(<%=user.email%>)</b></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="my-courses" style="padding-bottom: 4em;">
+        <div class="container-fluid">
+            <div class="row my-3">
+                <div class="col-md-12">
+                    <h1 class="py-3">MY COURSES</h1>
+                    <%- messages('messages', locals) %>
+                    <% if (errors){%>
+                      <% errors.forEach(function(error){ %>
+                        <div class="alert alert-danger">
+                          <%=error.msg%>
+                        </div>
+                      <%});%>
+                    <%}%>
+                    
+                    <%if(subscriber_courses != ""){%>
+                        <%subscriber_courses.forEach(function(course){%>
+                            <div class="card mt-3">
+                                <h5 class="card-header" style="background-color: #1c262f;color: white"><%=course.course_title%></h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-10 col-sm-12">
+                                            <p class="card-text"><%=course.course_description%></p>
+                                            <p class="card-text">Cost: <strong><%=course.course_cost%> FCFA</strong></p>
+                                            <div class="d-flex flex-lg-row flex-xl-row flex-xs-column flex-sm-column flex-md-column align-items-center">
+                                                <%if(course.have_access == true || course.ispaid == true){%>
+                                                    <div class="p-2">
+                                                        <a href="<%=course.classroom%>" target="_blank" class="btn btn-danger">Start course</a> <span class="text-muted"></span>
+                                                    </div>
+                                                    <div class="p-2">
+                                                        <a href="/student/course/group/<%=course.course_id%>" style="color: rgb(28, 38, 47);font-weight: bold" >Go to Discuss Group <i class="fa fa-comment-o"></i></a>
+                                                    </div>
+                                                    <div class="p-2">
+                                                        <a href="/timetables/<%=course.course_id%>/<%=course.course_timetable%>" style="color: rgb(28, 38, 47);font-weight: bold" >Download Time Table <i class="fa fa-calendar"></i></a>
+                                                    </div>
+                                                <%}else{%>
+                                                    <h5 class="" style="color: red">You must paid this course to continue</h5>
+                                                <%}%>
+                                                <%if(course.ispaid == false){%>
+                                                    <div class="p-2">
+                                                        <a href="#" class="btn btn-secondary mr-3 ml-3">Pay this course</a>
+                                                        <span style="font-size: 12px" class="text-muted">(<%=course.remaining_test_days%>)</span>
+                                                    </div>
+                                                <%}%>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 d-none d-lg-block  text-center">
+                                            <img src="/img/course_images/<%=course.course_id%>/<%=course.course_image%>" class="rounded-circle img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <%})%>
+                    <%}else{%>
+                        <h4 class="text-center my-3">You are not registered to any course...</h4>
+                        <center><a href="/prepa-courses" class="btn btn-danger my-2">Register to a course now</a></center>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<%- include('../_layout/dashboard-footer') %>

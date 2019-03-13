@@ -1,0 +1,121 @@
+<%- include('../_layout/adminheader') %>
+
+  <header id="main-header" class="py-2 bg-info text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fa fa-users"></i> Teachers and Classes</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-faded">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search Course...">
+            <span class="input-group-btn">
+              <button class="btn btn-info"><i class="fa fa-search"></i></button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Teacher List And Classes -->
+  <section id="teacher-classes">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h2 class="text-center text-white">Teacher List And Classes <hr></h2>  
+        </div>
+      </div>
+        <div class="row justify-content-center">
+          <%courses.forEach(function(course){%>
+             <div class="col-md-6 col-sm-12 col-lg-4 my-2">
+              <div class="card">
+                <h5 class="card-header"><%=course.title%> <span style="font-size: 15px" class="text-muted">(Session: <%=course.session%>)</span></h5>
+                <div class="card-body">
+                  <ul class="list-group">
+                    <%course.teachers.forEach(function(teacher){%>
+                      <li class="list-group-item"><strong><%=teacher.firstname%> <%=teacher.lastname%> <span class="text-muted" style="font-size: 15px">(<%=teacher.email%>)</span></strong> (<%=teacher.matiere%>)
+                      <!--<span class="badge badge-warning badge-pill">2</span>-->
+                      </li>
+                    <%})%>
+                  </ul>
+                  <center><a href="#" data-id=<%=course._id%> data-title="<%=course.title%>" class="btn btn-info mt-3 assign-course" data-toggle="modal" data-target="#assign-course-modal">Add a Teacher to this course</a></center>
+                </div>
+              </div>
+            </div>
+          <%})%>
+        </div>
+    </div>
+  </section>
+
+    <!-- ASSIGN COURSE MODAL -->
+  <div class="modal fade" id="assign-course-modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-info text-white">
+          <div  id="modal-title"></div>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/admin/courses/assign-course" method="post">
+            <div class="col-md-6 offset-md-6">
+              <div class="input-group py-2">
+                <input type="text" class="form-control" placeholder="Search a teacher...">
+                <span class="input-group-btn">
+                  <button class="btn btn-info"><i class="fa fa-search"></i></button>
+                </span>
+              </div>
+            </div>
+            <div class="container-fluid" style="max-height: 300px;overflow-y: scroll;">
+              <div class="row">
+                <div class="col">
+                    <ul class="list-group mt-3">
+                    <%teachers.forEach(function(teacher){%>
+                        <li class="list-group-item">
+                         <div class="form-check">
+                            <input class="form-check-input" type="radio" name="teacher_id" id="gridRadios1" value="<%=teacher._id%>">
+                            <label class="form-check-label" for="gridRadios1">
+                              <h5><%=teacher.firstname%> <%=teacher.lastname%> <span style="font-size: 17px">(<%=teacher.email%>) : <%=teacher.matiere%></span></h5>
+                            </label>
+                          </div>
+                        </li>
+                    <%})%>
+                      <input type="hidden" name="hidden_course_id" value="" id="hidden-class-id">
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-info float-right m-3" value="Assign">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <%- include('../_layout/adminfooter') %>
+
+<script>
+    $(document).ready(function(){
+      $('.assign-course').click(function(e){
+        $target = $(e.target);
+        const course_id = $target.attr('data-id');
+        const course_title = $target.attr('data-title');
+        $('#hidden-class-id').val(course_id+"")
+        $('#modal-title').html("");
+        $('#modal-title').append('<h5 class="modal-title" id="addPostModalLabel">'+course_title+'</h5>');
+      })
+    })
+</script>

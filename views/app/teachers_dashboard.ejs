@@ -1,0 +1,172 @@
+<%- include('../_layout/dashboard-header') %>
+
+    <section id="header" class="mb-2">
+        <div class="container-fluid">
+            <div class="row pt-3 pb-2">
+                <div class="col-md-12 text-center">
+                    <h1 class="text-white mt-1">Welcome to your Dashboard</h1>
+                    <h4 class="text-white">Here you can manage all your courses.</h4>
+                    <%if(user.image != "avatar.png"){%>
+                        <img src="/img/student_images/<%=user._id%>/<%=user.image%>" class="img-rounded" alt="">
+                    <%}else{%>
+                        <img src="/img/avatar.png" class="img-rounded" alt="">
+                    <%}%>
+                    <p class="text-white"><b><%=user.username%>&nbsp;(<%=user.email%>)</b></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('../_layout/admin_errors') %>
+    <%- messages('messages', locals) %>
+
+    <section id="my-courses" style="padding-bottom: 4em">
+        <div class="container-fluid">
+            <div class="row my-3">
+                <div class="col-md-12">
+                    <h1 class="py-3">MY COURSES</h1>
+                    <%- messages('messages', locals) %>
+                    <% if (errors){%>
+                      <% errors.forEach(function(error){ %>
+                        <div class="alert alert-danger">
+                          <%=error.msg%>
+                        </div>
+                      <%});%>
+                    <%}%>
+                    
+                    <%if(user.courses != ""){%>
+                        <%user.courses.forEach(function(course){%>
+                            <div class="card mt-3">
+                                <h5 class="card-header" style="background-color: #1c262f;color: white"><%=course.title%></h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-10 col-sm-12">
+                                            <p class="card-text"><%=course.description%></p>
+                                            <div class="d-flex flex-xs-column flex-lg-row flex-xl-row flex-sm-column  flex-md-column align-items-center">
+                                                <div class="p-2">
+                                                    <a href="https://zoom.us/j/5219108641"  target="_blank" class="btn btn-danger"><strong>Launch the course</strong></a>
+                                                </div>
+                                                <div class="p-2">
+                                                    <a href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Download the time table</strong></a>
+                                                </div>
+                                                <div class="p-2">
+                                                    <a href="/teacher/course/group/<%=course.course_id%>" style="color: rgb(28, 38, 47);" >Go to Discuss Group <i class="fa fa-comment-o"></i></a>
+                                                </div>
+                                                <div class="p-2">
+                                                    <a href="" class="add-support-link" data-toggle="modal" id="add-support-link" data-target="#add-support" style="color: rgb(28, 38, 47);" data-id=<%=course.course_id%>>Upload Support <i class="fa fa-book"></i></a>
+                                                </div>
+                                                <div class="p-2">
+                                                    <a href="" class="add-classroom" data-toggle="modal" id="add-classroom" data-target="#add-classroom-link" virtualclass-data-id=<%=course.course_id%> style="color: rgb(28, 38, 47);">Set ClassRoom Link <i class="fa fa-flash"></i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 d-none d-lg-block  text-center">
+                                            <img src="/img/course_images/<%=course.course_id%>/<%=course.image%>" class="rounded-circle img-fluid" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <%})%>
+                    <%}else{%>
+                        <h4 class="text-center my-3">You don't have any course to teach for the moment.</h4>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Add Course suppport-->
+        <div class="modal fade" id="add-support" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="exampleModalLabel">Add Support! </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container text-center">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form  method="post" action="/teacher/add-support" id="form-login" data-parsley-validate enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input placeholder="Support Name" type="text" name="support" placeholder="Password" class="form-control" data-parsley-required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input  type="text" name="desc" placeholder="Description" class="form-control" data-parsley-required name="desc">
+                                            </div>
+                                        </div>
+                                        <input type="hidden" name="course_id" id="hidden-course-id" value="">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="file" id="file" name="file"  class="form-control" data-parsley-required>
+                                            </div>
+                                        </div>
+                                        <button type="submit" id="add-course-support" class="btn btn-block btn-danger" >Add Course</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                </div>
+            </div>
+        </div>
+
+        <!-- Set classroom link-->
+        <div class="modal fade" id="add-classroom-link" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-center" id="exampleModalLabel">Virtual Class Link! </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container text-center">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form  method="post" action="/teacher/add-link" id="form-login" data-parsley-validate enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input placeholder="Paste the virtual class link" type="text" name="classromm_id"  class="form-control" data-parsley-required>
+                                            </div>
+                                            <input type="hidden" name="hidden_course_id2" value="" id="hidden-virtual-class-id">
+                                        </div>
+                                        <button type="submit" id="add-course-support" class="btn btn-block btn-danger" >Set virtual Class Link</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                </div>
+            </div>
+        </div>
+
+
+<%- include('../_layout/dashboard-footer') %>
+<script>
+    $(document).ready(function(){
+        //Set the value of the class ID
+        $(".add-support-link").click(function(e){
+            $target = $(e.target);
+            const course_id = $target.attr('data-id');
+            $('#hidden-course-id').val(course_id)
+        })
+        //Set the value of the class ID
+        $(".add-classroom").click(function(e){
+            $target = $(e.target);
+            const course_id = $target.attr('virtualclass-data-id');
+            $('#hidden-virtual-class-id').val(course_id)
+        })
+    })
+</script>

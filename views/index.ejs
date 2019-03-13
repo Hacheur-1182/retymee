@@ -1,0 +1,455 @@
+<% include _layout/header %>
+
+    <section id="banner">
+        <div class="container-fluid" style="width: 90%">
+            <div id="overlay">
+                <div class="row">
+                    <div class="col1 col-md-10  col-lg-7 col1 col-sm-12">
+                        <h1 style="font-size: 75px">Develop Yours Skills</h1>
+                        <h4 class="d-none d-md-block d-lg-block d-xl-block">We Propose to Students, Pupils and Pros,
+                            Course Aid and Online learning.</h4>
+                            <%if(user){%>
+                                <a href="#ongoing-courses-concours" class="btn btn-danger my-2 btn-lg">Enregistrez vous à un cours maintenant</a>
+                            <%}else{%>
+                                <a href="#" class="btn btn-lg" data-toggle="modal" data-target="#signUp">Inscrivez vous maintenant</a>
+                            <%}%> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Section header-->
+    <section id="header-bottom" class="py-4" >
+        <div class="container">
+            <div class="row justify-content-around">
+                <div class="col-md-4">
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <div class="p-4">
+                            <i class="fa fa-book fa-3x" aria-hidden="true" style="color: white"></i>
+                        </div>
+                        <div class="p-8">
+                            <h4>More than 5O Courses</h4>
+                            <h6>Explore a variety of fresh topics</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <div class="p-4">
+                                <i class="fa fa-check-circle fa-3x" style="color: white" aria-hidden="true"></i>
+                        </div>
+                        <div class="p-8">
+                            <h4>Expert Instruction</h4>
+                            <h6>Find the right instructor for you</h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="d-flex flex-row justify-content-center align-items-center">
+                        <div class="p-4">
+                                <i class="fa fa-cogs fa-3x" style="color: white" aria-hidden="true"></i>
+                        </div>
+                        <div class="p-8">
+                            <h4>Lifetime Access</h4>
+                            <h6>Learn on your schedule</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--Site description-->
+    <section id="site-description">
+        <div class="container pt-3 mb-5">
+            <div class="row pt-5 align-items-center justify-content-center">
+                <div class="col-md-6 col-lg-6 col-sm-12">
+                    <h1 class="py-4" style="font-weight: bold;font-size: 50px;color: #d0313b;font-size: 45px">What is "OnlinePrepa" ?</h1>
+                    <p class="text-justify mt-4" style="font-size: 20px;">
+                        OnlinePrépa est une solution de cours de préparation en ligne destiné aux potentiels cadidats 
+                        aux concours et examens du Cameroun.<br><br>
+                        <button class="btn btn-outline-danger video" data-toggle="modal" data-target="#see-demo" data-video="https://www.youtube.com/embed/HnwsG9a5riA">See How it works</button>
+                    </p>
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-12 text-center my-2">
+                    <img src="img/online-classes.jpg" class="img-fluid rounded-circle" width="400px" height="300px" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ongoing Prepa Courses Section -->
+    <section id="ongoing-courses-concours" class="py-3" style="z-index: -1;">
+        <div class="container">
+                <h2 class="display-5  mb-5 mt-5"><strong>Préparation aux concours à la Une</strong></h2>
+            <div class="row mb-4">
+                <%courses.forEach(function(course){%>
+                    <div class="col-md-6 col-lg-3 col-sm-10 my-2">
+                        <div class="card">
+                            <img class="card-img-top" src="/img/course_images/<%=course._id%>/<%=course.image%>" class="img-fluid" height="150" alt="Card image cap">
+                            <center>
+                                <div id="view-details" class="text-center">
+                                    <a href="/course/<%=course._id%>" ><i class="fa fa-search"></i></a>
+                                </div>
+                            </center>
+                            <div class="card-block pt-0">
+                                <h5 class="card-title"><%=course.title%></h4>
+                                <p class="card-text"><%=course.description%></p>
+                                <p class="card-text">
+                                    <small>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>&nbsp;
+                                        (122 votes)
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <%})%>
+            </div>
+            <center><a href="/prepa-courses" id="all-prepa-courses" class="btn btn-lg mt-3">Browse More Courses</a></center>
+        </div>
+    </section>
+
+
+    <!-- Ongoing Exams Courses Section -->
+    <section id="ongoing-courses-exam" class="py-3" style="z-index: -1;">
+        <div class="container">
+            <h2 class="display-5  mb-5 mt-4"><strong>Préparation aux Examens à la Une</strong></h2>
+            <div class="row mb-4 justify-content-center">
+                <div class="col-md-6 col-lg-3 col-sm-10 my-2">
+                    <div class="card">
+                        <img class="card-img-top" src="img/ai.jpg" class="img-fluid" height="150" alt="Card image cap">
+                        <center>
+                            <div id="view-details" class="text-center">
+                                <a href="" ><i class="fa fa-search"></i></a>
+                            </div>
+                        </center>
+                        <div class="card-block pt-0">
+                            <h4 class="card-title">Card title</h4>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in</p>
+                            <p class="card-text">
+                                <small>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>&nbsp;
+                                    (122 votes)
+                                </small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 col-sm-10 my-2">
+                    <div class="card">
+                        <img class="card-img-top" src="img/ai.jpg" class="img-fluid" height="150" alt="Card image cap">
+                        <center>
+                            <div id="view-details" class="text-center">
+                                <a href="" ><i class="fa fa-search"></i></a>
+                            </div>
+                        </center>
+                        <div class="card-block pt-0">
+                            <h4 class="card-title">Card title</h4>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in</p>
+                            <p class="card-text">
+                                <small>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>&nbsp;
+                                    (122 votes)
+                                </small>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 col-sm-10 my-2">
+                    <div class="card">
+                        <img class="card-img-top" src="img/ai.jpg" class="img-fluid" height="150" alt="Card image cap">
+                        <center>
+                            <div id="view-details" class="text-center">
+                                <a href="" ><i class="fa fa-search"></i></a>
+                            </div>
+                        </center>
+                        <div class="card-block pt-0">
+                            <h4 class="card-title">Card title</h4>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in</p>
+                            <p class="card-text">
+                                <small>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>&nbsp;
+                                    (122 votes)
+                                </small>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 col-sm-10 my-2">
+                    <div class="card">
+                        <img class="card-img-top" src="img/ai.jpg" class="img-fluid" height="150" alt="Card image cap">
+                        <center>
+                            <div id="view-details" class="text-center">
+                                <a href="" ><i class="fa fa-search"></i></a>
+                            </div>
+                        </center>
+                        <div class="card-block pt-0">
+                            <h4 class="card-title">Card title</h4>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in</p>
+                            <p class="card-text">
+                                <small>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star"></span>&nbsp;
+                                    (122 votes)
+                                </small>
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <center><a href="/exams-courses" id="all-exam-courses" class="btn btn-lg mt-3">Browse More Courses</a></center>
+        </div>
+    </section>
+
+    <!-- Count Section -->
+    <section id="count" class="py-2 my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="flex-row d-flex justify-content-around align-items-center text-white">
+                        <div class="p-4 text-center">
+                            <i class="fa fa-users fa-3x" aria-hidden="true"></i><br>
+                            <span class="counter display-4">100</span>
+                            <h4>Students</h4>
+                        </div>
+                        <div class="p-4 text-center">
+                            <i class="fa fa-certificate fa-3x" aria-hidden="true"></i><br>
+                            <span class="counter display-4">10</span>
+                            <h4>Certified Teachers</h4>
+                        </div>
+                        <div class="p-4 text-center">
+                            <i class="fa fa-book fa-3x" aria-hidden="true"></i><br>
+                            <span class="counter display-4">20</span>
+                            <h4>Actual Courses</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Universities Section -->
+    <section id="university" class="my-4">
+        <div class="container text-center">
+                <h2 class="display-5  mb-5 mt-5"><strong>UNIVERSITIES</strong></h2>
+            <div class="row">
+                <div class="col">
+                    <div class="school">
+                        <div>
+                            <div class="card card-inverse">
+                                <a href="#"><img class="card-img" class="img-fluid w-80" src="img/univs/isma.jpg" alt="Card image"></a>
+                                <div class="card-img-overlay align-self-center">
+                                    <h4 class="card-title">Card title</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card card-inverse">
+                                <a href="#"><img class="card-img" class="img-fluid w-80" src="img/univs/dschang.jpg" alt="Card image"></a>
+                                <div class="card-img-overlay align-self-center">
+                                    <h4 class="card-title">Card title</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card card-inverse">
+                                <a href="#"><img class="card-img" class="img-fluid w-80" src="img/univs/ub.png" alt="Card image"></a>
+                                <div class="card-img-overlay align-self-center">
+                                    <h4 class="card-title">Card title</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card card-inverse">
+                                <a href="#"><img class="card-img" class="img-fluid w-80" src="img/univs/ucac.jpg" alt="Card image"></a>
+                                <div class="card-img-overlay align-self-center">
+                                    <h4 class="card-title">Card title</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card card-inverse">
+                                <a href="#"><img class="card-img" class="img-fluid w-80" src="img/univs/ub.png" alt="Card image"></a>
+                                <div class="card-img-overlay align-self-center">
+                                    <h4 class="card-title">Card title</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card card-inverse">
+                                <a href="#"><img class="card-img" class="img-fluid w-80" src="img/univs/ucac.jpg" alt="Card image"></a>
+                                <div class="card-img-overlay align-self-center">
+                                    <h4 class="card-title">Card title</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscribe section -->
+    <div class="section my-5" id="subscribe-section">
+        <div class="dark-overlay py-4">
+            <div class="container">
+                <div class="row py-4">
+                    <div class="col text-center text-white">
+                        <h2><strong>Don’t miss anything online</strong></h2>
+                        <h5> Enjoy our live classes and booked your seat</h5>
+                        <a href="/prepa-courses" class="btn btn-danger">Register to a Course now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Instructors section -->
+    <section id="instructor" class="text-center py-4">
+        <div class="container">
+            <h2 class="text-center pt-4 "><strong>MEET OUR INSTRUCTOR</strong></h2>
+            <hr class="pb-4" style="color: gray">
+            <div class="row justify-content-center">
+                <div id="annim1" class="col-lg-3 col-md-6 col-sm-10 my-3">
+                    <div class="card">
+                        <div class="card-block" style="position: relative;top:-4em">
+                            <img class="img-fluid rounded-circle w-50 mb-3" src="img/teachers/person1.jpg" alt="">
+                            <h3>Ngaleu Kevin</h3>
+                            <h5 class="text-muted">Professeur de Math</h5>
+                        </div>
+                    </div>
+                </div>
+                <div id="annim2" class="col-lg-3 col-md-6 col-sm-10 my-3">
+                    <div class="card">
+                        <div class="card-block" style="position: relative;top:-4em">
+                            <img class="img-fluid rounded-circle w-50 mb-3" src="img/teachers/person2.jpg" alt="">
+                            <h3>Nde Carmelo</h3>
+                            <h5 class="text-muted">Professeur de Math</h5>
+                        </div>
+                    </div>
+                </div>
+                <div id="annim3" class="col-lg-3 col-md-6 col-sm-10 my-3">
+                    <div class="card">
+                        <div class="card-block" style="position: relative;top:-4em">
+                            <img class="img-fluid rounded-circle w-50 mb-3" src="img/teachers/person3.jpg" alt="">
+                            <h3>Grace Smith</h3>
+                            <h5 class="text-muted">Professeur de Physique</h5>
+                        </div>
+                    </div>
+                </div>
+                <div id="annim4" class="col-lg-3 col-md-6 col-sm-10 my-3">
+                    <div class="card">
+                        <div class="card-block" style="position: relative;top:-4em">
+                            <img class="img-fluid rounded-circle w-50 mb-3" src="img/teachers/person4.jpg"  alt="">
+                            <h3>Grace Smith</h3>
+                            <h5 class="text-muted">Professeur de Science</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <center><a href="" class="btn btn-danger btn-lg mt-5">Browse More Teachers</a></center>
+        </div>
+    </section>
+
+    <!-- Become and instructor-->
+    <section id="be-instructor" class="py-3 mt-4">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-md-6 col-lg-6 col-sm-10 p-3">
+                    <img src="img/instructor.jpg" alt="" class="img-fluid rounded-circle">
+                </div>
+                <div class="col-md-6 col-lg-6 col-sm-10  text-center">
+                    <h1 class="display-5 py-3"><strong>Become and Instructor</strong></h1>
+                    <h5 class="pb-3">Teach in your domain. OnlinePrepa gives you the tools to make an online course. </h5>
+                    <a href="/teacher/contact" id="start-teaching" class="btn btn-danger btn-lg">Start Teaching</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Avis des users - slider -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center py-5">
+                    TESTIMONIALS
+                    <hr>
+                </h1>
+            </div>
+            <div class="col-md-12">
+                <div id="testimonial-slider" class="owl-carousel">
+                    <div class="testimonial">
+                        <p class="description text-justify"><i class="fa fa-quote-left"></i> 
+                            Ces cours sont de bonnes qualité. L'interaction avec les enseignants est une réalité. Le groupe de discussion donne la possibilité à nous les apprenants de s'entraider.
+                        </p>
+                        <div class="testimonial-content">
+                            <div class="pic">
+                                <img src="img/teachers/person4.jpg">
+                            </div>
+                            <h3 class="title">williamson</h3>
+                        </div>
+                    </div>
+     
+                    <div class="testimonial">
+                        <p class="description text-justify"><i class="fa fa-quote-left"></i> 
+                            These courses are of good quality. The interaction with teachers is a reality. The focus group gives us the opportunity for learners to help each other.
+                        </p>
+                        <div class="testimonial-content">
+                            <div class="pic">
+                                <img src="img/teachers/person3.jpg">
+                            </div>
+                            <h3 class="title">Kristina</h3>
+                        </div>
+                    </div>
+     
+                    <div class="testimonial">
+                        <p class="description text-justify"><i class="fa fa-quote-left"></i> 
+                            Ces cours sont de bonnes qualité. L'interaction avec les enseignants est une réalité. Le groupe de discussion donne la possibilité à nous les apprenants de s'entraider.
+                        </p>
+                        <div class="testimonial-content">
+                            <div class="pic">
+                                <img src="img/teachers/person2.jpg">
+                            </div>
+                            <h3 class="title">Steve Thomas</h3>
+                        </div>
+                    </div>
+
+                    <div class="testimonial">
+                        <p class="description text-justify"><i class="fa fa-quote-left"></i> 
+                            These courses are of good quality. The interaction with teachers is a reality. The focus group gives us the opportunity for learners to help each other.
+                        </p>
+                        <div class="testimonial-content">
+                            <div class="pic">
+                                <img src="img/teachers/person1.jpg">
+                            </div>
+                            <h3 class="title">Joe Doe</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<% include _layout/footer %>

@@ -1,0 +1,106 @@
+<%- include('../_layout/header') %>
+
+   <section  class="contact-banner">
+        <div class="container-fluid" style="width: 90%">
+            <div id="overlay">
+                <div class="row">
+                    <div class="col1 col-md-10  col-lg-8 col1 col-sm-12">
+                        <h1>Become and Instructor</h1>
+                        <h4 class="d-none d-md-block d-lg-block d-xl-block">We Propose to Students, Pupils and Pros,
+                            Course Aid and Online learning.</h4>
+                            <a  href="#contact" class="btn btn-danger btn-lg my-3">Enregistrez vous maintenant</a>
+                    </div>
+                    <div class="col-md-3">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Contact section -->
+    <section id="contact" class="py-3" style="z-index: -1;" >
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12  text-center">
+                    <h1 class="mt-5">Are you a potential teacher ?</h1>
+                    <h6 class="pb-5 text-muted">Write to us to begin teaching</h6>
+                </div>
+                <form action="/teacher/contact" method="post" enctype="multipart/form-data" data-parsley-validate style="background-image: url('/img/xero-background.jpg');background-repeat: no-repeat;;background-size: 100% 100%" class="p-5">
+                    <%- include('../_layout/admin_errors') %>
+                    <%- messages('messages', locals) %>
+                    <div class="row text-white">
+                        <div class="col-md-6">
+                            <label for="input1">First name</label>
+                            <input type="text" value="<%=firstname%>" id="input1" name="firstname" class="form-control" required placeholder="First name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input2">Last name</label>
+                            <input type="text" value="<%=lastname%>" name="lastname" id="input2" required class="form-control" placeholder="Last name">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input3">Username</label>
+                            <input type="text" value="<%=username%>" id="input3" data-parsley-required data-parsley-minlength="6" required class="form-control" name="username" placeholder="Username">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input4">Email</label>
+                            <input type="email" value="<%=email%>" name="email" id="input4" required class="form-control" placeholder="Email">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input5">Phone Number</label>
+                            <input type="text" value="<%=tel%>" name="tel" id="input5" class="form-control" required placeholder="Phone Number">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input6">Address</label>
+                            <input type="text" value="<%=lastname%>" name="address" id="input6" class="form-control" placeholder="Address">
+                        </div>
+                        <div class="col-md-6 form-group date" data-provide="datepicker">
+                            <label for="input7">Ville</label>
+                            <input type="text" value="<%=ville%>" name="ville" id="input7" class="form-control" placeholder="Ville">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input8">Born at</label>
+                            <input type="text" value="<%=lastname%>" name="bornat" id="input8" class="form-control" placeholder="12/12/1999">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="input9">Sex</label><br>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sex" id="exampleRadios1" value="Male" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Female">
+                                <label class="form-check-label" name="sex" for="exampleRadios2">
+                                    Female
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-6 my-1">
+                            <label for="inputState1">matiere</label>
+                            <input type="text" name="matiere" class="form-control" id="inputState1" required value="<%=matiere%>" >
+                        </div>
+                        <div class="col-md-6 my-1">
+                            <div class="custom-file">
+                                <label class="custom-file-label" for="customFile">Choose picture</label>
+                                <input value="<%=image%>" type="file" name="image" class="custom-file-input" id="customFile">
+                            </div>
+                        </div>
+                        <div class="col-md-12 my-4 form-group">
+                            <label for="exampleFormControlTextarea1">About You <i>(Example: My school, my level)</i></label>
+                            <textarea required="" class="form-control" name="about" id="exampleFormControlTextarea1" rows="3"><%=about%></textarea>
+                        </div>
+                        <div class="col-md-12 py-1">
+                            <input type="submit" style="min-width: 10em;" class="btn btn-danger  float-right ml-3" value="Send">
+                            <input type="submit" style="min-width: 10em;" class="btn  float-right" value="Cancel">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+<%- include('../_layout/footer') %>

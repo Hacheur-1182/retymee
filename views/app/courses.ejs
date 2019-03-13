@@ -1,0 +1,55 @@
+<%- include('../_layout/header') %>
+
+    <section class="courses-banner">
+        <div class="container-fluid" style="width: 90%">
+            <div id="overlay">
+                <div class="row">
+                    <div class="col1 col-md-10  col-lg-8 col1 col-sm-12">
+                        <h1>Develop Yours Skills</h1>
+                        <h4 class="d-none d-md-block d-lg-block d-xl-block">We Propose to Students, Pupils and Pros,
+                            Course Aid and Online learning.</h4>
+                            <a href="#ongoing-courses-concours" class="btn btn-danger my-2 btn-lg">Enregistrez vous à un cours maintenant</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   <!-- Ongoing Prepa Courses Section -->
+    <section id="ongoing-courses-concours" class="py-3" style="z-index: -1;">
+        <div class="container">
+                <h2 class="display-5  mb-5 mt-5 text-center"><strong>Cours de Préparation aux concours</strong><hr></h2>
+            <div class="row mb-4">
+                <%courses.forEach(function(course){%>
+                    <div class="col-md-6 col-lg-3 col-sm-10 my-2">
+                        <div class="card">
+                            <img class="card-img-top" src="/img/course_images/<%=course._id%>/<%=course.image%>" class="img-fluid" height="150" alt="Card image cap">
+                            <center>
+                                <div id="view-details" class="text-center">
+                                    <a href="/course/<%=course._id%>" ><i class="fa fa-search"></i></a>
+                                </div>
+                            </center>
+                            <div class="card-block pt-0">
+                                <h5 class="card-title"><%=course.title%></h4>
+                                <p class="card-text"><%=course.description%></p>
+                                <p class="card-text">
+                                    <small>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star"></span>&nbsp;
+                                        (122 votes)
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <%})%>
+            </div>
+            <center><a href="" id="all-prepa-courses" class="btn btn-lg mt-3">Browse More Courses</a></center>
+        </div>
+    </section>
+
+
+<%- include('../_layout/footer') %>

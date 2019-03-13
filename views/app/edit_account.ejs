@@ -1,0 +1,122 @@
+<%- include('../_layout/dashboard-header') %>
+
+   <section id="edit-account">
+        <div class="container-fluid">
+            <div class="row my-3">
+                <div class="col-md-8">
+                    <h2 class="pt-3">Account Configuration</h2>
+                    <h6 class="pb-3">Edit yours informations</h6>
+                    <form action="/student/edit-account" method="post" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="input1">First name</label>
+                                <input type="text" id="input1" name="firstname" required class="form-control" placeholder="First name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input2">Last name</label>
+                                <input type="text" name="lastname" required id="input2" class="form-control" placeholder="Last name">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input3">Username</label>
+                                <input type="text" name="username" required id="input3" class="form-control" placeholder="Username">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input4">Email</label>
+                                <input type="email" name="email" required id="input4" class="form-control" placeholder="Email">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input5">Phone Number</label>
+                                <input type="text" name="tel" id="input5" class="form-control" placeholder="Phone Number">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input6">Address</label>
+                                <input type="text" name="address" id="input6" class="form-control" placeholder="Address">
+                            </div>
+                            <div class="col-md-6 form-group date">
+                                <label for="input7">Ville</label>
+                                <input type="text" name="ville" id="input7" class="form-control" placeholder="Ville">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input8">Born at</label>
+                                <input type="text" id="datenaiss" placeholder="dd/mm/yyyy" name="birthday" id="input8" class="form-control" placeholder="">
+                            </div>
+                            <div class="col-md-6">
+                                <label for="input9">Sex</label><br>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sex" id="exampleRadios1" value="Male" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Male
+                                    </label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Female">
+                                    <label class="form-check-label" for="exampleRadios2">
+                                        Female
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6 my-1">
+                                <label for="inputState1">Status</label>
+                                <select id="inputState1" class="form-control">
+                                    <option selected>Choose...</option>
+                                    <option value="Student">Student</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 my-1">
+                                <div class="custom-file">
+                                    <label class="custom-file-label" for="customFile">Choose picture</label>
+                                    <input type="file" name="image" class="custom-file-input" id="customFile">
+                                </div>
+                            </div>
+                            <div class="col-md-12 my-4 form-group">
+                                <label for="exampleFormControlTextarea1">About You</label>
+                                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">Example: My school, my level</textarea>
+                            </div>
+                            <div class="col-md-12 py-1">
+                                <input type="submit" style="min-width: 10em;" class="btn btn-danger  float-right ml-3" value="Save">
+                                <input type="submit" style="min-width: 10em;" class="btn  float-right" value="Cancel">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                    <h2 class="pt-3">Change Password</h2>
+                    <h6 class="pb-3">Keep secret your password</h6>
+                    <form action="" class="mb-4" data-parsley-validate>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="inputp">Current Password</label>
+                                <input type="password" id="inputp" required class="form-control" placeholder="Current Password">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="inputp2">New Password</label>
+                                <input type="password" id="inputp2" required class="form-control" placeholder="New Password" data-parsley-minlength="8">
+                            </div>
+                            <div class="col-md-12">
+                                <label for="inputp3">Verification</label>
+                                <input type="password" id="inputp3" required class="form-control" placeholder="Verification" data-parsley-equalto="#input2">
+                            </div>
+                            <div class="col-md-12">
+                                <input type="reset" class="btn my-3" value="Cancel">
+                                <input type="submit" class="btn btn-danger my-3" value="Save">
+                            </div>
+                        </div>
+                    </form>
+                    <h2 class="pt-3">Course History</h2>
+                    <div class="courses-history">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4>Course Name</h4>
+                                <p class="text-muted">
+                                    Concours d'entrée en 1ère année ENSP de Yaounde.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<%- include('../_layout/dashboard-footer')%>

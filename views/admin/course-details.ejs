@@ -1,0 +1,54 @@
+<%- include('../_layout/adminheader') %>
+
+ <header id="main-header" class="py-2 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Teacher Description</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="pb-5 pt-4" style="background-color: #fafafa;" class="py-4 pb-4 bg-faded">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mr-auto">
+          <a href="/admin/index" class="btn btn-secondary btn-block"><i class="fa fa-arrow-left"></i> Back To Dashboard</a>
+        </div>
+
+        <div class="col-md-3">
+          <a href="index.html" class="btn btn-success btn-block"><i class="fa fa-plus"></i> Add this Teacher</a>
+        </div>
+        <div class="col-md-3">
+          <a href="index.html" class="btn btn-danger btn-block"><i class="fa fa-remove"></i> Delete this Teacher</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POST EDIT -->
+  <section id="edit-post" style="background-color: #fafafa;">
+    <div class="container " style="width: 65%;box-shadow: 3px 3px 10px 8px #eeeeee">
+      <div class="row">
+        <div class="col">
+          <div class="">
+            <div class="">
+              <h4 class="my-4">Courses Details</h4>
+            </div>
+            <div class="">
+              <form method="POST">
+                  <div class="form-group">
+                    <label for="title" class="form-control-label">Name of the course</label>
+                    <input type="text" name="firstname" class="form-control">
+                  </div>      
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../_layout/adminfooter') %>

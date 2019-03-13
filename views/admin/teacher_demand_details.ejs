@@ -1,0 +1,83 @@
+ <%- include('../_layout/adminheader') %>
+
+<header id="main-header" class="py-2 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1>Teacher</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- INFOS -->
+  <section id="edit-post" class="my-4">
+    <div class="container " style="width: 65%;background-color: white">
+      <div class="row">
+        <div class="col">
+          <div class="">
+            <div class="col">
+              <h4 class="my-4">Teacher Informations</h4>
+            </div>
+            <div class="col">
+                <table class="table table-striped">
+                  <thead class="thead-inverse">
+                    <tr>
+                      <th>Options</th>
+                      <th>Values</th>
+                    </tr>
+                  </thead>
+                  <tbody>  
+                      <tr>
+                        <td>First Name</td>
+                        <td><%=teacher.firstname%></td>
+                      </tr>
+                      <tr>
+                        <td>Last Name</td>
+                        <td><%=teacher.lastname%></td>
+                      </tr>
+                      <tr>
+                        <td>Email</td>
+                        <td><%=teacher.email%></td>
+                      </tr>
+                      <tr>
+                        <td>Username</td>
+                        <td><%=teacher.username%></td>
+                      </tr>
+                      <tr>
+                        <td>Date de Naissance</td>
+                        <td><%=teacher.bornat%></td>
+                      </tr>
+                      <tr>
+                        <td>Sexe</td>
+                        <td><%=teacher.sex%></td>
+                      </tr>
+                      <tr>
+                        <td>Phone</td>
+                        <td><%=teacher.tel%></td>
+                      </tr>
+                      <tr>
+                        <td>Address</td>
+                        <td><%=teacher.address%></td>
+                      </tr>
+                      <tr>
+                        <td>Matiere</td>
+                        <td><%=teacher.matiere%></td>
+                      </tr>
+                      <tr>
+                        <td>About It</td>
+                        <td><%=teacher.about%></td>
+                      </tr>
+                  </tbody>
+                  <a href="#" class="btn btn-success mb-3 mr-3">Create Account</a>
+                  <a href="/admin/teachers/demand/delete/<%=teacher._id%>" class="btn btn-danger mb-3">Delete Demand</a>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../_layout/adminfooter') %>

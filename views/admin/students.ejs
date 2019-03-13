@@ -1,0 +1,76 @@
+<%- include('../_layout/adminheader') %>
+
+  <header id="main-header" class="py-2 bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fa fa-users"></i> Students</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-faded">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-6">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search student...">
+            <span class="input-group-btn">
+              <button class="btn btn-warning">Search</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POSTS -->
+  <section id="users">
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <h4>Student List</h4>
+            </div>
+            <table class="table table-striped">
+              <thead class="thead-inverse">
+                <tr>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Username</th>
+                  <th>Email</th>
+                  <th>More Informations</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <%students.forEach(function(student){%>
+                    <tr>
+                      <td><%=student.firstname%></td>
+                      <td><%=student.lastname%></td>
+                      <td><%=student.username%></td>
+                      <td><%=student.email%></td>
+                      <td><a class="btn btn-secondary" href="/admin/students/info/<%=student._id%>">See Details</a></td>
+                    </tr>
+                  <%})%>
+              </tbody>
+            </table>
+
+            <nav class="ml-4">
+              <ul class="pagination">
+                <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
+                <li class="page-item active"><a href="#" class="page-link">1</a></li>
+                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                <li class="page-item"><a href="#" class="page-link">3</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../_layout/adminfooter') %>

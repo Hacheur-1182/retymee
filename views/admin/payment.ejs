@@ -1,0 +1,97 @@
+<%- include('../_layout/adminheader') %>
+
+  <header id="main-header" class="py-2 bg-primary text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fa fa-pencil"></i> Manage Payments</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+    
+    <div class="mb-3"><span style="display: none;">hh</span></div>
+    <%- include('../_layout/admin_errors') %>
+    <%- messages('messages', locals) %>
+
+  <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4 bg-faded">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-6">
+          <div class="input-group">
+            <input type="text" class="form-control select" placeholder="Search a student...">
+            <span class="input-group-btn">
+              <button class="btn btn-primary">Search</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-10 col-sm-12 col-lg-4 mb-3">
+          <div class="list-group" style="border-radius: none">
+              <%courses.forEach(function(course){%>
+                <a href="/admin/payment/course/<%=course._id%>" class="list-group-item list-group-item-action"><%=course.title%> <span class="text-muted">(Session: <%=course.session%>)</span></a>
+              <%})%>
+          </div>
+        </div>
+        <div class="col-lg-8 col-md-12 col-sm-12">
+          <%if(subscribers != ""){%>
+            <section id="posts">
+              <div class="container">
+                <div class="row">
+                  <div class="col">
+                    <div class="card">
+                      <table class="table table-striped">
+                        <div class="card-header">
+                          <h4>Students that have not paid</h4>
+                        </div>
+                        <thead class="thead-inverse">
+                          <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Register</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <%subscribers.forEach(function(subscriber){%>
+                                <%if(subscriber.ispaid == false){%>
+                                  <tr>
+                                    <td scope="row"><%=subscriber.firstname%></td>
+                                    <td><%=subscriber.lastname%></td>
+                                    <td><%=subscriber.email%></td>
+                                    <td><a href="/admin/payment/register/<%=subscriber.id_user%>/<%=subscriber.course_id%>" class="btn btn-primary">Validate this Payment</a></td>
+                                  </tr>
+                                <%}%>
+                            <%})%>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          <%}else{%>
+            <h3 class="text-center text-white">No Subscribers</h3>
+          <%}%>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <%- include('../_layout/adminfooter') %>
+
+  <script>
+    $(document).ready(function(){
+      $(".select").click(fcuntion(){
+        $(".select").removeClass('active');
+        $(".select").addClass('active');
+      })
+    });
+  </script>

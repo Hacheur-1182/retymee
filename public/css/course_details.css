@@ -1,0 +1,25 @@
+body {
+  font-family: 'PT Sans', sans-serif;
+  margin: 0;
+  overflow-x: hidden;
+  line-height: 150%; }
+
+* {
+  font-family: 'PT Sans', sans-serif; }
+
+#course-details .container-fluid {
+  width: 90%; }
+  #course-details .container-fluid .col-md-8 hr {
+    background-color: #eeeeee; }
+  #course-details .container-fluid .col-md-8 h1 {
+    font-weight: bold;
+    font-size: 35px; }
+  #course-details .container-fluid .col-md-8 img {
+    width: 100%;
+    height: 20em; }
+  #course-details .container-fluid .col-md-8 h4 {
+    font-weight: bold;
+    color: #222222; }
+
+#course-details .d-flex .checked {
+  color: #ff7200; }

@@ -1,0 +1,339 @@
+<%- include('../_layout/adminheader') %>
+
+    <header id="main-header" class="py-2 bg-primary text-white mb-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h1><i class="fa fa-gear"></i> Dashboard</h1>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<%- include('../_layout/admin_errors') %>
+<%- messages('messages', locals) %>
+
+      <!-- ACTIONS -->
+  <section id="actions" class="py-4 mb-4">
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-8 col-lg-9 col-sm-12">
+          <div class="row">
+              <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Add Course</h5>
+                    <p class="card-text">Manage courses, add a new course here.</p>
+                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal"><i class="fa fa-plus"></i> Add New Course</a>
+                  </div>
+                </div>
+              </div>
+        
+              <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Add Teacher</h5>
+                    <p class="card-text">Manage Teacher, add a new Teacher here.</p>
+                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addCategoryModal"><i class="fa fa-plus"></i> Add New Teacher</a>
+                  </div>
+                </div>
+                </div>
+        
+              <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Discussion Group</h5>
+                    <p class="card-text">Manage Discussion Group, add a new Group here.</p>
+                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addUserModal"><i class="fa fa-plus"></i> Create New Group</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-4 col-sm-6 my-2">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Assign Class</h5>
+                    <p class="card-text">Manage Teachers Classes, Assign a new Class here.</p>
+                    <a href="/admin/courses/assign-course" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Assign Class</a>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-md-6 col-lg-4 col-sm-6 my-2">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Register a payment</h5>
+                    <p class="card-text">Manage Payments , Register a new payment here.</p>
+                    <a href="/admin/payment/register-payment" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Save Paiement</a>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="col-md-6  col-lg-4 col-sm-6 my-2">
+                <div class="card text-center">
+                  <div class="card-body">
+                    <h5 class="card-title">Course Access</h5>
+                    <p class="card-text">Manage Course Access, Block Students...</p>
+                    <a href="#" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Config course Access</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-12 col-lg-3">
+          <!--Stats-->
+          <div class="card text-center card-primary py-2 mb-3">
+            <div class="card-block">
+              <h3>Courses</h3>
+              <h1 class="display-4"><i class="fa fa-pencil"></i> <%=N_COURS%></h1>
+              <a href="/admin/courses" class="btn btn-sm btn-outline-secondary">View</a>
+            </div>
+          </div>
+
+          <div class="card text-center card-success py-2 mb-3">
+            <div class="card-block">
+              <h3>Teachers</h3>
+              <h1 class="display-4"><i class="fa fa-user"></i> <%=N_TEACH%></h1>
+              <a href="/admin/teachers" class="btn btn-sm btn-outline-secondary ">View</a>
+            </div>
+          </div>
+
+          <div class="card text-center card-warning py-2 mb-3">
+            <div class="card-block">
+              <h3>Students</h3>
+              <h1 class="display-4"><i class="fa fa-users"></i> <%=N_STUD%></h1>
+              <a href="/admin/students" class="btn btn-sm btn-outline-secondary ">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  <!-- TEACHERS DEMAND -->
+  <section id="posts">
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-header">
+              <h4>TEACHERS DEMAND</h4>
+            </div>
+            <table class="table table-striped">
+              <thead class="thead-inverse">
+                <tr>
+                  <th>Full Name</th>
+                  <th>Email</th>
+                  <th>Tel</th>
+                  <th>Address</th>
+                  <th>Status</th>
+                  <th>About</th>
+                  <th>More</th>
+                </tr>
+              </thead>
+              <tbody>
+                <%teachersDemand.forEach(function(teacher){%>
+                  <tr>
+                    <td><%=teacher.firstname%> <%=teacher.lastname%></td>
+                    <td><%=teacher.email%></td>
+                    <td><%=teacher.tel%></td>
+                    <td><%=teacher.address%></td>
+                    <td><%=teacher.matiere%></td>
+                    <td><%=teacher.about%></td>
+                    <td><a href="/admin/teachers/demand/<%=teacher._id%>" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Details</a></td>
+                  </tr>
+                <%})%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="col-md-3">
+          
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ADD COURSE MODAL -->
+  <div class="modal fade" id="addPostModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title" id="addPostModalLabel">Add Course</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/admin/courses/add-course" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <label for="title" class="form-control-label">Type of Course</label>
+              <select name="type" class="form-control">
+                <option disabled>Default select</option>
+                <option value="Concours">Concours</option>
+                <option value="Examen">Examen</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Title</label>
+              <input type="text" name="title" value="<%=title%>" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Session</label>
+              <input type="text" name="session" value="<%=session%>" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Duration</label>
+              <input type="text" name="duration" value="<%=duration%>" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Start Date</label>
+              <input type="text" name="startdate" value="<%=startdate%>" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">End Date</label>
+              <input type="text" name="enddate" value="<%=enddate%>" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Cost (FCFA)</label>
+              <input type="text" name="cost" value="<%=cost%>" class="form-control" placeholder="">
+            </div>
+            <div class="form-group">
+              <label for="category" class="form-control-label">Category</label>
+              <select name="category" value="<%=category%>" class="form-control">
+                <option value="Ingénierie">Ingénierie</option>
+                <option value="Enseignement">Enseignement</option>
+                <option value="Médecine">Médecine</option>
+                <option value="Droit & Finance">Droit & Finance</option>
+              </select>
+            </div>
+            <div class="form-group bg-faded p-3">
+              <label for="file">Image Upload</label>
+              <input type="file" name="image" class="form-control-file" id="file">
+              <small id="fileHelp" class="form-text text-muted">
+                Max Size 3MB
+              </small>
+            </div>
+            <div class="form-group bg-faded p-3">
+              <label for="file">Time Table Upload</label>
+              <input type="file" name="timetable" class="form-control-file" id="file2">
+              <small id="fileHelp" class="form-text text-muted">
+                Max Size 3MB
+              </small>
+            </div>
+            <div class="form-group">
+              <label for="body">Description</label>
+              <textarea name="description" class="form-control"><%=description%></textarea>
+            </div>
+            <div class="form-group">
+              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-primary float-right m-3" value="Add Course">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD Teacher MODAL -->
+  <div class="modal fade" id="addCategoryModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title" id="addCategoryModalLabel">Add Teacher</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/admin/teachers/add" method="post">
+            <div class="form-group">
+              <label for="title" class="form-control-label">First Name</label>
+              <input type="text" value="<%=firstname%>" name="firstname" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Last Name</label>
+              <input type="text" value="<%=lastname%>" name="lastname" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Username</label>
+              <input type="text" value="<%=username%>" name="username" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Email</label>
+              <input type="email" value="<%=email%>" name="email" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Password</label>
+              <input type="password" name="password" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Password Confirmation</label>
+              <input type="password" name="password2" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Tel</label>
+              <input type="text" value="<%=tel%>" name="tel" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Address</label>
+              <input type="text" value="<%=address%>" name="address" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Matière</label>
+              <input type="text" value="<%=matiere%>" name="matiere" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="body">About Teacher</label>
+                <textarea name="desc" value="<%=description%>" class="form-control"></textarea>
+            </div>
+            <div class="form-control">
+              <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-success" value="Add Teacher">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CREATE GROUP MODAL -->
+  <div class="modal fade" id="addUserModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title" id="addUserModalLabel">Create Group</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form method="post" id="add-group-form" action="/admin/group/add-group">
+            <div class="form-group">
+              <label for="name" class="form-control-label">Group Name</label>
+              <select name="groupname" id="course_id" class="form-control" onchange="changeFunc();">
+                <option selected="" disabled="">Choose the Course for the Group</option>
+                <%courses.forEach(function(course){%>                  
+                  <option class="group" value="<%=course._id%>"><%=course.title%></option>
+                <%})%>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="desc" class="form-control-label">Description</label>
+              <textarea name="description" id="" class="form-control">Ce groupe vous permet d'échanger sur les différents thèmes abordés en cours.</textarea>
+            </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" id="add-group-close" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-warning" id="add-group">Add Group</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<%- include('../_layout/adminfooter') %>
+<script src="/js/functions.js"></script>
