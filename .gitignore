@@ -1,1 +1,12 @@
+# exclude everything
 /node_modules
+/course_support/*
+/timetables/*
+/img/course_images/*
+/img/teacher_images/*
+
+# exception to the rule
+!/course_support/.gitkeep 
+!/timetables/.gitkeep 
+!/img/course_images/.gitkeep 
+!/img/teacher_images/.gitkeep 
