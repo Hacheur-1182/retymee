@@ -1,11 +1,11 @@
 <%- include('../_layout/dashboard-header') %>
 
     <section id="header" style="margin-left: 3em">
-        <div class="container-fluid">
+        <div class="container-fluid py-4">
             <div class="row pt-3 pb-2">
                 <div class="col-md-12 text-center">
-                    <h1 class="text-white mt-1">Welcome to your Dashboard</h1>
-                    <h4 class="text-white">Here you can manage all your courses.</h4>
+                    <h1 class="text-white mt-1">Mon Dashboard</h1>
+                    <h4 class="text-white">Ici vous pouvez gérér tous vos cours</h4>
                     <%if(user.image != "avatar.png"){%>
                         <img src="/img/student_images/<%=user._id%>/<%=user.image%>" class="img-rounded" alt="">
                     <%}else{%>
@@ -18,7 +18,7 @@
     </section>
     
 
-    <section id="my-courses" style="padding-bottom: 4em;">
+    <section id="my-courses" class="py-5">
         <div class="container-fluid">
             <div class="row my-3">
                 <div class="col-md-12">
@@ -53,11 +53,11 @@
                                                         <a href="/timetables/<%=course.course_id%>/<%=course.course_timetable%>" style="color: rgb(28, 38, 47);font-weight: bold" >Download Time Table <i class="fa fa-calendar"></i></a>
                                                     </div>
                                                 <%}else{%>
-                                                    <h5 class="" style="color: red">You must paid this course to continue</h5>
+                                                    <h5 class="" style="color: red">Vous devez payer pour pouvoir continuer à suivre ce cours.</h5>
                                                 <%}%>
                                                 <%if(course.ispaid == false){%>
                                                     <div class="p-2">
-                                                        <a href="#" class="btn btn-secondary mr-3 ml-3">Pay this course</a>
+                                                        <a href="#" class="btn btn-secondary mr-3 ml-3">Payer le cours</a>
                                                         <span style="font-size: 12px" class="text-muted">(<%=course.remaining_test_days%>)</span>
                                                     </div>
                                                 <%}%>
@@ -71,8 +71,8 @@
                             </div>
                         <%})%>
                     <%}else{%>
-                        <h4 class="text-center my-3">You are not registered to any course...</h4>
-                        <center><a href="/prepa-courses" class="btn btn-danger my-2">Register to a course now</a></center>
+                        <h4 class="text-center my-3">Vous n'êtes enregistré à aucun cours pour le moment...</h4>
+                        <center><a href="/prepa-courses" class="btn btn-danger my-2">Enregistrez vous à un cours maintenant</a></center>
                     <%}%>
                 </div>
             </div>

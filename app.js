@@ -21,7 +21,7 @@ var server = http.createServer(app);
 var DiscussGroup = require('./models/discussGroup');
 
 //Connect to db
-mongoose.connect(config.database);
+mongoose.connect(config.database, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function() {

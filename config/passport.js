@@ -18,7 +18,7 @@ module.exports = function (passport) {
                 console.log(err);
 
             if (!student) {
-                return done(null, false, {message: 'No user found!'});
+                return done(null, false, {message: 'Aucun utiliseur trouvé!'});
             }
 
             bcrypt.compare(password, student.password, function (err, isMatch) {
@@ -28,7 +28,7 @@ module.exports = function (passport) {
                 if (isMatch) {
                     return done(null, student);
                 } else {
-                    return done(null, false, {message: 'Wrong password.'});
+                    return done(null, false, {message: 'Mot de passe incorrect'});
                 }
             });
         });
@@ -49,7 +49,7 @@ module.exports = function (passport) {
                 console.log(err);
 
             if (!teacher) {
-                return done(null, false, {message: 'No user found!'});
+                return done(null, false, {message: 'Aucun utiliseur trouvé!'});
             }
 
             bcrypt.compare(password, teacher.password, function (err, isMatch) {
@@ -59,7 +59,7 @@ module.exports = function (passport) {
                 if (isMatch) {
                     return done(null, teacher);
                 } else {
-                    return done(null, false, {message: 'Wrong password.'});
+                    return done(null, false, {message: 'Mot de passe incorrect'});
                 }
             });
         });

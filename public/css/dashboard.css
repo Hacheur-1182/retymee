@@ -96,3 +96,7 @@ footer {
 #your-msg {
   background-color: #dddddd;
   float: left; }
+
+  a {
+    text-decoration: none !important;
+  }

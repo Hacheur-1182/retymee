@@ -5,7 +5,9 @@ body {
   line-height: 150%; }
 
 * {
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;}
+
+p {font-size: 16px !important;}
 
 .counter, #annim1, #annim2, #annim3, #annim4, #start-teaching {
   animation-duration: 1.3s;
@@ -249,7 +251,9 @@ header {
 
 #be-instructor {
   color: #222222;
-  background-color: #eeeeee; }
+  padding-top: 3rem !important;
+  padding-bottom: 3rem !important;
+  background-color: #f5f8fa; }
   #be-instructor a {
     border-radius: 10px; }
 
@@ -284,11 +288,15 @@ header {
     .contact-banner .row .col1 h4, .courses-banner .row .col1 h4, .course-description .row .col1 h4 {
       font-size: 30px; }
 
-footer .container-fluid {
-  margin-top: 5em;
-  background-size: 100% 100%;
-  background-color: #333333; }
-  footer .container-fluid img {
+      #main-footer {
+        margin-top: 5em;
+        background-size: 100% 100%;
+        background-color: #333333;
+        padding-bottom: .5em;
+        padding-top: 3rem;
+      } 
+
+  footer .container img {
     height: 50px;
     width: 50px; }
 

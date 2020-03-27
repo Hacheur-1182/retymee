@@ -31,7 +31,7 @@ $(document).ready(function(){
                     $('#signup').css("display", "block");
                     $('#signUp').modal('show');
                 }else if(response == "1"){
-                    $('#form-register').append('<div class="alert alert-success mt-2">Inscription réussie, Un mail de confirmation vous a été envoyé</div>');
+                    $('#form-register').append('<div class="alert alert-success mt-2">Inscription réussie. Veuillez vous connecter.</div>');
                     $('.fa-spin').css("display", "none");
                     //Message username is already use
                 }else if(response == "username_exist"){
