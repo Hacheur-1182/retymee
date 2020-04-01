@@ -28,7 +28,7 @@ var coursesSchema = mongoose.Schema({
     },
     cost:{
         type: String,
-        required: true
+        required: false
     },
     description:{
         type: String

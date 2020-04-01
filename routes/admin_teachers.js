@@ -263,5 +263,15 @@ function renderWhenError(){
     })
 }
 
+//accesss control
+function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated() && req.user.role == "admin"){
+        return next()
+    }else{
+        req.flash('danger', 'Please login')
+        res.redirect('/admin')
+    }
+}
+
 //Exports 
 module.exports = router;

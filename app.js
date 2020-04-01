@@ -118,19 +118,20 @@ app.get('*', function(req,res,next) {
 var pages = require('./routes/pages.js');
 var teachers = require('./routes/teachers.js');
 var students = require('./routes/students.js');
+var admin = require('./routes/admin.js');
 var adminTeachers = require('./routes/admin_teachers.js');
 var adminStudents = require('./routes/admin_students.js');
 var adminCourses = require('./routes/admin_courses.js');
-var admin_discussGroup = require('./routes/admin_discussGroup.js');
 var admin_pages = require('./routes/admin_pages.js');
+
 app.use('/', pages);
+app.use('/admin', admin);
 app.use('/admin', admin_pages);
 app.use('/teacher', teachers);
 app.use('/admin/teachers', adminTeachers);
 app.use('/admin/students', adminStudents);
 app.use('/student', students);
 app.use('/admin/courses', adminCourses);
-app.use('/admin/group', admin_discussGroup);
 
 
 //Socket.io

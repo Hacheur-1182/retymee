@@ -1,32 +1,28 @@
 <%- include('../_layout/dashboard-header') %>
-<section style="background-image:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url('/img/WhatsApp-Hintergrund1.png');background-repeat: no-repeat;background-size: 100% 100%;margin-left: 3em">
+<section class="discuss-layout">
     <section  >
         <div class="container-fluid" >
             <div class="row py-3">
                 <div class="col-md-12 text-center">
-                    <h3 class="text-white"><%=group.groupname%></h3>
-                    <p class="text-white"><%=user.username%> (<%=user.email%>)</p>
+                    <h3 class="text-white">Groupe: <%=group.groupname%></h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <%if(isTeacher){%>
-    <%}else{%>
+
     <section id="courses-support-section">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h2 class="text-center text-white pt-5">Your Courses Supports</h2>
-                    <hr class="mb-4 pb-1" style="background-color: white;width: 100px">
+                    <h4 class="text-white py-1">Supports de cours</h4>
                 </div>
                 <%course.supports.forEach(function(support){%>
                      <div class="col-md-3">
-                        <div class="card text-white mb-3" style="color: #222222;background-color: rgba(255,255,255,0.4);border-radius: 5px">
+                        <div class="card text-white mb-3" style="border-radius: 5px">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: black"><%=support.name%></h5>
-                                <span style="font-size: 12px;color: black" class=""><%=support.desc%></span><br>
-                                <a href="/course_support/<%=course._id%>/<%=support.file%>" class="text-center text-white">Download <i class="fa fa-download"></i></a>
+                                <a  href="/course_support/<%=course._id%>/<%=support.file%>" class="btn btn-dark btn-sm">Download <i class="fa fa-download"></i></a>
                             </div>
                         </div>
                     </div>
@@ -34,102 +30,93 @@
             </div>
         </div>
     </section>
-    <%}%>
     
     <!--Discussion-->
     <section id="discuss-body-section">
-        <div class="container" style="margin-right: 4em">
-            <div class="row align-items-center">
-                <div class="col-md-12">
-                    <h2 class="text-center pt-5 text-white"><strong>DISCUSS HERE</strong></h2>
-                    <hr class="pb-4">
-                </div>
-            </div>
-            
-            <div class="container-fluid py-2" id="chat-bloc" style="color: #222222;background-color: rgba(255,255,255,0.4);border-radius: 5px">
-                <!--Messages Loop-->
-                <%group.messages.forEach(function(message){%>
-                    <%if(message.user_id == user.id){%>
-                        <div class="container-fluid my-0">
-                            <div class="row justify-content-end my-0">
-                                <div class="col">
-                                    <div class="flex-row d-flex justify-content-end align-items-center">
-                                        <div id="my-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
-                                            <h6 style="font-size: 13px"><strong>Me</strong></h6>
-                                            <span style="font-size: 13px"><%=message.content%></span>
-                                            <%if(message.file != ""){%>
-                                                <a href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a>
-                                            <%}%>
-                                        </div>
-                                        <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
-                                        </div>
+        <div class="container-fluid py-2" id="chat-bloc">
+            <!--Messages Loop-->
+
+            <%group.messages.forEach(function(message){%>
+                <%if(message.user_id == user.id){%>
+                    <div class="container-fluid my-0">
+                        <div class="row justify-content-end my-0">
+                            <div class="col">
+                                <div class="flex-row d-flex justify-content-end align-items-center">
+                                    <div id="my-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
+                                        <h6 style="font-size: 13px"><strong>Moi</strong></h6>
+                                        <span style="font-size: 13px"><%=message.content%></span>
+                                        <%if(message.file != ""){%>
+                                            <!-- <a class="mt-2" href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a> -->
+                                        <%}%>
+                                    </div>
+                                    <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    <%}else{%>
-                        <div class="container-fluid my-0">
-                            <div class="row justify-content-start my-0">
-                                <div class="col">
-                                    <div class="flex-row d-flex justify-content-start align-items-center">
-                                        <!--Student Messages in Teacher Interface-->
-                                        <%students.forEach(function(student){%>
-                                            <%if(student._id.equals(message.user_id)){%>
-                                                <div class="p-2">
-                                                    <%if(student.image != "avatar.png"){%>
-                                                        <img src="/img/student_images/<%student._id%>/<%student.image%>" class="img-rounded" style="height: 70px;width: 70px" class="rounded-circle" alt="">
-                                                    <%}else{%>
-                                                        <img src="/img/avatar.png" style="height: 70px;width: 70px" class="rounded-circle" alt="">
-                                                    <%}%>
-                                                </div>
-                                                <div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
-                                                    <h6 style="font-size: 13px"><strong><%=student.username%></strong></h6>
-                                                    <span style="font-size: 13px"><%=message.content%></span>
-                                                    <%if(message.file != ""){%>
-                                                        <a href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a>
-                                                    <%}%>
-                                                </div>
-                                                <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
-                                                </div>
-                                            <%}%>
-                                        <%})%>
-                                        <!--Teacher Messages in Student Interface-->
-                                        <%teachers.forEach(function(teacher){%>
-                                            <%if(teacher._id.equals(message.user_id)){%>
-                                                <div class="p-2">
-                                                    <%if(teacher.image != "avatar.png"){%>
-                                                        <img src="/img/student_images/<%teacher._id%>/<%teacher.image%>" class="img-rounded" style="height: 70px;width: 70px" class="rounded-circle" alt="">
-                                                    <%}else{%>
-                                                        <img src="/img/avatar.png" style="height: 70px;width: 70px" class="rounded-circle" alt="">
-                                                    <%}%>
-                                                </div>
-                                                <div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
-                                                    <h6 style="font-size: 13px"><strong><%=teacher.username%></strong><span class="text-muted"> (Teacher)</span></h6>
-                                                    <span style="font-size: 13px"><%=message.content%></span>
-                                                    <%if(message.file != ""){%>
-                                                        <a href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a>
-                                                    <%}%>
-                                                </div>
-                                                <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
-                                                </div>
-                                            <%}%>
-                                        <%})%>
-                                    </div>
+                    </div>
+                <%}else{%>
+                    <div class="container-fluid my-0">
+                        <div class="row justify-content-start my-0">
+                            <div class="col">
+                                <div class="flex-row d-flex justify-content-start align-items-center">
+                                    <!--Student Messages in Teacher Interface-->
+                                    <%students.forEach(function(student){%>
+                                        <%if(student._id.equals(message.user_id)){%>
+                                            <div class="p-2">
+                                                <%if(student.image != "avatar.png"){%>
+                                                    <img src="/img/student_images/<%student._id%>/<%student.image%>" class="img-rounded" style="height: 50px;width: 50px" class="rounded-circle" alt="">
+                                                <%}else{%>
+                                                    <img src="/img/avatar.png" style="height: 50px;width: 50px" class="rounded-circle" alt="">
+                                                <%}%>
+                                            </div>
+                                            <div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
+                                                <h6 style="font-size: 13px"><strong><%=student.username%></strong></h6>
+                                                <span style="font-size: 13px"><%=message.content%></span>
+                                                <%if(message.file != ""){%>
+                                                    <!-- <a href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a> -->
+                                                <%}%>
+                                            </div>
+                                            <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
+                                            </div>
+                                        <%}%>
+                                    <%})%>
+                                    <!--Teacher Messages in Student Interface-->
+                                    <%teachers.forEach(function(teacher){%>
+                                        <%if(teacher._id.equals(message.user_id)){%>
+                                            <div class="p-2">
+                                                <%if(teacher.image != "avatar.png"){%>
+                                                    <img src="/img/student_images/<%teacher._id%>/<%teacher.image%>" class="img-rounded" style="height: 50px;width: 50px" class="rounded-circle" alt="">
+                                                <%}else{%>
+                                                    <img src="/img/avatar.png" style="height: 50px;width: 50px" class="rounded-circle" alt="">
+                                                <%}%>
+                                            </div>
+                                            <div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
+                                                <h6 style="font-size: 13px"><strong><%=teacher.username%></strong><span class="text-muted"> (Teacher)</span></h6>
+                                                <span style="font-size: 13px"><%=message.content%></span>
+                                                <%if(message.file != ""){%>
+                                                    <!-- <a href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a> -->
+                                                <%}%>
+                                            </div>
+                                            <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
+                                            </div>
+                                        <%}%>
+                                    <%})%>
                                 </div>
                             </div>
                         </div>
-                    <%}%>
-                <%})%>
-            </div>
+                    </div>
+                <%}%>
+            <%})%>
         </div>
     </section>
 
-    <section id="keyboard" style="padding-bottom: 4em">
+    <section id="keyboard">
         <div class="container">
             <div class="row justify-content-center">
                 <!--Clavier-->
-                <div class="col-md-10 pt-5">
-                    <div class="flex-rox d-flex justify-content-center">
+                <div class="col-md-10">
+                    <div class="flex-row d-flex justify-content-center">
                         <div class="p-2">
                             <div id="gone" class="col" style="width:200px;height: 80px;transition: 0.5s;position: fixed;top: 0;margin-right: auto;margin-left: auto;display: none;">
                                 <div class="alert alert-success text-center" style="border-radius:0">Gone</div>
@@ -141,7 +128,7 @@
                             <div class="row align-items-center">
                                 <div class="col-md-11">
                                     <div class="form-group">
-                                        <textarea name="editor1" id="content" class="form-control" placeholder="Enter Your Text"></textarea>
+                                        <textarea name="editor1" id="content" class="form-control" placeholder="Ecrivez ici"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-1" id="spin-space">
@@ -152,14 +139,14 @@
                             </div>
                         </div>
                         <div class="row align-items-center">
-                            <div class="col-md-6 justify-content-center">
+                            <!-- <div class="col-md-6 justify-content-center">
                                 <div class="form-group bg-faded">
                                     <input type="file" name="file" class="form-control-file" id="file">
                                     <small id="fileHelp" class="form-text text-muted">
                                         Upload a file (Max Size 3MB)
                                     </small>
                                 </div>
-                            </div>
+                            </div> -->
                             <input type="hidden" value="<%=group._id%>" id="group-id" name="group_id">
                         </div>
                     </form>
@@ -230,7 +217,6 @@
                                     +'<div id="my-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">'
                                         +'<h6 style="font-size: 13px"><strong>Me</strong></h6>'
                                         +'<span style="font-size: 13px">'+content+'</span>'
-                                        +'<a href="/student_supports'+group_id+'/<%=user._id%>/'+file+'" style="display:'+cl+'">Download attachment</a>'
                                     +'</div>'
                                     +'<div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(new Date()).fromNow()+'</span>'
                                    +' </div>'
@@ -272,7 +258,6 @@
                             +'<div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">'
                                 +'<h6 style="font-size: 13px"><strong>'+msg.username+'</strong></h6>'
                                 +'<span style="font-size: 13px">'+msg.content+'</span>'
-                                +'<a href="/student_supports/'+msg.group_id+'/'+msg.user_id+'/'+msg.file+'" style="display:'+cl+'">Download attachment</a>'
                             +'</div>'
                             +'<div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(msg.date).fromNow()+'</span>'
                             +'</div>'

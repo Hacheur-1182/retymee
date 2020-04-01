@@ -1,18 +1,20 @@
 <% include _layout/header %>
 
     <section id="banner">
-        <div class="container-fluid" style="width: 90%">
+        <div class="container">
             <div id="overlay">
-                <div class="row">
-                    <div class="col1 col-md-10  col-lg-7 col1 col-sm-12">
-                        <h1 style="font-size: 75px">Develop Yours Skills</h1>
-                        <h4 class="d-none d-md-block d-lg-block d-xl-block">We Propose to Students, Pupils and Pros,
-                            Course Aid and Online learning.</h4>
-                            <%if(user){%>
-                                <a href="#ongoing-courses-concours" class="btn btn-danger my-2 btn-lg">Enregistrez vous à un cours maintenant</a>
-                            <%}else{%>
-                                <a href="#" class="btn btn-lg" data-toggle="modal" data-target="#signUp">Inscrivez vous maintenant</a>
-                            <%}%> 
+                <div class="row" style="padding: 0;">
+                    <div class="container" style="padding: 0;">
+                        <div class="col1 col-md-10  col-lg-7 col1 col-sm-12">
+                            <h1 style="font-size: 75px">Develop Yours Skills</h1>
+                            <h4 class="d-none d-md-block d-lg-block d-xl-block">We Propose to Students, Pupils and Pros,
+                                Course Aid and Online learning.</h4>
+                                <%if(user){%>
+                                    <a href="#ongoing-courses-concours" class="btn btn-danger my-2 btn-lg">Enregistrez vous à un cours maintenant</a>
+                                <%}else{%>
+                                    <a href="#" class="btn btn-lg" data-toggle="modal" data-target="#signUp">Inscrivez vous maintenant</a>
+                                <%}%> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,15 +97,17 @@
                             </center>
                             <div class="card-block pt-0">
                                 <h5 class="card-title"><%=course.title%></h4>
-                                <p class="card-text"><%=course.description%></p>
-                                <p class="card-text">
+                                <!-- <p class="card-text"><%=course.description%></p> -->
+                                <span class="text-muted">Classe: <%=course.session%></span><br>
+                                <span class="text-muted">Durée: <%=course.duration%></span>
+                                <p class="card-text mt-2">
                                     <small>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star"></span>&nbsp;
-                                        (122 votes)
+                                        (0 revues)
                                     </small>
                                 </p>
                             </div>
@@ -117,110 +121,14 @@
 
 
     <!-- Ongoing Exams Courses Section -->
-    <section id="ongoing-courses-exam" class="py-3" style="z-index: -1;">
+    <!-- <section id="ongoing-courses-exam" class="py-3" style="z-index: -1;">
         <div class="container">
             <h2 class="display-5  mb-5 mt-4"><strong>Préparation aux Examens à la Une</strong></h2>
             <div class="row mb-4 justify-content-center">
-                <div class="col-md-6 col-lg-3 col-sm-10 my-2">
-                    <div class="card">
-                        <img class="card-img-top" src="img/ai.jpg" class="img-fluid" height="150" alt="Card image cap">
-                        <center>
-                            <div id="view-details" class="text-center">
-                                <a href="" ><i class="fa fa-search"></i></a>
-                            </div>
-                        </center>
-                        <div class="card-block pt-0">
-                            <h4 class="card-title">Card title</h4>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in</p>
-                            <p class="card-text">
-                                <small>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>&nbsp;
-                                    (122 votes)
-                                </small>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 col-sm-10 my-2">
-                    <div class="card">
-                        <img class="card-img-top" src="img/ai.jpg" class="img-fluid" height="150" alt="Card image cap">
-                        <center>
-                            <div id="view-details" class="text-center">
-                                <a href="" ><i class="fa fa-search"></i></a>
-                            </div>
-                        </center>
-                        <div class="card-block pt-0">
-                            <h4 class="card-title">Card title</h4>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in</p>
-                            <p class="card-text">
-                                <small>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>&nbsp;
-                                    (122 votes)
-                                </small>
-                                </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 col-sm-10 my-2">
-                    <div class="card">
-                        <img class="card-img-top" src="img/ai.jpg" class="img-fluid" height="150" alt="Card image cap">
-                        <center>
-                            <div id="view-details" class="text-center">
-                                <a href="" ><i class="fa fa-search"></i></a>
-                            </div>
-                        </center>
-                        <div class="card-block pt-0">
-                            <h4 class="card-title">Card title</h4>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in</p>
-                            <p class="card-text">
-                                <small>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>&nbsp;
-                                    (122 votes)
-                                </small>
-                                </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-3 col-sm-10 my-2">
-                    <div class="card">
-                        <img class="card-img-top" src="img/ai.jpg" class="img-fluid" height="150" alt="Card image cap">
-                        <center>
-                            <div id="view-details" class="text-center">
-                                <a href="" ><i class="fa fa-search"></i></a>
-                            </div>
-                        </center>
-                        <div class="card-block pt-0">
-                            <h4 class="card-title">Card title</h4>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in</p>
-                            <p class="card-text">
-                                <small>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star checked"></span>
-                                    <span class="fa fa-star"></span>&nbsp;
-                                    (122 votes)
-                                </small>
-                                </p>
-                        </div>
-                    </div>
-                </div>
             </div>
             <center><a href="/exams-courses" id="all-exam-courses" class="btn btn-lg mt-3">Browse More Courses</a></center>
         </div>
-    </section>
+    </section> -->
 
     <!-- Count Section -->
     <section id="count" class="py-2 my-5">
@@ -326,7 +234,7 @@
     </div>
 
     <!-- Instructors section -->
-    <section id="instructor" class="text-center py-4">
+    <section id="instructor" class="text-center py-4 pb-5">
         <div class="container">
             <h2 class="text-center pt-4 "><strong>MEET OUR INSTRUCTOR</strong></h2>
             <hr class="pb-4" style="color: gray">
@@ -373,7 +281,7 @@
     </section>
 
     <!-- Become and instructor-->
-    <section id="be-instructor" class="py-3 mt-4">
+    <!-- <section id="be-instructor" class="py-3 mt-4">
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-6 col-lg-6 col-sm-10 p-3">
@@ -386,70 +294,73 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Avis des users - slider -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h1 class="text-center py-5">
-                    TESTIMONIALS
-                    <hr>
-                </h1>
-            </div>
-            <div class="col-md-12">
-                <div id="testimonial-slider" class="owl-carousel">
-                    <div class="testimonial">
-                        <p class="description text-justify"><i class="fa fa-quote-left"></i> 
-                            Ces cours sont de bonnes qualité. L'interaction avec les enseignants est une réalité. Le groupe de discussion donne la possibilité à nous les apprenants de s'entraider.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic">
-                                <img src="img/teachers/person4.jpg">
+    <section id="testimonials">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center py-5">
+                        TESTIMONIALS
+                        <hr>
+                    </h1>
+                </div>
+                <div class="col-md-12">
+                    <div id="testimonial-slider" class="owl-carousel">
+                        <div class="testimonial">
+                            <p class="description text-justify"><i class="fa fa-quote-left"></i> 
+                                Ces cours sont de bonnes qualité. L'interaction avec les enseignants est une réalité. Le groupe de discussion donne la possibilité à nous les apprenants de s'entraider.
+                            </p>
+                            <div class="testimonial-content">
+                                <div class="pic">
+                                    <img src="img/teachers/person4.jpg">
+                                </div>
+                                <h3 class="title">william</h3>
                             </div>
-                            <h3 class="title">william</h3>
                         </div>
-                    </div>
-     
-                    <div class="testimonial">
-                        <p class="description text-justify"><i class="fa fa-quote-left"></i> 
-                            These courses are of good quality. The interaction with teachers is a reality. The focus group gives us the opportunity for learners to help each other.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic">
-                                <img src="img/teachers/person3.jpg">
+         
+                        <div class="testimonial">
+                            <p class="description text-justify"><i class="fa fa-quote-left"></i> 
+                                These courses are of good quality. The interaction with teachers is a reality. The focus group gives us the opportunity for learners to help each other.
+                            </p>
+                            <div class="testimonial-content">
+                                <div class="pic">
+                                    <img src="img/teachers/person3.jpg">
+                                </div>
+                                <h3 class="title">Eric</h3>
                             </div>
-                            <h3 class="title">Eric</h3>
                         </div>
-                    </div>
-     
-                    <div class="testimonial">
-                        <p class="description text-justify"><i class="fa fa-quote-left"></i> 
-                            Ces cours sont de bonnes qualité. L'interaction avec les enseignants est une réalité. Le groupe de discussion donne la possibilité à nous les apprenants de s'entraider.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic">
-                                <img src="img/teachers/person2.jpg">
+         
+                        <div class="testimonial">
+                            <p class="description text-justify"><i class="fa fa-quote-left"></i> 
+                                Ces cours sont de bonnes qualité. L'interaction avec les enseignants est une réalité. Le groupe de discussion donne la possibilité à nous les apprenants de s'entraider.
+                            </p>
+                            <div class="testimonial-content">
+                                <div class="pic">
+                                    <img src="img/teachers/person2.jpg">
+                                </div>
+                                <h3 class="title">Steve Thomas</h3>
                             </div>
-                            <h3 class="title">Steve Thomas</h3>
                         </div>
-                    </div>
-
-                    <div class="testimonial">
-                        <p class="description text-justify"><i class="fa fa-quote-left"></i> 
-                            These courses are of good quality. The interaction with teachers is a reality. The focus group gives us the opportunity for learners to help each other.
-                        </p>
-                        <div class="testimonial-content">
-                            <div class="pic">
-                                <img src="img/teachers/person1.jpg">
+    
+                        <div class="testimonial">
+                            <p class="description text-justify"><i class="fa fa-quote-left"></i> 
+                                These courses are of good quality. The interaction with teachers is a reality. The focus group gives us the opportunity for learners to help each other.
+                            </p>
+                            <div class="testimonial-content">
+                                <div class="pic">
+                                    <img src="img/teachers/person1.jpg">
+                                </div>
+                                <h3 class="title">Joe Doe</h3>
                             </div>
-                            <h3 class="title">Joe Doe</h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    </section>
 
 
 <% include _layout/footer %>

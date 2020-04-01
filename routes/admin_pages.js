@@ -28,7 +28,7 @@ router.get('', (req, res) =>{
 })
 
 //Get admin index
-router.get('/home', (req, res) =>{
+router.get('/home', ensureAuthenticated, (req, res) =>{
     var N_STUD, N_TEACH, N_COURS; 
     Course.countDocuments(function(err, c){
         if(c) N_COURS = c;
@@ -85,7 +85,7 @@ router.get('/home', (req, res) =>{
 })
 
 //Get admin payment registration
-router.get('/payment/register-payment', (req, res) =>{
+router.get('/payment/register-payment', ensureAuthenticated, (req, res) =>{
     Subscriber.find({ispaid: false}, function(err, subscribers){
         if(err) return console.log(err)
 
@@ -102,7 +102,7 @@ router.get('/payment/register-payment', (req, res) =>{
 })
 
 //Get student list for one course 
-router.get('/payment/course/:id', (req, res) =>{
+router.get('/payment/course/:id', ensureAuthenticated, (req, res) =>{
     var course_id = req.params.id;
 
     Subscriber.find({course_id: course_id}, function(err, subscribers){
@@ -121,7 +121,7 @@ router.get('/payment/course/:id', (req, res) =>{
 })
 
 //Validate  payment 
-router.get('/payment/register/:id/:courseid', (req, res) =>{
+router.get('/payment/register/:id/:courseid', ensureAuthenticated, (req, res) =>{
     var user_id = req.params.id;
     var course_id = req.params.courseid;
 
@@ -142,18 +142,28 @@ router.get('/payment/register/:id/:courseid', (req, res) =>{
 
 
 //Get admin profile
-router.get('/profile', (req, res) =>{
+router.get('/profile', ensureAuthenticated, (req, res) =>{
     res.render("./admin/profile", {
         title : "My Profile"
     });
 })
 
 //Get admin settings
-router.get('settings', (req, res) =>{
+router.get('settings', ensureAuthenticated, (req, res) =>{
     res.render("./admin/settings", {
         title : "Settings"
     });
 })
+
+//accesss control
+function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated() && req.user.role == "admin"){
+        return next()
+    }else{
+        req.flash('danger', 'Please login')
+        res.redirect('/admin')
+    }
+}
 
 //Exports 
 module.exports = router;

@@ -1,9 +1,9 @@
-module.exports = function (email, username) {
+module.exports = function (studentName, courseName, email, data) {
 	const nodemailer = require('nodemailer');
-	var data = '<br><center><a style="color:rgb(234, 58, 60);border: 1px solid rgb(234, 58, 60);font-size:30px;background-color:white;padding:.5em 3em;text-decoration:none" href="http://retymee.com/student/'+username+'/activateAccount">Activate your Account</a></center>'
-	+'<br><h1 style="color:black;text-align:center">Merci de vous être inscrit</h1>'
-	+'<h3 style="color:black;text-align:center">Vous devez activer votre compte pour pouvoir accéder à votre profile.</h3>'
-	+'<p><center>Cliquez sur le bouton activer ci-dessus.<center></p>'
+	var data = ''
+	+'<br><h1 style="color:black;text-align:center">Bonjour '+studentName+'!</h1>'
+	+'<br><h1 style="color:black;text-align:center">Informations pour participer au cours de: '+courseName+'.</h1>'
+	+'<p style="color:black;text-align:center">'+data+'</p>'
 	+'<br><p style="text-align:center">Copyright © 2020. Powered by Inchtechs</p>';
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -21,8 +21,8 @@ module.exports = function (email, username) {
     let mailOptions = {
         from: '"Retymee " <retymee@gmail.com>', // sender address
         to: email, // list of receivers
-        subject: 'Retymee Registration ✔', // Subject line
-        text: 'Thank you For Your registration', // plain text body
+        subject: 'Invitation pour la participation au cours', // Subject line
+        text: 'Vous êtes invité à participer au cours', // plain text body
         html: data // html body
     };
 

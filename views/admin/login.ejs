@@ -12,9 +12,9 @@
 
 <style>
     body{background: #eee url(http://subtlepatterns.com/patterns/sativa.png);}
-  html,body{
+  body{
       position: relative;
-      height: 100%;
+      min-height: 100vh;
   }
 
   .login-container{
@@ -153,11 +153,11 @@
 </head>
 <body style="margin: 0;padding: 0;">
 
-  <header id="main-header" class="py-2 bg-dark text-white">
+  <header id="main-header" class="py-4 bg-dark text-white">
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
-          <h1><i class="fa fa-user"></i> Admin Panel</h1>
+        <div class="col-md-12">
+          <h1 class="text-center">Retymee Admin Panel</h1>
         </div>
       </div>
     </div>
@@ -167,22 +167,20 @@
 
 
   <!-- LOGIN -->
-  <section id="login" class="" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('/img/header-background.jpg')">
+  <section id="login">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-6 text-white">
-            <form action="/admin/teacher/login" method="POST">
+            <form action="/admin/login" method="POST">
               <div class="container">
                 <div class="login-container">
-                  <h4 class="text-center py-2" style="color: rgb(234, 58, 60)">OnlinePrepa</h4>
                     <div id="output"></div>
                     <center><img id="profile-img" class="profile-img-card rounded-circle my-3" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" style="width: 80px;height: 80px" /></center>
                     <div class="form-box">
-                        <form action="" method="">
-                            <input name="email" type="text"  value="ngaleuabel@gmail.com" placeholder="Email">
-                            <input type="password" value="noelle"  placeholder="Password">
-                            <a href="/admin/home"  class="btn btn-info btn-block login btn-block mb-3 my-2">Login</a>
-                        </form>
+                      <%- include('../_layout/admin_errors') %>
+                      <input type="text" name="login_email" placeholder="Email">
+                      <input type="password" name="login_password"  placeholder="Password">
+                      <button class="btn btn-dark btn-block btn-block mb-3 my-2" type="submit">Login</button>
                     </div>
                 </div>    
               </div>
@@ -191,65 +189,8 @@
       </div>
     </div>
 
-    <footer id="main-footer" class="text-white mt-5 p-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <p class="lead text-center"><img style="width: 18em;" src="/img/logo/Ngaleu-03.png" alt=""></p>
-        </div><div class="col">
-          <p class="lead text-center" style="font-size:.8em">Copyright &copy; 2018 OnlinePrepa</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
 
   <script src="/js/jquery.min.js"></script>
-  <script src="/js/tether.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
-  <script src="/js/main.js"></script>
-
-  <script>
-    $(function(){
-var textfield = $("input[name=user]");
-            $('button[type="submit"]').click(function(e) {
-                e.preventDefault();
-                //little validation just to check username
-                if (textfield.val() != "") {
-                    //$("body").scrollTo("#output");
-                    $("#output").addClass("alert alert-success animated fadeInUp").html("Welcome back " + "<span style='text-transform:uppercase'>" + textfield.val() + "</span>");
-                    $("#output").removeClass(' alert-danger');
-                    $("input").css({
-                    "height":"0",
-                    "padding":"0",
-                    "margin":"0",
-                    "opacity":"0"
-                    });
-                    //change button text 
-                    $('button[type="submit"]').html("continue")
-                    .removeClass("btn-info")
-                    .addClass("btn-default").click(function(){
-                    $("input").css({
-                    "height":"auto",
-                    "padding":"10px",
-                    "opacity":"1"
-                    }).val("");
-                    });
-                    
-                    //show avatar
-                    $(".avatar").css({
-                        "background-image": "url('http://api.randomuser.me/0.3.2/portraits/women/35.jpg')"
-                    });
-                } else {
-                    //remove success mesage replaced with error message
-                    $("#output").removeClass(' alert alert-success');
-                    $("#output").addClass("alert alert-danger animated fadeInUp").html("sorry enter a username ");
-                }
-                //console.log(textfield.val());
-
-            });
-});
-
-  </script>
 </body>
 </html>

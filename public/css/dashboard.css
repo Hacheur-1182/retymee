@@ -1,12 +1,12 @@
 body {
-  font-family: 'PT Sans', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   overflow-x: hidden;
   line-height: 150%;
   background-color: #fafafa; }
 
 * {
-  font-family: 'PT Sans', sans-serif; }
+  font-family: 'Open Sans', sans-serif;}
 
 #side-bar {
   z-index: 100;
@@ -15,7 +15,7 @@ body {
   left: 0;
   bottom: 0;
   width: 5em;
-  background-color: #b52a32;
+  background-color: #1c262f;
   height: 100%; }
   #side-bar i, #side-bar ion-icon {
     color: white;
@@ -67,7 +67,7 @@ body {
   height: auto; }
 
 #courses-support-section {
-  margin-left: 8em;
+  margin-left: 5em;
   margin-right: 3em; }
 
 footer {
@@ -77,8 +77,7 @@ footer {
     background-color: #333333; }
 
 #chat-bloc {
-  overflow-y: scroll;
-  max-height: 60em; }
+  margin-bottom: 80px; }
 
 #my-msg {
   background-color: #90caf9;
@@ -94,9 +93,37 @@ footer {
     font-size: 14px; }
 
 #your-msg {
-  background-color: #dddddd;
+  background-color: #eee;
   float: left; }
 
   a {
     text-decoration: none !important;
+  }
+
+  .discuss-layout {
+    background-image:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)), url('/img/WhatsApp-Hintergrund1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-left: 3em;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+  #keyboard {
+    position: fixed;
+    bottom: -10px;
+    width: 100%;
+  }
+
+  #courses-support-section {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  #discuss-body-section {
+    margin-left: 5em;
+    margin-right: 3em;
+    color: #222222;
+    border-radius: 5px
   }

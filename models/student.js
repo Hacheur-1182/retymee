@@ -56,6 +56,10 @@ var studentSchema = mongoose.Schema({
     about:{
         type: String
     },
+    accountActivated:{
+        type: Boolean,
+        default: false
+    },
     courses : [{
         course_id : {
             type: mongoose.Schema.Types.ObjectId
@@ -88,7 +92,9 @@ module.exports.saveStudent = function(newStudent, cb){
         console.log("Student is being saved");
         //async.parallel([newStudent.save, newStudent.save], cb)
         newStudent.save()
-        cb;
+        .then(user => {
+            cb(user);
+        })
     })
 }
 

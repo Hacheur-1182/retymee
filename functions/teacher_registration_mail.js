@@ -22,10 +22,10 @@ module.exports = function (email, username, password) {
     });
 
     let mailOptions = {
-        from: '"OnlinePrepa " <onlineprepalearning@gmail.com>', // sender address
+        from: '"Retymee " <onlineprepalearning@gmail.com>', // sender address
         to: email, // list of receivers
-        subject: 'OnlinePrepa Teacher Account ✔', // Subject line
-        text: 'Your are a new teacher on onlineprepa', // plain text body
+        subject: 'Retymee Teacher Account ✔', // Subject line
+        text: 'Your are a new teacher on Retymee', // plain text body
         html: data // html body
     };
 

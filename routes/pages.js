@@ -9,7 +9,7 @@ router.get('/',(req, res) =>{
 	Course.find(function(err, courses){
 		if(err) return console.log(err);
         res.render('index', {
-	    	title : "OnlinePrepa",
+	    	title : "Retymee",
 			menu_id_home : "active",
 			menu_id_prep : "prep",
 			menu_id_exam : "exam",
@@ -128,7 +128,12 @@ router.get('/repetition', (req, res) =>{
 });
 
 
-
+// Accéder à la classe virtuelle
+router.get('/classroom', (req, res) =>{
+	res.render('./app/meeting', {
+		title : "Cours de repétition"
+	})
+});
 
 
 // Exports

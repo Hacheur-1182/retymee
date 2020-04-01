@@ -4,6 +4,7 @@ let moment = require("moment")
 var mkdirp = require('mkdirp')
 var fs = require('fs-extra')
 var  router = express.Router();
+const mongoose = require('mongoose')
 
 var mkdirp = require('mkdirp')
 var fs = require('fs-extra')
@@ -24,13 +25,16 @@ var Subscriber = require('../models/subscriber');
 
 //Login
 router.post('/login', function(req, res, next){
-	//require('../config/passport-teacher')(passport);
-
-    passport.authenticate('local-teacher', {
-        successRedirect: '/teacher/dashboard',
-        failureRedirect: '/',
-        failureFlash: true
-    })(req, res, next)
+	passport.authenticate('local-teacher', function(err, user, info) {
+		if (err) { return next(err) }
+		if (!user) { 
+			return res.send('0') 
+		} else {
+			passport.authenticate('local-teacher')(req, res, function () {
+				return res.send('1')
+			})
+		}
+	})(req, res, next);
 });
 
 //Ouvrir la page de profil
@@ -44,9 +48,28 @@ router.get('/dashboard', ensureAuthenticated2, (req, res) =>{
 
 });
 
-//Set classroom link
+// Envoyer les notifications aux étudiants pour un cours
+router.post('/notify', ensureAuthenticated2, (req, res) =>{
+	var classroomInfos = req.body.classromm_id;
+	var course_id  = req.body.hidden_course_id2;
+
+	Subscriber.find({course_id: course_id}, function(err, subscribers){
+            if(err) return console.log(err)
+
+            if(subscribers) {
+				subscribers.forEach(subscriber => {
+					require('../functions/send_invitation')(subscriber.username, subscriber.course_title, subscriber.email, classroomInfos)
+					req.flash('success', 'Invitation envoyée avec succès')
+					res.redirect('/teacher/dashboard')
+				});
+			}
+        }
+    );
+});
+
+// Définir le lien de la salle virtuelle
 router.post('/add-link', ensureAuthenticated2, (req, res) =>{
-	var classroom_link  = req.body.classromm_id;
+	var classroom_link  = req.body.classromm_id.trim();
 	var course_id  = req.body.hidden_course_id2;
 
 	query = {course_id: course_id}
@@ -56,7 +79,7 @@ router.post('/add-link', ensureAuthenticated2, (req, res) =>{
         function(err, message){
             if(err) return console.log(err)
 
-            console.log("One payment registered")
+            console.log("Link added")
         }
     );
 	req.flash('success', 'Link set Successfully')
@@ -187,7 +210,7 @@ router.get('/contact',(req, res) =>{
 });
 
 
-//Post des enseignants
+//Enregistrement des enseignants
 router.post('/contact',(req, res) =>{
 	var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
 	req.checkBody('image', 'You must upload an image').isImage(imageFile);
@@ -298,7 +321,7 @@ router.post('/contact',(req, res) =>{
 
 //Registration to a course accesss control
 function ensureAuthenticated2(req, res, next){
-    if(req.isAuthenticated()){
+    if(req.isAuthenticated() && req.user.role != "admin"){
         return next()
     }else{
         req.flash('danger', 'Please login')

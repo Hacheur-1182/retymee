@@ -19,17 +19,17 @@ var DiscussGroup = require('../models/discussGroup');
 //Sign up for students
 router.post('/signup', (req, res, next) =>{
 	var username = req.body.username;
-	var email = req.body.email;
-	var password = req.body.password;
+	var email = req.body.login_email;
+	var password = req.body.login_password;
 	var password2 = req.body.password2;
 
 	req.checkBody('username', 'Username Field is required').notEmpty();
-	req.checkBody('username', 'Username Field is required').isLength({ min: 6 });
-	req.checkBody('email', 'Email Field is required').notEmpty() ;
-	req.checkBody('email', 'Email must be a valid Email Address').isEmail() ;
-	req.checkBody('password', 'Password Field is required').notEmpty() ;
-	req.checkBody('password', 'Password Field is required').isLength({ min: 6 }) ;
-	req.checkBody('password2', 'Passwords do not match').equals(req.body.password) ;
+	req.checkBody('username', 'Username Field is required').isLength({ min: 5 });
+	req.checkBody('login_email', 'Email Field is required').notEmpty() ;
+	req.checkBody('login_email', 'Email must be a valid Email Address').isEmail() ;
+	req.checkBody('login_password', 'Password Field is required').notEmpty() ;
+	req.checkBody('login_password', 'Password Field is required').isLength({ min: 6 }) ;
+	req.checkBody('password2', 'Passwords do not match').equals(password) ;
 
 	var errors = req.validationErrors();
 
@@ -61,14 +61,15 @@ router.post('/signup', (req, res, next) =>{
 							password: password,
 							image: "avatar.png"
 						});
-						Student.saveStudent(newStudent, function(err, student){
+						Student.saveStudent(newStudent, function(student) {
 							if(err) return console.log(err);
-							console.log("Student created");
+							// Login the user
+							passport.authenticate('local-student')(req, res, function () {
+								req.flash('success', 'Vous êtes maintenant inscrit. Vous avez recu un email pour la confirmation de votre compte.');
+								require('../functions/registration_mail')(email, student._id);
+								res.send('1')
+							})
 						})
-						// Passport Config
-						require('../functions/registration_mail')(email);
-						req.flash('success', 'You are registered, you have received confirmation Mail');
-						res.send("1");
 					}
 				})
 			}
@@ -76,79 +77,105 @@ router.post('/signup', (req, res, next) =>{
 	}
 });
 
+// Activate user account
+router.get('/:id/activateAccount', (req, res, next) =>{
+	var userId = req.params.id;
+
+	Student.updateOne({_id: userId}, {$set: {accountActivated: true}}, function(err, user) {
+		if(err) return console.log(err);
+		res.redirect('/student/dashboard')
+	})
+});
+
 //Login
-router.post('/login', function(req, res, next){
-	//require('../config/passport')(passport);
-	//if(res.locals.student) res.redirect('/student/dashboard')
-	passport.authenticate('local-student', {
-        successRedirect: '/student/dashboard',
-        failureRedirect: '/#',
-        failureFlash: true
-    })(req, res, next)
+router.post('/login', function(req, res, next){	
+	passport.authenticate('local-student', function(err, user, info) {
+		if (err) { return next(err) }
+		if (!user) { 
+			return res.send('0') 
+		} else {
+			passport.authenticate('local-student')(req, res, function () {
+				return res.send('1')
+			})
+		}
+	})(req, res, next);
+
 });
 
 //Register to a course
 router.get('/course/:id/register', ensureAuthenticatedForCourseRegistration, (req, res) =>{
 	course_id = req.params.id;
-
-	Course.findById(course_id, (err, course)=>{
+	
+	Student.findById(req.user._id, ((err, user) => {
 		if(err) return console.log(err)
 
-		Subscriber.findOne({id_user : req.user._id, course_id: course._id}, (err, subscriber)=>{
-			if(err) return console.log(err)
-
-			if(subscriber){
-				req.flash('danger', 'You are already registered to this course');
-				res.redirect("/student/dashboard");
-			}else{
-				newSubscriber = new Subscriber({
-					id_user : req.user._id,
-					firstname : req.user.firstname,
-					lastname : req.user.lastname,
-					username : req.user.username,
-					email : req.user.email,
-					date : new Date().toDateString(),
-					classroom: "",
-					ispaid : false,
-					course_id : course_id,
-					course_title : course.title,
-					course_cost: course.cost,
-					course_description: course.description,
-					course_image: course.image,
-					course_timetable: course.timetable,
-					have_access : true,
-				})
-
-				newSubscriber.save(function(err, subcriber){
-					if(err) return console.log(err);
-					console.log("new Subcriber Ok!");
-
-					DiscussGroup.findOne({course_id: course._id}, function(err, group){
-						if(err) return console.log(err)
-
-						//Si un groupe n'existe pas pour le cours je le creé
-						if(!group){
-							discussGroup = new DiscussGroup({
-								groupname : course.title,
-								course_id : course._id,
-								course_name : course.title,
-								description : "Ce groupe vous permet d'échanger sur les différents thèmes abordés en cours."
-							})
-
-							discussGroup.save(function(err, group){
+		// Verify if user account is validated
+		if(user.accountActivated) {
+			Course.findById(course_id, (err, course)=> {
+				if(err) return console.log(err)
+		
+				Subscriber.findOne({id_user : req.user._id, course_id: course._id}, (err, subscriber)=>{
+					if(err) return console.log(err)
+		
+					if(subscriber){
+						req.flash('danger', 'Vous êtes déja enregistré à ce cours');
+						res.redirect("/student/dashboard");
+					}else{
+						newSubscriber = new Subscriber({
+							id_user : req.user._id,
+							firstname : req.user.firstname,
+							lastname : req.user.lastname,
+							username : req.user.username,
+							email : req.user.email,
+							date : new Date().toDateString(),
+							classroom: "",
+							ispaid : false,
+							course_id : course_id,
+							course_title : course.title,
+							course_cost: course.cost,
+							course_description: course.description,
+							course_image: course.image,
+							course_timetable: course.timetable,
+							have_access : true,
+						})
+		
+						newSubscriber.save(function(err, subcriber){
+							if(err) return console.log(err);
+							console.log("new Subcriber Ok!");
+		
+							DiscussGroup.findOne({course_id: course._id}, function(err, group){
 								if(err) return console.log(err)
-								console.log("Group added")
+		
+								//Si un groupe n'existe pas pour le cours je le creé
+								if(!group){
+									discussGroup = new DiscussGroup({
+										groupname : course.title,
+										course_id : course._id,
+										course_name : course.title,
+										description : "Ce groupe permet de discuter sur le cours."
+									})
+		
+									discussGroup.save(function(err, group){
+										if(err) return console.log(err)
+										console.log("Group added")
+									})
+								}
 							})
-						}
-					})
-
-					req.flash('success', 'You are succefully registered to this course');
-					res.redirect("/student/dashboard");
+		
+							req.flash('success', 'Vous êtes enregistré avec succès sur ce cours');
+							res.redirect("/student/dashboard");
+						})
+					}
 				})
-			}
-		})
+		
+			})
+			// Le compte n'est pas encore activé
+		} else {
+			req.flash('warning', 'Vous devez activer votre compte pour pouvoir vous inscrire à un cours. Consultez votre boîte mail.');
+			res.redirect("/student/dashboard");
+		}
+	}))
 
-	})
 	
 });
 
@@ -285,7 +312,7 @@ function ensureAuthenticated(req, res, next){
 
 //Registration to a course accesss control
 function ensureAuthenticatedForCourseRegistration(req, res, next){
-    if(req.isAuthenticated()){
+    if(req.isAuthenticated() && req.user.role != "admin"){
         return next()
     }else{
         req.flash('danger', 'Please login')

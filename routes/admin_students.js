@@ -7,7 +7,7 @@ var Student = require('../models/student');
 
 
 //Get students
-router.get('/', (req, res) =>{
+router.get('/', ensureAuthenticated, (req, res) =>{
 	Student.find(function(err, students){
 		if(err) return console.log(err)
 
@@ -19,7 +19,7 @@ router.get('/', (req, res) =>{
 })
 
 //Delete  teachers 
-router.get('/delete/:id', (req, res) =>{
+router.get('/delete/:id', ensureAuthenticated, (req, res) =>{
     var id = req.params.id;
 
     var myquery = { _id: id };
@@ -32,7 +32,7 @@ router.get('/delete/:id', (req, res) =>{
 })
 
 //Get  teachers details
-router.get('/info/:id', (req, res) =>{
+router.get('/info/:id', ensureAuthenticated, (req, res) =>{
     var id = req.params.id;
 
     Student.findById(id, function(err, student){
@@ -44,6 +44,16 @@ router.get('/info/:id', (req, res) =>{
         });
     })
 })
+
+//accesss control
+function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated() && req.user.role == "admin"){
+        return next()
+    }else{
+        req.flash('danger', 'Please login')
+        res.redirect('/admin')
+    }
+}
 
 //Exports 
 module.exports = router;

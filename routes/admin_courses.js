@@ -18,7 +18,7 @@ var TeacherDemand = require('../models/teachers_demand');
 
 
 //Get courses
-router.get('/', (req, res) =>{
+router.get('/', ensureAuthenticated, (req, res) =>{
     var count;
     Course.count(function(err, c){
         count = c; 
@@ -34,7 +34,7 @@ router.get('/', (req, res) =>{
 })
 
 //Admin Post add course
-router.post('/add-course', function(req, res){
+router.post('/add-course', ensureAuthenticated, function(req, res){
     var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
     var timeTableFile = typeof req.files.timetable !== "undefined" ? req.files.timetable.name : "";
 
@@ -43,8 +43,8 @@ router.post('/add-course', function(req, res){
     req.checkBody('duration', 'Duration must have a value').notEmpty();
     req.checkBody('startdate', 'Startdate must have a value').notEmpty(); 
     req.checkBody('enddate', 'Endtdate must have a value').notEmpty();
-    req.checkBody('cost', 'Cost must have a value').notEmpty();
-    req.checkBody('category', 'Category must have a value').notEmpty();
+    // req.checkBody('cost', 'Cost must have a value').notEmpty();
+    // req.checkBody('category', 'Category must have a value').notEmpty();
     req.checkBody('description', 'Description must have a value').notEmpty();
 
     var type = req.body.type;
@@ -53,8 +53,8 @@ router.post('/add-course', function(req, res){
     var duration = req.body.duration;
     var startdate = req.body.startdate;
     var enddate = req.body.enddate;
-    var cost = req.body.cost ;
-    var category = req.body.category;
+    // var cost = req.body.cost ;
+    var category = "Enseignement";
     var description = req.body.description;
 
     var errors = req.validationErrors();
@@ -87,7 +87,7 @@ router.post('/add-course', function(req, res){
                     duration : duration,
                     startdate: startdate,
                     enddate: enddate,
-                    cost: cost,
+                    // cost: cost,
                     category: category,
                     description: description,
                     firstname : "",
@@ -205,7 +205,7 @@ router.post('/add-course', function(req, res){
 })
 
 //Set a course to a teacher
-router.get('/assign-course', (req, res) =>{
+router.get('/assign-course', ensureAuthenticated, (req, res) =>{
     Course.find(function(err, courses){
         if(err) return console.log(err)
 
@@ -222,7 +222,7 @@ router.get('/assign-course', (req, res) =>{
 })
 
 //Set a course to a teacher
-router.post('/assign-course', (req, res) =>{
+router.post('/assign-course', ensureAuthenticated, (req, res) =>{
     var teacher_id = req.body.teacher_id;
     var course_id = req.body.hidden_course_id;
 
@@ -260,12 +260,21 @@ router.post('/assign-course', (req, res) =>{
 })
 
 //Get courses details
-router.get('/detail/:id', (req, res) =>{
+router.get('/detail/:id', ensureAuthenticated, (req, res) =>{
     res.render("./admin/course-details", {
         title : "Courses Details"
     });
 })
 
+//accesss control
+function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated() && req.user.role == "admin"){
+        return next()
+    }else{
+        req.flash('danger', 'Please login')
+        res.redirect('/admin')
+    }
+}
 
 
 //Exports 

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="/css/bootstrap.css">
         <link rel="stylesheet" href="/css/font-awesome.min.css">
         <link rel="stylesheet" href="/css/slick/slick.css">
@@ -22,12 +22,12 @@
 
     <body>
         <header>
-            <div class="container-fluid" style="width: 90%;">
+            <div class="container">
                 <div class="row align-items-center py-2">
-                    <div class="col-md-6 col-lg-3 col-sm-12" style="padding: 0">
+                    <div class="col-md-6 col-lg-6 col-sm-12" style="padding: 0">
                         <a href="/"><img src="/img/logo/Ngaleu-03-copy.png" class="img-fluid" width="270px"></a>
                     </div>
-                    <div class="b col-md-6 col-lg-4 col-sm-12 my-2">
+                    <!-- <div class="b col-md-6 col-lg-4 col-sm-12 my-2">
                         <div id="custom-search-input">
                             <div class="input-group col-md-12">
                                 <input type="text" class="form-control" placeholder="Search" />
@@ -38,19 +38,28 @@
                                 </span>
                             </div>
                         </div>
-                    </div>
-                    <div class="a col-lg-5 col-md-12 col-sm-12">
+                    </div> -->
+                    <div class="a col-lg-6 col-md-12 col-sm-12">
                         <ul style="width: 100%" class="d-sm-block">
                             <li class="d-sm-block>
                                 <a href="/help"><i class="fa fa-info" style="color:#d33f48"></i> Help</a>
                             </li>
                             <%if(user){%>
-                                <li>
-                                    <a href="/student/logout"><i style="color:#d33f48" class="fa fa-reply"></i> Logout</a> 
-                                </li>
-                                <li>
-                                    <a href="/student/dashboard"><i style="color:#d33f48" class="fa fa-book"></i> My Dashboard</a> 
-                                </li>
+                                <%if(user.role == "admin"){%>
+                                    <li>
+                                        <a href="/admin/logout"><i style="color:#d33f48" class="fa fa-reply"></i> Déconnexion</a> 
+                                    </li>
+                                    <li>
+                                        <a href="/admin/home"><i style="color:#d33f48" class="fa fa-book"></i> Mon Dashboard</a> 
+                                    </li>
+                                <%}else{%>
+                                    <li>
+                                        <a href="/student/logout"><i style="color:#d33f48" class="fa fa-reply"></i> Déconnexion</a> 
+                                    </li>
+                                    <li>
+                                        <a href="/student/dashboard"><i style="color:#d33f48" class="fa fa-book"></i> Mon Dashboard</a> 
+                                    </li>
+                                <%}%>
                             <%}else{%>
                                 <li>
                                     <a href="" data-toggle="modal" data-target="#log"><i style="color:#d33f48" class="fa fa-user-plus"></i> Connexion</a> 
@@ -62,7 +71,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row pb-1">
+                <!-- <div class="row pb-1">
                     <div class="col-md-12 col-lg-7 col-sm-12">
                         <nav class="navbar navbar-expand-lg">
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,30 +95,11 @@
                             </div>
                             </nav>
                     </div>
-                    <div class="col-md-12 col-lg-5 col-sm-12 justify-content-end">
-                        <div class="d-flex flex-row justify-content-end">
-                            <div class="p-2">
-                            <img style="height: 2.2em;" src="/img/icons/if_2018_social_media_popular_app_logo_facebook_3225194.svg" alt="">
-                            </div>
-                            <div class="p-2">
-                                <img style="height: 2.2em;" src="/img/icons/if_2018_social_media_popular_app_logo_googleplus_3225192.svg" alt="">
-                            </div>
-                            <div class="p-2">
-                                <img  style="height: 2.2em;" src="/img/icons/if_2018_social_media_popular_app_logo_instagram_3225191.svg" alt="">
-                            </div>
-                            <div class="p-2">
-                                <img style="height: 2.2em;" src="/img/icons/if_2018_social_media_popular_app_logo_twitter_3225183.svg" alt="">
-                            </div>
-                            <div class="p-2">
-                                <img style="height: 2.2em;" src="/img/icons/if_2018_social_media_popular_app_logo_youtube_3225180.svg" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                </div> -->
             </div>
         </header>
 
-        <!-- Modals Connexion-->
+        <!-- Modals Connexion for students-->
         <div class="modal fade" id="log" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -124,13 +114,13 @@
                         <div class="row">
                             <div class="col-md-12">
 
-                                <button href="" id="facebook" class="btn btn-block btn-primary">
+                                <!-- <button href="" id="facebook" class="btn btn-block btn-primary">
                                     <i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Continue with Facebook
                                 </button>
                                 <button id="google" href="" class="btn btn-block btn-primary">
                                     <i class="fa fa-google-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Continue with Google
                                 </button>
-                                <h6 class="py-2">OR</h6>
+                                <h6 class="py-2">OR</h6> -->
                                 <form  method="post" action="/student/login" id="form-login" data-parsley-validate>
                                     <div class="form-group">
                                         <div class="input-group">
@@ -138,7 +128,7 @@
                                                 Your Email
                                             </span>
                                             <input type="email" id="login_email" data-parsley-errors-container="#a" name="login_email" placeholder="Email" class="form-control" data-parsley-required>
-                                        </div><span id="a"></span>
+                                        </div><span class="text-danger" id="a"></span>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
@@ -146,7 +136,7 @@
                                                 Password
                                             </span>
                                             <input type="password" id="login_password" name="login_password" data-parsley-errors-container="#b" placeholder="Password" class="form-control" data-parsley-required>
-                                        </div><span id="b"></span>
+                                        </div><span class="text-danger" id="b"></span>
                                     </div>
                                         <div class="container-fluid">
                                             <%- messages('messages', locals) %>
@@ -161,9 +151,12 @@
                                         <button type="submit" id="login" class="btn btn-block btn-danger" >Log in</button>
                                 </form><br>
                                 <h6>or <a href="">Forget Password ?</a></h6>
-                                <h6><strong>
-                                    <a href="#" id="log_as_teacher" style="">Log In as a Teacher Here</a>
-                                </strong></h6>
+                                <div class="form-check mb-2 mr-sm-2">
+                                    <input class="form-check-input" type="checkbox" name="isTeatcher" id="isTeatcher" placeholder="Je suis un enseignant" value="Je suis un enseignant" />
+                                    <label class="form-check-label" for="inlineFormCheck">
+                                        Je suis un enseignant
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -172,55 +165,6 @@
                     <div class="row py-0">
                         <div class="col py-0">
                             <h6><strong>Don't have an account? <a href="" id="sign-in-log" data-toggle="modal" data-target="#signUp">Sign up</a> </strong></h6>
-                        </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Modals Connexion for teachers-->
-        <div class="modal fade" id="teachers-log" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel"><strong>Log In as a Teacher! </strong></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="container text-center">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form  method="post" action="/teacher/login" id="form-teacher-login" data-parsley-validate>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                Your Email
-                                            </span>
-                                            <input type="email" id="teacher_email" data-parsley-errors-container="#a" name="teacher_email" placeholder="Your Email" class="form-control" data-parsley-required>
-                                        </div><span id="a"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <span class="input-group-addon">
-                                                Password
-                                            </span>
-                                            <input type="password" id="teacher_password" name="teacher_password" data-parsley-errors-container="#b" placeholder="Your Password" class="form-control" data-parsley-required>
-                                        </div><span id="b"></span>
-                                    </div>
-                                        <button type="submit" id="teacher-login" class="btn btn-block btn-secondary" >Log in</button>
-                                </form><br>
-                                <h6><a href="">Forget Password ?</a></h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-center">
-                    <div class="row py-0">
-                        <div class="col py-0">
-                            <h6><strong>Don't know an account? Let's contact Us</strong></h6>
                         </div>
                     </div>
                 </div>
@@ -243,36 +187,36 @@
                             <div class="row">
                                 <div class="col">
 
-                                    <button href="" id="facebook" class="btn btn-block btn-primary">
+                                    <!-- <button href="" id="facebook" class="btn btn-block btn-primary">
                                         <i class="fa fa-facebook"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sign Up with Facebook
                                     </button>
                                     <button id="google" href="" class="btn btn-block btn-primary">
                                         <i class="fa fa-google-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sign Up with Google
-                                    </button><br>
+                                    </button><br> -->
                                     <form  id="form-register" data-parsley-validate>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     Username
                                                 </span>
-                                                <input type="text" id="username" data-parsley-errors-container="#aa"  placeholder="Username" name="username" class="form-control" data-parsley-required data-parsley-minlength="6" ><br>
-                                            </div><span id="aa"></span>
+                                                <input type="text" id="username" data-parsley-errors-container="#aa"  placeholder="Username" name="username" class="form-control" data-parsley-required data-parsley-minlength="5" ><br>
+                                            </div><span class="text-danger" id="aa"></span>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     Your Email
                                                 </span>
-                                                <input type="email" name="email" id="email" placeholder="Email" data-parsley-errors-container="#bb" class="form-control" data-parsley-required>
-                                            </div><span id="bb"></span>
+                                                <input type="email" name="login_email" id="email" placeholder="Email" data-parsley-errors-container="#bb" class="form-control" data-parsley-required>
+                                            </div><span class="text-danger" id="bb"></span>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
                                                     Password
                                                 </span>
-                                                <input type="password" id="password" data-parsley-errors-container="#cc" placeholder="Password" name="password" class="form-control" data-parsley-required data-parsley-minlength="6">
-                                            </div><span id="cc"></span>
+                                                <input type="password" id="password" data-parsley-errors-container="#cc" placeholder="Password" name="login_password" class="form-control" data-parsley-required data-parsley-minlength="6">
+                                            </div><span class="text-danger" class="text-danger" id="cc"></span>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
@@ -280,7 +224,7 @@
                                                     Confirm Password
                                                 </span>
                                                 <input type="password" id="password2" name="password2" data-parsley-errors-container="#dd" placeholder="Confirm Password" class="form-control" data-parsley-required  data-parsley-equalto="#password">
-                                            </div><span id="dd"></span>
+                                            </div><span class="text-danger" id="dd"></span>
                                         </div>
                                         <button type="submit" id="signup" class="btn btn-block btn-danger" href="#">Register <i class="fa fa-chevron-right"></i></button>
                                     </form><br>
@@ -317,58 +261,3 @@
                 </div>
             </div>
         </div>
-
-        <!-- second nav-->
-        <div class="container-fluid" id="second-menu" style="display: none;position: fixed;top:0;left:0;right:0;z-index:100;">
-            <div class="row pb-3 align-items-center mt-2">
-                <div class="col-md-7">
-                    <nav class="navbar navbar-expand-lg">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarNav">
-                            <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" id="active2" href="/" style="font-size: 20px"><i class="fa fa-home"></i><span class="sr-only"></span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/prepa-courses">CONCOURS</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/exams-courses">EXAMENS</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/repetition">COURS PARTICULIERS</a>
-                            </li>
-                            </ul>
-                        </div>
-                    </nav>
-                </div>
-                <div class="col-md-5 justify-content-end">
-                    <div class="d-flex flex-row justify-content-end">
-                            <ul>
-                                <li>
-                                    <a href="/help"><i class="fa fa-info"></i> Help</a>
-                                </li>
-                                <%if(user){%>
-                                    <li>
-                                        <a href="/student/logout"><i style="color:white" class="fa fa-reply"></i> Logout</a> 
-                                    </li>
-                                    <li>
-                                        <a href="/student/dashboard"><i style="color:white" class="fa fa-book"></i> My Dashboard</a> 
-                                    </li>
-                                <%}else{%>
-                                    <li>
-                                        <a href="" data-toggle="modal" data-target="#log"><i style="color:white" class="fa fa-user-plus"></i> Connexion</a> 
-                                    </li>
-                                    <li>
-                                        <a href="" data-toggle="modal" data-target="#signUp"><i style="color:white" class="fa fa-user"></i> Inscrivez-vous</a>
-                                    </li>
-                                <%}%>
-                            </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        

@@ -1,17 +1,16 @@
 <%- include('../_layout/dashboard-header') %>
 
-    <section id="header" class="mb-2">
+    <section id="header" class="mb-2 py-4">
         <div class="container-fluid">
             <div class="row pt-3 pb-2">
                 <div class="col-md-12 text-center">
-                    <h1 class="text-white mt-1">Welcome to your Dashboard</h1>
-                    <h4 class="text-white">Here you can manage all your courses.</h4>
+                    <h1 class="text-white mt-1">Mon Dashboard</h1>
                     <%if(user.image != "avatar.png"){%>
                         <img src="/img/student_images/<%=user._id%>/<%=user.image%>" class="img-rounded" alt="">
                     <%}else{%>
                         <img src="/img/avatar.png" class="img-rounded" alt="">
                     <%}%>
-                    <p class="text-white"><b><%=user.username%>&nbsp;(<%=user.email%>)</b></p>
+                    <p class="text-white mt-2"><b><%=user.username%>&nbsp;(<%=user.email%>)</b></p>
                 </div>
             </div>
         </div>
@@ -36,7 +35,7 @@
                     <%}%>
                     
                     <%if(user.courses != ""){%>
-                        <%user.courses.forEach(function(course){%>
+                        <%user.courses.forEach(function(course, i){%>
                             <div class="card mt-3">
                                 <h5 class="card-header" style="background-color: #1c262f;color: white"><%=course.title%></h5>
                                 <div class="card-body">
@@ -45,20 +44,20 @@
                                             <p class="card-text"><%=course.description%></p>
                                             <div class="d-flex flex-xs-column flex-lg-row flex-xl-row flex-sm-column  flex-md-column align-items-center">
                                                 <div class="p-2">
-                                                    <a href="https://zoom.us/j/5219108641"  target="_blank" class="btn btn-danger"><strong>Launch the course</strong></a>
+                                                    <a href="" class="btn btn-danger invitation-btn" data-toggle="modal" data-target="#add-classroom-link" style="font-weight: 600;"  data-id=<%=course.course_id%>>Inviter les étudiants</a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Download the time table</strong></a>
+                                                    <a href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Emploi de temps</strong></a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a href="/teacher/course/group/<%=course.course_id%>" style="color: rgb(28, 38, 47);" >Go to Discuss Group <i class="fa fa-comment-o"></i></a>
+                                                    <a href="/teacher/course/group/<%=course.course_id%>" style="color: rgb(28, 38, 47);" >Ouvrir le groupe de discussion <i class="fa fa-comment-o"></i></a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a href="" class="add-support-link" data-toggle="modal" id="add-support-link" data-target="#add-support" style="color: rgb(28, 38, 47);" data-id=<%=course.course_id%>>Upload Support <i class="fa fa-book"></i></a>
+                                                    <a href="" class="add-support-link" data-toggle="modal" data-target="#add-support" style="color: rgb(28, 38, 47);" data-id=<%=course.course_id%>>Importer un support de cours <i class="fa fa-book"></i></a>
                                                 </div>
-                                                <div class="p-2">
+                                                <!-- <div class="p-2">
                                                     <a href="" class="add-classroom" data-toggle="modal" id="add-classroom" data-target="#add-classroom-link" virtualclass-data-id=<%=course.course_id%> style="color: rgb(28, 38, 47);">Set ClassRoom Link <i class="fa fa-flash"></i></a>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                         <div class="col-lg-2 d-none d-lg-block  text-center">
@@ -81,7 +80,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-center" id="exampleModalLabel">Add Support! </h5>
+                        <h5 class="modal-title text-center" id="exampleModalLabel">Ajouter un support de cours </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -107,7 +106,7 @@
                                                 <input type="file" id="file" name="file"  class="form-control" data-parsley-required>
                                             </div>
                                         </div>
-                                        <button type="submit" id="add-course-support" class="btn btn-block btn-danger" >Add Course</button>
+                                        <button type="submit" id="add-course-support" class="btn btn-block btn-danger" >Ajouter</button>
                                     </form>
                                 </div>
                             </div>
@@ -124,7 +123,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-center" id="exampleModalLabel">Virtual Class Link! </h5>
+                        <h5 class="modal-title text-center" id="exampleModalLabel">Inviter les étudiants pour la videoconférence </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -133,14 +132,14 @@
                         <div class="container text-center">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <form  method="post" action="/teacher/add-link" id="form-login" data-parsley-validate enctype="multipart/form-data">
+                                    <form  method="post" action="/teacher/notify" id="form-login" data-parsley-validate enctype="multipart/form-data">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input placeholder="Paste the virtual class link" type="text" name="classromm_id"  class="form-control" data-parsley-required>
+                                                <textarea class="form-control" name="classromm_id" placeholder="Collez l'invitation" rows="3" data-parsley-required></textarea>
                                             </div>
-                                            <input type="hidden" name="hidden_course_id2" value="" id="hidden-virtual-class-id">
+                                            <input type="hidden" name="hidden_course_id2" value="" id="hidden-course-id2">
                                         </div>
-                                        <button type="submit" id="add-course-support" class="btn btn-block btn-danger" >Set virtual Class Link</button>
+                                        <button type="submit" id="send-invitation" class="btn btn-block btn-danger" >Envoyez l'invitation</button>
                                     </form>
                                 </div>
                             </div>
@@ -157,16 +156,17 @@
 <script>
     $(document).ready(function(){
         //Set the value of the class ID
+        $(".invitation-btn").click(function(e){
+            $target = $(e.target);
+            const course_id = $target.attr('data-id');
+            $('#hidden-course-id2').val(course_id)
+        })
+
+        //Set the value of the class ID
         $(".add-support-link").click(function(e){
             $target = $(e.target);
             const course_id = $target.attr('data-id');
             $('#hidden-course-id').val(course_id)
-        })
-        //Set the value of the class ID
-        $(".add-classroom").click(function(e){
-            $target = $(e.target);
-            const course_id = $target.attr('virtualclass-data-id');
-            $('#hidden-virtual-class-id').val(course_id)
         })
     })
 </script>

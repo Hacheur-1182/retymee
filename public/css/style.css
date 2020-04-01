@@ -396,3 +396,11 @@ header {
 .owl-theme .owl-controls .owl-page.active span {
   width: 35px;
   background: #2660a4; }
+
+  #instructor {
+    background-color: #f5f8fa;
+  }
+
+.alert-error {
+  color: red !important;
+}

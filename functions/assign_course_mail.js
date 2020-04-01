@@ -21,9 +21,9 @@ module.exports = function (email, coursename, course_id, coursetimetable) {
     });
 
     let mailOptions = {
-        from: '"OnlinePrepa " <onlineprepalearning@gmail.com>', // sender address
+        from: '"Retymee " <onlineprepalearning@gmail.com>', // sender address
         to: email, // list of receivers
-        subject: 'OnlinePrepa Course Assignation ✔', // Subject line
+        subject: 'Retymee Course Assignation ✔', // Subject line
         text: 'New Course', // plain text body
         html: data, // html body
         attachments: [

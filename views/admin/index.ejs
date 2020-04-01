@@ -13,76 +13,12 @@
 <%- include('../_layout/admin_errors') %>
 <%- messages('messages', locals) %>
 
-      <!-- ACTIONS -->
+    <!-- ACTIONS -->
   <section id="actions" class="py-4 mb-4">
-    <div class="container mt-5">
+    <div class="container">
+      <!--Stats-->
       <div class="row">
-        <div class="col-md-8 col-lg-9 col-sm-12">
-          <div class="row">
-              <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Add Course</h5>
-                    <p class="card-text">Manage courses, add a new course here.</p>
-                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal"><i class="fa fa-plus"></i> Add New Course</a>
-                  </div>
-                </div>
-              </div>
-        
-              <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Add Teacher</h5>
-                    <p class="card-text">Manage Teacher, add a new Teacher here.</p>
-                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addCategoryModal"><i class="fa fa-plus"></i> Add New Teacher</a>
-                  </div>
-                </div>
-                </div>
-        
-              <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Discussion Group</h5>
-                    <p class="card-text">Manage Discussion Group, add a new Group here.</p>
-                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addUserModal"><i class="fa fa-plus"></i> Create New Group</a>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 col-lg-4 col-sm-6 my-2">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Assign Class</h5>
-                    <p class="card-text">Manage Teachers Classes, Assign a new Class here.</p>
-                    <a href="/admin/courses/assign-course" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Assign Class</a>
-                  </div>
-                </div>
-              </div>
-      
-              <div class="col-md-6 col-lg-4 col-sm-6 my-2">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Register a payment</h5>
-                    <p class="card-text">Manage Payments , Register a new payment here.</p>
-                    <a href="/admin/payment/register-payment" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Save Paiement</a>
-                  </div>
-                </div>
-              </div>
-      
-              <div class="col-md-6  col-lg-4 col-sm-6 my-2">
-                <div class="card text-center">
-                  <div class="card-body">
-                    <h5 class="card-title">Course Access</h5>
-                    <p class="card-text">Manage Course Access, Block Students...</p>
-                    <a href="#" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Config course Access</a>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-sm-12 col-lg-3">
-          <!--Stats-->
+        <div class="col-md-4 col-sm-12 col-lg-4">
           <div class="card text-center card-primary py-2 mb-3">
             <div class="card-block">
               <h3>Courses</h3>
@@ -90,6 +26,8 @@
               <a href="/admin/courses" class="btn btn-sm btn-outline-secondary">View</a>
             </div>
           </div>
+        </div>
+        <div class="col-md-4 col-sm-12 col-lg-4">
 
           <div class="card text-center card-success py-2 mb-3">
             <div class="card-block">
@@ -98,7 +36,8 @@
               <a href="/admin/teachers" class="btn btn-sm btn-outline-secondary ">View</a>
             </div>
           </div>
-
+        </div>
+        <div class="col-md-4 col-sm-12 col-lg-4">
           <div class="card text-center card-warning py-2 mb-3">
             <div class="card-block">
               <h3>Students</h3>
@@ -109,10 +48,63 @@
         </div>
       </div>
     </div>
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Cours</h5>
+              <p class="card-text">Gérer les cours, ajouter un nouveau cours ici</p>
+              <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal"><i class="fa fa-plus"></i> Ajouter un cours</a>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Enseignants</h5>
+              <p class="card-text">Gérer les enseignants. Ajouter des nouveaux enseignants ici.</p>
+              <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addCategoryModal"><i class="fa fa-plus"></i> Add New Teacher</a>
+            </div>
+          </div>
+          </div>
+
+        <div class="col-md-6 col-lg-4 col-sm-6">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Assigner les cours</h5>
+              <p class="card-text">Gérer les cours. Ajoutez des enseignants à un cours.</p>
+              <a href="/admin/courses/assign-course" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Assign Class</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col-md-6 col-lg-4 col-sm-6 my-2">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Register a payment</h5>
+              <p class="card-text">Manage Payments , Register a new payment here.</p>
+              <a href="/admin/payment/register-payment" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Save Paiement</a>
+            </div>
+          </div>
+        </div> -->
+
+        <!-- <div class="col-md-6  col-lg-4 col-sm-6 my-2">
+          <div class="card text-center">
+            <div class="card-body">
+              <h5 class="card-title">Course Access</h5>
+              <p class="card-text">Manage Course Access, Block Students...</p>
+              <a href="#" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Config course Access</a>
+            </div>
+          </div>
+        </div> -->
+      </div>
+    </div>
 
 
   <!-- TEACHERS DEMAND -->
-  <section id="posts">
+  <!-- <section id="posts">
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-12">
@@ -153,7 +145,7 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
 
   <!-- ADD COURSE MODAL -->
@@ -172,16 +164,17 @@
               <label for="title" class="form-control-label">Type of Course</label>
               <select name="type" class="form-control">
                 <option disabled>Default select</option>
-                <option value="Concours">Concours</option>
-                <option value="Examen">Examen</option>
+                <option value="Concours">Cours Magistral</option>
+                <option value="Examen">TD</option>
+                <option value="Examen">TP</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Title</label>
+              <label for="title" class="form-control-label">Titre du cours</label>
               <input type="text" name="title" value="<%=title%>" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Session</label>
+              <label for="title" class="form-control-label">Classe</label>
               <input type="text" name="session" value="<%=session%>" class="form-control">
             </div>
             <div class="form-group">
@@ -196,11 +189,11 @@
               <label for="title" class="form-control-label">End Date</label>
               <input type="text" name="enddate" value="<%=enddate%>" class="form-control" placeholder="">
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
               <label for="title" class="form-control-label">Cost (FCFA)</label>
               <input type="text" name="cost" value="<%=cost%>" class="form-control" placeholder="">
-            </div>
-            <div class="form-group">
+            </div> -->
+            <!-- <div class="form-group">
               <label for="category" class="form-control-label">Category</label>
               <select name="category" value="<%=category%>" class="form-control">
                 <option value="Ingénierie">Ingénierie</option>
@@ -208,7 +201,7 @@
                 <option value="Médecine">Médecine</option>
                 <option value="Droit & Finance">Droit & Finance</option>
               </select>
-            </div>
+            </div> -->
             <div class="form-group bg-faded p-3">
               <label for="file">Image Upload</label>
               <input type="file" name="image" class="form-control-file" id="file">
@@ -224,7 +217,7 @@
               </small>
             </div>
             <div class="form-group">
-              <label for="body">Description</label>
+              <label for="body">Description du cours</label>
               <textarea name="description" class="form-control"><%=description%></textarea>
             </div>
             <div class="form-group">
@@ -299,41 +292,6 @@
     </div>
   </div>
 
-  <!-- CREATE GROUP MODAL -->
-  <div class="modal fade" id="addUserModal">
-    <div class="modal-dialog modal-lg">
-      <div class="modal-content">
-        <div class="modal-header bg-warning text-white">
-          <h5 class="modal-title" id="addUserModalLabel">Create Group</h5>
-          <button class="close" data-dismiss="modal">
-            <span>&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form method="post" id="add-group-form" action="/admin/group/add-group">
-            <div class="form-group">
-              <label for="name" class="form-control-label">Group Name</label>
-              <select name="groupname" id="course_id" class="form-control" onchange="changeFunc();">
-                <option selected="" disabled="">Choose the Course for the Group</option>
-                <%courses.forEach(function(course){%>                  
-                  <option class="group" value="<%=course._id%>"><%=course.title%></option>
-                <%})%>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="desc" class="form-control-label">Description</label>
-              <textarea name="description" id="" class="form-control">Ce groupe vous permet d'échanger sur les différents thèmes abordés en cours.</textarea>
-            </div>
-            <div class="modal-footer">
-              <button class="btn btn-secondary" id="add-group-close" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-warning" id="add-group">Add Group</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
 
-
-<%- include('../_layout/adminfooter') %>
 <script src="/js/functions.js"></script>
+<%- include('../_layout/adminfooter')%>

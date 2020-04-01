@@ -14,8 +14,8 @@ $(document).ready(function(){
             data: (
                 {
                     username: username,
-                    email: email,
-                    password: password,
+                    login_email: email,
+                    login_password: password,
                     password2: password2
                 }
             ),
@@ -31,7 +31,7 @@ $(document).ready(function(){
                     $('#signup').css("display", "block");
                     $('#signUp').modal('show');
                 }else if(response == "1"){
-                    $('#form-register').append('<div class="alert alert-success mt-2">Inscription réussie. Veuillez vous connecter.</div>');
+                    $('#form-register').append('<div class="alert alert-success mt-2">Inscription réussie. Veuillez ouvrir votre boîte mail pour confirmer votre compte.</div>');
                     $('.fa-spin').css("display", "none");
                     //Message username is already use
                 }else if(response == "username_exist"){
@@ -71,17 +71,27 @@ $(document).ready(function(){
     })
 
     //Login script
-    $('#form-logi').submit(function(){
+    $('#form-login').submit(function(){
         var email = $("#login_email").val();
         var password = $("#login_password").val();
+        $('.alert').remove()
+
+        var url = '/student/login';
+        var redirect = '/student/dashboard';
+        var isTeacher = $('#isTeatcher')[0].checked
+
+        if(isTeacher) {
+            url = '/teacher/login';
+            redirect = '/teacher/dashboard';
+        }
 
         $.ajax({
             type: 'POST',
-            url: '/student/login',
+            url: url,
             data: (
                 {
-                    email: email,
-                    password: password
+                    login_email: email,
+                    login_password: password
                 }
             ),
             beforeSend: function(){
@@ -90,20 +100,13 @@ $(document).ready(function(){
               $('#login').css("display", "none");
             },
             success: function(response){ 
-                if(response == 'email'){
-                    $('#form-login').append('<div class="alert alert-danger mt-2">Invalid Email</div>');
+                if(response == '0'){
+                    $('#form-login').append('<div class="alert alert-danger mt-2">Email ou Mot de passe invalide</div>');
                     $('.fa-spin').css("display", "none");
-                    $('#signup').css("display", "block");
-                }else if(response == 'password'){
-                    $('#form-login').append('<div class="alert alert-danger mt-2">Incorrect Password</div>');
-                    $('.fa-spin').css("display", "none");
-                    $('#signup').css("display", "block");
+                    $('#login').css("display", "block");
                 }else if(response == '1'){
-                    $('#form-login').append('<div class="alert alert-danger mt-2">Correct</div>');
-                    $('.fa-spin').css("display", "none");
-                    $('#signup').css("display", "block");
+                    window.location.href = redirect;
                 }
-                //window.location.href='/';
             },
             error: function(err){
                 console.log(err)
