@@ -44,7 +44,7 @@
                                             <p class="card-text"><%=course.description%></p>
                                             <div class="d-flex flex-xs-column flex-lg-row flex-xl-row flex-sm-column  flex-md-column align-items-center">
                                                 <div class="p-2">
-                                                    <a href="" class="btn btn-danger invitation-btn" data-toggle="modal" data-target="#add-classroom-link" style="font-weight: 600;"  data-id=<%=course.course_id%>>Inviter les étudiants</a>
+                                                    <a href="" class="btn button-yellow invitation-btn" data-toggle="modal" data-target="#add-classroom-link" style="font-weight: 600;"  data-id=<%=course.course_id%>>Inviter les étudiants</a>
                                                 </div>
                                                 <div class="p-2">
                                                     <a href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Emploi de temps</strong></a>
@@ -106,7 +106,7 @@
                                                 <input type="file" id="file" name="file"  class="form-control" data-parsley-required>
                                             </div>
                                         </div>
-                                        <button type="submit" id="add-course-support" class="btn btn-block btn-danger" >Ajouter</button>
+                                        <button type="submit" id="add-course-support" class="btn btn-block button-yellow" >Ajouter</button>
                                     </form>
                                 </div>
                             </div>
@@ -139,7 +139,7 @@
                                             </div>
                                             <input type="hidden" name="hidden_course_id2" value="" id="hidden-course-id2">
                                         </div>
-                                        <button type="submit" id="send-invitation" class="btn btn-block btn-danger" >Envoyez l'invitation</button>
+                                        <button type="submit" id="send-invitation" class="btn btn-block button-yellow" >Envoyez l'invitation</button>
                                     </form>
                                 </div>
                             </div>
