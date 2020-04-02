@@ -42,30 +42,30 @@
                     <div class="a col-lg-6 col-md-12 col-sm-12">
                         <ul style="width: 100%" class="d-sm-block">
                             <li class="d-sm-block>
-                                <a href="/help"><i class="fa fa-info" style="color:#d33f48"></i> Help</a>
+                                <a><i class="fa fa-info" ></i> Help</a>
                             </li>
                             <%if(user){%>
                                 <%if(user.role == "admin"){%>
                                     <li>
-                                        <a href="/admin/logout"><i style="color:#d33f48" class="fa fa-reply"></i> Déconnexion</a> 
+                                        <a href="/admin/logout"><i  class="fa fa-reply"></i> Déconnexion</a> 
                                     </li>
                                     <li>
-                                        <a href="/admin/home"><i style="color:#d33f48" class="fa fa-book"></i> Mon Dashboard</a> 
+                                        <a href="/admin/home"><i class="fa fa-book"></i> Mon Dashboard</a> 
                                     </li>
                                 <%}else{%>
                                     <li>
-                                        <a href="/student/logout"><i style="color:#d33f48" class="fa fa-reply"></i> Déconnexion</a> 
+                                        <a href="/student/logout"><i class="fa fa-reply"></i> Déconnexion</a> 
                                     </li>
                                     <li>
-                                        <a href="/student/dashboard"><i style="color:#d33f48" class="fa fa-book"></i> Mon Dashboard</a> 
+                                        <a href="/student/dashboard"><i class="fa fa-book"></i> Mon Dashboard</a> 
                                     </li>
                                 <%}%>
                             <%}else{%>
                                 <li>
-                                    <a href="" data-toggle="modal" data-target="#log"><i style="color:#d33f48" class="fa fa-user-plus"></i> Connexion</a> 
+                                    <a href="" data-toggle="modal" data-target="#log"><i class="fa fa-user-plus"></i> Connexion</a> 
                                 </li>
                                 <li>
-                                    <a href="" data-toggle="modal" data-target="#signUp"><i style="color:#d33f48" class="fa fa-user"></i> Inscrivez-vous</a>
+                                    <a href="" data-toggle="modal" data-target="#signUp"><i class="fa fa-user"></i> Inscrivez-vous</a>
                                 </li>
                             <%}%>
                         </ul>
@@ -226,7 +226,7 @@
                                                 <input type="password" id="password2" name="password2" data-parsley-errors-container="#dd" placeholder="Confirm Password" class="form-control" data-parsley-required  data-parsley-equalto="#password">
                                             </div><span class="text-danger" id="dd"></span>
                                         </div>
-                                        <button type="submit" id="signup" class="btn btn-block btn-danger" href="#">Register <i class="fa fa-chevron-right"></i></button>
+                                        <button type="submit" id="signup" class="btn btn-block btn-danger" href="#">Register</button>
                                     </form><br>
                                     <p class="text-muted">By signing up, you agree to our Terms of Use and Privacy Policy. </p>
                                 </div>

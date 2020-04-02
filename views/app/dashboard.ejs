@@ -50,11 +50,11 @@
                                                     <a class="btn btn-danger" href="/classroom">Accéder à la classe virtuelle</a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a class="btn btn-dark" href="/student/course/group/<%=course.course_id%>">Go to Discuss Group <i class="fa fa-comment-o"></i></a>
+                                                    <a class="btn btn-dark" href="/student/course/group/<%=course.course_id%>">Ouvrir le groupe de discussion <i class="fa fa-comment-o"></i></a>
                                                 </div>
                                                 <% if (course.course_timetable){%>
                                                 <div class="p-2">
-                                                    <a class="btn btn-secondary" href="/timetables/<%=course.course_id%>/<%=course.course_timetable%>">Download Time Table <i class="fa fa-calendar"></i></a>
+                                                    <a class="btn btn-secondary" href="/timetables/<%=course.course_id%>/<%=course.course_timetable%>">Emploi de Temps <i class="fa fa-calendar"></i></a>
                                                 </div>
                                                 <%}%>
                                             </div>
@@ -68,7 +68,7 @@
                         <%})%>
                     <%}else{%>
                         <h4 class="text-center my-3 pt-3">Vous n'êtes enregistré à aucun cours pour le moment...</h4>
-                        <center><a href="/prepa-courses" class="btn btn-danger my-2">Enregistrez vous à un cours maintenant</a></center>
+                        <center><a href="/prepa-courses" class="btn button-yellow my-2">Enregistrez vous à un cours maintenant</a></center>
                     <%}%>
                 </div>
             </div>

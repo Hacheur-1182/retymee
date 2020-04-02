@@ -18,12 +18,12 @@ header {
   background-color: white; }
   header .col-md-3 h2 {
     font-weight: bold;
-    color: #d0313b; }
+    color: #004368; }
   header .col-md-3 h6 {
     color: #111111;
     font-weight: 600; }
   header .b ion-icon {
-    color: #d0313b; }
+    color: #004368; }
   header .a ul {
     list-style: none;
     margin: 0;
@@ -37,13 +37,13 @@ header {
         color: #222222;
         transition: 0.3s; }
         header .a ul li a:hover {
-          color: #d0313b; }
+          color: #004368; }
   header nav {
     margin-left: -1.4em;
     background-color: white; }
     header nav #active {
-      color: #b52a32;
-      border-bottom: solid 2px #d0313b; }
+      color: #004368;
+      border-bottom: solid 2px #004368; }
     header nav ul li {
       margin-right: 1em; }
       header nav ul li a {
@@ -54,8 +54,8 @@ header {
         padding-top: 0;
         padding-bottom: 0; }
         header nav ul li a:hover {
-          color: #d0313b;
-          border-bottom: solid 2px #d0313b; }
+          color: #004368;
+          border-bottom: solid 2px #004368; }
   header .col-md-5 ion-icon {
     font-size: 25px; }
 
@@ -81,19 +81,19 @@ header {
     #banner .row .col1 h4 {
       font-size: 30px; }
   #banner a {
-    background-color: #d0313b;
+    background-color: #ffc03c;
     margin-top: 1.5em;
-    color: white;
+    color: black;
     width: 20em; }
     #banner a:hover {
-      background-color: #b52a32; }
+      background-color: #ffc03c; }
 
 #header-bottom {
-  background: #CB356B;
+  background: #004368;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(left, #BD3F32, #CB356B);
-  background: -o-linear-gradient(left, #BD3F32, #CB356B);
-  background: linear-gradient(to right, #BD3F32, #CB356B);
+  background: -webkit-linear-gradient(left, #02314b, #004368);
+  background: -o-linear-gradient(left, #02314b, #004368);
+  background: linear-gradient(to right, #02314b, #004368);
   /* Chrome 10-25, Safari 5.1-6 */
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   color: white; }
@@ -120,14 +120,14 @@ header {
   padding-top: 2em; }
 
 #second-menu {
-  background-color: #d0313b;
+  background-color: #004368;
   padding-right: 4em;
   padding-left: 4em; }
   #second-menu nav {
     margin-left: -1.4em;
-    background-color: #d0313b; }
+    background-color: #004368; }
     #second-menu nav #active {
-      color: #b52a32; }
+      color: #004368; }
     #second-menu nav ul li {
       margin-right: 1em; }
       #second-menu nav ul li a {
@@ -161,7 +161,7 @@ header {
     position: relative;
     top: -1em;
     border-radius: 10px;
-    background-color: #d9534f;
+    background-color: #004368;
     width: 40px;
     margin: 0;
     margin-bottom: 0; }
@@ -189,10 +189,10 @@ header {
   #ongoing-courses-concours .card-block, #ongoing-courses-exam .card-block {
     padding: 15px; }
   #ongoing-courses-concours #all-prepa-courses, #ongoing-courses-concours #all-exam-courses, #ongoing-courses-exam #all-prepa-courses, #ongoing-courses-exam #all-exam-courses {
-    background-color: #d0313b;
+    background-color: #004368;
     color: white; }
     #ongoing-courses-concours #all-prepa-courses:hover, #ongoing-courses-concours #all-exam-courses:hover, #ongoing-courses-exam #all-prepa-courses:hover, #ongoing-courses-exam #all-exam-courses:hover {
-      background-color: #b52a32; }
+      background-color: #004368; }
 
 #count {
   background: url("../img/count5.jpg") no-repeat;
@@ -246,7 +246,7 @@ header {
   height: 130px; }
 
 #instructor .card {
-  border: solid 2px #d0313b;
+  border: solid 2px #004368;
   margin-top: 3.5em; }
 
 #be-instructor {
@@ -308,8 +308,8 @@ header {
 .testimonial .description {
   padding: 40px 30px;
   margin-bottom: 50px;
-  border-top: 2px solid #d0313b;
-  border-left: 2px solid #d0313b;
+  border-top: 2px solid #004368;
+  border-left: 2px solid #004368;
   font-size: 16px;
   color: #333333;
   line-height: 30px;
@@ -324,7 +324,7 @@ header {
   float: left;
   padding: 0 15px 5px 0;
   font-size: 30px;
-  color: #ff5a5f;
+  color: #004368;
   text-align: center;
   position: relative;
   top: 8px;
@@ -334,7 +334,7 @@ header {
   content: "";
   width: 50%;
   height: 2px;
-  background: #d0313b;
+  background: #004368;
   position: absolute;
   bottom: 0;
   left: 0; }
@@ -346,7 +346,7 @@ header {
   content: "";
   width: 2px;
   height: 20px;
-  background: #d0313b;
+  background: #004368;
   position: absolute;
   top: -50px;
   left: 50%; }
@@ -355,7 +355,7 @@ header {
   content: "";
   width: 2px;
   height: 40px;
-  background: #d0313b;
+  background: #004368;
   position: absolute;
   top: -70px;
   left: 50%;
@@ -389,7 +389,7 @@ header {
   width: 15px;
   height: 10px;
   border-radius: 0;
-  background: #ff5a5f;
+  background: #004368;
   opacity: 0.8;
   transition: all 0.3s ease 0s; }
 
@@ -403,4 +403,41 @@ header {
 
 .alert-error {
   color: red !important;
+}
+
+.button {
+  color: white;
+  background-color: #004368 !important;
+}
+
+.button-yellow {
+  color: black;
+  background-color: #ffc03c !important;
+}
+
+.btn-danger {
+  background-color: #ffc03c;
+  border: solid 1px #ffc03c;
+  color: black;
+}
+
+.btn-danger:hover {
+  background-color: #ffc03c;
+  border: solid 1px #ffc03c;
+  color: black;
+}
+
+.btn-danger:focus {
+  background-color: #ffc03c;
+  border: solid 1px #ffc03c;
+  color: black;
+}
+
+.button {
+  background-color: #004368;
+  color: white;
+}
+.button:hover {
+  background-color: #004368;
+  color: white;
 }
