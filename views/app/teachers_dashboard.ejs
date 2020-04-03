@@ -10,7 +10,7 @@
                     <%}else{%>
                         <img src="/img/avatar.png" class="img-rounded" alt="">
                     <%}%>
-                    <p class="text-white mt-2"><b><%=user.username%></b></p>
+                    <p class="text-white mt-2"><b><%=user.email%></b></p>
                 </div>
             </div>
         </div>
@@ -47,13 +47,13 @@
                                                     <a href="" class="btn button-yellow invitation-btn" data-toggle="modal" data-target="#add-classroom-link" style="font-weight: 600;"  data-id=<%=course.course_id%>>Inviter les étudiants</a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Emploi de temps</strong></a>
+                                                    <a class="btn btn-dark" href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Emploi de temps</strong></a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a href="/teacher/course/group/<%=course.course_id%>" style="color: rgb(28, 38, 47);" >Ouvrir le groupe de discussion <i class="fa fa-comment-o"></i></a>
+                                                    <a class="btn btn-outline-dark" href="/teacher/course/group/<%=course.course_id%>" style="color: rgb(28, 38, 47);" >Ouvrir le groupe de discussion <i class="fa fa-comment-o"></i></a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a href="" class="add-support-link" data-toggle="modal" data-target="#add-support" style="color: rgb(28, 38, 47);" data-id=<%=course.course_id%>>Importer un support de cours <i class="fa fa-book"></i></a>
+                                                    <a class="btn btn-outline-dark" href="" class="add-support-link" data-toggle="modal" data-target="#add-support" style="color: rgb(28, 38, 47);" data-id=<%=course.course_id%>>Importer un support de cours <i class="fa fa-book"></i></a>
                                                 </div>
                                                 <!-- <div class="p-2">
                                                     <a href="" class="add-classroom" data-toggle="modal" id="add-classroom" data-target="#add-classroom-link" virtualclass-data-id=<%=course.course_id%> style="color: rgb(28, 38, 47);">Set ClassRoom Link <i class="fa fa-flash"></i></a>

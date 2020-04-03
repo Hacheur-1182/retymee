@@ -105,6 +105,10 @@
 	#my-courses {
 		margin: 0 !important;
 	}
+	#my-courses h1{
+		font-size: 25px !important;
+		text-align: center;
+	}
 	#my-courses .col-md-12 .d-flex{
 		flex-direction: column !important;
 		align-items: stretch !important;
@@ -116,6 +120,15 @@
 
 	.discuss-layout {
 		margin: 0 !important;
+	}
+	.discuss-layout h3{
+		font-size: 20px !important;
+	}
+	.discuss-layout h4{
+		font-size: 18px !important;
+	}
+	.discuss-layout h5{
+		font-size: 16px !important;
 	}
 	#courses-support-section {
 		margin-left: 0 !important;
@@ -143,5 +156,14 @@
 	}
 	#chat-bloc .imagewrapper{
 		display: none !important;
+	}
+	
+	/* course detail */
+	.courses-banner h1 {
+		font-size: 32px !important;
+		margin-top: 140px !important;
+	}
+	#overlay > div {
+		padding: 0 !important
 	}
 }
