@@ -63,7 +63,7 @@
                                     <!--Student Messages in Teacher Interface-->
                                     <%students.forEach(function(student){%>
                                         <%if(student._id.equals(message.user_id)){%>
-                                            <div class="p-2">
+                                            <div class="p-2 imagewrapper">
                                                 <%if(student.image != "avatar.png"){%>
                                                     <img src="/img/student_images/<%student._id%>/<%student.image%>" class="img-rounded" style="height: 50px;width: 50px" class="rounded-circle" alt="">
                                                 <%}else{%>
@@ -84,7 +84,7 @@
                                     <!--Teacher Messages in Student Interface-->
                                     <%teachers.forEach(function(teacher){%>
                                         <%if(teacher._id.equals(message.user_id)){%>
-                                            <div class="p-2">
+                                            <div class="p-2 imagewrapper">
                                                 <%if(teacher.image != "avatar.png"){%>
                                                     <img src="/img/student_images/<%teacher._id%>/<%teacher.image%>" class="img-rounded" style="height: 50px;width: 50px" class="rounded-circle" alt="">
                                                 <%}else{%>
@@ -125,7 +125,7 @@
                     </div>
                     <form id="discuss-form" method="post" action="#" enctype="multipart/form-data">
                         <div class="container-fluid p-0 m-0">
-                            <div class="row align-items-center">
+                            <div class="row align-items-center clavier">
                                 <div class="col-md-11">
                                     <div class="form-group">
                                         <textarea name="editor1" id="content" class="form-control" placeholder="Ecrivez ici"></textarea>

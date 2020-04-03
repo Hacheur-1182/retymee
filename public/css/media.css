@@ -1,17 +1,127 @@
-@media (max-width: 575.98px) {
-	#side-bar{
-		
-	}
-}
 
-@media (min-width: 576px) and (max-width: 767.98px) {
-	#side-bar{
-		
+@media only screen and (max-width: 600px) {
+	/* Home page */
+	#banner .row .col1 h1 {
+		font-size: 2.6rem !important;
+		margin-top: 8rem;
 	}
-}
+	.vegas-wrapper .container {
+		margin-left: 1rem;
+		margin-right: 1rem;
+	}
+	.vegas-wrapper .container a{
+		font-size: 1rem;
+	}
+	#count .fa{
+		font-size: 25px;
+	}
+	#count .counter {
+		font-size: 25px !important;
+	}
+	#count h4 {
+		font-size: 16px !important;
+	}
+	.btn {
+		font-size: 14px !important;
+	}
+	h2 {
+		font-size: 24px !important;
+	}
+	.logowrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: center !important;
+	}
+	.a ul {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		margin-top: 20px;
+	}
+	.a ul li{
+		margin: 0 !important;
+	}
 
-@media (min-width: 768px) and (max-width: 991.98px) {
-	#side-bar{
-		
+	/* Dashboard */
+	#side-bar {
+		position: relative;
+		width: 100%;
+		display: block;
+	}
+	#side-bar .menus{
+		flex-direction: row !important;
+	}
+	#side-bar .menus .col-sm-4{
+		width: 33% !important;
+		align-items: center;
+		margin-top: 10px !important;
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		padding: 5px !important;
+		padding-bottom: 20px !important;
+	}
+	#side-bar .menus .col-sm-4 a{
+
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#header {
+		margin-left: 0 !important;
+	}
+	#header h1{
+		font-size: 30px;
+	}
+	#header img{
+		width: 100px;
+		height: 100px;
+		margin-top: 15px;
+	}
+	#my-courses {
+		margin: 0 !important;
+	}
+	#my-courses .col-md-12 .d-flex{
+		flex-direction: column !important;
+		align-items: stretch !important;
+		justify-content: stretch !important;
+	}
+	#my-courses .col-md-12 .d-flex a{
+		width: 100% !important;
+	}
+
+	.discuss-layout {
+		margin: 0 !important;
+	}
+	#courses-support-section {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+	#discuss-body-section {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+	#discuss-form .clavier{
+		display: flex !important;
+		justify-content: center !important;
+	}
+	#discuss-form .col-md-11{
+		width: 80% !important;
+	}
+	#discuss-form .col-md-1{
+		width: 20% !important;
+	}
+	#chat-bloc #your-msg{
+		margin-left: 0 !important;
+	}
+	#chat-bloc #my-msg{
+		margin-left: 0 !important;
+	}
+	#chat-bloc .imagewrapper{
+		display: none !important;
 	}
 }
