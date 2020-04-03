@@ -119,7 +119,7 @@
                     <div class="flex-row d-flex justify-content-center">
                         <div class="p-2">
                             <div id="gone" class="col" style="width:200px;height: 80px;transition: 0.5s;position: fixed;top: 0;margin-right: auto;margin-left: auto;display: none;">
-                                <div class="alert alert-success text-center" style="border-radius:0">C'est Parti</div>
+                                <div class="alert alert-success text-center" style="border-radius:0">Message envoyé</div>
                             </div>
                         </div>
                     </div>
@@ -166,72 +166,64 @@
     var socket = io.connect('http://localhost:3000/', {query: 'pseudo=<%=user.username%>'});
 
     $('#discuss-form').submit(function(){
-        var content = $('#content').val()
-        content = content.trim()
-        var file = $('#file').val()
-        var group_id = $('#group-id').val()
-
-        if(content == ""){
-            alert('Enter a Message')
-        }else{
-            //alert('')
-        }
-
-        return false
+        handleSublit();
+        return false;
     })
 
     $('#content').keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
-            var content = $('#content').val().trim()
-            var file = $('#file').val()
-            var group_id = $('#group-id').val()
-            var username = "<%=user.username%>"
-            var user_id = "<%=user._id%>"
-            var image = "<%=user.image%>"
+            handleSublit();
+        }
+    });
 
-            if(content == ""){
-                alert('Saisir un message')
+    function handleSublit() {
+        var content = $('#content').val().trim()
+        var file = $('#file').val()
+        var group_id = $('#group-id').val()
+        var username = "<%=user.username%>"
+        var user_id = "<%=user._id%>"
+        var image = "<%=user.image%>"
+
+        if(content === ""){
+            alert('Saisir un message')
+        }else{
+            socket.emit("Nouveau message",{
+                user_id: user_id,
+                username: username,
+                image: image,
+                content: content,
+                group_id: group_id,
+                file: file,
+                date: new Date()
+            });
+            //J'afffiche directement le message sur la vue
+            if(file == ""){
+                cl = "none";
             }else{
-                socket.emit("Nouveau message",{
-                    user_id: user_id,
-                    username: username,
-                    image: image,
-                    content: content,
-                    group_id: group_id,
-                    file: file,
-                    date: new Date()
-                });
-                //J'afffiche directement le message sur la vue
-                if(file == ""){
-                    cl = "none";
-                }else{
-                    cl = "inline";
-                }
+                cl = "inline";
+            }
 
-                $("#chat-bloc").append(
-                    '<div class="container-fluid my-0">'
-                        +'<div class="row justify-content-end my-0">'
-                            +'<div class="col-md-10">'
-                                +'<div class="flex-row d-flex justify-content-end align-items-center">'
-                                    +'<div id="my-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">'
-                                        +'<h6 style="font-size: 13px"><strong>Me</strong></h6>'
-                                        +'<span style="font-size: 13px">'+content+'</span>'
-                                    +'</div>'
-                                    +'<div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(new Date()).fromNow()+'</span>'
-                                   +' </div>'
+            $("#chat-bloc").append(
+                '<div class="container-fluid my-0">'
+                    +'<div class="row justify-content-end my-0">'
+                        +'<div class="col-md-10">'
+                            +'<div class="flex-row d-flex justify-content-end align-items-center">'
+                                +'<div id="my-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">'
+                                    +'<h6 style="font-size: 13px"><strong>Me</strong></h6>'
+                                    +'<span style="font-size: 13px">'+content+'</span>'
                                 +'</div>'
+                                +'<div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(new Date()).fromNow()+'</span>'
+                                +' </div>'
                             +'</div>'
                         +'</div>'
                     +'</div>'
-                )
-                $("#content").val('');
-            }
-
-
-            return false
+                +'</div>'
+            )
+            $("#content").val('');
         }
-    });
+        return false
+    }
 
     socket.on('addMessage', function(msg){
         var image_src = "";var cl = "";
