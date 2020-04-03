@@ -41,6 +41,26 @@
 	.a ul li{
 		margin: 0 !important;
 	}
+	#instructor img{
+		width: 120px !important;
+		height: 120px !important;
+	}
+	#instructor h3{
+		font-size: 18px;
+	}
+	#instructor h5{
+		font-size: 13px;
+	}
+	#header-bottom .container .row .col-md-4{
+		justify-content: flex-start !important;
+	}
+	#header-bottom .container .row .col-md-4 div{
+		justify-content: flex-start !important;
+	}
+	#header-bottom .container .row .col-md-4 div .p-4{
+		width: 15%;
+		margin-right: 40px;
+	}
 
 	/* Dashboard */
 	#side-bar {
