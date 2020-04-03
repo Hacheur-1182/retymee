@@ -45,10 +45,10 @@
 		width: 120px !important;
 		height: 120px !important;
 	}
-	#instructor h3{
+	#instructor h4{
 		font-size: 18px;
 	}
-	#instructor h5{
+	#instructor h6{
 		font-size: 13px;
 	}
 	#header-bottom .container .row .col-md-4{
