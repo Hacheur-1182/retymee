@@ -22,7 +22,7 @@
                         <div class="card text-white mb-3" style="border-radius: 5px">
                             <div class="card-body">
                                 <h5 class="card-title" style="color: black"><%=support.name%></h5>
-                                <a  href="/course_support/<%=course._id%>/<%=support.file%>" class="btn btn-dark btn-sm">Download <i class="fa fa-download"></i></a>
+                                <a  href="/course_support/<%=course._id%>/<%=support.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
                             </div>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                                         <h6 style="font-size: 13px"><strong>Moi</strong></h6>
                                         <span style="font-size: 13px"><%=message.content%></span>
                                         <%if(message.file != ""){%>
-                                            <!-- <a class="mt-2" href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a> -->
+                                            <!-- <a class="mt-2" href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Télécharger la pièce jointe</a> -->
                                         <%}%>
                                     </div>
                                     <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
@@ -119,7 +119,7 @@
                     <div class="flex-row d-flex justify-content-center">
                         <div class="p-2">
                             <div id="gone" class="col" style="width:200px;height: 80px;transition: 0.5s;position: fixed;top: 0;margin-right: auto;margin-left: auto;display: none;">
-                                <div class="alert alert-success text-center" style="border-radius:0">Gone</div>
+                                <div class="alert alert-success text-center" style="border-radius:0">C'est Parti</div>
                             </div>
                         </div>
                     </div>
@@ -191,9 +191,9 @@
             var image = "<%=user.image%>"
 
             if(content == ""){
-                alert('Enter a Message')
+                alert('Saisir un message')
             }else{
-                socket.emit("new message",{
+                socket.emit("Nouveau message",{
                     user_id: user_id,
                     username: username,
                     image: image,

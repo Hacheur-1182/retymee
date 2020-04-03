@@ -4,7 +4,7 @@
         <div class="container-fluid py-4">
             <div class="row pt-3 pb-2">
                 <div class="col-md-12 text-center">
-                    <h1 class="text-white mt-1">Mon Dashboard</h1>
+                    <h1 class="text-white mt-1">Mon Tableau de bord</h1>
                     <%if(user.image != "avatar.png"){%>
                         <img src="/img/student_images/<%=user._id%>/<%=user.image%>" class="img-rounded" alt="">
                     <%}else{%>
@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="row my-3">
                 <div class="col-md-12">
-                    <h1 class="py-3">MY COURSES</h1>
+                    <h1 class="py-3">MES COURS</h1>
                     <%if(user.accountActivated){%>
                         <%- messages('messages', locals) %>
                         <% if (errors){%>

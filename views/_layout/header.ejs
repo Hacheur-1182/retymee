@@ -105,7 +105,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel">Log In to Your RetyMee Account! </h5>
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Connectez vous à votre compte! </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -126,17 +126,17 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                Your Email
+                                                Adresse Email
                                             </span>
-                                            <input type="email" id="login_email" data-parsley-errors-container="#a" name="login_email" placeholder="Email" class="form-control" data-parsley-required>
+                                            <input type="email" id="login_email" data-parsley-errors-container="#a" name="login_email" placeholder="Adresse Email" class="form-control" data-parsley-required>
                                         </div><span class="text-danger" id="a"></span>
                                     </div>
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                Password
+                                                Mot de passe
                                             </span>
-                                            <input type="password" id="login_password" name="login_password" data-parsley-errors-container="#b" placeholder="Password" class="form-control" data-parsley-required>
+                                            <input type="password" id="login_password" name="login_password" data-parsley-errors-container="#b" placeholder="Mot de passe" class="form-control" data-parsley-required>
                                         </div><span class="text-danger" id="b"></span>
                                     </div>
                                         <div class="container-fluid">
@@ -149,15 +149,15 @@
                                                 <%});%>
                                             <%}%>
                                         </div>
-                                        <button type="submit" id="login" class="btn btn-block button-yellow" >Log in</button>
+                                        <button type="submit" id="login" class="btn btn-block button-yellow" >Se Connecter</button>
                                 </form><br>
-                                <h6>or <a href="">Forget Password ?</a></h6>
                                 <div class="form-check mb-2 mr-sm-2">
                                     <input class="form-check-input" type="checkbox" name="isTeatcher" id="isTeatcher" placeholder="Je suis un enseignant" value="Je suis un enseignant" />
                                     <label class="form-check-label" for="inlineFormCheck">
                                         Je suis un enseignant
                                     </label>
                                 </div>
+                                <h6><a href="">Mot de passe oublié ?</a></h6>
                             </div>
                         </div>
                     </div>
@@ -165,7 +165,7 @@
                 <div class="modal-footer justify-content-center">
                     <div class="row py-0">
                         <div class="col py-0">
-                            <h6><strong>Don't have an account? <a href="" id="sign-in-log" data-toggle="modal" data-target="#signUp">Sign up</a> </strong></h6>
+                            <h6><strong>Vous n'avez pas de compte? <a href="" id="sign-in-log" data-toggle="modal" data-target="#signUp">Inscrivez vous</a> </strong></h6>
                         </div>
                     </div>
                 </div>
@@ -178,7 +178,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Sign Up to ReTyMee</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Inscription</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -194,42 +194,41 @@
                                     <button id="google" href="" class="btn btn-block btn-primary">
                                         <i class="fa fa-google-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sign Up with Google
                                     </button><br> -->
-                                    <form  id="form-register" data-parsley-validate>
+                                    <form class="pb-4"  id="form-register" data-parsley-validate>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Username
+                                                    Nom d'utilisateur
                                                 </span>
-                                                <input type="text" id="username" data-parsley-errors-container="#aa"  placeholder="Username" name="username" class="form-control" data-parsley-required data-parsley-minlength="5" ><br>
+                                                <input type="text" id="username" data-parsley-errors-container="#aa"  placeholder="Nom d'utilisateur" name="username" class="form-control" data-parsley-required data-parsley-minlength="5" ><br>
                                             </div><span class="text-danger" id="aa"></span>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Your Email
+                                                    Adresse Email
                                                 </span>
-                                                <input type="email" name="login_email" id="email" placeholder="Email" data-parsley-errors-container="#bb" class="form-control" data-parsley-required>
+                                                <input type="email" name="login_email" id="email" placeholder="Adresse Email" data-parsley-errors-container="#bb" class="form-control" data-parsley-required>
                                             </div><span class="text-danger" id="bb"></span>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Password
+                                                    Mot de passe
                                                 </span>
-                                                <input type="password" id="password" data-parsley-errors-container="#cc" placeholder="Password" name="login_password" class="form-control" data-parsley-required data-parsley-minlength="6">
+                                                <input type="password" id="password" data-parsley-errors-container="#cc" placeholder="Mot de passe" name="login_password" class="form-control" data-parsley-required data-parsley-minlength="6">
                                             </div><span class="text-danger" class="text-danger" id="cc"></span>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Confirm Password
+                                                    Confirmer le mot de passe
                                                 </span>
-                                                <input type="password" id="password2" name="password2" data-parsley-errors-container="#dd" placeholder="Confirm Password" class="form-control" data-parsley-required  data-parsley-equalto="#password">
+                                                <input type="password" id="password2" name="password2" data-parsley-errors-container="#dd" placeholder="Confirmation" class="form-control" data-parsley-required  data-parsley-equalto="#password">
                                             </div><span class="text-danger" id="dd"></span>
                                         </div>
-                                        <button type="submit" id="signup" class="btn btn-block button-yellow" href="#">Register</button>
-                                    </form><br>
-                                    <p class="text-muted">By signing up, you agree to our Terms of Use and Privacy Policy. </p>
+                                        <button type="submit" id="signup" class="btn btn-block button-yellow" href="#">S'inscrire</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -243,7 +242,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel">Demo </h5>
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Retymee c'est quoi ? </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
