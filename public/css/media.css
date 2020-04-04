@@ -61,6 +61,10 @@
 		width: 15%;
 		margin-right: 40px;
 	}
+	#university .card img{
+		width: 8rem !important;
+		height: 4rem !important;
+	}
 
 	/* Dashboard */
 	#side-bar {

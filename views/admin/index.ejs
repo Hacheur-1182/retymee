@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1><i class="fa fa-gear"></i> Dashboard</h1>
+          <h1><i class="fa fa-gear"></i> Tableau de bord</h1>
         </div>
       </div>
     </div>
@@ -21,9 +21,9 @@
         <div class="col-md-4 col-sm-12 col-lg-4">
           <div class="card text-center card-primary py-2 mb-3">
             <div class="card-block">
-              <h3>Courses</h3>
+              <h3>Cours</h3>
               <h1 class="display-4"><i class="fa fa-pencil"></i> <%=N_COURS%></h1>
-              <a href="/admin/courses" class="btn btn-sm btn-outline-secondary">View</a>
+              <a href="/admin/courses" class="btn btn-sm btn-outline-secondary">Consulter</a>
             </div>
           </div>
         </div>
@@ -31,18 +31,18 @@
 
           <div class="card text-center card-success py-2 mb-3">
             <div class="card-block">
-              <h3>Teachers</h3>
+              <h3>Enseignant</h3>
               <h1 class="display-4"><i class="fa fa-user"></i> <%=N_TEACH%></h1>
-              <a href="/admin/teachers" class="btn btn-sm btn-outline-secondary ">View</a>
+              <a href="/admin/teachers" class="btn btn-sm btn-outline-secondary ">Consulter</a>
             </div>
           </div>
         </div>
         <div class="col-md-4 col-sm-12 col-lg-4">
           <div class="card text-center card-warning py-2 mb-3">
             <div class="card-block">
-              <h3>Students</h3>
+              <h3>Etudiants</h3>
               <h1 class="display-4"><i class="fa fa-users"></i> <%=N_STUD%></h1>
-              <a href="/admin/students" class="btn btn-sm btn-outline-secondary ">View</a>
+              <a href="/admin/students" class="btn btn-sm btn-outline-secondary ">Consulter</a>
             </div>
           </div>
         </div>
@@ -65,7 +65,7 @@
             <div class="card-body">
               <h5 class="card-title">Enseignants</h5>
               <p class="card-text">Gérer les enseignants. Ajouter des nouveaux enseignants ici.</p>
-              <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addCategoryModal"><i class="fa fa-plus"></i> Add New Teacher</a>
+              <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addCategoryModal"><i class="fa fa-plus"></i> Ajouter un Enseignant</a>
             </div>
           </div>
           </div>
@@ -75,7 +75,7 @@
             <div class="card-body">
               <h5 class="card-title">Assigner les cours</h5>
               <p class="card-text">Gérer les cours. Ajoutez des enseignants à un cours.</p>
-              <a href="/admin/courses/assign-course" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Assign Class</a>
+              <a href="/admin/courses/assign-course" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Assigner une Classe</a>
             </div>
           </div>
         </div>
@@ -153,7 +153,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="addPostModalLabel">Add Course</h5>
+          <h5 class="modal-title" id="addPostModalLabel">Ajouter un cours</h5>
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
@@ -161,9 +161,9 @@
         <div class="modal-body">
           <form action="/admin/courses/add-course" method="post" enctype="multipart/form-data">
             <div class="form-group">
-              <label for="title" class="form-control-label">Type of Course</label>
+              <label for="title" class="form-control-label">Type de cours</label>
               <select name="type" class="form-control">
-                <option disabled>Default select</option>
+                <option disabled>Sélection par défaut</option>
                 <option value="Concours">Cours Magistral</option>
                 <option value="Examen">TD</option>
                 <option value="Examen">TP</option>
@@ -178,15 +178,15 @@
               <input type="text" name="session" value="<%=session%>" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Duration</label>
+              <label for="title" class="form-control-label">Durée</label>
               <input type="text" name="duration" value="<%=duration%>" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Start Date</label>
+              <label for="title" class="form-control-label">Date de début</label>
               <input type="text" name="startdate" value="<%=startdate%>" class="form-control" placeholder="">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">End Date</label>
+              <label for="title" class="form-control-label">Date de fin</label>
               <input type="text" name="enddate" value="<%=enddate%>" class="form-control" placeholder="">
             </div>
             <!-- <div class="form-group">
@@ -203,17 +203,17 @@
               </select>
             </div> -->
             <div class="form-group bg-faded p-3">
-              <label for="file">Image Upload</label>
+              <label for="file">Chargement d'images</label>
               <input type="file" name="image" class="form-control-file" id="file">
               <small id="fileHelp" class="form-text text-muted">
-                Max Size 3MB
+                Taille maximale de 3MB
               </small>
             </div>
             <div class="form-group bg-faded p-3">
-              <label for="file">Time Table Upload</label>
+              <label for="file">Chargement de l'emploi de temps</label>
               <input type="file" name="timetable" class="form-control-file" id="file2">
               <small id="fileHelp" class="form-text text-muted">
-                Max Size 3MB
+                Taille maximale de 3MB
               </small>
             </div>
             <div class="form-group">
@@ -221,8 +221,8 @@
               <textarea name="description" class="form-control"><%=description%></textarea>
             </div>
             <div class="form-group">
-              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-primary float-right m-3" value="Add Course">
+              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Fermer</button>
+              <input type="submit" class="btn btn-primary float-right m-3" value="Ajouter le cours">
             </div>
           </form>
         </div>
@@ -243,15 +243,15 @@
         <div class="modal-body">
           <form action="/admin/teachers/add" method="post">
             <div class="form-group">
-              <label for="title" class="form-control-label">First Name</label>
+              <label for="title" class="form-control-label">Prénom</label>
               <input type="text" value="<%=firstname%>" name="firstname" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Last Name</label>
+              <label for="title" class="form-control-label">Nom</label>
               <input type="text" value="<%=lastname%>" name="lastname" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Username</label>
+              <label for="title" class="form-control-label">Nom d'utilisateur</label>
               <input type="text" value="<%=username%>" name="username" class="form-control">
             </div>
             <div class="form-group">
@@ -259,11 +259,11 @@
               <input type="email" value="<%=email%>" name="email" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Password</label>
+              <label for="title" class="form-control-label">Mot de passe</label>
               <input type="password" name="password" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Password Confirmation</label>
+              <label for="title" class="form-control-label">Confirmation du mot de passe</label>
               <input type="password" name="password2" class="form-control">
             </div>
             <div class="form-group">
@@ -271,7 +271,7 @@
               <input type="text" value="<%=tel%>" name="tel" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Address</label>
+              <label for="title" class="form-control-label">Adresse</label>
               <input type="text" value="<%=address%>" name="address" class="form-control">
             </div>
             <div class="form-group">
@@ -279,12 +279,12 @@
               <input type="text" value="<%=matiere%>" name="matiere" class="form-control">
             </div>
             <div class="form-group">
-                <label for="body">About Teacher</label>
+                <label for="body">À propos de l'enseignant</label>
                 <textarea name="desc" value="<%=description%>" class="form-control"></textarea>
             </div>
-            <div class="form-control">
-              <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-success" value="Add Teacher">
+            <div class="">
+              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Fermer</button>
+              <input type="submit" class="btn btn-success float-right m-3" value="Ajouter un Enseignant">
             </div>
           </form>
         </div>

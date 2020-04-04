@@ -1,10 +1,10 @@
  <%- include('../_layout/adminheader') %>
 
-<header id="main-header" class="py-2 bg-dark text-white">
+<header id="main-header" class="py-2 bg-primary text-white">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1>Student</h1>
+          <h1>Etudiants</h1>
         </div>
       </div>
     </div>
@@ -18,23 +18,23 @@
         <div class="col">
           <div class="">
             <div class="col">
-              <h4 class="my-4">Student Informations</h4>
+              <h4 class="my-4">Informations des étudiants</h4>
             </div>
             <div class="col">
                 <table class="table table-striped">
                   <thead class="thead-inverse">
                     <tr>
                       <th>Options</th>
-                      <th>Values</th>
+                      <th>Valeur</th>
                     </tr>
                   </thead>
                   <tbody>  
                       <tr>
-                        <td>First Name</td>
+                        <td>Prénom</td>
                         <td><%=student.firstname%></td>
                       </tr>
                       <tr>
-                        <td>Last Name</td>
+                        <td>Nom</td>
                         <td><%=student.lastname%></td>
                       </tr>
                       <tr>
@@ -42,30 +42,30 @@
                         <td><%=student.email%></td>
                       </tr>
                       <tr>
-                        <td>Username</td>
+                        <td>Nom d'utilisateur</td>
                         <td><%=student.username%></td>
                       </tr>
                       <tr>
-                        <td>Phone</td>
+                        <td>Téléphone</td>
                         <td><%=student.tel%></td>
                       </tr>
                       <tr>
-                        <td>Address</td>
+                        <td>Adresse</td>
                         <td><%=student.address%></td>
                       </tr>
                       <tr>
-                        <td>Matiere</td>
+                        <td>Matière</td>
                         <td><%=student.matiere%></td>
                       </tr>
                       <tr>
-                        <td>Status</td>
+                        <td>Statut</td>
                         <td><%=student.status%></td>
                       </tr>
                       <tr>
-                        <td>About It</td>
+                        <td>À propos</td>
                         <td><%=student.about%></td>
                       </tr>
-                      <a href="/admin/stundents/delete/<%=student._id%>" class="btn btn-danger mb-3">Delete Student</a>
+                      <a href="/admin/students/delete/<%=student._id%>" class="btn btn-danger mb-3">Supprimer l'élève</a>
                   </tbody>
                 </table>
             </div>

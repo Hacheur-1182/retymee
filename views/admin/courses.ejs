@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1><i class="fa fa-pencil"></i> Courses</h1>
+          <h1><i class="fa fa-pencil"></i> Cours</h1>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
           <!-- <div class="input-group">
             <input type="text" class="form-control" placeholder="Search a course...">
             <span class="input-group-btn">
-              <button class="btn btn-primary">Search</button>
+              <button class="btn btn-primary">Recherche</button>
             </span>
           </div> -->
         </div>
@@ -33,17 +33,17 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <h4>Courses List</h4>
+              <h4>Liste de cours</h4>
             </div>
 
     <%if (count > 0){%>
             <table class="table table-striped">
               <thead class="thead-inverse">
                 <tr>
-                  <th>Title</th>
-                  <th>Duration</th>
-                  <th>Category</th>
-                  <th>Date Posted</th>
+                  <th>Titre</th>
+                  <th>Durée</th>
+                  <th>Catégorie</th>
+                  <th>Date Posté</th>
                   <th>Classe</th>
                   <th></th>
                 </tr>
@@ -56,7 +56,7 @@
                   <td><%=course.category%></td>
                   <td><%=course.dateposted%></td>
                   <td><%=course.session%></td>
-                  <td><a href="/admin/course/detail/<%=course._id%>" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Details</a></td>
+                  <td><a href="/admin/courses/detail/<%=course._id%>" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Voir les Details</a></td>
                 </tr>
                 <%})%>
               </tbody>
@@ -68,12 +68,12 @@
                 <li class="page-item active"><a href="#" class="page-link">1</a></li>
                 <li class="page-item"><a href="#" class="page-link">2</a></li>
                 <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                <li class="page-item"><a href="#" class="page-link">Suivant</a></li>
               </ul>
             </nav>
 
         <%}else{%>
-          <h3 class="text-center py-4">There are not Courses</h3>
+          <h3 class="text-center py-4">Pas de cours</h3>
         <%}%>
 
             

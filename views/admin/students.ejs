@@ -1,10 +1,10 @@
 <%- include('../_layout/adminheader') %>
 
-  <header id="main-header" class="py-2 bg-dark text-white">
+  <header id="main-header" class="py-2 bg-primary text-white">
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1><i class="fa fa-users"></i> Students</h1>
+          <h1><i class="fa fa-users"></i> Etudiants</h1>
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
           <!-- <div class="input-group">
             <input type="text" class="form-control" placeholder="Search student...">
             <span class="input-group-btn">
-              <button class="btn btn-warning">Search</button>
+              <button class="btn btn-warning">Rechercher</button>
             </span>
           </div> -->
         </div>
@@ -33,16 +33,16 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <h4>Student List</h4>
+              <h4>Liste des étudiants</h4>
             </div>
             <table class="table table-striped">
               <thead class="thead-inverse">
                 <tr>
-                  <th>Firstname</th>
-                  <th>Lastname</th>
-                  <th>Username</th>
+                  <th>Prénom</th>
+                  <th>Nom</th>
+                  <th>Nom d'utilisateur</th>
                   <th>Email</th>
-                  <th>More Informations</th>
+                  <th>Plus d'informations</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,7 +52,7 @@
                       <td><%=student.lastname%></td>
                       <td><%=student.username%></td>
                       <td><%=student.email%></td>
-                      <td><a class="btn btn-secondary" href="/admin/students/info/<%=student._id%>">See Details</a></td>
+                      <td><a class="btn btn-secondary" href="/admin/students/info/<%=student._id%>">Voir les Details</a></td>
                     </tr>
                   <%})%>
               </tbody>
@@ -60,11 +60,11 @@
 
             <nav class="ml-4">
               <ul class="pagination">
-                <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
+                <li class="page-item disabled"><a href="#" class="page-link">Précédent</a></li>
                 <li class="page-item active"><a href="#" class="page-link">1</a></li>
                 <li class="page-item"><a href="#" class="page-link">2</a></li>
                 <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">Next</a></li>
+                <li class="page-item"><a href="#" class="page-link">Suivant</a></li>
               </ul>
             </nav>
           </div>

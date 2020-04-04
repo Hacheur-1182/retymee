@@ -12,7 +12,7 @@ var Student = require('../models/student');
 var TeacherDemand = require('../models/teachers_demand');
 
 //Add teachers
-router.post('/add', (req, res) =>{
+router.post('/add',ensureAuthenticated, (req, res) =>{
     req.checkBody('firstname', 'Firstname must have a value').notEmpty();
     req.checkBody('lastname', 'Lastname must have a value').notEmpty();
     req.checkBody('username', 'Username must have a value').notEmpty();
@@ -153,7 +153,7 @@ router.post('/add', (req, res) =>{
 })
 
 //Get teachers
-router.get('/', (req, res) =>{
+router.get('/',ensureAuthenticated, (req, res) =>{
     Teacher.find(function(err, teachers){
         if(err) return console.log(err)
 
@@ -165,7 +165,7 @@ router.get('/', (req, res) =>{
 })
 
 //Get  teachers details
-router.get('/demand/:id', (req, res) =>{
+router.get('/demand/:id',ensureAuthenticated, (req, res) =>{
     var id = req.params.id;
 
     TeacherDemand.findById(id, function(err, teacher){
@@ -179,7 +179,7 @@ router.get('/demand/:id', (req, res) =>{
 })
 
 //Delete  teachers Demand
-router.get('/demand/delete/:id', (req, res) =>{
+router.get('/demand/delete/:id',ensureAuthenticated, (req, res) =>{
     var id = req.params.id;
 
     var myquery = { _id: id };
@@ -192,20 +192,49 @@ router.get('/demand/delete/:id', (req, res) =>{
 })
 
 //Delete  teachers 
-router.get('/delete/:id', (req, res) =>{
+router.get('/delete/:id', ensureAuthenticated, (req, res) =>{
     var id = req.params.id;
 
     var myquery = { _id: id };
-    Teacher.deleteOne(myquery, function(err, obj) {
+    
+    // Get all courses Id that teacher teachs
+    Teacher.findById(id, (err, teacher) => {
         if (err) throw err;
-        console.log("One teacher deleted");
-    });
-    req.flash('success', 'Teacher Deleted');
-    res.redirect('/admin/home')
+        if(teacher && teacher.courses.length) {
+            // Delete teachers on active courses 
+            teacher.courses.forEach(course => {
+                Course.updateOne({_id: course.course_id},
+                    { $pull: { teachers: { teacher_id: id } } }, 
+                    (err, data) => {
+                        if (err) throw err;
+                        
+                        // The delete the teacher
+                        Teacher.deleteOne(myquery, function(err, obj) {
+                            if (err) {
+                                throw err;
+                            } else {
+                                req.flash('success', 'Enseignant supprimé');
+                                return res.redirect('/admin/home')
+                            }
+                        });
+                    })
+            });
+            // He dont tech any course
+        } else {
+            Teacher.deleteOne(myquery, function(err, obj) {
+                if (err) {
+                    throw err;
+                } else {
+                    req.flash('success', 'Enseignant supprimé');
+                    return res.redirect('/admin/home')
+                }
+            });
+        }
+    })
 })
 
 //Get  teachers details
-router.get('/info/:id', (req, res) =>{
+router.get('/info/:id', ensureAuthenticated, (req, res) =>{
     var id = req.params.id;
 
     Teacher.findById(id, function(err, teacher){

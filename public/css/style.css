@@ -79,7 +79,7 @@ header {
       font-weight: 1000;
       margin-top: .8em; }
     #banner .row .col1 h4 {
-      font-size: 30px; }
+      font-size: 28px; }
   #banner a {
     background-color: #ffc03c;
     margin-top: 1.5em;
@@ -200,6 +200,8 @@ header {
   background-size: cover; }
 
 #university .card {
+  width: 50% !important;
+  border: none !important;
   position: relative; }
   #university .card img {
     width: 100%;
@@ -441,4 +443,24 @@ header {
 .button:hover {
   background-color: #004368;
   color: white;
+}
+
+.slick-track  {
+  display: flex !important;
+  justify-content: center !important;
+  width: 100% !important;
+  transform: none !important;
+}
+#university .card{
+  background-color: black !important;
+  width: 50% !important;
+  border-radius: 0 !important;
+  padding: 1.5rem;
+}
+#university .card img{
+  width: 11rem !important;
+  height: 6rem !important;
+}
+.partenaires{
+  background-color: #ffc03c;
 }

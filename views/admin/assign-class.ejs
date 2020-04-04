@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1><i class="fa fa-users"></i> Teachers and Classes</h1>
+          <h1><i class="fa fa-users"></i> Enseignants et classes</h1>
         </div>
       </div>
     </div>
@@ -15,12 +15,12 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-6">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search Course...">
+          <!-- <div class="input-group">
+            <input type="text" class="form-control" placeholder="Rechercher un cours...">
             <span class="input-group-btn">
               <button class="btn btn-info"><i class="fa fa-search"></i></button>
             </span>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -31,7 +31,7 @@
     <div class="container  pb-5 mb-3">
       <div class="row">
         <div class="col">
-          <h2 class="text-center text-white">Teacher List And Classes <hr></h2>  
+          <h2 class="text-center text-white">Liste des enseignants et cours <hr></h2>
         </div>
       </div>
         <div class="row justify-content-center">
@@ -47,7 +47,7 @@
                       </li>
                     <%})%>
                   </ul>
-                  <center><a href="#" data-id=<%=course._id%> data-title="<%=course.title%>" class="btn btn-info mt-3 assign-course" data-toggle="modal" data-target="#assign-course-modal">Add a Teacher to this course</a></center>
+                  <center><a href="#" data-id=<%=course._id%> data-title="<%=course.title%>" class="btn btn-info mt-3 assign-course" data-toggle="modal" data-target="#assign-course-modal">Ajouter un enseignant à ce cours</a></center>
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@
               </div>
             </div>
             <div class="form-group">
-              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Close</button>
+              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Fermer</button>
               <input type="submit" class="btn btn-info float-right m-3" value="Assign">
             </div>
           </form>

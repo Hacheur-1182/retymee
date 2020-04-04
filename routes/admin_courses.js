@@ -19,16 +19,17 @@ var TeacherDemand = require('../models/teachers_demand');
 
 //Get courses
 router.get('/', ensureAuthenticated, (req, res) =>{
-    var count;
-    Course.count(function(err, c){
-        count = c; 
-    });
-
+    // var count;
+    // Course.countDocuments(function(err, c){
+    //     if (err) throw err
+    //     count = c; 
+    // });
+    
     Course.find(function(err, courses){
         res.render('./admin/courses',{
             title : "Courses Management",
             courses : courses,
-            count: count
+            count: courses.length
         })
     })
 })
@@ -261,8 +262,26 @@ router.post('/assign-course', ensureAuthenticated, (req, res) =>{
 
 //Get courses details
 router.get('/detail/:id', ensureAuthenticated, (req, res) =>{
-    res.render("./admin/course-details", {
-        title : "Courses Details"
+    const id = req.params.id
+    Course.findById(id, (err, course) => {
+        if(err) return console.log(err)
+        return res.render("./admin/course-details", {
+            title : "Courses Details",
+            course: course
+        });
+    })
+})
+
+//Delete  course 
+router.get('/delete/:id', ensureAuthenticated, (req, res) =>{
+    var id = req.params.id;
+
+    var myquery = { _id: id };
+    Course.deleteOne(myquery, function(err, obj) {
+        if (err) throw err;
+        console.log("Cours supprimé");
+        req.flash('success', 'Cours supprimé avec succès');
+        res.redirect('/admin/home')
     });
 })
 

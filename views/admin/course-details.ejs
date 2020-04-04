@@ -4,51 +4,72 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1>Teacher Description</h1>
+          <h1>Détails sur le cours</h1>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- ACTIONS -->
-  <section id="actions" class="pb-5 pt-4" style="background-color: #fafafa;" class="py-4 pb-4 bg-faded">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3 mr-auto">
-          <a href="/admin/index" class="btn btn-secondary btn-block"><i class="fa fa-arrow-left"></i> Back To Dashboard</a>
-        </div>
-
-        <div class="col-md-3">
-          <a href="index.html" class="btn btn-success btn-block"><i class="fa fa-plus"></i> Add this Teacher</a>
-        </div>
-        <div class="col-md-3">
-          <a href="index.html" class="btn btn-danger btn-block"><i class="fa fa-remove"></i> Delete this Teacher</a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- POST EDIT -->
-  <section id="edit-post" style="background-color: #fafafa;">
-    <div class="container pb-5 mb-3 " style="width: 65%;box-shadow: 3px 3px 10px 8px #eeeeee">
+  <section id="edit-post" class="my-4">
+    <div class="container pb-5 mb-3 " style="width: 65%;background-color: white">
       <div class="row">
-        <div class="col">
+        <div class="col-sm-12">
           <div class="">
             <div class="">
-              <h4 class="my-4">Courses Details</h4>
+              <h4 class="my-4">Details du cours</h4>
             </div>
             <div class="">
-              <form method="POST">
-                  <div class="form-group">
-                    <label for="title" class="form-control-label">Name of the course</label>
-                    <input type="text" name="firstname" class="form-control">
-                  </div>      
-              </form>
+              <table class="table table-striped">
+                <thead class="thead-inverse">
+                  <tr>
+                    <th>Options</th>
+                    <th>Valeur</th>
+                  </tr>
+                </thead>
+                <tbody>  
+                    <tr>
+                      <td>Titre</td>
+                      <td><%=course.title%></td>
+                    </tr>
+                    <tr>
+                      <td>Durée</td>
+                      <td><%=course.duration%></td>
+                    </tr>
+                    <tr>
+                      <td>Catégorie</td>
+                      <td><%=course.category%></td>
+                    </tr>
+                    <tr>
+                      <td>Classe</td>
+                      <td><%=course.session%></td>
+                    </tr>
+                    <tr>
+                      <td>Débute le</td>
+                      <td><%=course.startdate%></td>
+                    </tr>
+                    <tr>
+                      <td>Se termine le</td>
+                      <td><%=course.enddate%></td>
+                    </tr>
+                    <tr>
+                      <td>Description</td>
+                      <td><%=course.description%></td>
+                    </tr>
+                    <tr>
+                      <td>Posté le</td>
+                      <td><%=course.dateposted%></td>
+                    </tr>
+                    <a href="/admin/courses/delete/<%=course._id%>" class="btn btn-danger mb-3">Supprimer le cours</a>
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
 
   <%- include('../_layout/adminfooter') %>
