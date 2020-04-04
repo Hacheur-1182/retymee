@@ -34,96 +34,16 @@ router.post('/add',ensureAuthenticated, (req, res) =>{
 
     var errors = req.validationErrors();
     if (errors) {
-    	var N_STUD, N_TEACH, N_COURS;
-        Course.countDocuments(function(err, c){
-            if(c) N_COURS = c;
-        });
-        Teacher.countDocuments(function(err, c){
-            if(c) N_TEACH = c;  
-        });
-        Student.countDocuments(function(err, c){
-            if(c) N_STUD = c; 
-        });
-
-        TeacherDemand.find(function (err, teachersDemand) {
-            if (err) return console.log(err)
-            Course.find(function(err, courses){
-                res.render("admin/index", {
-                    teachersDemand: teachersDemand,
-                    errors: errors,
-                    N_STUD: N_STUD,
-                    N_TEACH: N_TEACH,
-                    N_COURS: N_COURS,
-                    courses: courses,
-                    type : "",
-                    title: "",
-                    session: "",
-                    duration : "",
-                    startdate: "",
-                    enddate: "",
-                    cost: "",
-                    category: "",
-                    firstname: firstname,
-                    lastname: lastname,
-                    username: username,
-                    email: email,
-                    tel: tel,
-                    address: address,
-                    matiere: matiere,
-                    description: description
-                });
-            })
-        })
-
-    }else{
+    	req.flash('danger', "Veuillez remplir tous les champs avec (*). Assurez vous que les mots de passe sont identiques")
+        res.redirect('/admin/home')
+    }else {
         Teacher.findOne({
             email: email
         }, function(err, teacher) {
         	if(err) return console.log(err)
             if (teacher) {
                 req.flash('danger', 'Ce compte existe déja');
-
-                var N_STUD, N_TEACH, N_COURS;
-                Course.countDocuments(function(err, c){
-                    N_STUD = c; 
-                });
-                Teacher.countDocuments(function(err, c){
-                    N_TEACH = c;  
-                });
-                Student.countDocuments(function(err, c){
-                    N_COURS = c; 
-                });
-                
-                TeacherDemand.find(function (err, teachersDemand) {
-                    if (err) return console.log(err)
-                    Course.find(function (err, courses) {
-                        res.render("admin/index", {
-                            teachersDemand: teachersDemand,
-                            errors: errors,
-                            N_STUD: N_STUD,
-                            N_TEACH: N_TEACH,
-                            N_COURS: N_COURS,
-                            courses: courses,
-                            type: "",
-                            title: "",
-                            session: "",
-                            duration: "",
-                            startdate: "",
-                            enddate: "",
-                            cost: "",
-                            category: "",
-                            firstname: firstname,
-                            lastname: lastname,
-                            username: username,
-                            email: email,
-                            tel: tel,
-                            address: address,
-                            matiere: matiere,
-                            description: description
-                        });
-                    })
-                })
-                
+                res.redirect('/admin/home')
             } else {
                 var newTeacher = new Teacher({
                     firstname : firstname,
@@ -138,15 +58,17 @@ router.post('/add',ensureAuthenticated, (req, res) =>{
                     description: description
                 });
 
-                Teacher.saveTeacher(newTeacher, function(err, teacher){
-					if(err) return console.log(err);
-
-					console.log("Teacher created");
+                Teacher.saveTeacher(newTeacher, function(teacher){
+					if(!teacher) {
+                        req.flash('danger', 'Une érreur s\'est produite. Veuillez reéssayer');
+                        return res.redirect('/admin/home')
+                    } else {
+                        require('../functions/teacher_registration_mail')(email, username, password);
+                        req.flash('success', 'Enseignant crée avec succès')
+                        return res.redirect('/admin/home')
+                    }
 				})
                 
-				require('../functions/teacher_registration_mail')(email, username, password);
-				req.flash('success', 'New Teacher Added')
-				res.redirect('/admin/home')
             }
         });
     }

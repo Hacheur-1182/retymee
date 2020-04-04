@@ -73,7 +73,9 @@ module.exports.saveTeacher = function (newTeacher, cb) {
         newTeacher.password = hash;
         console.log("Teacher is being saved");
         newTeacher.save()
-        cb;
+        .then(user => {
+            cb(user);
+        })
     })
 }
 
