@@ -8,7 +8,6 @@
                             <h1>Développez vos aptitudes</h1>
                             <h4 class="d-none d-md-block d-lg-block d-xl-block">Nous proposons aux étudiants, aux élèves et aux professionnels,
                                 une aide aux cours et apprentissage en ligne.</h4>
-                                <a href="#course-details" class="btn btn-danger btn-lg my-2">Enregistrez vous à un cours maintenant</a>
                         </div>
                         <div class="col-md-4">
                             
@@ -72,8 +71,16 @@
                         <h5 class="pt-4"><b>Durée du cours</b><hr></h5>
                         <p class="py-1"><i class="fa fa-tachometer"></i> <%=course.duration%> (<%=course.startdate%> au  <%=course.enddate%>)</p>
                         <hr>
-
-                        <a href="/student/course/<%=course._id%>/register" id="enroll" class="btn button btn-block py-2">S'inscrire à ce cours</a>
+                        <%if(user && user.role != "admin"){%>
+                            <a href="/student/course/<%=course._id%>/register" id="enroll" class="btn button btn-block py-2">S'inscrire à ce cours</a>
+                        <%}%>
+                        <%if(!user){%>
+                            <div class="alert alert-info">
+                                Veuillez créer un compte pour pouvoir vous inscrire à ce cours.
+                            </div>
+                            <a href="" class="btn button-yellow w-100" data-toggle="modal" data-target="#log"><i class="fa fa-user"></i> Je me Connecte</a> 
+                        <%}%>
+                        
                         <!-- <div class="row py-3 justify-content-center" id="ala-une">
                             <h4 class="my-4">Coucours à la une</h4>
                             <div class="card " style="width: 85%;">

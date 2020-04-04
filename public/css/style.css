@@ -416,11 +416,18 @@ header {
 .button-yellow {
   color: black;
   background-color: #ffc03c !important;
+  transition: 0.3s;
+}
+.button-yellow:hover {
+  color: black;
+  background-color: #ffc03c !important;
+  transform: scale(1.05);
 }
 
 .btn-danger {
   background-color: #ffc03c;
   border: solid 1px #ffc03c;
+  transition: 0.3s;
   color: black;
 }
 
@@ -428,6 +435,7 @@ header {
   background-color: #ffc03c;
   border: solid 1px #ffc03c;
   color: black;
+  transform: scale(1.05);
 }
 
 .btn-danger:focus {
