@@ -1,7 +1,7 @@
 <%- include('../_layout/header') %>
 
     <section class="courses-banner">
-        <div class="container-fluid" style="width: 90%">
+        <div class="container" >
             <div id="overlay">
                 <div class="row">
                     <div class="col1 col-md-10  col-lg-8 col1 col-sm-12">
@@ -31,7 +31,8 @@
                             </center>
                             <div class="card-block pt-0">
                                 <h5 class="card-title"><%=course.title%></h4>
-                                <p class="card-text"><%=course.description%></p>
+                                <span class="text-muted">Classe: <%=course.session%></span><br>
+                                <span class="text-muted">Durée: <%=course.duration%></span>
                                 <p class="card-text">
                                     <small>
                                         <span class="fa fa-star checked"></span>
@@ -39,7 +40,7 @@
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star"></span>&nbsp;
-                                        (122 votes)
+                                        (122 revues)
                                     </small>
                                 </p>
                             </div>

@@ -279,9 +279,9 @@ header {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   height: 30em; }
-  .contact-banner .row, .courses-banner .row, .course-description .row {
-    padding-left: 5em;
-    padding-right: 5em; }
+  #course-details  img {
+    width: 100% !important;
+    }
     .contact-banner .row .col1 h1, .contact-banner .row .col1 h4, .courses-banner .row .col1 h1, .courses-banner .row .col1 h4, .course-description .row .col1 h1, .course-description .row .col1 h4 {
       color: white; }
     .contact-banner .row .col1 h1, .courses-banner .row .col1 h1, .course-description .row .col1 h1 {

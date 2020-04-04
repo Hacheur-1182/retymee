@@ -44,6 +44,7 @@ router.post('/add-course', ensureAuthenticated, function(req, res){
     req.checkBody('duration', 'Duration must have a value').notEmpty();
     req.checkBody('startdate', 'Startdate must have a value').notEmpty(); 
     req.checkBody('enddate', 'Endtdate must have a value').notEmpty();
+    req.checkBody('content', 'Content must have a value').notEmpty();
     // req.checkBody('cost', 'Cost must have a value').notEmpty();
     // req.checkBody('category', 'Category must have a value').notEmpty();
     req.checkBody('description', 'Description must have a value').notEmpty();
@@ -54,6 +55,7 @@ router.post('/add-course', ensureAuthenticated, function(req, res){
     var duration = req.body.duration;
     var startdate = req.body.startdate;
     var enddate = req.body.enddate;
+    var content = req.body.content;
     // var cost = req.body.cost ;
     var category = "Enseignement";
     var description = req.body.description;
@@ -154,6 +156,7 @@ router.post('/add-course', ensureAuthenticated, function(req, res){
                 }
                 
             } else {
+                console.log(content)
                 var course = new Course({
                     type : type,
                     title: title,
@@ -162,6 +165,7 @@ router.post('/add-course', ensureAuthenticated, function(req, res){
                     startdate: startdate,
                     enddate: enddate,
                     cost: cost,
+                    content: content,
                     description: description,
                     category: category,
                     timetable: timeTableFile,
@@ -197,7 +201,7 @@ router.post('/add-course', ensureAuthenticated, function(req, res){
                         })
                     }
 
-                    req.flash('success', 'Course Added')
+                    req.flash('success', 'Course Ajouté')
                     res.redirect('/admin/home');
                 })
             }

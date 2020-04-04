@@ -30,6 +30,10 @@ var coursesSchema = mongoose.Schema({
         type: String,
         required: false
     },
+    content:{
+        type: String,
+        required: false
+    },
     description:{
         type: String
     },

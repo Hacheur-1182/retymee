@@ -1,7 +1,7 @@
 <%- include('../_layout/header') %>
 
    <section class="course-description">
-            <div class="container-fluid" style="width: 90%">
+            <div class="container">
                 <div id="overlay">
                     <div class="row">
                         <div class="col1 col-md-10  col-lg-8 col1 col-sm-12">
@@ -19,7 +19,7 @@
         </section>
 
         <section id="course-details">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row py-5">
                     <div class="col-md-8 col-lg-8 col-sm-12">
                         <h1><%=course.title%></h1>
@@ -29,7 +29,12 @@
                         <h4 class="pt-5">DESCRIPTION DE LA FORMATION</h4>
                         <hr >
                         <p class="mt-4 mb-5"><%=course.description%></p>
-                        <h4>PROGRAMME DE LA FORMATION</h4>
+                        <h4>PROGRAMME DU COURS</h4>
+                        <%if(course.content){%>
+                            <div class="pt-4">
+                                <%-course.content-%>
+                            </div>
+                        <%}%>
                         <hr>
                         <ul>
                             <!-- <li>Mathématiques</li>
@@ -37,6 +42,18 @@
                         </ul>
                         <h4 class="pt-5">A PROPOS DES FORMATEURS</h4>
                         <hr >
+                        <div class="pt-4 d-flex">
+                            <%course.teachers.forEach(function(teacher){%>
+                                <div class="card mr-2" style="width: 32%;">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%=teacher.firstname%> <%=teacher.lastname%></h5>
+                                        <p class="card-text text-muted">(<%=teacher.email%>)</p>
+                                        <p class="card-text text-muted">Tel: <%=teacher.tel%></p>
+                                        <p class="card-text text-muted">Matière: <%=teacher.matiere%></p>
+                                    </div>
+                                    </div>
+                            <%})%>
+                        </div>
                         <h4 class="pt-5">REVUES D'UTILISATEURS</h4>
                         <hr >
                         <div class="d-flex flex-row">
@@ -53,10 +70,10 @@
                         <p class="text-muted">You can test this course for free during 2 days.</p>
                         <h5 class="py-1"><strong><%=course.cost%> FCFA</strong></h5> -->
                         <h5 class="pt-4"><b>Durée du cours</b><hr></h5>
-                        <p class="py-1"><i class="fa fa-tachometer"></i> <%=course.duration%> (<%=course.startdate%> to  <%=course.enddate%>)</p>
+                        <p class="py-1"><i class="fa fa-tachometer"></i> <%=course.duration%> (<%=course.startdate%> au  <%=course.enddate%>)</p>
                         <hr>
 
-                        <a href="/student/course/<%=course._id%>/register" id="enroll" class="btn button btn-block py-2">Register now</a>
+                        <a href="/student/course/<%=course._id%>/register" id="enroll" class="btn button btn-block py-2">S'inscrire à ce cours</a>
                         <!-- <div class="row py-3 justify-content-center" id="ala-une">
                             <h4 class="my-4">Coucours à la une</h4>
                             <div class="card " style="width: 85%;">

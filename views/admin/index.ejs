@@ -170,23 +170,23 @@
               </select>
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Titre du cours</label>
+              <label for="title" class="form-control-label">Titre du cours <span class="text-danger">(*)</span></label>
               <input type="text" name="title" value="<%=title%>" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Classe</label>
+              <label for="title" class="form-control-label">Classe <span class="text-danger">(*)</span></label>
               <input type="text" name="session" value="<%=session%>" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Durée</label>
+              <label for="title" class="form-control-label">Durée <span class="text-danger">(*)</span></label>
               <input type="text" name="duration" value="<%=duration%>" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Date de début</label>
+              <label for="title" class="form-control-label">Date de début <span class="text-danger">(*)</span></label>
               <input type="text" name="startdate" value="<%=startdate%>" class="form-control" placeholder="">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Date de fin</label>
+              <label for="title" class="form-control-label">Date de fin <span class="text-danger">(*)</span></label>
               <input type="text" name="enddate" value="<%=enddate%>" class="form-control" placeholder="">
             </div>
             <!-- <div class="form-group">
@@ -203,21 +203,25 @@
               </select>
             </div> -->
             <div class="form-group bg-faded p-3">
-              <label for="file">Chargement d'images</label>
+              <label for="file">Choisir l'image descriptive du cours <span class="text-danger">(*)</span></label>
               <input type="file" name="image" class="form-control-file" id="file">
               <small id="fileHelp" class="form-text text-muted">
                 Taille maximale de 3MB
               </small>
             </div>
             <div class="form-group bg-faded p-3">
-              <label for="file">Chargement de l'emploi de temps</label>
+              <label for="file">Charger l'emploi de temps du cours</label>
               <input type="file" name="timetable" class="form-control-file" id="file2">
               <small id="fileHelp" class="form-text text-muted">
                 Taille maximale de 3MB
               </small>
             </div>
             <div class="form-group">
-              <label for="body">Description du cours</label>
+              <label for="editor">Programme du cours <span class="text-danger">(*)</span></label>
+              <textarea class="form-control" name="content" id="editor" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="body">Description du cours <span class="text-danger">(*)</span></label>
               <textarea name="description" class="form-control"><%=description%></textarea>
             </div>
             <div class="form-group">
@@ -235,7 +239,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
-          <h5 class="modal-title" id="addCategoryModalLabel">Add Teacher</h5>
+          <h5 class="modal-title" id="addCategoryModalLabel">Ajouter un enseignant</h5>
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
@@ -243,40 +247,40 @@
         <div class="modal-body">
           <form action="/admin/teachers/add" method="post">
             <div class="form-group">
-              <label for="title" class="form-control-label">Prénom</label>
+              <label for="title" class="form-control-label">Prénom <span class="text-danger">(*)</span></label>
               <input type="text" value="<%=firstname%>" name="firstname" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Nom</label>
+              <label for="title" class="form-control-label">Nom <span class="text-danger">(*)</span></label>
               <input type="text" value="<%=lastname%>" name="lastname" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Nom d'utilisateur</label>
+              <label for="title" class="form-control-label">Nom d'utilisateur <span class="text-danger">(*)</span></label>
               <input type="text" value="<%=username%>" name="username" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Email</label>
+              <label for="title" class="form-control-label">Email <span class="text-danger">(*)</span></label>
               <input type="email" value="<%=email%>" name="email" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Mot de passe</label>
+              <label for="title" class="form-control-label">Mot de passe <span class="text-danger">(*)</span></label>
               <input type="password" name="password" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Confirmation du mot de passe</label>
+              <label for="title" class="form-control-label">Confirmation du mot de passe <span class="text-danger">(*)</span></label>
               <input type="password" name="password2" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Tel</label>
+              <label for="title" class="form-control-label">Tel <span class="text-danger">(*)</span></label>
               <input type="text" value="<%=tel%>" name="tel" class="form-control">
+            </div>
+            <div class="form-group">
+              <label for="title" class="form-control-label">Matière <span class="text-danger">(*)</span></label>
+              <input type="text" value="<%=matiere%>" name="matiere" class="form-control">
             </div>
             <div class="form-group">
               <label for="title" class="form-control-label">Adresse</label>
               <input type="text" value="<%=address%>" name="address" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="title" class="form-control-label">Matière</label>
-              <input type="text" value="<%=matiere%>" name="matiere" class="form-control">
             </div>
             <div class="form-group">
                 <label for="body">À propos de l'enseignant</label>
