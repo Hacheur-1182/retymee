@@ -1,9 +1,23 @@
 
 @media only screen and (max-width: 600px) {
 	/* Home page */
+	#banner{
+		height: 25rem !important;
+	}
 	#banner .row .col1 h1 {
 		font-size: 2.6rem !important;
-		margin-top: 8rem;
+		margin-top: 4rem;
+		text-align: center !important;
+	}
+	#banner .row .col1 h4 {
+		font-size: 16px !important;
+		margin-top: 1rem;
+		text-align: center !important;
+	}
+	#banner .row .col1 a {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 	}
 	.vegas-wrapper .container {
 		margin-left: 1rem;
@@ -58,12 +72,25 @@
 		justify-content: flex-start !important;
 	}
 	#header-bottom .container .row .col-md-4 div .p-4{
-		width: 15%;
+		width: 12%;
 		margin-right: 40px;
+	}
+	#header-bottom .container .row .col-md-4 div .p-4 .fa{
+		font-size: 35px !important;
+	}
+	#header-bottom .container .row .col-md-4 div .p-8 h4{
+		font-size: 20px !important;
+	}
+	#header-bottom .container .row .col-md-4 div .p-8 h6{
+		font-size: 14px !important;
 	}
 	#university .card img{
 		width: 8rem !important;
 		height: 4rem !important;
+	}
+
+	#site-description img {
+		display: none;
 	}
 
 	/* Dashboard */
@@ -163,11 +190,35 @@
 	}
 	
 	/* course detail */
+	.courses-banner {
+		height: 17rem !important;
+	}
 	.courses-banner h1 {
 		font-size: 32px !important;
-		margin-top: 140px !important;
+		margin-top: 80px !important;
+		text-align: center !important;
 	}
 	#overlay > div {
 		padding: 0 !important
+	}
+	.course-description {
+		height: 17rem !important;
+	}
+	.course-description h1{
+		font-size: 32px !important;
+		margin-top: 80px !important;
+		text-align: center !important;
+	}
+	#course-details h1 {
+		font-size: 30px;
+	}
+	#course-details h5 {
+		font-size: 16px;
+	}
+	#course-details h4 {
+		font-size: 20px;
+	}
+	#course-details .right-content {
+		padding: 1.2rem !important;
 	}
 }
