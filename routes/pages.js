@@ -33,7 +33,7 @@ router.get('/',(req, res) =>{
 			N_TEACH: N_TEACH,
 			N_COURS: N_COURS,
 	    });
-    }).limit(4)
+    }).sort({ $natural: -1 }).limit(4)
     
 });
 
@@ -55,7 +55,7 @@ router.get('/prepa-courses', (req, res) =>{
 			menu_id_rep : "rep",
 			courses: courses
 	    });
-    })
+    }).sort({ $natural: -1 })
 });
 
 //Afficher la liste des examens
