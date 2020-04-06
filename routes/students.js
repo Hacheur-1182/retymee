@@ -143,25 +143,6 @@ router.get('/course/:id/register', ensureAuthenticatedForCourseRegistration, (re
 							if(err) return console.log(err);
 							console.log("new Subcriber Ok!");
 		
-							DiscussGroup.findOne({course_id: course._id}, function(err, group){
-								if(err) return console.log(err)
-		
-								//Si un groupe n'existe pas pour le cours je le creé
-								if(!group){
-									discussGroup = new DiscussGroup({
-										groupname : course.title,
-										course_id : course._id,
-										course_name : course.title,
-										description : "Ce groupe permet de discuter sur le cours."
-									})
-		
-									discussGroup.save(function(err, group){
-										if(err) return console.log(err)
-										console.log("Group added")
-									})
-								}
-							})
-		
 							req.flash('success', 'Vous êtes enregistré avec succès sur ce cours');
 							res.redirect("/student/dashboard");
 						})
@@ -296,6 +277,9 @@ router.get('/course/group/:id', ensureAuthenticated, (req, res) =>{
 					})
 				}
 			})
+		} else {
+			req.flash('warning', "Cette discussion n'est plus disponible")
+			res.redirect('/student/dashboard')
 		}
 	})
 });

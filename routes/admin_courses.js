@@ -7,8 +7,8 @@ var mongoose = require('mongoose');
 //Get Course Model
 var Course = require('../models/course');
 
-//Get Students Model
-var Student = require('../models/student');
+//Get DiscussGroup Model
+var DiscussGroup = require('../models/discussGroup');
 
 //Get Teachers Model
 var Teacher = require('../models/teacher');
@@ -110,13 +110,33 @@ router.post('/add-course', ensureAuthenticated, function(req, res){
                 })
             }
 
+            //create Discuss group
+            DiscussGroup.findOne({course_id: course._id}, function(err, group){
+                if(err) return console.log(err)
+
+                //Si un groupe n'existe pas pour le cours, je le creé
+                if(!group){
+                    discussGroup = new DiscussGroup({
+                        groupname : course.title,
+                        course_id : course._id,
+                        course_name : course.title,
+                        description : "Ce groupe permet de discuter sur le cours."
+                    })
+
+                    discussGroup.save(function(err, group){
+                        if(err) return console.log(err)
+                        console.log("Group added")
+                    })
+                }
+            })
+
             req.flash('success', 'Cours Ajouté avec succès')
             res.redirect('/admin/home');
         })
     }
 })
 
-//Set a course to a teacher
+//Set a course to a teacher view
 router.get('/assign-course', ensureAuthenticated, (req, res) =>{
     Course.find(function(err, courses){
         if(err) return console.log(err)
@@ -188,6 +208,42 @@ router.get('/delete/:id', ensureAuthenticated, (req, res) =>{
     var id = req.params.id;
 
     var myquery = { _id: id };
+
+    // Get all courses Id that teacher teachs, and in that students are registered
+    Course.findById(id, (err, course) => {
+        if (err) throw err;
+        if(teacher && teacher.courses.length) {
+            // Delete teachers on active courses 
+            teacher.courses.forEach(course => {
+                Course.updateOne({_id: course.course_id},
+                    { $pull: { teachers: { teacher_id: id } } }, 
+                    (err, data) => {
+                        if (err) throw err;
+                        
+                        // The delete the teacher
+                        Teacher.deleteOne(myquery, function(err, obj) {
+                            if (err) {
+                                throw err;
+                            } else {
+                                req.flash('success', 'Enseignant supprimé');
+                                return res.redirect('/admin/home')
+                            }
+                        });
+                    })
+            });
+            // He dont tech any course
+        } else {
+            Teacher.deleteOne(myquery, function(err, obj) {
+                if (err) {
+                    throw err;
+                } else {
+                    req.flash('success', 'Enseignant supprimé');
+                    return res.redirect('/admin/home')
+                }
+            });
+        }
+    })
+
     Course.deleteOne(myquery, function(err, obj) {
         if (err) throw err;
         console.log("Cours supprimé");

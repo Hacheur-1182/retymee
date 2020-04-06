@@ -163,6 +163,9 @@ router.get('/course/group/:id', ensureAuthenticated2, (req, res) =>{
 					})
 				}
 			})
+		} else {
+			req.flash('warning', "Cette discussion n'est plus disponible")
+			res.redirect('/student/dashboard')
 		}
 	})
 });
