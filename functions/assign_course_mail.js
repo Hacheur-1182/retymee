@@ -5,8 +5,8 @@ module.exports = function (email, coursename, course_id, coursetimetable) {
 	+'<h2 style="color:black">Informations of the course</h2>'
     +'<h3>Name: '+coursename+'</h3>'
 	+'<h3>Download Timetable on attached files</h3>'
-    +'<br><p style=""><a href="www.onlineprepa.com" style="color:rgb(234, 58, 60);font-size:21px;background-color:white;padding:.2em 2em;text-decoration:none">Visit Your dashboard</a></p>';
-	+'<br><p style="text-align:center">Copyright OnlinePrepa 2018</p>';
+    +'<br><p style=""><a href="http://www.retymee.com/teacher/dashboard" style="font-size:18px;padding:.2em 1.5em;text-decoration:none">Visit Your dashboard</a></p>';
+	+'<br><p style="text-align:center">Copyright Retymee 2020. By Inchtechs</p>';
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         port: 587,

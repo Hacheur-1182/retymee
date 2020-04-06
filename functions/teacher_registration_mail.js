@@ -1,13 +1,13 @@
 module.exports = function (email, username, password) {
 	const nodemailer = require('nodemailer');
 	var data = '<br>'
-	+'<br><h1 style="color:black">Your are a new teacher on OnlinePrepa</h1>'
-	+'<h2 style="color:black">Informations of the Account</h2>'
-    +'<h3>Your Username is: '+username+'</h3>'
-    +'<h3>Your Password is: '+password+'</h3>'
-    +'<h4>Log In to your account to change it.</h4>'
-    +'<br><p style=""><a href="www.onlineprepa.com" style="color:rgb(234, 58, 60);font-size:30px;background-color:white;padding:.2em 2em;text-decoration:none">Visit Your dashboard</a></p>';
-	+'<br><p style="text-align:center">Copyright OnlinePrepa 2018</p>';
+	+'<br><h2 style="color:black">Your are a new teacher on Retymee</h2>'
+	+'<h3 style="color:black">Informations of your Account:</h3>'
+    +'<h4>Your Username is: '+username+'</h4>'
+    +'<h4>Your Password is: '+password+'</h4>'
+    +'<h5>You can now login in your account.</h5>'
+    +'<br><p style=""><a href="http://www.retymee.com/teacher/dashboard" style="font-size:20px;padding:.2em 1.5em;text-decoration:none">Visit Your dashboard</a></p>';
+	+'<br><p style="text-align:center">Copyright Retymee 2020. By Inchtechs</p>';
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         port: 587,
