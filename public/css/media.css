@@ -195,8 +195,14 @@
 	}
 	.courses-banner h1 {
 		font-size: 32px !important;
-		margin-top: 80px !important;
+		margin-top: 70px !important;
 		text-align: center !important;
+	}
+	.courses-banner a {
+		display: block !important;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px !important;
 	}
 	#overlay > div {
 		padding: 0 !important
