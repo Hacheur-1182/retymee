@@ -46,9 +46,11 @@
                                                 <div class="p-2">
                                                     <a href="" class="btn button-yellow invitation-btn" data-toggle="modal" data-target="#add-classroom-link" style="font-weight: 600;"  data-id=<%=course.course_id%>>Inviter les étudiants</a>
                                                 </div>
-                                                <div class="p-2">
-                                                    <a class="btn btn-dark" href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Emploi de temps</strong></a>
-                                                </div>
+                                                <% if (course.timetable){%>
+                                                    <div class="p-2">
+                                                        <a class="btn btn-dark" href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Emploi de temps</strong></a>
+                                                    </div>
+                                                <%}%>
                                                 <div class="p-2">
                                                     <a class="btn btn-outline-dark" href="/teacher/course/group/<%=course.course_id%>" style="color: rgb(28, 38, 47);" >Ouvrir le groupe de discussion <i class="fa fa-comment-o"></i></a>
                                                 </div>
