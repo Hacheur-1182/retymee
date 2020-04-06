@@ -65,7 +65,6 @@ router.post('/signup', (req, res, next) =>{
 							if(err) return console.log(err);
 							// Login the user
 							passport.authenticate('local-student')(req, res, function () {
-								req.flash('success', 'Vous êtes maintenant inscrit. Vous avez recu un email pour la confirmation de votre compte.');
 								require('../functions/registration_mail')(email, student._id);
 								res.send('1')
 							})
@@ -83,6 +82,7 @@ router.get('/:id/activateAccount', (req, res, next) =>{
 
 	Student.updateOne({_id: userId}, {$set: {accountActivated: true}}, function(err, user) {
 		if(err) return console.log(err);
+		req.flash('success', 'Votre compte a été activé avec succès');
 		res.redirect('/student/dashboard')
 	})
 });
