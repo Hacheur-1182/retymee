@@ -54,14 +54,22 @@ router.post('/notify', ensureAuthenticated2, (req, res) =>{
 	var course_id  = req.body.hidden_course_id2;
 
 	Subscriber.find({course_id: course_id}, function(err, subscribers){
-            if(err) return console.log(err)
-
+			if(err) return console.log(err)
+			
+			// Array that will content student's email
+			var  subscribersEmails = [];
+			var  courseTitle = "";
             if(subscribers) {
 				subscribers.forEach(subscriber => {
-					require('../functions/send_invitation')(subscriber.username, subscriber.course_title, subscriber.email, classroomInfos)
-					req.flash('success', 'Invitation envoyée avec succès')
-					res.redirect('/teacher/dashboard')
+					subscribersEmails.push(subscriber.email);
+					courseTitle = subscriber.course_title;
 				});
+				require('../functions/send_invitation')(courseTitle, subscribersEmails, classroomInfos)
+				req.flash('success', 'Invitation envoyée avec succès')
+				res.redirect('/teacher/dashboard')
+			} else {
+				req.flash('warning', 'Aucune personne enregistrée à ce cours.')
+				res.redirect('/teacher/dashboard')
 			}
         }
     );

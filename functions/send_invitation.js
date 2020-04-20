@@ -1,7 +1,7 @@
-module.exports = function (studentName, courseName, email, data) {
+module.exports = function (courseName, emails, data) {
 	const nodemailer = require('nodemailer');
-	var data = ''
-	+'<br><h1 style="color:black;text-align:center">Bonjour '+studentName+'!</h1>'
+	var html = ''
+	+'<br><h1 style="color:black;text-align:center">Bonjour!</h1>'
 	+'<br><h1 style="color:black;text-align:center">Informations pour participer au cours de: '+courseName+'.</h1>'
 	+'<p style="color:black;text-align:center">'+data+'</p>'
 	+'<br><p style="text-align:center">Copyright © 2020. Powered by Inchtechs</p>';
@@ -20,10 +20,10 @@ module.exports = function (studentName, courseName, email, data) {
 
     let mailOptions = {
         from: '"Retymee " <retymee.liveclass@gmail.com>', // sender address
-        to: email, // list of receivers
+        to: emails, // list of receivers
         subject: 'Invitation pour la participation au cours', // Subject line
         text: 'Vous êtes invité à participer au cours', // plain text body
-        html: data // html body
+        html: html // html body
     };
 
     // send mail with defined transport object
