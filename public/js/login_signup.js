@@ -5,6 +5,7 @@ $(document).ready(function(){
         var email = $("#email").val();
         var password = $("#password").val();
         var password2 = $("#password2").val();
+        var status = $("#status").val();
 
         $('.alert').css('display', 'none');
 
@@ -16,7 +17,8 @@ $(document).ready(function(){
                     username: username,
                     login_email: email,
                     login_password: password,
-                    password2: password2
+                    password2: password2,
+                    status: status
                 }
             ),
             beforeSend: function(){
@@ -35,28 +37,28 @@ $(document).ready(function(){
                     $('.fa-spin').css("display", "none");
                     //Message username is already use
                 }else if(response == "username_exist"){
-                    $('#form-register').append('<div class="alert alert-danger mt-2">This Username is already used</div>');
+                    $('#form-register').append('<div class="alert alert-danger mt-2">Nom d\'utilisateur déja utilisé.</div>');
                     $('.fa-spin').css("display", "none");
                     $('#signup').css("display", "block");
                     //Message email is already use
                 }else if(response == "email_exist"){
-                    $('#form-register').append('<div class="alert alert-danger mt-2">This Email is already used</div>');
+                    $('#form-register').append('<div class="alert alert-danger mt-2">Adresse email déja utilisée.</div>');
                     $('.fa-spin').css("display", "none");
                     $('#signup').css("display", "block");
                 }else if(response == "username"){
-                    $('#form-register').append('<div class="alert alert-danger mt-2">Username Field error (Min 6 caracters)</div>');
+                    $('#form-register').append('<div class="alert alert-danger mt-2">Nom d\'utilisateur requis (Min 6 caracters)</div>');
                     $('.fa-spin').css("display", "none");
                     $('#signup').css("display", "block");
                 }else if(response == "email"){
-                    $('#form-register').append('<div class="alert alert-danger mt-2">Enter a valid Email</div>');
+                    $('#form-register').append('<div class="alert alert-danger mt-2">Adresse email invalide.</div>');
                     $('.fa-spin').css("display", "none");
                     $('#signup').css("display", "block");
                 }else if(response == "password"){
-                    $('#form-register').append('<div class="alert alert-danger mt-2">Password Field error (Min 6 caracters)</div>');
+                    $('#form-register').append('<div class="alert alert-danger mt-2">Erreur de mot de passe (Min 6 caractères)</div>');
                     $('.fa-spin').css("display", "none");
                     $('#signup').css("display", "block");
                 }else if(response == "password2"){
-                    $('#form-register').append('<div class="alert alert-danger mt-2">Passwords Fields don\'t match</div>');
+                    $('#form-register').append('<div class="alert alert-danger mt-2">Les mots de passe ne correspondent pas.</div>');
                     $('.fa-spin').css("display", "none");
                     $('#signup').css("display", "block");
                 }

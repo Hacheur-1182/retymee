@@ -1,8 +1,8 @@
 module.exports = function (email, username) {
 	const nodemailer = require('nodemailer');
-	var data = '<br><center><a style="color:#004368;border: 1px solid #004368;font-size:17px;background-color:white;padding:.3em 1em;text-decoration:none" href="http://www.retymee.com/student/'+username+'/activateAccount">Activate your Account</a></center>'
-	+'<br><h3 style="color:black;text-align:center">Merci de vous être inscrit</h3>'
-	+'<h5 style="color:black;text-align:center">Vous devez activer votre compte pour pouvoir accéder à votre profile.</h5>'
+	var data = '<br><center><a style="color:#004368;border: 1px solid #004368;font-size:16px;background-color:white;padding:.3rem 1rem;text-decoration:none" href="http://www.retymee.com/student/'+username+'/activateAccount">Activer mon compte</a></center>'
+	+'<br><h4 style="color:black;text-align:center">Merci de vous être inscrit</h4>'
+	+'<h5 style="color:black;text-align:center">Vous devez activer votre compte pour pouvoir accéder à votre profil.</h5>'
 	+'<p><center>Cliquez sur le bouton activer ci-dessus.<center></p>'
 	+'<br><p style="text-align:center">Copyright © 2020. Powered by Inchtechs</p>';
     let transporter = nodemailer.createTransport({
@@ -10,8 +10,8 @@ module.exports = function (email, username) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: "onlineprepalearning@gmail.com",
-            pass: "onlineprepa123"
+            user: "retymee.liveclass@gmail.com",
+            pass: "retymee@123"
         },
         tls:{
         	rejectUnauthorised:false
@@ -19,7 +19,7 @@ module.exports = function (email, username) {
     });
 
     let mailOptions = {
-        from: '"Retymee " <retymee@gmail.com>', // sender address
+        from: '"Retymee " <retymee.liveclass@gmail.com>', // sender address
         to: email, // list of receivers
         subject: 'Retymee Registration ✔', // Subject line
         text: 'Thank you For Your registration', // plain text body

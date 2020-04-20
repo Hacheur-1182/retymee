@@ -10,8 +10,8 @@ module.exports = function (studentName, courseName, email, data) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: "onlineprepalearning@gmail.com",
-            pass: "onlineprepa123"
+            user: "retymee.liveclass@gmail.com",
+            pass: "retymee@123"
         },
         tls:{
         	rejectUnauthorised:false
@@ -19,7 +19,7 @@ module.exports = function (studentName, courseName, email, data) {
     });
 
     let mailOptions = {
-        from: '"Retymee " <retymee@gmail.com>', // sender address
+        from: '"Retymee " <retymee.liveclass@gmail.com>', // sender address
         to: email, // list of receivers
         subject: 'Invitation pour la participation au cours', // Subject line
         text: 'Vous êtes invité à participer au cours', // plain text body

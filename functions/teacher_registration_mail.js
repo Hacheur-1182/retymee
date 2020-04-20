@@ -13,8 +13,8 @@ module.exports = function (email, username, password) {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-            user: "onlineprepalearning@gmail.com",
-            pass: "onlineprepa123"
+            user: "retymee.liveclass@gmail.com",
+            pass: "retymee@123"
         },
         tls:{
         	rejectUnauthorised:false
@@ -22,7 +22,7 @@ module.exports = function (email, username, password) {
     });
 
     let mailOptions = {
-        from: '"Retymee " <onlineprepalearning@gmail.com>', // sender address
+        from: '"Retymee " <retymee.liveclass@gmail.com>', // sender address
         to: email, // list of receivers
         subject: 'Retymee Teacher Account ✔', // Subject line
         text: 'Your are a new teacher on Retymee', // plain text body

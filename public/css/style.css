@@ -193,7 +193,7 @@ header {
     color: white; }
     #ongoing-courses-concours #all-prepa-courses:hover, #ongoing-courses-concours #all-exam-courses:hover, #ongoing-courses-exam #all-prepa-courses:hover, #ongoing-courses-exam #all-exam-courses:hover {
       background-color: #004368; }
-
+      #ongoing-courses-concours a {text-decoration: none !important;}
 #count {
   background: url("../img/count5.jpg") no-repeat;
   background-attachment: fixed;

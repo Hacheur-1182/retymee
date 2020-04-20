@@ -21,6 +21,7 @@ router.post('/signup', (req, res, next) =>{
 	var username = req.body.username;
 	var email = req.body.login_email;
 	var password = req.body.login_password;
+	var status = req.body.status
 	var password2 = req.body.password2;
 
 	req.checkBody('username', 'Username Field is required').notEmpty();
@@ -57,6 +58,7 @@ router.post('/signup', (req, res, next) =>{
 							lastname: "",
 							username: username,
 							email : email,
+							status: status,
 							isStudent : true,
 							password: password,
 							image: "avatar.png"
@@ -225,9 +227,6 @@ router.post('/group/send', ensureAuthenticated, (req, res) =>{
 	var groupid = req.body.group_id;
 	var content = req.body.content;
 	var file = req.body.file;
-	console.log(groupid)
-	console.log(content)
-	console.log(file)
 
 	var query = {_id:  groupid};
     DiscussGroup.findOneAndUpdate(
@@ -237,7 +236,6 @@ router.post('/group/send', ensureAuthenticated, (req, res) =>{
         function(err, message){
         	if(err) return console.log(err)
 
-        	console.log(message)
         	res.send('1')
         }
     );
