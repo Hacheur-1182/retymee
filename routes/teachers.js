@@ -103,6 +103,7 @@ router.post('/add-support', ensureAuthenticated2, (req, res) =>{
 		})
 	}else{
 		var query = {_id:  course_id};
+		console.log(req.body)
         Course.findOneAndUpdate(
             query,
             {$push: {"supports": {name: support, desc : desc, file: supportFile}}},
@@ -122,9 +123,10 @@ router.post('/add-support', ensureAuthenticated2, (req, res) =>{
 	                    return console.log(err);
 	                })
 	            }
-	            req.flash('success', 'Support Added')
+	            req.flash('success', 'Support ajouté avec succès')
 	            res.redirect('/teacher/dashboard')
-            }
+			},
+			{useFindAndModify: false}
         );
 	}
 

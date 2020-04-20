@@ -1,6 +1,6 @@
 module.exports = function (email, username) {
 	const nodemailer = require('nodemailer');
-	var data = '<br><center><a style="color:#004368;border: 1px solid #004368;font-size:21px;background-color:white;padding:.5em 3em;text-decoration:none" href="http://www.retymee.com/student/'+username+'/activateAccount">Activate your Account</a></center>'
+	var data = '<br><center><a style="color:#004368;border: 1px solid #004368;font-size:17px;background-color:white;padding:.3em 1em;text-decoration:none" href="http://www.retymee.com/student/'+username+'/activateAccount">Activate your Account</a></center>'
 	+'<br><h3 style="color:black;text-align:center">Merci de vous être inscrit</h3>'
 	+'<h5 style="color:black;text-align:center">Vous devez activer votre compte pour pouvoir accéder à votre profile.</h5>'
 	+'<p><center>Cliquez sur le bouton activer ci-dessus.<center></p>'
