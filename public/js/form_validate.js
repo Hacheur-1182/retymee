@@ -30,6 +30,22 @@ $(document).ready(function(){
         errorsWrapper: false
     });
 
+    //Validation du formulaire de modification du mot de passe
+    $("#form-password-update").parsley({
+        errorsContainer: function (ParsleyField) {
+        return ParsleyField.$element.attr("title");
+        },
+            errorsWrapper: false
+    });
+
+    //Validation du formulaire de modification des infos du profil
+    $("#update-infos-form").parsley({
+        errorsContainer: function (ParsleyField) {
+        return ParsleyField.$element.attr("title");
+        },
+            errorsWrapper: false
+    });
+
     //has uppercase
     window.Parsley.addValidator('uppercase', {
     requirementType: 'number',
@@ -38,7 +54,7 @@ $(document).ready(function(){
         return uppercases.length >= requirement;
     },
     messages: {
-        en: 'Une lettre majuscule recquise.'
+        en: 'Une lettre majuscule requise.'
     }
     });
 
@@ -50,7 +66,7 @@ $(document).ready(function(){
         return lowecases.length >= requirement;
     },
     messages: {
-        en: 'Une lettre minuscule recquise.'
+        en: 'Une lettre minuscule requise.'
     }
     });
 
@@ -74,7 +90,7 @@ $(document).ready(function(){
         return specials.length >= requirement;
     },
     messages: {
-        en: 'Un caractère spécial est recquis'
+        en: 'Un caractère spécial est requis'
     }
     });
 

@@ -1,5 +1,6 @@
 const express = require('express');
 var  router = express.Router();
+var bcrypt = require('bcryptjs')
 
 //Get Course Model
 var Course = require('../models/course');
@@ -122,9 +123,10 @@ router.post('/user/edit-account', ensureAuthenticated, (req, res) =>{
 
 	if(req.user.isStudent) {
 		// It is a student
-		Student.findOne({email: req.user.email}, (err, user) => {
+		Student.findOne({email: email}, (err, user) => {
 			if(err) throw err;
 			var toUpdate;
+			console.log(user)
 			if(user) {
 				// Dont update email address
 				toUpdate = {
@@ -157,14 +159,15 @@ router.post('/user/edit-account', ensureAuthenticated, (req, res) =>{
 				(err, user) => {
 					if(err) throw err
 					req.flash('success', 'Vos informations ont été mise à jour avec succès');
-					res.redirect('/student/dashboard')
+					res.redirect('/student/dashboard/edit-account')
 			})
 		})
 	} else {
 		// It is a teacher
-		Teacher.findOne({email: req.user.email}, (err, user) => {
+		Teacher.findOne({email: email}, (err, user) => {
 			if(err) throw err;
 			var toUpdate;
+			
 			if(user) {
 				// Dont update email address
 				toUpdate = {
@@ -197,10 +200,70 @@ router.post('/user/edit-account', ensureAuthenticated, (req, res) =>{
 				(err, user) => {
 					if(err) throw err
 					req.flash('success', 'Vos informations ont été mise à jour avec succès');
-					res.redirect('/teacher/dashboard')
+					res.redirect('/teacher/dashboard/edit-account')
 			})
 		})
 	}
+});
+
+// Modifier son mot de passe
+router.post('/user/password/update', ensureAuthenticated, (req, res) =>{
+	const currentpassword = req.body.currentpassword;
+	const newpassword = req.body.newpassword;
+
+	req.checkBody('currentpassword', 'Champs requis').notEmpty() ;
+	req.checkBody('newpassword', 'Mot de passe requis').isLength({ min: 6 }) ;
+	req.checkBody('confirmation', 'Passwords do not match').equals(newpassword) ;
+
+	var errors = req.validationErrors();
+
+	if(errors){
+		res.send(errors[0].param);
+	} else {
+		// It is a student
+		bcrypt.compare(currentpassword, req.user.password, function (err, isMatch) {
+			if (err)
+				console.log(err);
+
+			// L'ancien mot de passe est bien vérifiée
+			if (isMatch) {
+				
+					bcrypt.hash(newpassword, 10, function(err, hash){
+						if (err) throw err;
+
+						if(req.user.isStudent) {
+							Student.updateOne({_id: req.user._id},
+								{$set: {password: hash}},
+								(err, user) => {
+									if(err) throw err
+									req.flash('success', 'Mot de passe mise à jour avec succès');
+									res.redirect('/student/dashboard/edit-account')
+							})
+						} else {
+							// It is a teacher
+							Teacher.updateOne({_id: req.user._id},
+								{$set: {password: hash}},
+								(err, user) => {
+									if(err) throw err
+									req.flash('success', 'Mot de passe mise à jour avec succès');
+									res.redirect('/teacher/dashboard/edit-account')
+							})
+						}
+					})
+			} else {
+				if(req.user.isStudent) {
+					req.flash('warning', 'L\'ancien mot de passe n\'est pas valide.');
+					res.redirect('/student/dashboard/edit-account')
+				} else {
+					req.flash('warning', 'L\'ancien mot de passe n\'est pas valide.');
+					res.redirect('/teacher/dashboard/edit-account')
+				}
+			}
+		});
+
+
+	}
+
 });
 
 //accesss control

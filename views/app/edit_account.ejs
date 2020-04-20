@@ -18,10 +18,20 @@
    <section id="edit-account">
         <div class="container-fluid">
             <div class="row my-3">
+                <div class="col-sm-12">
+                    <%- messages('messages', locals) %>
+                    <% if (errors){%>
+                    <% errors.forEach(function(error){ %>
+                        <div class="alert alert-danger">
+                        <%=error.msg%>
+                        </div>
+                    <%});%>
+                    <%}%>
+                </div>
                 <div class="col-md-8">
                     <h2 class="pt-3">Configuration du compte</h2>
                     <h6 class="pb-3">Modifiez vos informations</h6>
-                    <form action="/user/edit-account" method="post" enctype="multipart/form-data">
+                    <form action="/user/edit-account" method="POST" id="update-infos-form" data-parsley-validate>
                         <div class="row">
                             <div class="col-md-6">
                                 <label for="input1">Prénom</label>
@@ -33,7 +43,7 @@
                             </div>
                             <div class="col-md-6">
                                 <label for="input3">Nom d'utilisateur</label>
-                                <input type="text" name="username" value="<%=user.username%>" required id="input3" class="form-control" placeholder="Nom d'utilisateur">
+                                <input type="text" name="username" value="<%=user.username%>" required id="input3" class="form-control" data-parsley-minlength="6" placeholder="Nom d'utilisateur">
                             </div>
                             <div class="col-md-6">
                                 <label for="input4">Email</label>
@@ -78,12 +88,6 @@
                                     <option value="Professionel">Professionel</option>
                                 </select>
                             </div>
-                            <!-- <div class="col-md-6 my-1">
-                                <div class="custom-file">
-                                    <label class="custom-file-label" for="customFile">Choisissez une image</label>
-                                    <input type="file" name="image" class="custom-file-input" id="customFile">
-                                </div>
-                            </div> -->
                             <div class="col-md-12 my-4 form-group">
                                 <label for="exampleFormControlTextarea1">À propos de vous</label>
                                 <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">Exemple : Mon école, mon niveau</textarea>
@@ -98,7 +102,7 @@
                 <div class="col-md-4">
                     <h2 class="pt-3">Changer de mot de passe</h2>
                     <h6 class="pb-3">Gardez votre mot de passe secret</h6>
-                    <form action="" class="mb-4" data-parsley-validate>
+                    <form action="/user/password/update" method="POST" id="form-password-update" class="mb-4" data-parsley-validate>
                         <div class="row">
                             <div class="col-md-12 mt-2">
                                 <label for="inputp">Mot de passe actuel</label>
@@ -106,15 +110,20 @@
                             </div>
                             <div class="col-md-12 mt-2">
                                 <label for="inputp2">Nouveau mot de passe</label>
-                                <input type="password" id="inputp2" name="newpassword" required class="form-control" placeholder="Nouveau mot de passe" data-parsley-minlength="8">
+                                <input type="password" id="inputp2" name="newpassword" required class="form-control" placeholder="Nouveau mot de passe" 
+                                data-parsley-uppercase="1"
+                                data-parsley-lowercase="1"
+                                data-parsley-number="1"
+                                data-parsley-special="1"
+                                data-parsley-minlength="6">
                             </div>
                             <div class="col-md-12 mt-2">
                                 <label for="inputp3">Confirmation</label>
-                                <input type="password" id="inputp3" name="confirmation" required class="form-control" placeholder="Confirmation" data-parsley-equalto="#input2">
+                                <input type="password" id="inputp3" name="confirmation" required class="form-control" placeholder="Confirmation" data-parsley-equalto="#inputp2">
                             </div>
                             <div class="col-md-12">
-                                <input type="reset" class="btn my-3" value="Annuler">
-                                <input type="submit" class="btn button-yellow my-3" value="Enregistrer">
+                                <input type="submit" class="btn button-yellow my-3 ml-3 float-right" value="Enregistrer">
+                                <input type="reset" class="btn my-3 float-right" value="Annuler">
                             </div>
                         </div>
                     </form>
