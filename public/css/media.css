@@ -241,4 +241,13 @@
 	#edit-account h6{
 		font-size: 15px !important;
 	}
+
+	/* footer */
+	footer .container img {
+		width: 35px;
+		height: 35px;
+	}
+	#main-footer .p-2 {
+		margin-right: 7px !important;
+	}
 }

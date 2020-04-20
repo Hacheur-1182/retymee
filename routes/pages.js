@@ -100,6 +100,73 @@ router.get('/repetition', (req, res) =>{
 	})
 });
 
+// Afficher la vue de modification du mot de passe (adresse email)
+router.get('/user/reset-password', (req, res) =>{
+	res.render('./app/reset_password', {
+		title : "Reset password",
+		menu_id_home : "home",
+		menu_id_prep : "prep",
+		menu_id_exam : "exam",
+		menu_id_rep : "active"
+	})
+});
+
+// Envoyer le mail pour la récupération du mot de passe
+router.post('/user/reset-password', (req, res) =>{
+	const email = req.body.email;
+	const isTeatcher = req.body.isTeatcher;
+
+	if(isTeatcher) {
+		// Find if this email exist
+		Teacher.findOne({email: email}, (err, teacher) => {
+			if(err) throw err
+	
+			if(teacher) {
+				const newpassword = Math.trunc(Math.random() * 100000000).toString();
+				bcrypt.hash(newpassword, 10, function(err, hash){
+					if (err) throw err;
+	
+					Teacher.updateOne({email: email},
+						{$set: {password: hash}},
+						(err, user) => {
+							if(err) throw err
+							require('../functions/reset_password')(email, newpassword)
+							req.flash('success', 'Mot de passe mise à jour avec succès');
+							res.redirect('/')
+					})
+				})
+			} else {
+				req.flash('warning', 'Cette adresse email n\'est associé à aucun compte.');
+				res.redirect('/user/reset-password')
+			}
+		})
+	} else {
+		// Find if this email exist
+		Student.findOne({email: email}, (err, student) => {
+			if(err) throw err
+	
+			if(student) {
+				const newpassword = Math.trunc(Math.random() * 100000000).toString();
+				bcrypt.hash(newpassword, 10, function(err, hash){
+					if (err) throw err;
+	
+					Student.updateOne({email: email},
+						{$set: {password: hash}},
+						(err, user) => {
+							if(err) throw err
+							require('../functions/reset_password')(email, newpassword)
+							req.flash('success', 'Mot de passe mise à jour avec succès');
+							res.redirect('/')
+					})
+				})
+			} else {
+				req.flash('warning', 'Cette adresse email n\'est associé à aucun compte.');
+				res.redirect('/user/reset-password')
+			}
+		})
+	}
+});
+
 
 // Accéder à la classe virtuelle
 router.get('/classroom', (req, res) =>{

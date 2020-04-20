@@ -36,6 +36,14 @@ $(document).ready(function(){
         return ParsleyField.$element.attr("title");
         },
             errorsWrapper: false
+    });    
+    
+    //Validation du champs email pour la recuperation du mot de passe
+    $("#update-pass-form-email").parsley({
+        errorsContainer: function (ParsleyField) {
+        return ParsleyField.$element.attr("title");
+        },
+            errorsWrapper: false
     });
 
     //Validation du formulaire de modification des infos du profil

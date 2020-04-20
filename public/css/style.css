@@ -472,3 +472,20 @@ header {
 .partenaires{
   background-color: #ffc03c;
 }
+
+.update-password {
+  background-color: #004368;
+}
+.update-password .row{
+  height: 7rem;
+}
+.update-password h4{
+  color: white;
+  text-align: center;
+}
+
+#reset-password form {
+  padding: 3rem 1.5rem;
+  box-shadow: 0px 5px 10px 5px #eee;
+  margin-top: 4rem;
+}
