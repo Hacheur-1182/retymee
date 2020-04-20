@@ -5,6 +5,8 @@ var router = express.Router();
 //Get Course Model
 var Student = require('../models/student');
 
+var Subscriber = require('../models/subscriber');
+
 
 //Get students
 router.get('/', ensureAuthenticated, (req, res) =>{
@@ -23,12 +25,17 @@ router.get('/delete/:id', ensureAuthenticated, (req, res) =>{
     var id = req.params.id;
 
     var myquery = { _id: id };
-    Student.deleteOne(myquery, function(err, obj) {
+    Subscriber.deleteMany({id_user: id}, (err, user) => {
         if (err) throw err;
-        console.log("One Student deleted");
-    });
-    req.flash('success', 'Student Deleted');
-    res.redirect('/admin/home')
+        
+        Student.deleteOne(myquery, function(err, obj) {
+            if (err) throw err;
+
+            console.log("One Student deleted");
+            req.flash('success', 'Student Deleted');
+            res.redirect('/admin/home')
+        });
+    })
 })
 
 //Get  teachers details
