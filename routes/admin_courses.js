@@ -210,7 +210,7 @@ router.get('/delete/:id', ensureAuthenticated, (req, res) =>{
     var myquery = { _id: courseId };
 
     // Delete course on user subscription
-    Subscriber.deleteOne({course_id: courseId}, function(err, obj) {
+    Subscriber.deleteMany({course_id: courseId}, function(err, obj) {
         if (err) throw err;
 
         // Delete course from the teacher
