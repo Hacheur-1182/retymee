@@ -45,37 +45,38 @@
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="sex" id="exampleRadios1" value="Male" checked>
                                     <label class="form-check-label" for="exampleRadios1">
-                                        Male
+                                        Masculin
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Female">
                                     <label class="form-check-label" for="exampleRadios2">
-                                        Female
+                                        Féminin
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6 my-1">
                                 <label for="inputState1">Status</label>
-                                <select id="inputState1" class="form-control">
+                                <select id="inputState1" name="status" class="form-control">
                                     <option selected>Sélectionnez...</option>
-                                    <option value="Student">Etudiant</option>
-                                    <option value="Other">Autre</option>
+                                    <option value="Etudiant">Etudiant</option>
+                                    <option value="Elève">Elève</option>
+                                    <option value="Professionel">Professionel</option>
                                 </select>
                             </div>
-                            <div class="col-md-6 my-1">
+                            <!-- <div class="col-md-6 my-1">
                                 <div class="custom-file">
                                     <label class="custom-file-label" for="customFile">Choisissez une image</label>
                                     <input type="file" name="image" class="custom-file-input" id="customFile">
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-12 my-4 form-group">
                                 <label for="exampleFormControlTextarea1">À propos de vous</label>
                                 <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3">Exemple : Mon école, mon niveau</textarea>
                             </div>
                             <div class="col-md-12 py-1">
-                                <input type="submit" style="min-width: 10em;" class="btn btn-danger  float-right ml-3" value="Save">
-                                <input type="submit" style="min-width: 10em;" class="btn  float-right" value="Cancel">
+                                <input type="submit" class="btn btn-danger  float-right ml-3" value="Enregistrer">
+                                <input type="reset" class="btn  float-right" value="Annuler">
                             </div>
                         </div>
                     </form>
@@ -86,20 +87,20 @@
                     <form action="" class="mb-4" data-parsley-validate>
                         <div class="row">
                             <div class="col-md-12">
-                                <label for="inputp">Mot de passe courant</label>
-                                <input type="password" id="inputp" required class="form-control" placeholder="Current Password">
+                                <label for="inputp">Mot de passe actuel</label>
+                                <input type="password" id="inputp" required class="form-control" placeholder="Mot de passe actuel">
                             </div>
                             <div class="col-md-12">
                                 <label for="inputp2">Nouveau mot de passe</label>
-                                <input type="password" id="inputp2" required class="form-control" placeholder="New Password" data-parsley-minlength="8">
+                                <input type="password" id="inputp2" required class="form-control" placeholder="Nouveau mot de passe" data-parsley-minlength="8">
                             </div>
                             <div class="col-md-12">
-                                <label for="inputp3">Vérification</label>
-                                <input type="password" id="inputp3" required class="form-control" placeholder="Verification" data-parsley-equalto="#input2">
+                                <label for="inputp3">Confirmation</label>
+                                <input type="password" id="inputp3" required class="form-control" placeholder="Confirmation" data-parsley-equalto="#input2">
                             </div>
                             <div class="col-md-12">
                                 <input type="reset" class="btn my-3" value="Annuler">
-                                <input type="submit" class="btn btn-danger my-3" value="Sauvegarder">
+                                <input type="submit" class="btn btn-danger my-3" value="Enregistrer">
                             </div>
                         </div>
                     </form>

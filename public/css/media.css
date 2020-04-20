@@ -101,9 +101,10 @@
 	}
 	#side-bar .menus{
 		flex-direction: row !important;
+		justify-content: space-around;
 	}
 	#side-bar .menus .col-sm-4{
-		width: 33% !important;
+		width: 24% !important;
 		align-items: center;
 		margin-top: 10px !important;
 
@@ -226,5 +227,18 @@
 	}
 	#course-details .right-content {
 		padding: 1.2rem !important;
+	}
+
+	/* Account edition view*/
+	#edit-account {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	#edit-account h2{
+		font-size: 18px !important;
+		font-weight: bold;
+	}
+	#edit-account h6{
+		font-size: 15px !important;
 	}
 }

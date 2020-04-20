@@ -61,6 +61,7 @@ body {
     background-color: white;
     padding: 1.5em;
     box-shadow: 3px 3px 10px 8px #eeeeee; }
+    #edit-account h2 {font-size: 23px ; font-weight: bold;}
 
 #head-discuss {
   background-color: #d0313b;
