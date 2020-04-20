@@ -30,7 +30,7 @@ body {
   background-attachment: fixed;
   background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(208, 49, 59, 0.5)), url("../img/pexels-photo.jpg"); }
   #header h1 {
-    font-size: 60px;
+    font-size: 45px;
     font-weight: bold; }
   #header img {
     border-radius: 100%;
@@ -48,6 +48,7 @@ body {
     width: 8em;
     height: 8em; }
   #my-courses h1 {
+    font-size: 35px;
     font-weight: bold;
     color: #333333; }
 

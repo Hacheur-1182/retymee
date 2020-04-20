@@ -107,6 +107,112 @@ router.get('/classroom', (req, res) =>{
 	})
 });
 
+// Modifier les informations de profil: Etudiant et enseignant
+router.post('/user/edit-account', ensureAuthenticated, (req, res) =>{
+	const firstname = req.body.firstname;
+	const lastname = req.body.lastname;
+	const username = req.body.username;
+	const email = req.body.email;
+	const tel = req.body.tel;
+	const address = req.body.address;
+	const ville = req.body.ville;
+	const sex = req.body.sex;
+	const status = req.body.status;
+	const description = req.body.description;
+
+	if(req.user.isStudent) {
+		// It is a student
+		Student.findOne({email: req.user.email}, (err, user) => {
+			if(err) throw err;
+			var toUpdate;
+			if(user) {
+				// Dont update email address
+				toUpdate = {
+					lastname: lastname,
+					firstname: firstname,
+					username: username,
+					tel: tel,
+					address: address,
+					ville: ville,
+					sex: sex,
+					status: status,
+					description: description}
+			} else {
+				// Update email address
+				toUpdate = {
+					lastname: lastname,
+					firstname: firstname,
+					username: username,
+					email: email,
+					tel: tel,
+					address: address,
+					ville: ville,
+					sex: sex,
+					status: status,
+					description: description}
+			}
+			
+			Student.updateOne({_id: req.user._id},
+				{$set: toUpdate},
+				(err, user) => {
+					if(err) throw err
+					req.flash('success', 'Vos informations ont été mise à jour avec succès');
+					res.redirect('/student/dashboard')
+			})
+		})
+	} else {
+		// It is a teacher
+		Teacher.findOne({email: req.user.email}, (err, user) => {
+			if(err) throw err;
+			var toUpdate;
+			if(user) {
+				// Dont update email address
+				toUpdate = {
+					lastname: lastname,
+					firstname: firstname,
+					username: username,
+					tel: tel,
+					address: address,
+					ville: ville,
+					sex: sex,
+					status: status,
+					description: description}
+			} else {
+				// Update email address
+				toUpdate = {
+					lastname: lastname,
+					firstname: firstname,
+					username: username,
+					email: email,
+					tel: tel,
+					address: address,
+					ville: ville,
+					sex: sex,
+					status: status,
+					description: description}
+			}
+			
+			Teacher.updateOne({_id: req.user._id},
+				{$set: toUpdate},
+				(err, user) => {
+					if(err) throw err
+					req.flash('success', 'Vos informations ont été mise à jour avec succès');
+					res.redirect('/teacher/dashboard')
+			})
+		})
+	}
+});
+
+//accesss control
+function ensureAuthenticated(req, res, next){
+    if(req.isAuthenticated()){
+        return next()
+    }else{
+        req.flash('danger', 'Please login')
+        res.redirect('/')
+    }
+}
+
 
 // Exports
 module.exports = router;

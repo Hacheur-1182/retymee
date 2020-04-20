@@ -39,14 +39,19 @@ router.post('/login', function(req, res, next){
 
 //Ouvrir la page de profil
 router.get('/dashboard', ensureAuthenticated2, (req, res) =>{
-
 	res.render('./app/teachers_dashboard', {
-
 		title : "Teacher Dashboard",
 		classromm_id: req.classromm_id
 	})
 
 });
+
+//Modifier son profil
+router.get('/dashboard/edit-account', ensureAuthenticated2, (req, res) =>{
+	res.render('./app/edit_account', {
+		title : "Edit my Account"
+	})
+}); 
 
 // Envoyer les notifications aux étudiants pour un cours
 router.post('/notify', ensureAuthenticated2, (req, res) =>{

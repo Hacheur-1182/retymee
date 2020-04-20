@@ -53,7 +53,7 @@ var studentSchema = mongoose.Schema({
     image:{
         type: String
     },
-    about:{
+    description:{
         type: String
     },
     accountActivated:{
