@@ -141,7 +141,7 @@ router.get('/delete/:id', ensureAuthenticated, (req, res) =>{
                         });
                     })
             });
-            // He dont tech any course
+            // He dont teach any course
         } else {
             Teacher.deleteOne(myquery, function(err, obj) {
                 if (err) {

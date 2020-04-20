@@ -9,8 +9,6 @@ var config = require('./config/database')
 var fileUpload = require('express-fileupload')
 var cookieParser = require('cookie-parser')
 var passport = require('passport');
-var async = require('async')
-var nodemailer = require('nodemailer')
 var http = require('http');
 
 //Init App

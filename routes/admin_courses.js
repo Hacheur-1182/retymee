@@ -1,9 +1,6 @@
 const express = require('express');
 var router = express.Router();
 var mkdirp = require('mkdirp')
-var fs = require('fs-extra')
-var mongoose = require('mongoose');
-
 //Get Course Model
 var Course = require('../models/course');
 
@@ -15,6 +12,9 @@ var Teacher = require('../models/teacher');
 
 //Get TeacherDemand Model
 var TeacherDemand = require('../models/teachers_demand');
+
+//Get Subcriber Model
+var Subscriber = require('../models/subscriber');
 
 
 //Get courses
@@ -205,50 +205,27 @@ router.get('/detail/:id', ensureAuthenticated, (req, res) =>{
 
 //Delete  course 
 router.get('/delete/:id', ensureAuthenticated, (req, res) =>{
-    var id = req.params.id;
+    var courseId = req.params.id;
 
-    var myquery = { _id: id };
+    var myquery = { _id: courseId };
 
-    // Get all courses Id that teacher teachs, and in that students are registered
-    Course.findById(id, (err, course) => {
+    // Delete course on user subscription
+    Subscriber.deleteOne({course_id: courseId}, function(err, obj) {
         if (err) throw err;
-        if(teacher && teacher.courses.length) {
-            // Delete teachers on active courses 
-            teacher.courses.forEach(course => {
-                Course.updateOne({_id: course.course_id},
-                    { $pull: { teachers: { teacher_id: id } } }, 
-                    (err, data) => {
-                        if (err) throw err;
-                        
-                        // The delete the teacher
-                        Teacher.deleteOne(myquery, function(err, obj) {
-                            if (err) {
-                                throw err;
-                            } else {
-                                req.flash('success', 'Enseignant supprimé');
-                                return res.redirect('/admin/home')
-                            }
-                        });
-                    })
-            });
-            // He dont tech any course
-        } else {
-            Teacher.deleteOne(myquery, function(err, obj) {
-                if (err) {
-                    throw err;
-                } else {
-                    req.flash('success', 'Enseignant supprimé');
-                    return res.redirect('/admin/home')
-                }
-            });
-        }
-    })
 
-    Course.deleteOne(myquery, function(err, obj) {
-        if (err) throw err;
-        console.log("Cours supprimé");
-        req.flash('success', 'Cours supprimé avec succès');
-        res.redirect('/admin/home')
+        // Delete course from the teacher
+        Teacher.updateMany({ courses: { $elemMatch: { course_id: courseId } } }, 
+            { $pull: { courses: { course_id: courseId } } },
+            (err, teachers) => {
+            if (err) throw err;
+             
+            // Delete course on the model
+            Course.deleteOne(myquery, function(err, obj) {
+                if (err) throw err;
+                req.flash('success', 'Cours supprimé avec succès');
+                res.redirect('/admin/home')
+            });
+        })
     });
 })
 

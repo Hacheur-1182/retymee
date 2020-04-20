@@ -1,8 +1,9 @@
 module.exports = function (courseName, emails, data) {
 	const nodemailer = require('nodemailer');
 	var html = ''
-	+'<br><h1 style="color:black;text-align:center">Salut!</h1>'
-	+'<br><h1 style="color:black;text-align:center">Informations pour participer au cours de:<br> '+courseName+'.</h1>'
+	+'<br><h3 style="color:black;text-align:center">Salut!</h3>'
+	+'<br><h4 style="color:black;text-align:center">Informations pour participer au cours de:</h4>'
+	+'<br><h1 style="color:black;text-align:center">'+courseName+'.</h1>'
 	+'<p style="color:black;text-align:center">'+data+'</p>'
 	+'<br><p style="text-align:center">Copyright © 2020. Powered by Inchtechs</p>';
     let transporter = nodemailer.createTransport({
