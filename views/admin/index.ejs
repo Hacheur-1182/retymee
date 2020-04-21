@@ -10,8 +10,17 @@
     </div>
   </header>
 
-<%- include('../_layout/admin_errors') %>
-<%- messages('messages', locals) %>
+  <section>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <%- include('../_layout/admin_errors') %>
+            <%- messages('messages', locals) %>
+        </div>
+      </div>
+    </div>
+  </section>
+
 
     <!-- ACTIONS -->
   <section id="actions" class="py-4 mb-4">
@@ -80,15 +89,15 @@
           </div>
         </div>
 
-        <!-- <div class="col-md-6 col-lg-4 col-sm-6 my-2">
+        <div class="col-md-6 col-lg-4 col-sm-6 my-2">
           <div class="card text-center">
             <div class="card-body">
-              <h5 class="card-title">Register a payment</h5>
-              <p class="card-text">Manage Payments , Register a new payment here.</p>
-              <a href="/admin/payment/register-payment" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Save Paiement</a>
+              <h5 class="card-title">Enregistrer un paiment</h5>
+              <p class="card-text">Gerer les paiements effectués ici.</p>
+              <a href="/admin/payment/register-payment" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Nouveau Paiement</a>
             </div>
           </div>
-        </div> -->
+        </div>
 
         <!-- <div class="col-md-6  col-lg-4 col-sm-6 my-2">
           <div class="card text-center">
@@ -104,24 +113,23 @@
 
 
   <!-- TEACHERS DEMAND -->
-  <!-- <section id="posts">
+  <section id="posts">
     <div class="container mt-5">
       <div class="row justify-content-center">
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h4>TEACHERS DEMAND</h4>
+              <h5>DEMANDE DES ENSEIGNANTS POUR DISPENSER SUR RETYMEE</h5>
             </div>
             <table class="table table-striped">
               <thead class="thead-inverse">
                 <tr>
-                  <th>Full Name</th>
+                  <th>Nom</th>
                   <th>Email</th>
                   <th>Tel</th>
-                  <th>Address</th>
-                  <th>Status</th>
-                  <th>About</th>
-                  <th>More</th>
+                  <th>Adresse</th>
+                  <th>Matière</th>
+                  <th>Plus</th>
                 </tr>
               </thead>
               <tbody>
@@ -132,7 +140,6 @@
                     <td><%=teacher.tel%></td>
                     <td><%=teacher.address%></td>
                     <td><%=teacher.matiere%></td>
-                    <td><%=teacher.about%></td>
                     <td><a href="/admin/teachers/demand/<%=teacher._id%>" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Details</a></td>
                   </tr>
                 <%})%>
@@ -145,7 +152,7 @@
         </div>
       </div>
     </div>
-  </section> -->
+  </section>
 
 
   <!-- ADD COURSE MODAL -->

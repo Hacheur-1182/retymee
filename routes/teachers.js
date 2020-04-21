@@ -249,6 +249,7 @@ router.post('/contact',(req, res) =>{
     var errors = req.validationErrors();
 
     if (errors) {
+		req.flash('danger', 'Une érreur s\'est produite.');
         res.render("app/contact", {
         	title : "Contact Us for Teaching",
 	    	menu_id_home : "home",
@@ -267,14 +268,15 @@ router.post('/contact',(req, res) =>{
 			image: image,
 			sex: sex,
 			matiere: matiere,
-			about: about
+			about: about,
+			user: null
         });
     }else{
         TeacherDemand.findOne({
             email: email
         }, function(err, teacher) {
             if (teacher) {
-                req.flash('danger', 'Teachers already exists.');
+                req.flash('danger', 'Cet enseignant existe déja.');
                 res.render("app/contact", {
                 	title : "Contact Us for Teaching",
 			    	menu_id_home : "home",
@@ -293,7 +295,8 @@ router.post('/contact',(req, res) =>{
 					image: image,
 					sex: sex,
 					matiere: matiere,
-					about: about
+					about: about,
+					user: null
                 });
                 
             } else {
@@ -327,8 +330,8 @@ router.post('/contact',(req, res) =>{
                         })
                     }
 
-                    req.flash('success', 'your request has been taken into consideration')
-                    res.redirect('/teacher/contact');
+                    req.flash('success', 'Votre requête a été prise en considération')
+                    res.redirect('/');
                 })
             }
         });

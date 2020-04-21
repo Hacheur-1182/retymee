@@ -19,12 +19,12 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-6">
-          <div class="input-group">
+          <!-- <div class="input-group">
             <input type="text" class="form-control select" placeholder="Rechercher un étudiant...">
             <span class="input-group-btn">
               <button class="btn btn-primary">Rechercher</button>
             </span>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
@@ -66,7 +66,7 @@
                                     <td scope="row"><%=subscriber.firstname%></td>
                                     <td><%=subscriber.lastname%></td>
                                     <td><%=subscriber.email%></td>
-                                    <td><a href="/admin/payment/register/<%=subscriber.id_user%>/<%=subscriber.course_id%>" class="btn btn-primary">Valider ce paiement</a></td>
+                                    <td><a href="/admin/payment/register/<%=subscriber.id_user%>/<%=subscriber.course_id%>" class="btn btn-primary">Valider son paiement</a></td>
                                   </tr>
                                 <%}%>
                             <%})%>

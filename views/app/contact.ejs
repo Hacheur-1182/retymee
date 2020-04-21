@@ -1,17 +1,11 @@
 <%- include('../_layout/header') %>
 
    <section  class="contact-banner">
-        <div class="container-fluid" style="width: 90%">
+        <div class="container">
             <div id="overlay">
                 <div class="row">
-                    <div class="col1 col-md-10  col-lg-8 col1 col-sm-12">
+                    <div class="col1 col-sm-12">
                         <h1>Devenir formateur</h1>
-                        <h4 class="d-none d-md-block d-lg-block d-xl-block">Nous proposons aux étudiants, aux élèves et aux professionnels,
-                            une aide aux cours et apprentissage en ligne.</h4>
-                            <a  href="#contact" class="btn btn-danger btn-lg my-3">Enregistrez vous maintenant</a>
-                    </div>
-                    <div class="col-md-3">
-                        
                     </div>
                 </div>
             </div>
@@ -24,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12  text-center">
-                    <h1 class="mt-5">Êtes vous un enseignant potentiel ??</h1>
+                    <h2 class="mt-5">Êtes vous un enseignant potentiel ??</h2>
                     <h6 class="pb-5 text-muted">Écrivez-nous pour commencer à enseigner</h6>
                 </div>
                 <form action="/teacher/contact" method="post" enctype="multipart/form-data" data-parsley-validate style="background-image: url('/img/xero-background.jpg');background-repeat: no-repeat;;background-size: 100% 100%" class="p-5">
@@ -60,7 +54,7 @@
                             <input type="text" value="<%=ville%>" name="ville" id="input7" class="form-control" placeholder="Ville">
                         </div>
                         <div class="col-md-6">
-                            <label for="input8">Né à</label>
+                            <label for="input8">Date de Naissance</label>
                             <input type="text" value="<%=lastname%>" name="bornat" id="input8" class="form-control" placeholder="26/12/1999">
                         </div>
                         <div class="col-md-6">
@@ -68,19 +62,19 @@
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="sex" id="exampleRadios1" value="Male" checked>
                                 <label class="form-check-label" for="exampleRadios1">
-                                    Male
+                                    Masculin
                                 </label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Female">
                                 <label class="form-check-label" name="sex" for="exampleRadios2">
-                                    Female
+                                    Féminin
                                 </label>
                             </div>
                         </div>
                         <div class="col-md-6 my-1">
-                            <label for="inputState1">matière</label>
-                            <input type="text" name="matiere" class="form-control" id="inputState1" required value="<%=matiere%>" >
+                            <label for="inputState1">Matière à enseigner</label>
+                            <input type="text" name="matiere" placeholder="Votre matière" class="form-control" id="inputState1" required value="<%=matiere%>" >
                         </div>
                         <div class="col-md-6 my-1">
                             <div class="custom-file">
@@ -93,8 +87,8 @@
                             <textarea required="" class="form-control" name="about" id="exampleFormControlTextarea1" rows="3"><%=about%></textarea>
                         </div>
                         <div class="col-md-12 py-1">
-                            <input type="submit" style="min-width: 10em;" class="btn btn-danger  float-right ml-3" value="Send">
-                            <input type="submit" style="min-width: 10em;" class="btn  float-right" value="Cancel">
+                            <input type="submit" class="btn btn-danger  float-right ml-3" value="Envoyer">
+                            <input type="submit" class="btn  float-right" value="Annuler">
                         </div>
                     </div>
                 </form>

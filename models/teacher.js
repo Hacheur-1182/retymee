@@ -34,6 +34,12 @@ var teachersSchema = mongoose.Schema({
     matiere:{
         type: String
     },
+    bornat:{
+        type: String
+    },
+    town:{
+        type: String
+    },
     image:{
         type: String
     },

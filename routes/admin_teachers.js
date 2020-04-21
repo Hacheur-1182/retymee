@@ -68,7 +68,6 @@ router.post('/add',ensureAuthenticated, (req, res) =>{
                         return res.redirect('/admin/home')
                     }
 				})
-                
             }
         });
     }
@@ -107,10 +106,64 @@ router.get('/demand/delete/:id',ensureAuthenticated, (req, res) =>{
     var myquery = { _id: id };
     TeacherDemand.deleteOne(myquery, function(err, obj) {
         if (err) throw err;
-        console.log("One teacher Demand deleted");
     });
-    req.flash('success', 'Teacher Demand Deleted');
+    req.flash('success', 'Demande supprimée');
     res.redirect('/admin/home')
+})
+
+// Accept teacher demand and create teacher account
+router.get('/demand/:id/create',ensureAuthenticated, (req, res) =>{
+    var id = req.params.id;
+
+    // Create teacher account
+    TeacherDemand.findById(id, (err, teacher) => {
+        if (err) throw err;
+
+        Teacher.findOne({
+            email: teacher.email
+        }, function(err, teacherMatched) {
+            if(err) return console.log(err)
+
+            if (teacherMatched) {
+                req.flash('danger', 'Ce compte existe déja avec cette adresse email');
+                res.redirect('/admin/home')
+            } else {
+                const password = Math.trunc(Math.random()*100000000)
+                var newTeacher = new Teacher({
+                    firstname : teacher.firstname,
+                    lastname: teacher.lastname,
+                    username: teacher.username,
+                    email : teacher.email,
+                    password: password,
+                    tel: teacher.tel,
+                    address: teacher.address,
+                    image : "avatar.png",
+                    matiere: teacher.matiere,
+                    description: teacher.about,
+                    sex: teacher.sex,
+                    bornat: teacher.bornat,
+                    town: teacher.ville,
+                });
+    
+                Teacher.saveTeacher(newTeacher, function(teacher){
+                    if(!teacher) {
+                        req.flash('danger', 'Une érreur s\'est produite. Veuillez reéssayer');
+                        return res.redirect('/admin/home')
+                    } else {
+                        // Supprimer la demande
+                        var myquery = { _id: id };
+                        TeacherDemand.deleteOne(myquery, function(err, obj) {
+                            if (err) throw err;
+
+                            require('../functions/teacher_registration_mail')(teacher.email, teacher.username, password);
+                            req.flash('success', 'Enseignant crée avec succès')
+                            return res.redirect('/admin/home')
+                        });
+                    }
+                })
+            }
+        });
+    })
 })
 
 //Delete  teachers 

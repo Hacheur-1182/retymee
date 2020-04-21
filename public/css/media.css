@@ -93,6 +93,23 @@
 		display: none;
 	}
 
+	#be-instructor h2{
+		font-size: 20px;
+	}
+	#be-instructor h5{
+		font-size: 15px;
+	}
+
+	/* Teacher demand form */
+	.contact-banner .col1 h1 {
+		font-size: 30px !important;
+		margin-top: 1.65em !important;
+	}
+
+	#contact h2{
+		font-size: 25px !important;
+	}
+
 	/* Dashboard */
 	#side-bar {
 		position: relative;
