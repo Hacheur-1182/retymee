@@ -92,7 +92,7 @@
                                                 <%}%>
                                             </div>
                                             <div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
-                                                <h6 style="font-size: 13px"><strong><%=teacher.username%></strong><span class="text-muted"> (Teacher)</span></h6>
+                                                <h6 style="font-size: 13px"><strong><%=teacher.username%></strong><span class="text-muted"> (Enseignant)</span></h6>
                                                 <span style="font-size: 13px"><%=message.content%></span>
                                                 <%if(message.file != ""){%>
                                                     <!-- <a href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a> -->
@@ -163,7 +163,7 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    var socket = io.connect('http://localhost:3000/', {query: 'pseudo=<%=user.username%>'});
+    var socket = io.connect('http://localhost:3000', {query: 'pseudo=<%=user.username%>'});
 
     $('#discuss-form').submit(function(){
         handleSublit();
@@ -188,7 +188,7 @@
         if(content === ""){
             alert('Saisir un message')
         }else{
-            socket.emit("Nouveau message",{
+            socket.emit("new message",{
                 user_id: user_id,
                 username: username,
                 image: image,
@@ -210,7 +210,7 @@
                         +'<div class="col-md-10">'
                             +'<div class="flex-row d-flex justify-content-end align-items-center">'
                                 +'<div id="my-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">'
-                                    +'<h6 style="font-size: 13px"><strong>Me</strong></h6>'
+                                    +'<h6 style="font-size: 13px"><strong>Moi</strong></h6>'
                                     +'<span style="font-size: 13px">'+content+'</span>'
                                 +'</div>'
                                 +'<div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(new Date()).fromNow()+'</span>'
@@ -226,43 +226,49 @@
     }
 
     socket.on('addMessage', function(msg){
-        var image_src = "";var cl = "";
-        if(msg.image == "avatar.png"){
-            image_src = "/img/avatar.png";
-        }else{
-            image_src = "/img/student_images/"+msg.user_id+"/"+msg.image;
-        }
-
-        if(msg.file == ""){
-            cl = "none";
-        }else{
-            cl = "inline";
-        }
-
-        $("#chat-bloc").append(
-            '<div class="container-fluid my-0">'
-                +'<div class="row justify-content-start my-0">'
-                    +'<div class="col">'
-                        +'<div class="flex-row d-flex justify-content-start align-items-center">'
-                            +'<div class="p-2">'
-                                +'<img src="'+image_src+'" style="height: 70px;width: 70px" class="rounded-circle" alt="">'
-                            +'</div>'
-                            +'<div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">'
-                                +'<h6 style="font-size: 13px"><strong>'+msg.username+'</strong></h6>'
-                                +'<span style="font-size: 13px">'+msg.content+'</span>'
-                            +'</div>'
-                            +'<div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(msg.date).fromNow()+'</span>'
+        var groupId = $('#group-id').val();
+        if(msg.group_id == groupId) {
+            var image_src = "";var cl = "";
+            if(msg.image == "avatar.png"){
+                image_src = "/img/avatar.png";
+            }else{
+                image_src = "/img/student_images/"+msg.user_id+"/"+msg.image;
+            }
+    
+            if(msg.file == ""){
+                cl = "none";
+            }else{
+                cl = "inline";
+            }
+    
+            $("#chat-bloc").append(
+                '<div class="container-fluid my-0">'
+                    +'<div class="row justify-content-start my-0">'
+                        +'<div class="col">'
+                            +'<div class="flex-row d-flex justify-content-start align-items-center">'
+                                +'<div class="p-2">'
+                                    +'<img src="'+image_src+'" style="height: 70px;width: 70px" class="rounded-circle" alt="">'
+                                +'</div>'
+                                +'<div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">'
+                                    +'<h6 style="font-size: 13px"><strong>'+msg.username+'</strong></h6>'
+                                    +'<span style="font-size: 13px">'+msg.content+'</span>'
+                                +'</div>'
+                                +'<div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(msg.date).fromNow()+'</span>'
+                                +'</div>'
                             +'</div>'
                         +'</div>'
                     +'</div>'
                 +'</div>'
-            +'</div>'
-        )
+            )
+        }
     })
 
     socket.on('sending verification', function(msg){
-        $("#gone").fadeToggle("slow");
-        setTimeout(function(){ $("#gone").fadeToggle("slow"); }, 2500);
+        var groupId = $('#group-id').val();
+        if(msg.group_id == groupId) {
+            $("#gone").fadeToggle("slow");
+            setTimeout(function(){ $("#gone").fadeToggle("slow"); }, 2500);
+        }
     })
 </script>
 

@@ -147,10 +147,10 @@ var io = require('socket.io').listen(server)
 
 io.on('connection', function(socket){
     var client = socket.request._query.pseudo
-    console.log(client+" vient de se connecter");
+    // console.log(client+" vient de se connecter au chat");
 
     socket.on('new message', function(data){
-        console.log("Message: ")
+        //console.log("Message: "+data.content)
         socket.broadcast.emit('addMessage', data)
 
         var query = {_id:  data.group_id};
@@ -166,8 +166,7 @@ io.on('connection', function(socket){
             function(err, message){
                 if(err) return console.log(err)
 
-                socket.emit('sending verification', "gone")
-                console.log("New chat message added")
+                socket.emit('sending verification', data)
             }
         );
     })
