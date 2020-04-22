@@ -5,9 +5,8 @@
                 <div id="overlay">
                     <div class="row">
                         <div class="col1 col-md-10  col-lg-8 col1 col-sm-12">
-                            <h1>Développez vos aptitudes</h1>
-                            <h4 class="d-none d-md-block d-lg-block d-xl-block">Nous proposons aux étudiants, aux élèves et aux professionnels,
-                                une aide aux cours et apprentissage en ligne.</h4>
+                            <h1>Develop your Skills</h1>
+                            <h4 class="d-none d-md-block d-lg-block d-xl-block">We offer pupils, students and professionals, assistance with online courses and training.</h4>
                         </div>
                         <div class="col-md-4">
                             
@@ -22,13 +21,14 @@
                 <div class="row py-5">
                     <div class="col-md-8 col-lg-8 col-sm-12">
                         <h1><%=course.title%></h1>
-                        <h5 class="text-muted">Domaine : <span><%=course.category%></span></h5>
+                        <h5 class="text-muted">Field : <span><%=course.category%></span></h5>
                         <hr style="background-color: #eeeeee">
                         <img src="/img/course_images/<%=course._id%>/<%=course.image%>">
-                        <h4 class="pt-5">DESCRIPTION DE LA FORMATION</h4>
+                        <h4 class="pt-5">COURSE DESCRIPTION
+                        </h4>
                         <hr >
                         <p class="mt-4 mb-5"><%=course.description%></p>
-                        <h4>PROGRAMME DU COURS</h4>
+                        <h4>COURSE SCHEDULE</h4>
                         <%if(course.content){%>
                             <div class="pt-4">
                                 <%-course.content-%>
@@ -39,7 +39,7 @@
                             <!-- <li>Mathématiques</li>
                             <li>Physiques</li> -->
                         </ul>
-                        <h4 class="pt-5">A PROPOS DES FORMATEURS</h4>
+                        <h4 class="pt-5">ABOUT THE TRAINERS</h4>
                         <hr >
                         <div class="pt-4">
                             <div class="row justify-content-between">
@@ -57,7 +57,7 @@
                                 <%})%>
                             </div>
                         </div>
-                        <h4 class="pt-5">REVUES D'UTILISATEURS</h4>
+                        <h4 class="pt-5">USER REVIEWS</h4>
                         <hr >
                         <div class="d-flex flex-row">
                             <div class="p-2"><span class="fa fa-star checked"></span></div>
@@ -65,28 +65,28 @@
                             <div class="p-2"><span class="fa fa-star checked"></span></div>
                             <div class="p-2"><span class="fa fa-star checked"></span></div>
                             <div class="p-2"><span class="fa fa-star"></span></div>
-                            <div class="p-2">(0 revue)</div>
+                            <div class="p-2">(0 review)</div>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-12 col-lg-4 pr-5 pl-5 right-content">
-                        <h5 class="pt-4"><b>Coût de la Formation</b><hr></h5>
+                        <h5 class="pt-4"><b>Cost of the Training</b><hr></h5>
                         <!-- <p class="text-muted">You can test this course for free during 2 days.</p>
                         <h5 class="py-1"><strong><%=course.cost%> FCFA</strong></h5> -->
                         <div class="alert alert-warning">
-                            Cette formation est <b>GRATUITE</b>. Cependant, l'obtention de la certification à la fin est conditionnée par le paiement
-                            d'une somme de <b>5000FCFA</b>.
+                            This training is <b>FREE</b>.  However, certification at the end of the course is subject to the payment of a fee.
+                            with a sum of<b>5000FCFA</b>.
                         </div>
-                        <h5 class="pt-3"><b>Durée de la Formation</b><hr></h5>
-                        <p class="py-1"><i class="fa fa-tachometer"></i> <%=course.duration%> (<%=course.startdate%> au  <%=course.enddate%>)</p>
+                        <h5 class="pt-3"><b>Duration of Training</b><hr></h5>
+                        <p class="py-1"><i class="fa fa-tachometer"></i> <%=course.duration%> (<%=course.startdate%> to  <%=course.enddate%>)</p>
                         <hr>
                         <%if(user && user.role != "admin"){%>
-                            <a href="/student/course/<%=course._id%>/register" id="enroll" class="btn button btn-block py-2">S'inscrire à ce cours</a>
+                            <a href="/student/course/<%=course._id%>/register" id="enroll" class="btn button btn-block py-2">Register for this course</a>
                         <%}%>
                         <%if(!user){%>
                             <div class="alert alert-info">
-                                Veuillez créer un compte pour pouvoir vous inscrire à ce cours.
+                                Please create an account in order to register for this course.
                             </div>
-                            <a href="" class="btn button-yellow w-100" data-toggle="modal" data-target="#log"><i class="fa fa-user"></i> Je me Connecte</a> 
+                            <a href="" class="btn button-yellow w-100" data-toggle="modal" data-target="#log"><i class="fa fa-user"></i> I am Logging In</a>
                         <%}%>
                         
                         <!-- <div class="row py-3 justify-content-center" id="ala-une">

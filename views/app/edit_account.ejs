@@ -29,88 +29,88 @@
                     <%}%>
                 </div>
                 <div class="col-md-8">
-                    <h2 class="pt-3">Configuration du compte</h2>
-                    <h6 class="pb-3">Modifiez vos informations</h6>
+                    <h2 class="pt-3">Account Setup</h2>
+                    <h6 class="pb-3">Edit your information</h6>
                     <form action="/user/edit-account" method="POST" id="update-infos-form" data-parsley-validate>
                         <div class="row">
                             <div class="col-md-6">
-                                <label for="input1">Prénom</label>
-                                <input type="text" id="name" name="firstname" value="<%=user.firstname%>" required class="form-control" placeholder="Prénom">
+                                <label for="input1">First Name</label>
+                                <input type="text" id="name" name="firstname" value="<%=user.firstname%>" required class="form-control" placeholder="First Name">
                             </div>
                             <div class="col-md-6">
-                                <label for="input2">Nom</label>
-                                <input type="text" name="lastname" value="<%=user.lastname%>" required id="input2" class="form-control" placeholder="Nom">
+                                <label for="input2">Last Name</label>
+                                <input type="text" name="lastname" value="<%=user.lastname%>" required id="input2" class="form-control" placeholder="Last Name">
                             </div>
                             <div class="col-md-6">
-                                <label for="input3">Nom d'utilisateur</label>
-                                <input type="text" name="username" value="<%=user.username%>" required id="input3" class="form-control" data-parsley-minlength="6" placeholder="Nom d'utilisateur">
+                                <label for="input3">User Name</label>
+                                <input type="text" name="username" value="<%=user.username%>" required id="input3" class="form-control" data-parsley-minlength="6" placeholder="User Name">
                             </div>
                             <div class="col-md-6">
                                 <label for="input4">Email</label>
                                 <input type="email" name="email" value="<%=user.email%>" required id="input4" class="form-control" placeholder="Email">
                             </div>
                             <div class="col-md-6">
-                                <label for="input5">Téléphone</label>
-                                <input type="text" name="tel" value="<%=user.tel%>" id="input5" class="form-control" placeholder="Téléphone">
+                                <label for="input5">Phone</label>
+                                <input type="text" name="tel" value="<%=user.tel%>" id="input5" class="form-control" placeholder="Phone">
                             </div>
                             <div class="col-md-6">
-                                <label for="input6">Adresse</label>
-                                <input type="text" name="address" value="<%=user.address%>" id="input6" class="form-control" placeholder="Adresse">
+                                <label for="input6">Address</label>
+                                <input type="text" name="address" value="<%=user.address%>" id="input6" class="form-control" placeholder="Address">
                             </div>
                             <div class="col-md-6 form-group date">
-                                <label for="input7">Ville</label>
-                                <input type="text" name="ville" value="<%=user.ville%>" id="input7" class="form-control" placeholder="Ville">
+                                <label for="input7">Town</label>
+                                <input type="text" name="ville" value="<%=user.ville%>" id="input7" class="form-control" placeholder="Town">
                             </div>
                             <!-- <div class="col-md-6">
                                 <label for="input8">Né à</label>
                                 <input type="text" id="datenaiss" value="<%=user.bornat%>" placeholder="jj/mm/aaaa" name="birthday" id="input8" class="form-control" placeholder="">
                             </div> -->
                             <div class="col-md-6">
-                                <label for="input9">Sexe</label><br>
+                                <label for="input9">Sex</label><br>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="sex" id="exampleRadios1" value="Male">
                                     <label class="form-check-label" for="exampleRadios1">
-                                        Masculin
+                                        Male
                                     </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="sex" id="exampleRadios2" value="Female">
                                     <label class="form-check-label" for="exampleRadios2">
-                                        Féminin
+                                        Female
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-6 my-1">
                                 <label for="inputState1">Status</label>
                                 <select id="inputState1" name="status" class="form-control">
-                                    <option value="Etudiant">Etudiant</option>
-                                    <option value="Elève">Elève</option>
-                                    <option value="Professionel">Professionel</option>
+                                    <option value="Etudiant">Student</option>
+                                    <option value="Elève">Pupil</option>
+                                    <option value="Professionel">Professional</option>
                                 </select>
                             </div>
                             <div class="col-md-12 my-4 form-group">
-                                <label for="exampleFormControlTextarea1">À propos de vous</label>
-                                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" placeholder="Exemple : Mon école, mon niveau" rows="3"><%=user.description%></textarea>
+                                <label for="exampleFormControlTextarea1">About you</label>
+                                <textarea class="form-control" name="description" id="exampleFormControlTextarea1" placeholder="Example : My school, my level" rows="3"><%=user.description%></textarea>
                             </div>
                             <div class="col-md-12 py-1">
-                                <input type="submit" class="btn button-yellow float-right ml-3" value="Enregistrer">
-                                <input type="reset" class="btn  float-right" value="Annuler">
+                                <input type="submit" class="btn button-yellow float-right ml-3" value="Save">
+                                <input type="reset" class="btn  float-right" value="Cancel">
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-md-4">
-                    <h2 class="pt-3">Changer de mot de passe</h2>
-                    <h6 class="pb-3">Gardez votre mot de passe secret</h6>
+                    <h2 class="pt-3">Change Password</h2>
+                    <h6 class="pb-3">Keep your password secret</h6>
                     <form action="/user/password/update" method="POST" id="form-password-update" class="mb-4" data-parsley-validate>
                         <div class="row">
                             <div class="col-md-12 mt-2">
-                                <label for="inputp">Mot de passe actuel</label>
-                                <input type="password" id="inputp" name="currentpassword" required class="form-control" placeholder="Mot de passe actuel">
+                                <label for="inputp">Current password</label>
+                                <input type="password" id="inputp" name="currentpassword" required class="form-control" placeholder="Current password">
                             </div>
                             <div class="col-md-12 mt-2">
-                                <label for="inputp2">Nouveau mot de passe</label>
-                                <input type="password" id="inputp2" name="newpassword" required class="form-control" placeholder="Nouveau mot de passe" 
+                                <label for="inputp2">New password</label>
+                                <input type="password" id="inputp2" name="newpassword" required class="form-control" placeholder="New password"
                                 data-parsley-uppercase="1"
                                 data-parsley-lowercase="1"
                                 data-parsley-number="1"
@@ -122,8 +122,8 @@
                                 <input type="password" id="inputp3" name="confirmation" required class="form-control" placeholder="Confirmation" data-parsley-equalto="#inputp2">
                             </div>
                             <div class="col-md-12">
-                                <input type="submit" class="btn button-yellow my-3 ml-3 float-right" value="Enregistrer">
-                                <input type="reset" class="btn my-3 float-right" value="Annuler">
+                                <input type="submit" class="btn button-yellow my-3 ml-3 float-right" value="Save">
+                                <input type="reset" class="btn my-3 float-right" value="Cancel">
                             </div>
                         </div>
                     </form>

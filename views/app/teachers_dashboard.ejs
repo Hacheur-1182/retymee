@@ -4,7 +4,7 @@
         <div class="container-fluid">
             <div class="row pt-3 pb-2">
                 <div class="col-md-12 text-center">
-                    <h1 class="text-white mt-1">Mon tableau de bord</h1>
+                    <h1 class="text-white mt-1">My Dashboard</h1>
                     <%if(user.image != "avatar.png"){%>
                         <img src="/img/student_images/<%=user._id%>/<%=user.image%>" class="img-rounded" alt="">
                     <%}else{%>
@@ -20,7 +20,7 @@
         <div class="container-fluid">
             <div class="row my-3">
                 <div class="col-md-12">
-                    <h1 class="py-3">MES COURS</h1>
+                    <h1 class="py-3">MY COURSES</h1>
                     <%- messages('messages', locals) %>
                     <% if (errors){%>
                       <% errors.forEach(function(error){ %>
@@ -40,18 +40,18 @@
                                             <p class="card-text"><%=course.description%></p>
                                             <div class="d-flex flex-xs-column flex-lg-row flex-xl-row flex-sm-column  flex-md-column align-items-center">
                                                 <div class="p-2">
-                                                    <a href="" class="btn button-yellow invitation-btn" data-toggle="modal" data-target="#add-classroom-link" style="font-weight: 600;"  data-id=<%=course.course_id%>>Inviter les étudiants</a>
+                                                    <a href="" class="btn button-yellow invitation-btn" data-toggle="modal" data-target="#add-classroom-link" style="font-weight: 600;"  data-id=<%=course.course_id%>>Invite Students</a>
                                                 </div>
                                                 <% if (course.timetable){%>
                                                     <div class="p-2">
-                                                        <a class="btn btn-dark" href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Emploi de temps</strong></a>
+                                                        <a class="btn btn-dark" href="/timetables/<%=course.course_id%>/<%=course.timetable%>" ><i class="fa fa-download"></i> <strong>Timetable</strong></a>
                                                     </div>
                                                 <%}%>
                                                 <div class="p-2">
-                                                    <a class="btn btn-outline-dark" href="/teacher/course/group/<%=course.course_id%>" style="color: rgb(28, 38, 47);" >Ouvrir le groupe de discussion <i class="fa fa-comment-o"></i></a>
+                                                    <a class="btn btn-outline-dark" href="/teacher/course/group/<%=course.course_id%>" style="color: rgb(28, 38, 47);" >Open chat group <i class="fa fa-comment-o"></i></a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a class="btn btn-outline-dark add-support-link" href="" data-toggle="modal" data-target="#add-support" style="color: rgb(28, 38, 47);" data-id=<%=course.course_id%>>Importer un support de cours <i class="fa fa-book"></i></a>
+                                                    <a class="btn btn-outline-dark add-support-link" href="" data-toggle="modal" data-target="#add-support" style="color: rgb(28, 38, 47);" data-id=<%=course.course_id%>>Import a course documentation <i class="fa fa-book"></i></a>
                                                 </div>
                                                 <!-- <div class="p-2">
                                                     <a href="" class="add-classroom" data-toggle="modal" id="add-classroom" data-target="#add-classroom-link" virtualclass-data-id=<%=course.course_id%> style="color: rgb(28, 38, 47);">Set ClassRoom Link <i class="fa fa-flash"></i></a>
@@ -66,7 +66,7 @@
                             </div>
                         <%})%>
                     <%}else{%>
-                        <h4 class="text-center my-3">Vous n'avez pas de cours à dispenser pour le moment.</h4>
+                        <h4 class="text-center my-3">You don't have a course to teach at the moment.</h4>
                     <%}%>
                 </div>
             </div>
@@ -78,7 +78,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-center" id="exampleModalLabel">Ajouter un support de cours </h5>
+                        <h5 class="modal-title text-center" id="exampleModalLabel">Add a course documention </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -104,7 +104,7 @@
                                                 <input type="file" id="file" name="file"  class="form-control" data-parsley-required>
                                             </div>
                                         </div>
-                                        <button type="submit" id="add-course-support" class="btn btn-block button-yellow" >Ajouter</button>
+                                        <button type="submit" id="add-course-support" class="btn btn-block button-yellow" >Add</button>
                                     </form>
                                 </div>
                             </div>
@@ -121,7 +121,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-center" id="exampleModalLabel">Inviter les étudiants pour la videoconférence </h5>
+                        <h5 class="modal-title text-center" id="exampleModalLabel">Invite students for videoconferencing </h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -137,7 +137,7 @@
                                             </div>
                                             <input type="hidden" name="hidden_course_id2" value="" id="hidden-course-id2">
                                         </div>
-                                        <button type="submit" id="send-invitation" class="btn btn-block button-yellow" >Envoyez l'invitation</button>
+                                        <button type="submit" id="send-invitation" class="btn btn-block button-yellow" >Send invitation</button>
                                     </form>
                                 </div>
                             </div>
