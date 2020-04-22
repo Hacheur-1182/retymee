@@ -193,13 +193,21 @@ router.post('/assign-course', ensureAuthenticated, (req, res) =>{
 
 //Get courses details
 router.get('/detail/:id', ensureAuthenticated, (req, res) =>{
-    const id = req.params.id
-    Course.findById(id, (err, course) => {
+    const course_id = req.params.id
+
+    // Get students enrholled on this course
+    Subscriber.find({course_id: course_id}, function(err, subscribers){
         if(err) return console.log(err)
-        return res.render("./admin/course-details", {
-            title : "Courses Details",
-            course: course
-        });
+
+        Course.findById(course_id, (err, course) => {
+            if(err) return console.log(err)
+            
+            return res.render("./admin/course-details", {
+                title : "Courses Details",
+                course: course,
+                students: subscribers,
+            });
+        })
     })
 })
 

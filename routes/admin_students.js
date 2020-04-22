@@ -31,14 +31,13 @@ router.get('/delete/:id', ensureAuthenticated, (req, res) =>{
         Student.deleteOne(myquery, function(err, obj) {
             if (err) throw err;
 
-            console.log("One Student deleted");
             req.flash('success', 'Student Deleted');
             res.redirect('/admin/home')
         });
     })
 })
 
-//Get  teachers details
+//Get  student details
 router.get('/info/:id', ensureAuthenticated, (req, res) =>{
     var id = req.params.id;
 

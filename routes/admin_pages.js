@@ -133,7 +133,6 @@ router.get('/payment/register/:id/:courseid', ensureAuthenticated, (req, res) =>
         function(err, message){
             if(err) return console.log(err)
 
-            console.log("One payment registered")
             req.flash('success', "Successfully Registered")
             res.redirect('/admin/payment/register-payment')
         }

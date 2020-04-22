@@ -68,6 +68,34 @@
           </div>
         </div>
       </div>
+      <!-- List of students that enrhol this course -->
+      <div class="row">
+        <div class="col-sm-12">
+          <h5 class="my-3">Liste des Participants</h5>
+          <table class="table table-striped">
+            <thead class="thead-inverse">
+              <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Tel</th>
+                <th>A déja payé ?</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%students.forEach(function(student){%>
+                <tr>
+                  <td><%=student.firstname%> <%=student.lastname%></td>
+                  <td><%=student.email%></td>
+                  <td><%=student.tel%></td>
+                  <td><b><%=student.ispaid%></b></td>
+                  <td><a href="/admin/students/info/<%=student.id_user%>" class="btn btn-secondary"><i class="fa fa-angle-double-right"></i> Details</a></td>
+                </tr>
+              <%})%>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </section>
 
