@@ -37,41 +37,32 @@ router.post('/signup', (req, res, next) =>{
 	if(errors){
 
 		res.send(errors[0].param);
-		console.log(errors)
 
 	}else {
-		//Je vérifie si le username existe déja
-		Student.findOne({username : username}, function(err, user){
+		//Je vérifie si l'email existe déja
+		Student.findOne({email : email}, function(err, usermail){
 			if(err) return console.log(err);
-			if(user){
-				res.send("username_exist");
+			if(usermail){
+				res.send("email_exist");
 			}else{
-				//Je vérifie si l'email existe déja
-				Student.findOne({email : email}, function(err, usermail){
+				//Je crée un nouvel étudiant
+				newStudent = new Student({
+					firstname: username,
+					lastname: username,
+					username: username.split(' ')[0],
+					email : email,
+					status: status,
+					isStudent : true,
+					password: password,
+					image: "avatar.png"
+				});
+				Student.saveStudent(newStudent, function(student) {
 					if(err) return console.log(err);
-					if(usermail){
-						res.send("email_exist");
-					}else{
-						//Je crée un nouvel étudiant
-						newStudent = new Student({
-							firstname: "",
-							lastname: "",
-							username: username,
-							email : email,
-							status: status,
-							isStudent : true,
-							password: password,
-							image: "avatar.png"
-						});
-						Student.saveStudent(newStudent, function(student) {
-							if(err) return console.log(err);
-							// Login the user
-							passport.authenticate('local-student')(req, res, function () {
-								require('../functions/registration_mail')(email, student._id);
-								res.send('1')
-							})
-						})
-					}
+					// Login the user
+					passport.authenticate('local-student')(req, res, function () {
+						require('../functions/registration_mail')(email, student._id);
+						res.send('1')
+					})
 				})
 			}
 		})
