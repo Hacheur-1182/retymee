@@ -163,7 +163,7 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    var socket = io.connect('http://retymee.com', {query: 'pseudo=<%=user.username%>'});
+    var socket = io.connect('https://retymee.com', {query: 'pseudo=<%=user.username%>'});
 
     $('#discuss-form').submit(function(){
         handleSublit();

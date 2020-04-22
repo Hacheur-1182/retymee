@@ -147,7 +147,7 @@ var io = require('socket.io').listen(server)
 
 io.on('connection', function(socket){
     var client = socket.request._query.pseudo
-    // console.log(client+" vient de se connecter au chat");
+    //console.log(client+" vient de se connecter au chat");
 
     socket.on('new message', function(data){
         //console.log("Message: "+data.content)
