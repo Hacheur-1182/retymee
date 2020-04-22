@@ -188,7 +188,6 @@ router.get('/course/group/:id', ensureAuthenticated2, (req, res) =>{
 //Logout
 router.get('/logout', (req, res) =>{
 	req.logout();
-    req.flash('success', 'You are logout')
     res.redirect('/')
 });
 
@@ -330,8 +329,8 @@ router.post('/contact',(req, res) =>{
                         })
                     }
 
-                    req.flash('success', 'Votre requête a été prise en considération')
-                    res.redirect('/');
+                    req.flash('success', 'Votre requête a été prise en considération. Vous serez contacté après validation de votre demande.')
+                    res.redirect('/teacher/contact');
                 })
             }
         });

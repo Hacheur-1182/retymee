@@ -137,17 +137,7 @@
                                             <input type="password" id="login_password" name="login_password" data-parsley-errors-container="#b" placeholder="Mot de passe" class="form-control" data-parsley-required>
                                         </div><span class="text-danger" id="b"></span>
                                     </div>
-                                        <div class="">
-                                            <%- messages('messages', locals) %>
-                                            <% if (errors){%>
-                                                <% errors.forEach(function(error){ %>
-                                                    <div class="alert alert-danger">
-                                                        <%=error.msg%>
-                                                    </div>
-                                                <%});%>
-                                            <%}%>
-                                        </div>
-                                        <button type="submit" id="login" class="btn btn-block button-yellow" >Se Connecter</button>
+                                    <button type="submit" id="login" class="btn btn-block button-yellow" >Se Connecter</button>
                                 </form><br>
                                 <div class="form-check mb-2 mr-sm-2">
                                     <input class="form-check-input" type="checkbox" name="isTeatcher" id="isTeatcher" placeholder="Je suis un enseignant" value="Je suis un enseignant" />

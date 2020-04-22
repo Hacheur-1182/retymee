@@ -156,7 +156,6 @@ router.get('/course/:id/register', ensureAuthenticatedForCourseRegistration, (re
 //Logout
 router.get('/logout', (req, res) =>{
 	req.logout();
-    req.flash('success', 'You are logout')
     res.redirect('/')
 });
 
