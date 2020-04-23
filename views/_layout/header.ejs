@@ -56,25 +56,25 @@
                             <%if(user){%>
                                 <%if(user.role == "admin"){%>
                                     <li>
-                                        <a href="/admin/logout"><i  class="fa fa-reply"></i> Déconnexion</a> 
+                                        <a href="/admin/logout"><i  class="fa fa-reply"></i> Logout</a>
                                     </li>
                                     <li>
-                                        <a href="/admin/home"><i class="fa fa-book"></i> Mon Dashboard</a> 
+                                        <a href="/admin/home"><i class="fa fa-book"></i>Dashboard</a>
                                     </li>
                                 <%}else{%>
                                     <li>
-                                        <a href="/student/logout"><i class="fa fa-reply"></i> Déconnexion</a> 
+                                        <a href="/student/logout"><i class="fa fa-reply"></i> Logout</a>
                                     </li>
                                     <li>
-                                        <a href="/student/dashboard"><i class="fa fa-book"></i> Mon Dashboard</a> 
+                                        <a href="/student/dashboard"><i class="fa fa-book"></i>Dashboard</a>
                                     </li>
                                 <%}%>
                             <%}else{%>
                                 <li>
-                                    <a href="" data-toggle="modal" data-target="#log"><i class="fa fa-user"></i> Connexion</a> 
+                                    <a href="" data-toggle="modal" data-target="#log"><i class="fa fa-user"></i> Login</a>
                                 </li>
                                 <li>
-                                    <a href="" data-toggle="modal" data-target="#signUp"><i class="fa fa-user-plus"></i> Inscrivez-vous</a>
+                                    <a href="" data-toggle="modal" data-target="#signUp"><i class="fa fa-user-plus"></i> Sign up</a>
                                 </li>
                             <%}%>
                         </ul>
@@ -113,7 +113,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel">Connectez vous à votre compte! </h5>
+                    <h5 class="modal-title text-center" id="exampleModalLabel">Sign in to your account! </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -134,9 +134,9 @@
                                     <div class="form-group">
                                         <div class="input-group">
                                             <span class="input-group-addon">
-                                                Adresse Email
+                                                Email Address
                                             </span>
-                                            <input type="email" id="login_email" data-parsley-errors-container="#a" name="login_email" placeholder="Adresse Email" class="form-control" data-parsley-required>
+                                            <input type="email" id="login_email" data-parsley-errors-container="#a" name="login_email" placeholder="Email Address" class="form-control" data-parsley-required>
                                         </div><span class="text-danger" id="a"></span>
                                     </div>
                                     <div class="form-group">
@@ -147,15 +147,15 @@
                                             <input type="password" id="login_password" name="login_password" data-parsley-errors-container="#b" placeholder="Mot de passe" class="form-control" data-parsley-required>
                                         </div><span class="text-danger" id="b"></span>
                                     </div>
-                                    <button type="submit" id="login" class="btn btn-block button-yellow" >Se Connecter</button>
+                                    <button type="submit" id="login" class="btn btn-block button-yellow" >Login</button>
                                 </form><br>
                                 <div class="form-check mb-2 mr-sm-2">
-                                    <input class="form-check-input" type="checkbox" name="isTeatcher" id="isTeatcher" placeholder="Je suis un enseignant" value="Je suis un enseignant" />
+                                    <input class="form-check-input" type="checkbox" name="isTeatcher" id="isTeatcher" placeholder="I am a teacher" value="Je suis un enseignant" />
                                     <label class="form-check-label" for="isTeatcher">
-                                        Je suis un enseignant
+                                        I am a teacher
                                     </label>
                                 </div>
-                                <h6><a href="/user/reset-password">Mot de passe oublié ?</a></h6>
+                                <h6><a href="/user/reset-password">Forgotten Password ?</a></h6>
                             </div>
                         </div>
                     </div>
@@ -163,7 +163,7 @@
                 <div class="modal-footer justify-content-center">
                     <div class="row py-0">
                         <div class="col py-0">
-                            <h6><strong>Vous n'avez pas de compte? <a href="" id="sign-in-log" data-toggle="modal" data-target="#signUp">Inscrivez vous</a> </strong></h6>
+                            <h6><strong>You don't have an account? <a href="" id="sign-in-log" data-toggle="modal" data-target="#signUp">Sign Up</a> </strong></h6>
                         </div>
                     </div>
                 </div>
@@ -176,7 +176,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Inscription</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Sign Up</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
@@ -196,31 +196,31 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Nom Complet
+                                                    Full Name
                                                 </span>
-                                                <input type="text" id="username" data-parsley-errors-container="#aa"  placeholder="Votre Nom" name="username" class="form-control" data-parsley-required data-parsley-minlength="5" ><br>
+                                                <input type="text" id="username" data-parsley-errors-container="#aa"  placeholder="Your name" name="username" class="form-control" data-parsley-required data-parsley-minlength="5" ><br>
                                             </div><span class="text-danger" id="aa"></span>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Adresse Email
+                                                    Email Address
                                                 </span>
-                                                <input type="email" name="login_email" id="email" placeholder="Adresse Email" data-parsley-errors-container="#bb" class="form-control" data-parsley-required>
+                                                <input type="email" name="login_email" id="email" placeholder="Email Address" data-parsley-errors-container="#bb" class="form-control" data-parsley-required>
                                             </div><span class="text-danger" id="bb"></span>
                                         </div>
                                         <div class="form-group">
-                                            <span class="text-left" style="display: block;">Type d'apprenant</span>
+                                            <span class="text-left" style="display: block;">Type of learner</span>
                                             <select name="status" id="status" class="form-control">
-                                                <option>Elève</option>
-                                                <option>Etudiant</option>
-                                                <option>Professionel</option>
+                                                <option>Pupil</option>
+                                                <option>Student</option>
+                                                <option>Professional</option>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Mot de passe
+                                                    Password
                                                 </span>
                                                 <input type="password" id="password" 
                                                     data-parsley-errors-container="#cc" 
@@ -237,12 +237,12 @@
                                         <div class="form-group">
                                             <div class="input-group">
                                                 <span class="input-group-addon">
-                                                    Confirmer le mot de passe
+                                                    Confirm password
                                                 </span>
                                                 <input type="password" id="password2" name="password2" data-parsley-errors-container="#dd" placeholder="Confirmation" class="form-control" data-parsley-required  data-parsley-equalto="#password">
                                             </div><span class="text-danger" id="dd"></span>
                                         </div>
-                                        <button type="submit" id="signup" class="btn btn-block button-yellow" href="#">S'inscrire</button>
+                                        <button type="submit" id="signup" class="btn btn-block button-yellow" href="#">Sign Up</button>
                                     </form>
                                 </div>
                             </div>
@@ -257,7 +257,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title text-center" id="exampleModalLabel">Retymee c'est quoi ? </h5>
+                    <h5 class="modal-title text-center" id="exampleModalLabel">What is Retymee ? </h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
