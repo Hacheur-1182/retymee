@@ -278,7 +278,7 @@ header {
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  height: 10em; }
+  height: 22em; }
   #course-details  img {
     width: 100% !important;
     }
@@ -286,11 +286,18 @@ header {
       color: white; }
     .contact-banner .row .col1 h1, .courses-banner .row .col1 h1, .course-description .row .col1 h1 {
       font-size: 45px;
-      text-align: center;
       font-weight: 1000;
       margin-top: 1em; }
     .contact-banner .row .col1 h4, .courses-banner .row .col1 h4, .course-description .row .col1 h4 {
       font-size: 30px; }
+
+    .contact-banner {
+      height: 10rem !important;
+    }
+    .contact-banner h1{
+      text-align: center;
+      font-size: 45px;
+    }
 
       #main-footer {
         margin-top: 5em;
