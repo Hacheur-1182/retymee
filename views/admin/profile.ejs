@@ -15,14 +15,14 @@
     <div class="container">
       <div class="row">
         <div class="col-md-3 mr-auto">
-          <a href="/admin/home" class="btn btn-secondary btn-block"><i class="fa fa-arrow-left"></i> Retournez au tableau de bord</a>
+          <a href="/admin/home" class="btn btn-secondary btn-block"><i class="fa fa-arrow-left"></i> Return to dashboard</a>
         </div>
 
         <div class="col-md-3">
-          <a href="/admin/account" class="btn btn-primary btn-block" data-toggle="modal" data-target="#passwordModal"><i class="fa fa-lock"></i> Modifier le mot de passe</a>
+          <a href="/admin/account" class="btn btn-primary btn-block" data-toggle="modal" data-target="#passwordModal"><i class="fa fa-lock"></i> Change Password</a>
         </div>
         <div class="col-md-3">
-          <a href="/admin/delete-account" class="btn btn-danger btn-block"><i class="fa fa-remove"></i>Supprimer le compte</a>
+          <a href="/admin/delete-account" class="btn btn-danger btn-block"><i class="fa fa-remove"></i>Delete account</a>
         </div>
       </div>
     </div>
@@ -35,12 +35,12 @@
         <div class="col-md-9">
           <div class="card ">
             <div class="card-header">
-              <h4>Modifier le profil</h4>
+              <h4>Edit Profile</h4>
             </div>
             <div class="card-block" class="p-3">
               <form class="p-3"> 
                 <div class="form-group">
-                  <label for="name" class="form-control-label">Nom</label>
+                  <label for="name" class="form-control-label">Last Name</label>
                   <input type="text" class="form-control" value="Ngaleu Kevin">
                 </div>
                 <div class="form-group">
@@ -48,8 +48,8 @@
                   <input type="text" class="form-control" value="ngaleuabel@gmail.com">
                 </div>
                 <div class="form-group">
-                  <input type="submit" class="btn btn-primary mb-2 mr-2" style="min-width: 10em;float:right" value="Sauvegarder">
-                  <input type="reset" class="btn btn-danger mb-3" style="min-width: 10em;float:right;margin-right: 1em;" value="Réinitialiser">
+                  <input type="submit" class="btn btn-primary mb-2 mr-2" style="min-width: 10em;float:right" value="Save">
+                  <input type="reset" class="btn btn-danger mb-3" style="min-width: 10em;float:right;margin-right: 1em;" value="Reset">
                 </div>
               </form>
             </div>
@@ -58,8 +58,8 @@
         <div class="col-md-3">
           <h3>Your Avatar</h3>
           <img src="img/avatar.png" alt="" class="d-block img-fluid mb-3">
-          <button class="btn btn-primary btn-block">Modifier l'image</button>
-          <button class="btn btn-danger btn-block">Supprimer l'image</button>
+          <button class="btn btn-primary btn-block">Change image</button>
+          <button class="btn btn-danger btn-block">Delete image</button>
         </div>
       </div>
     </div>
@@ -70,7 +70,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="passwordModalLabel">Modifier le mot de passe</h5>
+          <h5 class="modal-title" id="passwordModalLabel">Change Password</h5>
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
@@ -78,18 +78,18 @@
         <div class="modal-body">
           <form>
             <div class="form-group">
-              <label for="password" class="form-control-label">Mot de passe</label>
+              <label for="password" class="form-control-label">Password</label>
               <input type="password" class="form-control">
             </div>
             <div class="form-group">
-              <label for="password2" class="form-control-label">Confirmer le mot de passe</label>
+              <label for="password2" class="form-control-label">Confirm password</label>
               <input type="password" class="form-control">
             </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button class="btn btn-secondary" data-dismiss="modal">Fermer</button>
-            <button class="btn btn-primary" data-dismiss="modal">Modifier le mot de passe</button>
+          <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button class="btn btn-primary" data-dismiss="modal">Change Password</button>
         </div>
       </div>
     </div>

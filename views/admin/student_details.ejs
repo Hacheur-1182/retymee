@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1>Etudiants</h1>
+          <h1>Students</h1>
         </div>
       </div>
     </div>
@@ -18,23 +18,23 @@
         <div class="col">
           <div class="">
             <div class="col">
-              <h4 class="my-4">Informations des étudiants</h4>
+              <h4 class="my-4">Students Information</h4>
             </div>
             <div class="col">
                 <table class="table table-striped">
                   <thead class="thead-inverse">
                     <tr>
                       <th>Options</th>
-                      <th>Valeur</th>
+                      <th>Value</th>
                     </tr>
                   </thead>
                   <tbody>  
                       <tr>
-                        <td>Prénom</td>
+                        <td>First Name</td>
                         <td><%=student.firstname%></td>
                       </tr>
                       <tr>
-                        <td>Nom</td>
+                        <td>Last Name</td>
                         <td><%=student.lastname%></td>
                       </tr>
                       <tr>
@@ -42,30 +42,30 @@
                         <td><%=student.email%></td>
                       </tr>
                       <tr>
-                        <td>Nom d'utilisateur</td>
+                        <td>Username</td>
                         <td><%=student.username%></td>
                       </tr>
                       <tr>
-                        <td>Téléphone</td>
+                        <td>Phone</td>
                         <td><%=student.tel%></td>
                       </tr>
                       <tr>
-                        <td>Adresse</td>
+                        <td>Address</td>
                         <td><%=student.address%></td>
                       </tr>
                       <tr>
-                        <td>Matière</td>
+                        <td>Topic</td>
                         <td><%=student.matiere%></td>
                       </tr>
                       <tr>
-                        <td>Statut</td>
+                        <td>Status</td>
                         <td><%=student.status%></td>
                       </tr>
                       <tr>
-                        <td>À propos</td>
+                        <td>About</td>
                         <td><%=student.about%></td>
                       </tr>
-                      <a href="/admin/students/delete/<%=student._id%>" class="btn btn-danger mb-3">Supprimer l'élève</a>
+                      <a href="/admin/students/delete/<%=student._id%>" class="btn btn-danger mb-3">Delete student</a>
                   </tbody>
                 </table>
             </div>

@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1><i class="fa fa-users"></i> Etudiants</h1>
+          <h1><i class="fa fa-users"></i> Students</h1>
         </div>
       </div>
     </div>
@@ -33,16 +33,16 @@
         <div class="col">
           <div class="card">
             <div class="card-header">
-              <h4>Liste des étudiants</h4>
+              <h4>List of students</h4>
             </div>
             <table class="table table-striped">
               <thead class="thead-inverse">
                 <tr>
-                  <th>Prénom</th>
-                  <th>Nom</th>
-                  <th>Nom d'utilisateur</th>
+                  <th>First Name</th>
+                  <th>Last Name</th>
+                  <th>Username</th>
                   <th>Email</th>
-                  <th>Plus d'informations</th>
+                  <th>More information</th>
                 </tr>
               </thead>
               <tbody>
@@ -52,7 +52,7 @@
                       <td><%=student.lastname%></td>
                       <td><%=student.username%></td>
                       <td><%=student.email%></td>
-                      <td><a class="btn btn-secondary" href="/admin/students/info/<%=student._id%>">Voir les Details</a></td>
+                      <td><a class="btn btn-secondary" href="/admin/students/info/<%=student._id%>">View details</a></td>
                     </tr>
                   <%})%>
               </tbody>
@@ -60,11 +60,11 @@
 
             <nav class="ml-4">
               <ul class="pagination">
-                <li class="page-item disabled"><a href="#" class="page-link">Précédent</a></li>
+                <li class="page-item disabled"><a href="#" class="page-link">Previous</a></li>
                 <li class="page-item active"><a href="#" class="page-link">1</a></li>
                 <li class="page-item"><a href="#" class="page-link">2</a></li>
                 <li class="page-item"><a href="#" class="page-link">3</a></li>
-                <li class="page-item"><a href="#" class="page-link">Suivant</a></li>
+                <li class="page-item"><a href="#" class="page-link">Next</a></li>
               </ul>
             </nav>
           </div>

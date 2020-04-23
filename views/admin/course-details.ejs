@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1>Détails sur le cours</h1>
+          <h1>Course details</h1>
         </div>
       </div>
     </div>
@@ -18,39 +18,39 @@
         <div class="col-sm-12">
           <div class="">
             <div class="">
-              <h4 class="my-4">Details du cours</h4>
+              <h4 class="my-4">Course details</h4>
             </div>
             <div class="">
               <table class="table table-striped">
                 <thead class="thead-inverse">
                   <tr>
                     <th>Options</th>
-                    <th>Valeur</th>
+                    <th>Value</th>
                   </tr>
                 </thead>
                 <tbody>  
                     <tr>
-                      <td>Titre</td>
+                      <td>Title</td>
                       <td><%=course.title%></td>
                     </tr>
                     <tr>
-                      <td>Durée</td>
+                      <td>Duration</td>
                       <td><%=course.duration%></td>
                     </tr>
                     <tr>
-                      <td>Catégorie</td>
+                      <td>Category</td>
                       <td><%=course.category%></td>
                     </tr>
                     <tr>
-                      <td>Classe</td>
+                      <td>Class</td>
                       <td><%=course.session%></td>
                     </tr>
                     <tr>
-                      <td>Débute le</td>
+                      <td>Starts on</td>
                       <td><%=course.startdate%></td>
                     </tr>
                     <tr>
-                      <td>Se termine le</td>
+                      <td>Ends on</td>
                       <td><%=course.enddate%></td>
                     </tr>
                     <tr>
@@ -58,10 +58,10 @@
                       <td><%=course.description%></td>
                     </tr>
                     <tr>
-                      <td>Posté le</td>
+                      <td>Posted on</td>
                       <td><%=course.dateposted%></td>
                     </tr>
-                    <a href="/admin/courses/delete/<%=course._id%>" class="btn btn-danger mb-3">Supprimer le cours</a>
+                    <a href="/admin/courses/delete/<%=course._id%>" class="btn btn-danger mb-3">Delete course</a>
                 </tbody>
               </table>
             </div>
@@ -71,14 +71,14 @@
       <!-- List of students that enrhol this course -->
       <div class="row">
         <div class="col-sm-12">
-          <h5 class="my-3">Liste des Participants</h5>
+          <h5 class="my-3">List of Participants</h5>
           <table class="table table-striped">
             <thead class="thead-inverse">
               <tr>
-                <th>Nom</th>
+                <th>Name</th>
                 <th>Email</th>
-                <th>Tel</th>
-                <th>A déja payé ?</th>
+                <th>Phone</th>
+                <th>Paid up yet?</th>
                 <th>Action</th>
               </tr>
             </thead>

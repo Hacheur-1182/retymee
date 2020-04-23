@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1><i class="fa fa-pencil"></i> Gérer les paiements</h1>
+          <h1><i class="fa fa-pencil"></i> Manage Payments</h1>
         </div>
       </div>
     </div>
@@ -49,14 +49,14 @@
                     <div class="card">
                       <table class="table table-striped">
                         <div class="card-header">
-                          <h4>Étudiants qui n'ont pas payé</h4>
+                          <h4>Students who have not paid</h4>
                         </div>
                         <thead class="thead-inverse">
                           <tr>
-                            <th>Prénom</th>
-                            <th>Nom </th>
+                            <th>First Name</th>
+                            <th>Last Name </th>
                             <th>Email</th>
-                            <th>Enregistrer</th>
+                            <th>Save</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -66,7 +66,7 @@
                                     <td scope="row"><%=subscriber.firstname%></td>
                                     <td><%=subscriber.lastname%></td>
                                     <td><%=subscriber.email%></td>
-                                    <td><a href="/admin/payment/register/<%=subscriber.id_user%>/<%=subscriber.course_id%>" class="btn btn-primary">Valider son paiement</a></td>
+                                    <td><a href="/admin/payment/register/<%=subscriber.id_user%>/<%=subscriber.course_id%>" class="btn btn-primary">Confirm your payment</a></td>
                                   </tr>
                                 <%}%>
                             <%})%>
@@ -78,7 +78,7 @@
               </div>
             </section>
           <%}else{%>
-            <h3 class="text-center text-white">Aucun abonné</h3>
+            <h3 class="text-center text-white">No subscribers</h3>
           <%}%>
         </div>
       </div>
@@ -89,7 +89,7 @@
 
   <script>
     $(document).ready(function(){
-      $(".select").click(fcuntion(){
+      $(".select").click(function(){
         $(".select").removeClass('active');
         $(".select").addClass('active');
       })

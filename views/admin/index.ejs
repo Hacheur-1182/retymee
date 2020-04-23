@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h1><i class="fa fa-gear"></i> Tableau de bord</h1>
+          <h1><i class="fa fa-gear"></i> Dashboard</h1>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
             <div class="card-block">
               <h3>Cours</h3>
               <h1 class="display-4"><i class="fa fa-pencil"></i> <%=N_COURS%></h1>
-              <a href="/admin/courses" class="btn btn-sm btn-outline-secondary">Consulter</a>
+              <a href="/admin/courses" class="btn btn-sm btn-outline-secondary">Visit</a>
             </div>
           </div>
         </div>
@@ -42,7 +42,7 @@
             <div class="card-block">
               <h3>Enseignant</h3>
               <h1 class="display-4"><i class="fa fa-user"></i> <%=N_TEACH%></h1>
-              <a href="/admin/teachers" class="btn btn-sm btn-outline-secondary ">Consulter</a>
+              <a href="/admin/teachers" class="btn btn-sm btn-outline-secondary ">Visit</a>
             </div>
           </div>
         </div>
@@ -51,7 +51,7 @@
             <div class="card-block">
               <h3>Etudiants</h3>
               <h1 class="display-4"><i class="fa fa-users"></i> <%=N_STUD%></h1>
-              <a href="/admin/students" class="btn btn-sm btn-outline-secondary ">Consulter</a>
+              <a href="/admin/students" class="btn btn-sm btn-outline-secondary ">Visit</a>
             </div>
           </div>
         </div>
@@ -62,9 +62,9 @@
         <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
           <div class="card text-center">
             <div class="card-body">
-              <h5 class="card-title">Cours</h5>
-              <p class="card-text">Gérer les cours, ajouter un nouveau cours ici</p>
-              <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal"><i class="fa fa-plus"></i> Ajouter un cours</a>
+              <h5 class="card-title">Courses</h5>
+              <p class="card-text">Manage courses, add a new course here</p>
+              <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addPostModal"><i class="fa fa-plus"></i> Add a course</a>
             </div>
           </div>
         </div>
@@ -72,9 +72,9 @@
         <div class="col-md-6 col-lg-4 col-sm-6 mb-2">
           <div class="card text-center">
             <div class="card-body">
-              <h5 class="card-title">Enseignants</h5>
-              <p class="card-text">Gérer les enseignants. Ajouter des nouveaux enseignants ici.</p>
-              <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addCategoryModal"><i class="fa fa-plus"></i> Ajouter un Enseignant</a>
+              <h5 class="card-title">Teachers</h5>
+              <p class="card-text">Manage teachers, Add new teachers here.</p>
+              <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addCategoryModal"><i class="fa fa-plus"></i> Add a Teacher</a>
             </div>
           </div>
           </div>
@@ -82,9 +82,9 @@
         <div class="col-md-6 col-lg-4 col-sm-6">
           <div class="card text-center">
             <div class="card-body">
-              <h5 class="card-title">Assigner les cours</h5>
-              <p class="card-text">Gérer les cours. Ajoutez des enseignants à un cours.</p>
-              <a href="/admin/courses/assign-course" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Assigner une Classe</a>
+              <h5 class="card-title">Assign courses</h5>
+              <p class="card-text">Manage the courses, Add teachers to a course.</p>
+              <a href="/admin/courses/assign-course" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Assign a Class</a>
             </div>
           </div>
         </div>
@@ -92,9 +92,9 @@
         <div class="col-md-6 col-lg-4 col-sm-6 my-2">
           <div class="card text-center">
             <div class="card-body">
-              <h5 class="card-title">Enregistrer un paiment</h5>
-              <p class="card-text">Gerer les paiements effectués ici.</p>
-              <a href="/admin/payment/register-payment" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> Nouveau Paiement</a>
+              <h5 class="card-title">Register a payment</h5>
+              <p class="card-text">Manage payments made here.</p>
+              <a href="/admin/payment/register-payment" class="btn btn-primary btn-block"><i class="fa fa-plus"></i> New Payment</a>
             </div>
           </div>
         </div>
@@ -119,17 +119,17 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-header">
-              <h5>DEMANDE DES ENSEIGNANTS POUR DISPENSER SUR RETYMEE</h5>
+              <h5>APPLICATION FOR TEACHERS TO TEACH ON RETYMEE</h5>
             </div>
             <table class="table table-striped">
               <thead class="thead-inverse">
                 <tr>
-                  <th>Nom</th>
+                  <th>Name</th>
                   <th>Email</th>
-                  <th>Tel</th>
-                  <th>Adresse</th>
-                  <th>Matière</th>
-                  <th>Plus</th>
+                  <th>Phone</th>
+                  <th>Address</th>
+                  <th>Topic</th>
+                  <th>More</th>
                 </tr>
               </thead>
               <tbody>
@@ -160,7 +160,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title" id="addPostModalLabel">Ajouter un cours</h5>
+          <h5 class="modal-title" id="addPostModalLabel">Add a course</h5>
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
@@ -168,32 +168,32 @@
         <div class="modal-body">
           <form action="/admin/courses/add-course" method="post" enctype="multipart/form-data">
             <div class="form-group">
-              <label for="title" class="form-control-label">Type de cours</label>
+              <label for="title" class="form-control-label">Type of course</label>
               <select name="type" class="form-control">
-                <option disabled>Sélection par défaut</option>
-                <option value="Concours">Cours Magistral</option>
-                <option value="Examen">TD</option>
-                <option value="Examen">TP</option>
+                <option disabled>Default selection</option>
+                <option value="Concours">General Lecture</option>
+                <option value="Examen">Tutorial</option>
+                <option value="Examen">Practical</option>
               </select>
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Titre du cours <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Course Title <span class="text-danger">(*)</span></label>
               <input type="text" name="title" value="<%=title%>" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Classe <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Class <span class="text-danger">(*)</span></label>
               <input type="text" name="session" value="<%=session%>" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Durée <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Duration <span class="text-danger">(*)</span></label>
               <input type="text" name="duration" value="<%=duration%>" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Date de début <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Starts on <span class="text-danger">(*)</span></label>
               <input type="text" name="startdate" value="<%=startdate%>" class="form-control" placeholder="">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Date de fin <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Ends on <span class="text-danger">(*)</span></label>
               <input type="text" name="enddate" value="<%=enddate%>" class="form-control" placeholder="">
             </div>
             <!-- <div class="form-group">
@@ -210,30 +210,30 @@
               </select>
             </div> -->
             <div class="form-group bg-faded p-3">
-              <label for="file">Choisir l'image descriptive du cours <span class="text-danger">(*)</span></label>
+              <label for="file">Choose a descriptive image of the course <span class="text-danger">(*)</span></label>
               <input type="file" name="image" class="form-control-file" id="file">
               <small id="fileHelp" class="form-text text-muted">
-                Taille maximale de 3MB
+                Maximum size 3MB
               </small>
             </div>
             <div class="form-group bg-faded p-3">
-              <label for="file">Charger l'emploi de temps du cours</label>
+              <label for="file">Load the course timetable</label>
               <input type="file" name="timetable" class="form-control-file" id="file2">
               <small id="fileHelp" class="form-text text-muted">
-                Taille maximale de 3MB
+                Maximum size 3MB
               </small>
             </div>
             <div class="form-group">
-              <label for="editor">Programme du cours <span class="text-danger">(*)</span></label>
+              <label for="editor">Course Program <span class="text-danger">(*)</span></label>
               <textarea class="form-control" name="content" id="editor" rows="3"></textarea>
             </div>
             <div class="form-group">
-              <label for="body">Description du cours <span class="text-danger">(*)</span></label>
+              <label for="body">Course description <span class="text-danger">(*)</span></label>
               <textarea name="description" class="form-control"><%=description%></textarea>
             </div>
             <div class="form-group">
-              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Fermer</button>
-              <input type="submit" class="btn btn-primary float-right m-3" value="Ajouter le cours">
+              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-primary float-right m-3" value="Add the course">
             </div>
           </form>
         </div>
@@ -246,7 +246,7 @@
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header bg-success text-white">
-          <h5 class="modal-title" id="addCategoryModalLabel">Ajouter un enseignant</h5>
+          <h5 class="modal-title" id="addCategoryModalLabel">Add a teacher</h5>
           <button class="close" data-dismiss="modal">
             <span>&times;</span>
           </button>
@@ -254,15 +254,15 @@
         <div class="modal-body">
           <form action="/admin/teachers/add" method="post">
             <div class="form-group">
-              <label for="title" class="form-control-label">Prénom <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">First Name <span class="text-danger">(*)</span></label>
               <input type="text" value="<%=firstname%>" name="firstname" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Nom <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Last Name <span class="text-danger">(*)</span></label>
               <input type="text" value="<%=lastname%>" name="lastname" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Nom d'utilisateur <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Username <span class="text-danger">(*)</span></label>
               <input type="text" value="<%=username%>" name="username" class="form-control">
             </div>
             <div class="form-group">
@@ -270,32 +270,32 @@
               <input type="email" value="<%=email%>" name="email" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Mot de passe <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Password <span class="text-danger">(*)</span></label>
               <input type="password" name="password" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Confirmation du mot de passe <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Confirm password <span class="text-danger">(*)</span></label>
               <input type="password" name="password2" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Tel <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Phone <span class="text-danger">(*)</span></label>
               <input type="text" value="<%=tel%>" name="tel" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Matière <span class="text-danger">(*)</span></label>
+              <label for="title" class="form-control-label">Topic <span class="text-danger">(*)</span></label>
               <input type="text" value="<%=matiere%>" name="matiere" class="form-control">
             </div>
             <div class="form-group">
-              <label for="title" class="form-control-label">Adresse</label>
+              <label for="title" class="form-control-label">Address</label>
               <input type="text" value="<%=address%>" name="address" class="form-control">
             </div>
             <div class="form-group">
-                <label for="body">À propos de l'enseignant</label>
+                <label for="body">About the teacher</label>
                 <textarea name="desc" value="<%=description%>" class="form-control"></textarea>
             </div>
             <div class="">
-              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Fermer</button>
-              <input type="submit" class="btn btn-success float-right m-3" value="Ajouter un Enseignant">
+              <button class="btn btn-secondary float-right m-3" data-dismiss="modal">Close</button>
+              <input type="submit" class="btn btn-success float-right m-3" value="Add the teacher">
             </div>
           </form>
         </div>
