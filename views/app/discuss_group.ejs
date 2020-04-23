@@ -1,15 +1,20 @@
 <%- include('../_layout/dashboard-header') %>
 <section class="discuss-layout">
-    <section  >
+    <section id="discuss-header" >
         <div class="container-fluid" >
-            <div class="row py-3">
+            <div class="row py-2">
                 <div class="col-md-12 text-center">
-                    <h3 class="text-white">Groupe: <%=group.groupname%></h3>
+                    <h5 class="text-white mb-0">Groupe de <strong><%=group.groupname%></strong></h5>
                 </div>
             </div>
         </div>
     </section>
 
+    <div id="file-upload-loader">
+        <div class="loader-wrapper">
+            <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        </div>
+    </div>
 
     <section id="courses-support-section">
         <div class="container-fluid">
@@ -30,6 +35,11 @@
             </div>
         </div>
     </section>
+
+    <!-- Notification de succès d'envoi d'un message -->
+    <div id="gone" class="col">
+        <div class="alert alert-success text-center">Message envoyé</div>
+    </div>
     
     <!--Discussion-->
     <section id="discuss-body-section">
@@ -38,46 +48,68 @@
 
             <%group.messages.forEach(function(message){%>
                 <%if(message.user_id == user.id){%>
-                    <div class="container-fluid my-0">
+                    <div class="container-fluid my-0 p-0">
                         <div class="row justify-content-end my-0">
                             <div class="col">
-                                <div class="flex-row d-flex justify-content-end align-items-center">
-                                    <div id="my-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
+                                <div class="flex-row d-flex flex-column flex-md-row justify-content-end">
+                                    <div id="my-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">
                                         <h6 style="font-size: 13px"><strong>Moi</strong></h6>
-                                        <span style="font-size: 13px"><%=message.content%></span>
-                                        <%if(message.file != ""){%>
-                                            <!-- <a class="mt-2" href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Télécharger la pièce jointe</a> -->
+                                        <span style="font-size: 13px"><%-message.content-%></span>
+                                        <%if(message.file){%>
+                                            <%if(message.fileType == "image/jpeg" || message.fileType == "image/gif" || message.fileType == "image/png" ){%>
+                                            <a class="mt-2" target="_blank" href="/sharesdocs/<%=course._id%>/<%=message.file%>">
+                                                <img class="img-fluid uploaded-img" style="max-width:50rem" src="/sharesdocs/<%=course._id%>/<%=message.file%>" />
+                                            </a>
+                                            <%}else{%>
+                                                <div class="card text-white" style="border-radius: 5px">
+                                                    <div class="card-body">
+                                                        <h6 class="card-title" style="color: black">Document</h6>
+                                                        <a  href="/sharesdocs/<%=course._id%>/<%=message.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                                                    </div>
+                                                </div>
+                                            <%}%>
                                         <%}%>
                                     </div>
-                                    <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
+                                    <div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 <%}else{%>
-                    <div class="container-fluid my-0">
+                    <div class="container-fluid my-0 p-0">
                         <div class="row justify-content-start my-0">
                             <div class="col">
-                                <div class="flex-row d-flex justify-content-start align-items-center">
+                                <div class="flex-row d-flex flex-column flex-md-row justify-content-start">
                                     <!--Student Messages in Teacher Interface-->
                                     <%students.forEach(function(student){%>
                                         <%if(student._id.equals(message.user_id)){%>
                                             <div class="p-2 imagewrapper">
                                                 <%if(student.image != "avatar.png"){%>
-                                                    <img src="/img/student_images/<%student._id%>/<%student.image%>" class="img-rounded" style="height: 50px;width: 50px" class="rounded-circle" alt="">
+                                                    <img src="/img/student_images/<%student._id%>/<%student.image%>" class="img-rounded" style="height: 40px;width: 40px" class="rounded-circle" alt="">
                                                 <%}else{%>
-                                                    <img src="/img/avatar.png" style="height: 50px;width: 50px" class="rounded-circle" alt="">
+                                                    <img src="/img/avatar.png" style="height: 40px;width: 40px" class="rounded-circle" alt="">
                                                 <%}%>
                                             </div>
-                                            <div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
+                                            <div id="your-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">
                                                 <h6 style="font-size: 13px"><strong><%=student.username%></strong></h6>
-                                                <span style="font-size: 13px"><%=message.content%></span>
-                                                <%if(message.file != ""){%>
-                                                    <!-- <a href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a> -->
+                                                <span style="font-size: 13px"><%-message.content-%></span>
+                                                <%if(message.file){%>
+                                                    <%if(message.fileType == "image/jpeg" || message.fileType == "image/gif" || message.fileType == "image/png" ){%>
+                                                    <a class="mt-2" target="_blank" href="/sharesdocs/<%=course._id%>/<%=message.file%>">
+                                                        <img class="img-fluid uploaded-img" style="max-width:50rem" src="/sharesdocs/<%=course._id%>/<%=message.file%>" />
+                                                    </a>
+                                                    <%}else{%>
+                                                        <div class="card text-white" style="border-radius: 5px">
+                                                            <div class="card-body">
+                                                                <h6 class="card-title" style="color: black">Document</h6>
+                                                                <a  href="/sharesdocs/<%=course._id%>/<%=message.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    <%}%>
                                                 <%}%>
                                             </div>
-                                            <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
+                                            <div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
                                             </div>
                                         <%}%>
                                     <%})%>
@@ -86,19 +118,30 @@
                                         <%if(teacher._id.equals(message.user_id)){%>
                                             <div class="p-2 imagewrapper">
                                                 <%if(teacher.image != "avatar.png"){%>
-                                                    <img src="/img/student_images/<%teacher._id%>/<%teacher.image%>" class="img-rounded" style="height: 50px;width: 50px" class="rounded-circle" alt="">
+                                                    <img src="/img/student_images/<%teacher._id%>/<%teacher.image%>" class="img-rounded" style="height: 40px;width: 40px" class="rounded-circle" alt="">
                                                 <%}else{%>
-                                                    <img src="/img/avatar.png" style="height: 50px;width: 50px" class="rounded-circle" alt="">
+                                                    <img src="/img/avatar.png" style="height: 40px;width: 40px" class="rounded-circle" alt="">
                                                 <%}%>
                                             </div>
-                                            <div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">
+                                            <div id="your-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">
                                                 <h6 style="font-size: 13px"><strong><%=teacher.username%></strong><span class="text-muted"> (Enseignant)</span></h6>
-                                                <span style="font-size: 13px"><%=message.content%></span>
-                                                <%if(message.file != ""){%>
-                                                    <!-- <a href="/student_supports/<%=group._id%>/<%=message.user_id%>/<%=message.file%>">Download attachment</a> -->
+                                                <span style="font-size: 13px"><%-message.content-%></span>
+                                                <%if(message.file){%>
+                                                    <%if(message.fileType == "image/jpeg" || message.fileType == "image/gif" || message.fileType == "image/png" ){%>
+                                                    <a class="mt-2" target="_blank" href="/sharesdocs/<%=course._id%>/<%=message.file%>">
+                                                        <img class="img-fluid uploaded-img" style="max-width:50rem" src="/sharesdocs/<%=course._id%>/<%=message.file%>" />
+                                                    </a>
+                                                    <%}else{%>
+                                                        <div class="card text-white" style="border-radius: 5px">
+                                                            <div class="card-body">
+                                                                <h6 class="card-title" style="color: black">Document</h6>
+                                                                <a  href="/sharesdocs/<%=course._id%>/<%=message.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    <%}%>
                                                 <%}%>
                                             </div>
-                                            <div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
+                                            <div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
                                             </div>
                                         <%}%>
                                     <%})%>
@@ -112,75 +155,174 @@
     </section>
 
     <section id="keyboard">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row justify-content-center">
                 <!--Clavier-->
-                <div class="col-md-12">
-                    <div class="flex-row d-flex justify-content-center">
-                        <div class="p-2">
-                            <div id="gone" class="col" style="width:200px;height: 80px;transition: 0.5s;position: fixed;top: 0;margin-right: auto;margin-left: auto;display: none;">
-                                <div class="alert alert-success text-center" style="border-radius:0">Message envoyé</div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-12">
                     <form id="discuss-form" method="post" action="#" enctype="multipart/form-data">
                         <div class="container-fluid p-0 m-0">
-                            <div class="row align-items-center clavier">
-                                <div class="col-md-11">
-                                    <div class="form-group">
-                                        <textarea name="editor1" id="content" class="form-control" placeholder="Ecrivez ici"></textarea>
-                                    </div>
-                                </div>
-                                <div class="col-md-1" id="spin-space">
-                                    <div class="form-group">
-                                        <button type="submit" id="send-message" class="btn rounded-circle py-2 pl-3 pr-3 " style="background-color: rgb(230, 69, 69);color: white"><i class="fa fa-send"></i></button>
+                            <div class="row align-items-center">
+                                <div class="col-sm-12">
+                                    <div class="form-group clavier">
+                                        <textarea name="content" id="content" class="form-control" placeholder="Ecrivez ici"></textarea>
+                                        <i class="fa fa-send" id="send-message"></i>
+
+                                        <div class="image-upload">
+                                            <div class="upload-btn-wrapper">
+                                                <button class="bttn">Charger un fichier</button>
+                                                <input id="fileupload" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, application/pdf, .doc,.docx,application/msword" />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row align-items-center">
-                            <!-- <div class="col-md-6 justify-content-center">
-                                <div class="form-group bg-faded">
-                                    <input type="file" name="file" class="form-control-file" id="file">
-                                    <small id="fileHelp" class="form-text text-muted">
-                                        Upload a file (Max Size 3MB)
-                                    </small>
-                                </div>
-                            </div> -->
-                            <input type="hidden" value="<%=group._id%>" id="group-id" name="group_id">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </section>
+    <div id="bottom"></div>
 </section>
+
+
 
 <%- include('../_layout/dashboard-footer')%>
 
-<script src="https://cdn.ckeditor.com/4.7.1/standard/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/18.0.0/classic/ckeditor.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    var socket = io.connect('https://retymee.com', {query: 'pseudo=<%=user.username%>'});
+    // Scroll to the bottom
+    document.getElementById('bottom').scrollIntoView();
+    // Initialize the editor
+    var editor;
+    ClassicEditor
+        .create( document.querySelector('#content'), {
+            removePlugins: [ 'mediaEmbed'],
+            toolbar: [ 'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote', 'insertTable' ],
+        })
+        .then( newEditor => {
+            editor = newEditor;
+        } )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
 
-    $('#discuss-form').submit(function(){
+
+<!-- Send messages with web sockets -->
+<script>
+    // var socket = io.connect('https://retymee.com', {query: 'pseudo=<%=user.username%>'});
+    var socket = io.connect('http://localhost:3000', {query: 'pseudo=<%=user.username%>'});
+</script>
+
+<!-- Upload support on chat -->
+<script>
+    document.getElementById("fileupload").onchange = function () {
+        var data = new FormData();
+        var fileType = "";
+        $.each($('#fileupload')[0].files, function(i, file) {
+            data.append('file', file);
+            fileType = file.type;
+        });
+        data.append('userId', "<%=user._id%>");
+        data.append('groupId', "<%=group._id%>");
+        data.append('courseId', "<%=course._id%>");
+        data.append('fileType', fileType);
+        data.append('date', moment().format());
+        
+        $.ajax({
+            type: 'POST',
+            url: '/file/upload',
+            data: data,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function(){
+                // display loader
+              $('#file-upload-loader').css('display', 'flex')
+            },
+            success: function(data){
+                // Clear loader and display image
+                $('#file-upload-loader').css('display', 'none')
+                var fileContent = '';
+                if(data.split(':')[1] == "image/jpeg" || data.split(':')[1] == "image/gif" || data.split(':')[1] == "image/png") {
+                    content = `
+                    <a class="mt-2" target="_blank" href="${data.split(':')[0]}">
+                        <img class="img-fluid uploaded-img" style="max-width:50rem" src="${data.split(':')[0]}" />
+                    </a>`;
+                } else {
+                    content = 
+                    `<div class="card text-white" style="border-radius: 5px">
+                        <div class="card-body">
+                            <h6 class="card-title" style="color: black">Document</h6>
+                                <a  href="${data.split(':')[0]}" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                        </div>
+                    </div>`
+                }
+                $("#chat-bloc").append(
+                    '<div class="container-fluid my-0 p-0">'
+                        +'<div class="row justify-content-end my-0">'
+                            +'<div class="col-md-10">'
+                                +'<div class="flex-row d-flex flex-column flex-md-row justify-content-end">'
+                                    +'<div id="my-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">'
+                                        +'<h6 style="font-size: 13px"><strong>Moi</strong></h6>'
+                                        +content+''
+                                    +'</div>'
+                                    +'<div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(moment().format()).fromNow()+'</span>'
+                                    +' </div>'
+                                +'</div>'
+                            +'</div>'
+                        +'</div>'
+                    +'</div>'
+                )
+                document.getElementById('bottom').scrollIntoView();
+
+                // Send socket to the server
+                var group_id = "<%=group._id%>"
+                var username = "<%=user.username%>"
+                var user_id = "<%=user._id%>"
+                var image = "<%=user.image%>"
+
+                socket.emit("new upload",{
+                    user_id: user_id,
+                    username: username,
+                    content: "",
+                    group_id: group_id,
+                    file: data.split(':')[0],
+                    fileType: fileType,
+                    date: moment().format()
+                });
+            },
+            error: function(err){
+                console.log(err);
+                $('#file-upload-loader').css('display', 'flex')
+                alert('Une érreur s\'est produite. Veuillez reéssayer.')
+            }
+        });
+    };
+</script>
+
+<script>
+
+    $('#send-message').click(function(){
         handleSublit();
         return false;
     })
 
-    $('#content').keypress(function(event){
-        var keycode = (event.keyCode ? event.keyCode : event.which);
-        if(keycode == '13'){
-            handleSublit();
-        }
-    });
+    // $('#content').keypress(function(event){
+    //     var keycode = (event.keyCode ? event.keyCode : event.which);
+    //     if(keycode == '13'){
+    //         handleSublit();
+    //     }
+    // });
 
     function handleSublit() {
-        var content = $('#content').val().trim()
+        var content = editor.getData().split('<p>&nbsp;</p>').join('');
         var file = $('#file').val()
-        var group_id = $('#group-id').val()
+        var group_id = "<%=group._id%>"
         var username = "<%=user.username%>"
         var user_id = "<%=user._id%>"
         var image = "<%=user.image%>"
@@ -195,7 +337,7 @@
                 content: content,
                 group_id: group_id,
                 file: file,
-                date: new Date()
+                date: moment().format()
             });
             //J'afffiche directement le message sur la vue
             if(file == ""){
@@ -205,28 +347,29 @@
             }
 
             $("#chat-bloc").append(
-                '<div class="container-fluid my-0">'
+                '<div class="container-fluid my-0 p-0">'
                     +'<div class="row justify-content-end my-0">'
                         +'<div class="col-md-10">'
-                            +'<div class="flex-row d-flex justify-content-end align-items-center">'
-                                +'<div id="my-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">'
+                            +'<div class="flex-row d-flex flex-column flex-md-row justify-content-end">'
+                                +'<div id="my-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">'
                                     +'<h6 style="font-size: 13px"><strong>Moi</strong></h6>'
                                     +'<span style="font-size: 13px">'+content+'</span>'
                                 +'</div>'
-                                +'<div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(new Date()).fromNow()+'</span>'
+                                +'<div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(moment().format()).fromNow()+'</span>'
                                 +' </div>'
                             +'</div>'
                         +'</div>'
                     +'</div>'
                 +'</div>'
             )
-            $("#content").val('');
+            editor.data.set("");
+            document.getElementById('bottom').scrollIntoView();
         }
         return false
     }
 
     socket.on('addMessage', function(msg){
-        var groupId = $('#group-id').val();
+        var groupId = "<%=group._id%>";
         if(msg.group_id == groupId) {
             var image_src = "";var cl = "";
             if(msg.image == "avatar.png"){
@@ -242,29 +385,80 @@
             }
     
             $("#chat-bloc").append(
-                '<div class="container-fluid my-0">'
+                '<div class="container-fluid my-0 p-0">'
                     +'<div class="row justify-content-start my-0">'
                         +'<div class="col">'
-                            +'<div class="flex-row d-flex justify-content-start align-items-center">'
+                            +'<div class="flex-row d-flex flex-column flex-md-row justify-content-start">'
                                 +'<div class="p-2">'
                                     +'<img src="'+image_src+'" style="height: 70px;width: 70px" class="rounded-circle" alt="">'
                                 +'</div>'
-                                +'<div id="your-msg" class="ml-3 pl-4 pr-4 py-2 my-1" style="color: #222222;max-width:800px;">'
+                                +'<div id="your-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">'
                                     +'<h6 style="font-size: 13px"><strong>'+msg.username+'</strong></h6>'
                                     +'<span style="font-size: 13px">'+msg.content+'</span>'
                                 +'</div>'
-                                +'<div class="p-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(msg.date).fromNow()+'</span>'
+                                +'<div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(msg.date, "YYYY-MM-DD").fromNow()+'</span>'
                                 +'</div>'
                             +'</div>'
                         +'</div>'
                     +'</div>'
                 +'</div>'
-            )
+            );
+            document.getElementById('bottom').scrollIntoView();
+        }
+    })
+
+    // Display file upload on other sockets connection
+    socket.on('addUpload', function(msg){
+        var image_src = "";
+        if(msg.image == "avatar.png"){
+            image_src = "/img/avatar.png";
+        }else{
+            image_src = "/img/student_images/"+msg.user_id+"/"+msg.image;
+        }
+        var groupId = "<%=group._id%>";
+        if(msg.group_id == groupId) {
+            var fileContent = '';
+                if(msg.fileType == "image/jpeg" || msg.fileType == "image/gif" || msg.fileType == "image/png") {
+                    content = `
+                    <a class="mt-2" target="_blank" href="${msg.file}">
+                        <img class="img-fluid uploaded-img" style="max-width:50rem" src="${msg.file}" />
+                    </a>`;
+                } else {
+                    content = 
+                    `<div class="card text-white" style="border-radius: 5px">
+                        <div class="card-body">
+                            <h6 class="card-title" style="color: black">Document</h6>
+                            <a href="${msg.file}" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                        </div>
+                    </div>`
+                }
+
+            $("#chat-bloc").append(
+                '<div class="container-fluid my-0 p-0">'
+                    +'<div class="row justify-content-start my-0">'
+                        +'<div class="col">'
+                            +'<div class="flex-row d-flex flex-column flex-md-row justify-content-start">'
+                                +'<div class="p-2">'
+                                    +'<img src="'+image_src+'" style="height: 50px;width: 50px" class="rounded-circle" alt="">'
+                                +'</div>'
+                                +'<div id="your-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">'
+                                    +'<h6 style="font-size: 13px"><strong>'+msg.username+'</strong></h6>'
+                                    +'<span style="font-size: 13px">'+msg.content+'</span>'
+                                    +content+''
+                                +'</div>'
+                                +'<div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;">'+moment(msg.date, "YYYY-MM-DD").fromNow()+'</span>'
+                                +'</div>'
+                            +'</div>'
+                        +'</div>'
+                    +'</div>'
+                +'</div>'
+            );
+            document.getElementById('bottom').scrollIntoView();
         }
     })
 
     socket.on('sending verification', function(msg){
-        var groupId = $('#group-id').val();
+        var groupId = "<%=group._id%>";
         if(msg.group_id == groupId) {
             $("#gone").fadeToggle("slow");
             setTimeout(function(){ $("#gone").fadeToggle("slow"); }, 2500);

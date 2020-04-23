@@ -64,9 +64,15 @@ $(document).ready(function(){
                 }
                 
                 //window.location.href='/';
+                setTimeout(() => {
+                    
+                }, 2000);
             },
             error: function(err){
                 console.log(err)
+                $('.fa-spin').css("display", "none");
+                $('#signup').css("display", "block");
+                alert('Une érreur s\'est produite. Veuillez reéssayer')
             }
         })
         return false
@@ -111,7 +117,10 @@ $(document).ready(function(){
                 }
             },
             error: function(err){
+                $('.fa-spin').css("display", "none");
+                $('#login').css("display", "block");
                 console.log(err)
+                alert('Une érreur s\'est produite. Veuillez reéssayer')
             }
         })
 

@@ -30,6 +30,9 @@ var DiscussGroupSchema = mongoose.Schema({
         file:{
             type: String
         },
+        fileType:{
+            type: String
+        },
         date:{
             type: String
         }

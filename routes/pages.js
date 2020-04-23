@@ -338,7 +338,7 @@ function ensureAuthenticated(req, res, next){
     if(req.isAuthenticated()){
         return next()
     }else{
-        req.flash('danger', 'Please login')
+        req.flash('danger', 'Veuillez vous connecter')
         res.redirect('/')
     }
 }

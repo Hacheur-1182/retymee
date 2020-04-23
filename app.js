@@ -121,11 +121,13 @@ var adminTeachers = require('./routes/admin_teachers.js');
 var adminStudents = require('./routes/admin_students.js');
 var adminCourses = require('./routes/admin_courses.js');
 var admin_pages = require('./routes/admin_pages.js');
+var uploads = require('./routes/upload.js');
 
 app.use('/', pages);
 app.use('/admin', admin);
 app.use('/admin', admin_pages);
 app.use('/teacher', teachers);
+app.use('/file/upload', uploads);
 app.use('/admin/teachers', adminTeachers);
 app.use('/admin/students', adminStudents);
 app.use('/student', students);
@@ -159,16 +161,21 @@ io.on('connection', function(socket){
         var file = data.file;
         var date = data.date;
 
-        DiscussGroup.findOneAndUpdate(
+        DiscussGroup.updateOne(
             query,
             {$push: {"messages": {user_id: user_id, content: content, date, file: file}}},
-            {safe: true, upsert: true},
+            
             function(err, message){
                 if(err) return console.log(err)
 
                 socket.emit('sending verification', data)
             }
         );
+    })
+
+    // new file upload
+    socket.on('new upload', function(data){
+        socket.broadcast.emit('addUpload', data)
     })
 })
 

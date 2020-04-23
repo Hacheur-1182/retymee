@@ -7,7 +7,6 @@ var  router = express.Router();
 const mongoose = require('mongoose')
 
 var mkdirp = require('mkdirp')
-var fs = require('fs-extra')
 var resizeImg = require('resize-img')
 
 //Get TeachersDemand Model
@@ -114,10 +113,10 @@ router.post('/add-support', ensureAuthenticated2, (req, res) =>{
 		res.render('./app/teachers_dashboard', {
 			title : "Teacher Dashboard"
 		})
-	}else{
+	} else {
 		var query = {_id:  course_id};
 		console.log(req.body)
-        Course.findOneAndUpdate(
+        Course.updateOne(
             query,
             {$push: {"supports": {name: support, desc : desc, file: supportFile}}},
             {safe: true, upsert: true},
@@ -138,8 +137,7 @@ router.post('/add-support', ensureAuthenticated2, (req, res) =>{
 	            }
 	            req.flash('success', 'Support ajouté avec succès')
 	            res.redirect('/teacher/dashboard')
-			},
-			{useFindAndModify: false}
+			}
         );
 	}
 
@@ -158,7 +156,7 @@ router.get('/course/group/:id', ensureAuthenticated2, (req, res) =>{
 
 				if(group){
 					group.messages.forEach( function(msg) {
-						msg.date = moment(msg.date).fromNow();
+						msg.date = moment(msg.date, "YYYY-MM-DD").fromNow();
 					});
 
 					Student.find(function(err, students){
@@ -344,7 +342,7 @@ function ensureAuthenticated2(req, res, next){
     if(req.isAuthenticated() && req.user.role != "admin"){
         return next()
     }else{
-        req.flash('danger', 'Please login')
+        req.flash('warning', 'Veuillez vous connecter')
         res.redirect('/')
     }
 }

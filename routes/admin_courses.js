@@ -165,7 +165,7 @@ router.post('/assign-course', ensureAuthenticated, (req, res) =>{
     Teacher.findById(teacher_id, function(err, teacher){
         if(err) return console.log(err)
 
-        Course.findOneAndUpdate(
+        Course.updateOne(
             query1,
             {$push: {"teachers": {teacher_id: teacher._id, firstname: teacher.firstname, lastname: teacher.lastname, email: teacher.email, tel: teacher.tel, address: teacher.address, matiere: teacher.matiere}}},
             {safe: true, upsert: true},
@@ -173,7 +173,7 @@ router.post('/assign-course', ensureAuthenticated, (req, res) =>{
                 if(err) return console.log(err)
 
                 Course.findById(course_id, function(err, course){
-                    Teacher.findOneAndUpdate(
+                    Teacher.updateOne(
                         query2,
                         {$push: {"courses": {course_id: course_id, title: course.title, description : course.description, image: course.image, timetable: course.timetable}}},
                         {safe: true, upsert: true},

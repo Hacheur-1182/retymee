@@ -4,9 +4,11 @@
 /public/timetables/*
 /public/img/course_images/*
 /public/img/teacher_images/*
+/public/sharesdocs/*
 
 # exception to the rule
 !public/course_support/.gitkeep 
 !public/timetables/.gitkeep 
 !public/img/course_images/.gitkeep 
 !public/img/teacher_images/.gitkeep 
+!public//sharesdocs/.gitkeep 

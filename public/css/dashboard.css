@@ -79,10 +79,10 @@ footer {
     background-color: #333333; }
 
 #chat-bloc {
-  margin-bottom: 80px; }
+  margin-bottom: 40px; }
 
 #my-msg {
-  background-color: #90caf9;
+  background-color: #c5cae9;
   float: right;
   height: auto; }
 
@@ -112,9 +112,47 @@ footer {
   }
 
   #keyboard {
+    margin-left: 2em;
+    background-color: white !important;
+  }
+
+  #keyboard .clavier {
+    position: relative;
+    padding-top: 15px;
+    padding-bottom: 2px;
+  }
+
+  #keyboard .clavier i {
+    position: absolute;
+    right: 20px;
+    top: 70px;
+    color: #004368;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  #keyboard .clavier .image-upload {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+  }
+
+  #keyboard textarea {
+    padding-right: 20px;
+  }
+
+  #gone {
+    z-index: 200;
+    width:200px;
+    height: 80px;
+    transition: 0.3s;
     position: fixed;
-    bottom: -10px;
-    width: 100%;
+    top: 5px;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    margin-left: auto;
+    display: none;
   }
 
   #courses-support-section {
@@ -127,7 +165,8 @@ footer {
     margin-left: 5em;
     margin-right: 3em;
     color: #222222;
-    border-radius: 5px
+    border-radius: 5px;
+    margin-top: 4rem;
   }
 
   .btn-danger {
@@ -149,4 +188,36 @@ footer {
 
   .btn-outline-dark:hover {
     color: white !important;
+  }
+
+  .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .bttn {
+    border: 2px solid #1c262f;
+    color: #1c262f;
+    background-color: white;
+    padding: 1px 6px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  .uploaded-img {
+
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  .ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
+    padding-right: 3rem;
   }

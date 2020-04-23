@@ -182,17 +182,19 @@
 	#courses-support-section {
 		margin-left: 0 !important;
 		margin-right: 0 !important;
+		padding: 0 !important;
+	}
+	#courses-support-section h4{
+		text-align: center !important;
 	}
 	#discuss-body-section {
 		margin-left: 0 !important;
 		margin-right: 0 !important;
+		margin-top: 1rem !important;
 	}
-	#discuss-form .clavier{
-		display: flex !important;
-		justify-content: center !important;
-	}
+
 	#discuss-form .col-md-11{
-		width: 80% !important;
+		width: 100% !important;
 	}
 	#discuss-form .col-md-1{
 		width: 20% !important;
@@ -259,6 +261,38 @@
 		font-size: 15px !important;
 	}
 
+	/* Discuss group */
+	#keyboard {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		padding-left: 0 !important;
+	}
+
+	.uploaded-img {
+		width: 100% !important;
+	}
+
+	#discuss-header {
+		display: block !important;
+		position: relative !important;
+	}
+
+	/* #keyboard .clavier i {
+		position: relative !important;
+		right: 10px !important;
+		border-radius: 50%;
+		background-color: #004368;
+		color: white;
+		padding: 8px;
+		left: 0;
+	} */
+
+	#keyboard .clavier .image-upload {
+		position: relative !important;
+		top: 5px !important;
+		right: 0 !important;
+	}
+
 	/* footer */
 	footer .container img {
 		width: 35px;
@@ -266,5 +300,19 @@
 	}
 	#main-footer .p-2 {
 		margin-right: 7px !important;
+	}
+}
+
+
+
+
+
+
+@media only screen and (max-width: 1024px) {
+	.uploaded-img {
+		width: 100% !important;
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
 	}
 }
