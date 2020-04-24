@@ -194,8 +194,6 @@
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
-    // Scroll to the bottom
-    document.getElementById('bottom').scrollIntoView();
     // Initialize the editor
     var editor;
     ClassicEditor
@@ -209,13 +207,15 @@
         .catch( error => {
             console.error( error );
         } );
+    // Scroll to the bottom
+    document.getElementById('bottom').scrollIntoView();
 </script>
 
 
 <!-- Send messages with web sockets -->
 <script>
-    // var socket = io.connect('https://retymee.com', {query: 'pseudo=<%=user.username%>'});
-    var socket = io.connect('http://localhost:3000', {query: 'pseudo=<%=user.username%>'});
+    var socket = io.connect('https://retymee.com', {query: 'pseudo=<%=user.username%>'});
+    // var socket = io.connect('http://localhost:3000', {query: 'pseudo=<%=user.username%>'});
 </script>
 
 <!-- Upload support on chat -->
