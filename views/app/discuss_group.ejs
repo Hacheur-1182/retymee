@@ -41,149 +41,152 @@
         <div class="alert alert-success text-center">Message envoyé</div>
     </div>
     
-    <!--Discussion-->
-    <section id="discuss-body-section">
-        <div class="container-fluid py-2" id="chat-bloc">
-            <!--Messages Loop-->
-
-            <%group.messages.forEach(function(message){%>
-                <%if(message.user_id == user.id){%>
-                    <div class="container-fluid my-0 p-0">
-                        <div class="row justify-content-end my-0">
-                            <div class="col">
-                                <div class="flex-row d-flex flex-column flex-md-row justify-content-end">
-                                    <div id="my-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">
-                                        <h6 style="font-size: 13px"><strong>Moi</strong></h6>
-                                        <span style="font-size: 13px"><%-message.content-%></span>
-                                        <%if(message.file){%>
-                                            <%if(message.fileType == "image/jpeg" || message.fileType == "image/gif" || message.fileType == "image/png" ){%>
-                                            <a class="mt-2" target="_blank" href="/sharesdocs/<%=course._id%>/<%=message.file%>">
-                                                <img class="img-fluid uploaded-img" style="max-width:50rem" src="/sharesdocs/<%=course._id%>/<%=message.file%>" />
-                                            </a>
-                                            <%}else{%>
-                                                <div class="card text-white" style="border-radius: 5px">
-                                                    <div class="card-body">
-                                                        <h6 class="card-title" style="color: black">Document</h6>
-                                                        <a  href="/sharesdocs/<%=course._id%>/<%=message.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+    <!-- Message list and keyboard wrapper -->
+    <div id='chat-view'>
+        <!--Discussion-->
+        <div id="discuss-body-section">
+            <div class="container-fluid py-2" id="chat-bloc">
+                <!--Messages Loop-->
+                <%group.messages.forEach(function(message){%>
+                    <%if(message.user_id == user.id){%>
+                        <div class="container-fluid my-0 p-0">
+                            <div class="row justify-content-end my-0">
+                                <div class="col">
+                                    <div class="flex-row d-flex flex-column flex-md-row justify-content-end">
+                                        <div id="my-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">
+                                            <h6 style="font-size: 13px"><strong>Moi</strong></h6>
+                                            <span style="font-size: 13px"><%-message.content-%></span>
+                                            <%if(message.file){%>
+                                                <%if(message.fileType == "image/jpeg" || message.fileType == "image/gif" || message.fileType == "image/png" ){%>
+                                                <a class="mt-2" target="_blank" href="/sharesdocs/<%=course._id%>/<%=message.file%>">
+                                                    <img class="img-fluid uploaded-img" style="max-width:50rem" src="/sharesdocs/<%=course._id%>/<%=message.file%>" />
+                                                </a>
+                                                <%}else{%>
+                                                    <div class="card text-white" style="border-radius: 5px">
+                                                        <div class="card-body">
+                                                            <h6 class="card-title" style="color: black">Document</h6>
+                                                            <a  href="/sharesdocs/<%=course._id%>/<%=message.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                <%}%>
                                             <%}%>
-                                        <%}%>
-                                    </div>
-                                    <div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <%}else{%>
-                    <div class="container-fluid my-0 p-0">
-                        <div class="row justify-content-start my-0">
-                            <div class="col">
-                                <div class="flex-row d-flex flex-column flex-md-row justify-content-start">
-                                    <!--Student Messages in Teacher Interface-->
-                                    <%students.forEach(function(student){%>
-                                        <%if(student._id.equals(message.user_id)){%>
-                                            <div class="p-2 imagewrapper">
-                                                <%if(student.image != "avatar.png"){%>
-                                                    <img src="/img/student_images/<%student._id%>/<%student.image%>" class="img-rounded" style="height: 40px;width: 40px" class="rounded-circle" alt="">
-                                                <%}else{%>
-                                                    <img src="/img/avatar.png" style="height: 40px;width: 40px" class="rounded-circle" alt="">
-                                                <%}%>
-                                            </div>
-                                            <div id="your-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">
-                                                <h6 style="font-size: 13px"><strong><%=student.username%></strong></h6>
-                                                <span style="font-size: 13px"><%-message.content-%></span>
-                                                <%if(message.file){%>
-                                                    <%if(message.fileType == "image/jpeg" || message.fileType == "image/gif" || message.fileType == "image/png" ){%>
-                                                    <a class="mt-2" target="_blank" href="/sharesdocs/<%=course._id%>/<%=message.file%>">
-                                                        <img class="img-fluid uploaded-img" style="max-width:50rem" src="/sharesdocs/<%=course._id%>/<%=message.file%>" />
-                                                    </a>
-                                                    <%}else{%>
-                                                        <div class="card text-white" style="border-radius: 5px">
-                                                            <div class="card-body">
-                                                                <h6 class="card-title" style="color: black">Document</h6>
-                                                                <a  href="/sharesdocs/<%=course._id%>/<%=message.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    <%}%>
-                                                <%}%>
-                                            </div>
-                                            <div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
-                                            </div>
-                                        <%}%>
-                                    <%})%>
-                                    <!--Teacher Messages in Student Interface-->
-                                    <%teachers.forEach(function(teacher){%>
-                                        <%if(teacher._id.equals(message.user_id)){%>
-                                            <div class="p-2 imagewrapper">
-                                                <%if(teacher.image != "avatar.png"){%>
-                                                    <img src="/img/student_images/<%teacher._id%>/<%teacher.image%>" class="img-rounded" style="height: 40px;width: 40px" class="rounded-circle" alt="">
-                                                <%}else{%>
-                                                    <img src="/img/avatar.png" style="height: 40px;width: 40px" class="rounded-circle" alt="">
-                                                <%}%>
-                                            </div>
-                                            <div id="your-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">
-                                                <h6 style="font-size: 13px"><strong><%=teacher.username%></strong><span class="text-muted"> (Enseignant)</span></h6>
-                                                <span style="font-size: 13px"><%-message.content-%></span>
-                                                <%if(message.file){%>
-                                                    <%if(message.fileType == "image/jpeg" || message.fileType == "image/gif" || message.fileType == "image/png" ){%>
-                                                    <a class="mt-2" target="_blank" href="/sharesdocs/<%=course._id%>/<%=message.file%>">
-                                                        <img class="img-fluid uploaded-img" style="max-width:50rem" src="/sharesdocs/<%=course._id%>/<%=message.file%>" />
-                                                    </a>
-                                                    <%}else{%>
-                                                        <div class="card text-white" style="border-radius: 5px">
-                                                            <div class="card-body">
-                                                                <h6 class="card-title" style="color: black">Document</h6>
-                                                                <a  href="/sharesdocs/<%=course._id%>/<%=message.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    <%}%>
-                                                <%}%>
-                                            </div>
-                                            <div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
-                                            </div>
-                                        <%}%>
-                                    <%})%>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <%}%>
-            <%})%>
-        </div>
-    </section>
-
-    <section id="keyboard">
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <!--Clavier-->
-                <div class="col-sm-12">
-                    <form id="discuss-form" method="post" action="#" enctype="multipart/form-data">
-                        <div class="container-fluid p-0 m-0">
-                            <div class="row align-items-center">
-                                <div class="col-sm-12">
-                                    <div class="form-group clavier">
-                                        <textarea name="content" id="content" class="form-control" placeholder="Ecrivez ici"></textarea>
-                                        <i class="fa fa-send" id="send-message"></i>
-
-                                        <div class="image-upload">
-                                            <div class="upload-btn-wrapper">
-                                                <button class="bttn">Charger un fichier</button>
-                                                <input id="fileupload" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, application/pdf, .doc,.docx,application/msword" />
-                                            </div>
+                                        </div>
+                                        <div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
+                    <%}else{%>
+                        <div class="container-fluid my-0 p-0">
+                            <div class="row justify-content-start my-0">
+                                <div class="col">
+                                    <div class="flex-row d-flex flex-column flex-md-row justify-content-start">
+                                        <!--Student Messages in Teacher Interface-->
+                                        <%students.forEach(function(student){%>
+                                            <%if(student._id.equals(message.user_id)){%>
+                                                <div class="p-2 imagewrapper">
+                                                    <%if(student.image != "avatar.png"){%>
+                                                        <img src="/img/student_images/<%student._id%>/<%student.image%>" class="img-rounded" style="height: 40px;width: 40px" class="rounded-circle" alt="">
+                                                    <%}else{%>
+                                                        <img src="/img/avatar.png" style="height: 40px;width: 40px" class="rounded-circle" alt="">
+                                                    <%}%>
+                                                </div>
+                                                <div id="your-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">
+                                                    <h6 style="font-size: 13px"><strong><%=student.username%></strong></h6>
+                                                    <span style="font-size: 13px"><%-message.content-%></span>
+                                                    <%if(message.file){%>
+                                                        <%if(message.fileType == "image/jpeg" || message.fileType == "image/gif" || message.fileType == "image/png" ){%>
+                                                        <a class="mt-2" target="_blank" href="/sharesdocs/<%=course._id%>/<%=message.file%>">
+                                                            <img class="img-fluid uploaded-img" style="max-width:50rem" src="/sharesdocs/<%=course._id%>/<%=message.file%>" />
+                                                        </a>
+                                                        <%}else{%>
+                                                            <div class="card text-white" style="border-radius: 5px">
+                                                                <div class="card-body">
+                                                                    <h6 class="card-title" style="color: black">Document</h6>
+                                                                    <a  href="/sharesdocs/<%=course._id%>/<%=message.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        <%}%>
+                                                    <%}%>
+                                                </div>
+                                                <div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
+                                                </div>
+                                            <%}%>
+                                        <%})%>
+                                        <!--Teacher Messages in Student Interface-->
+                                        <%teachers.forEach(function(teacher){%>
+                                            <%if(teacher._id.equals(message.user_id)){%>
+                                                <div class="p-2 imagewrapper">
+                                                    <%if(teacher.image != "avatar.png"){%>
+                                                        <img src="/img/student_images/<%teacher._id%>/<%teacher.image%>" class="img-rounded" style="height: 40px;width: 40px" class="rounded-circle" alt="">
+                                                    <%}else{%>
+                                                        <img src="/img/avatar.png" style="height: 40px;width: 40px" class="rounded-circle" alt="">
+                                                    <%}%>
+                                                </div>
+                                                <div id="your-msg" class="ml-3 pl-3 pr-3 py-2 my-1" style="color: #222222;">
+                                                    <h6 style="font-size: 13px"><strong><%=teacher.username%></strong><span class="text-muted"> (Enseignant)</span></h6>
+                                                    <span style="font-size: 13px"><%-message.content-%></span>
+                                                    <%if(message.file){%>
+                                                        <%if(message.fileType == "image/jpeg" || message.fileType == "image/gif" || message.fileType == "image/png" ){%>
+                                                        <a class="mt-2" target="_blank" href="/sharesdocs/<%=course._id%>/<%=message.file%>">
+                                                            <img class="img-fluid uploaded-img" style="max-width:50rem" src="/sharesdocs/<%=course._id%>/<%=message.file%>" />
+                                                        </a>
+                                                        <%}else{%>
+                                                            <div class="card text-white" style="border-radius: 5px">
+                                                                <div class="card-body">
+                                                                    <h6 class="card-title" style="color: black">Document</h6>
+                                                                    <a  href="/sharesdocs/<%=course._id%>/<%=message.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        <%}%>
+                                                    <%}%>
+                                                </div>
+                                                <div class="p-0 p-md-2 align-self-start py-0"><span class="py-0 text-white" style="font-size: 11px;"><%=message.date%></span>
+                                                </div>
+                                            <%}%>
+                                        <%})%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                <%})%>
+            </div>
+        </div>
+    
+        <div id="keyboard">
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <!--Clavier-->
+                    <div class="col-sm-12">
+                        <form id="discuss-form" method="post" action="#" enctype="multipart/form-data">
+                            <div class="container-fluid p-0 m-0">
+                                <div class="row align-items-center">
+                                    <div class="col-sm-12">
+                                        <div class="form-group clavier">
+                                            <textarea name="content" id="content" class="form-control" placeholder="Ecrivez ici"></textarea>
+                                            <i class="fa fa-send" id="send-message"></i>
+    
+                                            <div class="image-upload">
+                                                <div class="upload-btn-wrapper">
+                                                    <button class="bttn">Charger un fichier</button>
+                                                    <input id="fileupload" type="file" name="myfile" accept="image/gif, image/jpeg, image/png, application/pdf, .doc,.docx,application/msword" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-    <div id="bottom"></div>
+
+    </div>
 </section>
+<div id="bottom"></div>
 
 
 

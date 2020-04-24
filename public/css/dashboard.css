@@ -2,7 +2,7 @@ body {
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   overflow-x: hidden;
-  line-height: 150%;
+  height: 100vh;
   background-color: #fafafa; }
 
 * {
@@ -15,6 +15,8 @@ body {
   left: 0;
   bottom: 0;
   width: 5em;
+  display: flex;
+  height: 100%;
   background-color: #1c262f;
   height: 100%; }
   #side-bar i, #side-bar ion-icon {
@@ -107,7 +109,10 @@ footer {
     background-repeat: no-repeat;
     background-size: 100% 100%;
     margin-left: 3em;
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    flex: 1;
     overflow-y: scroll;
   }
 
@@ -157,7 +162,7 @@ footer {
 
   #courses-support-section {
     background-color: rgba(0, 0, 0, 0.2);
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     margin-bottom: 3rem;
   }
 
@@ -166,7 +171,14 @@ footer {
     margin-right: 3em;
     color: #222222;
     border-radius: 5px;
-    margin-top: 4rem;
+    flex: 1;
+  }
+
+  #chat-view {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    position: relative;
   }
 
   .btn-danger {
