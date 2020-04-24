@@ -18,23 +18,32 @@
 
     <section id="courses-support-section">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <h4 class="text-white py-1">Supports de cours</h4>
-                </div>
-                <%course.supports.forEach(function(support){%>
-                     <div class="col-md-3">
-                        <div class="card text-white mb-3" style="border-radius: 5px">
-                            <div class="card-body">
-                                <h5 class="card-title" style="color: black"><%=support.name%></h5>
-                                <a  href="/course_support/<%=course._id%>/<%=support.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+            <div class="accordion" id="accordionExample">
+                <div class="card" style="cursor: pointer;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  <div class="card-header" id="headingOne">
+                    <h6 class="mb-0 text-center text-uppercase"><b>Supports de cours</b></h6>
+                  </div>
+              
+                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                    <div class="row p-2 justify-content-center">
+                        <%course.supports.forEach(function(support){%>
+                            <div class="col-md-3 col-sm-12">
+                                <div class="card p-0" style="border: solid 1px #ccc;padding: 1rem;">
+                                    <div class="card-body text-dark p-3">
+                                      <h5 class="card-title"><%=support.name%></h5>
+                                      <a  href="/course_support/<%=course._id%>/<%=support.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        <%})%>
                     </div>
-                <%})%>
+                  </div>
+                </div>
             </div>
         </div>
     </section>
+
+    
 
     <!-- Notification de succès d'envoi d'un message -->
     <div id="gone" class="col">
@@ -42,7 +51,7 @@
     </div>
     
     <!-- Message list and keyboard wrapper -->
-    <div id='chat-view'>
+    <!-- <div id='chat-view'> -->
         <!--Discussion-->
         <div id="discuss-body-section">
             <div class="container-fluid py-2" id="chat-bloc">
@@ -153,6 +162,7 @@
                     <%}%>
                 <%})%>
             </div>
+            <div id="bottom"></div>
         </div>
     
         <div id="keyboard">
@@ -184,8 +194,7 @@
             </div>
         </div>
 
-    </div>
-    <div id="bottom"></div>
+    <!-- </div> -->
 </section>
 
 
@@ -281,14 +290,14 @@
                         +'</div>'
                     +'</div>'
                 )
-                document.getElementById('bottom').scrollIntoView();
-
+                document.getElementById('bottom').scrollIntoView({ behavior: 'smooth', block: 'end'});
+                
                 // Send socket to the server
                 var group_id = "<%=group._id%>"
                 var username = "<%=user.username%>"
                 var user_id = "<%=user._id%>"
                 var image = "<%=user.image%>"
-
+                
                 socket.emit("new upload",{
                     user_id: user_id,
                     username: username,
@@ -298,6 +307,7 @@
                     fileType: fileType,
                     date: moment().format()
                 });
+                
             },
             error: function(err){
                 console.log(err);
@@ -456,7 +466,7 @@
                     +'</div>'
                 +'</div>'
             );
-            document.getElementById('bottom').scrollIntoView();
+            document.getElementById('bottom').scrollIntoView({ behavior: 'smooth', block: 'end'});
         }
     })
 
