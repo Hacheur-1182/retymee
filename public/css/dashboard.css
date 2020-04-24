@@ -116,6 +116,10 @@ footer {
     overflow-y: scroll;
   }
 
+  #courses-support-section h5{
+    font-size: 16px ;
+  }
+
   #keyboard {
     margin-left: 2em;
     background-color: white !important;
