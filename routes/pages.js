@@ -167,7 +167,6 @@ router.post('/user/reset-password', (req, res) =>{
 	}
 });
 
-
 // Accéder à la classe virtuelle
 router.get('/classroom', (req, res) =>{
 	res.render('./app/meeting', {
@@ -338,7 +337,6 @@ function ensureAuthenticated(req, res, next){
     if(req.isAuthenticated()){
         return next()
     }else{
-        req.flash('danger', 'Veuillez vous connecter')
         res.redirect('/')
     }
 }

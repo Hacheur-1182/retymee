@@ -277,7 +277,6 @@ function ensureAuthenticated(req, res, next){
     if(req.isAuthenticated()){
         return next()
     }else{
-        req.flash('danger', 'Please login')
         res.redirect('/')
     }
 }
@@ -287,7 +286,6 @@ function ensureAuthenticatedForCourseRegistration(req, res, next){
     if(req.isAuthenticated() && req.user.role != "admin"){
         return next()
     }else{
-        req.flash('danger', 'Please login')
         res.redirect('/course/'+req.params.id)
     }
 }

@@ -342,7 +342,6 @@ function ensureAuthenticated2(req, res, next){
     if(req.isAuthenticated() && req.user.role != "admin"){
         return next()
     }else{
-        req.flash('warning', 'Veuillez vous connecter')
         res.redirect('/')
     }
 }
