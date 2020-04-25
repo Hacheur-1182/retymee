@@ -272,6 +272,26 @@ router.get('/course/group/:id', ensureAuthenticated, (req, res) =>{
 	})
 });
 
+//Ouvrir le la page des supports de cours
+router.get('/supports/:id', ensureAuthenticated, (req, res) =>{
+	var course_id = req.params.id;
+	
+	Course.findById(course_id, function(err, course){
+		if(err) return console.log(err)
+
+		if(course){
+			res.render('./app/course_supports', {
+				course: course,
+				isTeacher: false,
+				title : "Supports de cours"
+			})
+		} else {
+			req.flash('warning', "Ce cours n'est plus disponible")
+			res.redirect('/student/dashboard')
+		}
+	})
+});
+
 //accesss control
 function ensureAuthenticated(req, res, next){
     if(req.isAuthenticated()){

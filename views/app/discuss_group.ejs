@@ -16,35 +16,6 @@
         </div>
     </div>
 
-    <section id="courses-support-section">
-        <div class="container-fluid">
-            <div class="accordion" id="accordionExample">
-                <div class="card" style="cursor: pointer;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                  <div class="card-header" id="headingOne">
-                    <h6 class="mb-0 text-center text-uppercase"><b>Supports de cours</b></h6>
-                  </div>
-              
-                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                    <div class="row p-2 justify-content-center">
-                        <%course.supports.forEach(function(support){%>
-                            <div class="col-md-3 col-sm-12">
-                                <div class="card p-0" style="border: solid 1px #ccc;padding: 1rem;">
-                                    <div class="card-body text-dark p-3">
-                                      <h5 class="card-title"><%=support.name%></h5>
-                                      <a  href="/course_support/<%=course._id%>/<%=support.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        <%})%>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    
-
     <!-- Notification de succès d'envoi d'un message -->
     <div id="gone" class="col">
         <div class="alert alert-success text-center">Message envoyé</div>

@@ -1,0 +1,43 @@
+<%- include('../_layout/dashboard-header') %>
+
+    <section id="header" style="margin-left: 3em">
+        <div class="container-fluid py-4">
+            <div class="row pt-3 pb-2">
+                <div class="col-md-12 text-center">
+                    <h1 class="text-white mt-1">Mon Tableau de bord</h1>
+                    <%if(user.image != "avatar.png"){%>
+                        <img src="/img/student_images/<%=user._id%>/<%=user.image%>" class="img-rounded" alt="">
+                    <%}else{%>
+                        <img src="/img/avatar.png" class="img-rounded" alt="">
+                    <%}%>
+                    <p class="text-white pt-3"><b><%=user.email%></b></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="my-courses" class="py-5">
+        <div class="container-fluid">
+            <div class="row my-3">
+                <div class="col-sm-12">
+                    <h4 class="pb-0 mb-0">SUPPORTS DE COURS</h4>
+                </div>
+                </div>
+                <div class="row">
+                    <%course.supports.forEach(function(support){%>
+                        <div class="col-md-3 col-sm-12">
+                            <div class="card p-0 mt-1">
+                                <div class="card-body text-dark p-3">
+                                  <h5 class="card-title"><%=support.name%></h5>
+                                  <a  href="/course_support/<%=course._id%>/<%=support.file%>" class="btn btn-dark btn-sm">Télécharger <i class="fa fa-download"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    <%})%>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('../_layout/dashboard-footer')%>

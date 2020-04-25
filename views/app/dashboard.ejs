@@ -39,7 +39,7 @@
                     <%if(subscriber_courses != ""){%>
                         <%subscriber_courses.forEach(function(course){%>
                             <div class="card mt-3">
-                                <h5 class="card-header" style="background-color: #1c262f;color: white"><%=course.course_title%></h5>
+                                <h5 class="card-header" style="background-color: hsl(208, 25%, 15%);color: white"><%=course.course_title%></h5>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-12 col-lg-10 col-sm-12">
@@ -50,7 +50,10 @@
                                                     <a class="btn button-yellow" href="/classroom">Accéder à la classe virtuelle</a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a class="btn btn-dark" href="/student/course/group/<%=course.course_id%>">Supports & Groupe de discussion <i class="fa fa-comment-o"></i></a>
+                                                    <a class="btn btn-dark" href="/student/course/group/<%=course.course_id%>">Groupe de discussion <i class="fa fa-comment-o"></i></a>
+                                                </div>
+                                                <div class="p-2">
+                                                    <a class="btn btn-outline-dark" href="/student/supports/<%=course.course_id%>">Supports <i class="fa fa-book"></i></a>
                                                 </div>
                                                 <% if (course.course_timetable){%>
                                                 <div class="p-2">
