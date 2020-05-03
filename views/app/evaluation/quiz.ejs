@@ -1,0 +1,39 @@
+<%- include('../../_layout/dashboard-header') %>
+
+<section id="header" style="margin-left: 3em">
+    <div class="container-fluid py-4">
+        <div class="row pt-3 pb-2">
+            <div class="col-md-12 text-center d-flex flex-column justify-content-center align-items-center">   
+                <h4 class="mb-0 text-white"><b><%=quiz.title%></b>: <%=quiz.courseTitle%></h4>
+                <h6 class="mb-0 text-white mt-2">[De 10h à 11h]</h6>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+<section id="quiz" class="py-5">
+    <div class="container-fluid">
+        <div class="row my-3">
+            <div class="col-sm-12">
+                <div id="question-box">
+                    <h5 class="pb-0 mb-0 text-bold"><%=question.label%></h5>
+                    <div class="responses mt-3">
+                        <form method="POST" action="/quiz/<%=quiz._id%>/<%=question._id%>">
+                            <% question.responses.forEach(function(reponse, i){ %>
+                                <div class="custom-control custom-checkbox my-1 mr-sm-2 mt-2">
+                                    <input type="checkbox" class="custom-control-input" name="response" value="<%=reponse%>" id="<%=i%><%=reponse%><%=question._id%>">
+                                    <label class="custom-control-label" for="<%=i%><%=reponse%><%=question._id%>"><%=reponse%></label>
+                                </div>
+                            <%});%>
+                            <button type="submit" class="btn button-yellow mt-3">Valider/Suivant</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<%- include('../../_layout/dashboard-footer')%>

@@ -19,8 +19,13 @@
     <section id="my-courses" style="padding-bottom: 4em">
         <div class="container-fluid">
             <div class="row my-3">
-                <div class="col-md-12">
+                <div class="col-md-12 d-flex justify-content-between flex-md-row flex-column align-items-center">
                     <h1 class="py-3">MES COURS</h1>
+                    <div class="p-2">
+                        <a class="btn btn-outline-dark" href="/quiz">GEREZ LES EVALUATIONS <i class="fa fa-check-circle"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-12">
                     <%- messages('messages', locals) %>
                     <% if (errors){%>
                       <% errors.forEach(function(error){ %>
@@ -29,7 +34,8 @@
                         </div>
                       <%});%>
                     <%}%>
-                    
+                </div>   
+                <div class="col-md-12">
                     <%if(user.courses != ""){%>
                         <%user.courses.forEach(function(course, i){%>
                             <div class="card mt-3">
@@ -51,10 +57,7 @@
                                                     <a class="btn btn-dark" href="/teacher/course/group/<%=course.course_id%>">Groupe de discussion <i class="fa fa-comment-o"></i></a>
                                                 </div>
                                                 <div class="p-2">
-                                                    <a class="btn btn-outline-dark add-support-link" href="" data-toggle="modal" data-target="#add-support" style="color: rgb(28, 38, 47);" data-id=<%=course.course_id%>>Ajouter un support <i class="fa fa-book"></i></a>
-                                                </div>
-                                                <div class="p-2">
-                                                    <a class="btn btn-outline-dark" href="/teacher/supports/<%=course.course_id%>">Tous les supports <i class="fa fa-book"></i></a>
+                                                    <a class="btn btn-outline-dark" href="/teacher/supports/<%=course.course_id%>">Supports de cours <i class="fa fa-book"></i></a>
                                                 </div>
                                                 <!-- <div class="p-2">
                                                     <a href="" class="add-classroom" data-toggle="modal" id="add-classroom" data-target="#add-classroom-link" virtualclass-data-id=<%=course.course_id%> style="color: rgb(28, 38, 47);">Set ClassRoom Link <i class="fa fa-flash"></i></a>
@@ -76,48 +79,6 @@
         </div>
     </section>
 
-        <!-- Add Course suppport-->
-        <div class="modal fade" id="add-support" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-center" id="exampleModalLabel">Ajouter un support de cours </h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="container text-center">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <form  method="post" action="/teacher/add-support" id="form-login" data-parsley-validate enctype="multipart/form-data">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input placeholder="Nom du support" type="text" name="support" placeholder="Password" class="form-control" data-parsley-required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input  type="text" name="desc" placeholder="Description" class="form-control" data-parsley-required name="desc">
-                                            </div>
-                                        </div>
-                                        <input type="hidden" name="course_id" id="hidden-course-id" value="">
-                                        <div class="form-group">
-                                            <div class="input-group">
-                                                <input type="file" id="file" name="file"  class="form-control" data-parsley-required>
-                                            </div>
-                                        </div>
-                                        <button type="submit" id="add-course-support" class="btn btn-block button-yellow" >Ajouter</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer justify-content-center">
-                </div>
-            </div>
-        </div>
 
         <!-- Set classroom link-->
         <div class="modal fade" id="add-classroom-link" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -161,13 +122,6 @@
             $target = $(e.target);
             const course_id = $target.attr('data-id');
             $('#hidden-course-id2').val(course_id)
-        })
-
-        //Set the value of the class ID
-        $(".add-support-link").click(function(e){
-            $target = $(e.target);
-            const course_id = $target.attr('data-id');
-            $('#hidden-course-id').val(course_id)
         })
     })
 </script>

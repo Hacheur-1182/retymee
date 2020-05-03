@@ -311,7 +311,7 @@ router.post('/user/password/update', ensureAuthenticated, (req, res) =>{
 								{$set: {password: hash}},
 								(err, user) => {
 									if(err) throw err
-									req.flash('success', 'Mot de passe mise à jour avec succès');
+									req.flash('success', 'Mot de passe mis à jour avec succès');
 									res.redirect('/teacher/dashboard/edit-account')
 							})
 						}

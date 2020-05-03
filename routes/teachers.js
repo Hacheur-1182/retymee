@@ -193,7 +193,7 @@ router.get('/supports/:id', ensureAuthenticated2, (req, res) =>{
 		if(course){
 			res.render('./app/course_supports', {
 				course: course,
-				isTeacher: false,
+				isTeacher: true,
 				title : "Supports de cours"
 			})
 		} else {

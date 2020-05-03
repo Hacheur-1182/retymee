@@ -1,0 +1,37 @@
+<%- include('../../_layout/dashboard-header') %>
+
+<section id="header" style="margin-left: 3em">
+    <div class="container-fluid py-4">
+        <div class="row pt-3 pb-2">
+            <div class="col-md-12 text-center flex-column d-flex justify-content-center align-items-center">   
+                <h4 class="mb-0 text-white"><b><%=quiz.title%></b>: <%=quiz.courseTitle%></h4>
+            </div>
+        </div>
+    </div>
+</section>
+    
+
+<section id="quiz-preview" class="py-5">
+    <div class="container-fluid">
+        <div class="row my-3">
+            <% quiz.questions.forEach(function(question){ %>
+                <div class="col-sm-12">
+                    <div id="question-box-2">
+                        <h5 class="pb-0 mb-0 text-bold"><%=question.label%></h5>
+                        <div class="responses mt-3">
+                            <% question.responses.forEach(function(reponse){ %>
+                                <div class="custom-control custom-checkbox my-1 mr-sm-2 mt-2">
+                                    <input type="checkbox" class="custom-control-input" id="<%=reponse%><%=question._id%>">
+                                    <label class="custom-control-label" for="<%=reponse%><%=question._id%>"><%=reponse%></label>
+                                </div>
+                            <%});%>
+                        </div>
+                    </div>
+                </div>
+            <%});%>
+        </div>
+    </div>
+</section>
+
+
+<%- include('../../_layout/dashboard-footer')%>

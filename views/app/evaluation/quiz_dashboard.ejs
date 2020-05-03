@@ -1,0 +1,63 @@
+<%- include('../../_layout/dashboard-header') %>
+<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js" type="text/javascript"></script>
+<script src="/js/moment-locales.js" type="text/javascript"></script>
+<script>moment.locale('fr');</script>
+
+    <section id="header" style="margin-left: 3em">
+        <div class="container-fluid py-4">
+            <div class="row pt-3 pb-2">
+                <div class="col-md-12 text-center d-flex justify-content-center align-items-center">
+                    <%if(user.image != "avatar.png"){%>
+                        <img src="/img/student_images/<%=user._id%>/<%=user.image%>" class="img-rounded" alt="">
+                    <%}else{%>
+                        <img src="/img/avatar.png" class="img-rounded" alt="">
+                    <%}%>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <%if(user.firstname != ""){%>
+                            <p class="text-white ml-4 mb-0"><b><%=user.email%></b></p>
+                        <%}%>
+                        
+                        <p class="text-white ml-4 mb-0"><b><%=user.email%></b></p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="quiz-dashboard" class="pb-5 pt-4">
+        <div class="container-fluid">
+            <div class="row my-3 justify-content-center">
+                <div class="col-sm-12 d-flex justify-content-between align-items-center">
+                    <h4 class="pb-0 mb-0"><b>GEREZ VOS EVALUATIONS</b></h4>
+                    <a href="/quiz/builder" class="btn button-yellow">CREER UNE NOUVELLE EVALUATION <i class="fa fa-plus"></i></a>
+                </div>
+                <div class="col-sm-12 mt-2 mb-4">
+                    <hr/>
+                    <h5 class="pb-0 mb-0 text-center mt-4">LISTE DES EVALUATIONS</h5>
+                </div>
+
+                <% quizzes.forEach(function(quiz){ %>
+                    <div class="col-sm-12 col-md-3">
+                        <div class="card text-center">
+                            <div class="card-body">
+                              <h5 class="card-title"><%=quiz.title%></h5>
+                              <h6><%=quiz.courseTitle%></h6>
+                              <p style="font-size: 0.85rem;" class="mb-0 text-muted"><script>document.write(moment("<%=quiz.startAt%>").format('Do MMMM YYYY, h:mm:ss a'));</script></p>
+                              <p style="font-size: 0.85rem;" class="mb-0">à</p>
+                              <p style="font-size: 0.85rem;" class="mb-0 text-muted"><script>document.write(moment("<%=quiz.endAt%>").format('Do MMMM YYYY, h:mm:ss a'));</script></p>
+                              <div class="d-flex flex-column mt-3">
+                                  <a href="/quiz/preview/<%=quiz._id%>" class="btn btn-outline-dark">Prévisualiser</a>
+                                  <a href="/quiz/results/<%=quiz._id%>" class="btn btn-dark mt-2">Voir les résultats</a>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                <%});%>
+            </div>
+        </div>
+    </section>
+
+
+    <%- include('../../_layout/dashboard-footer')%>

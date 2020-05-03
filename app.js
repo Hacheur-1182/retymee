@@ -121,6 +121,7 @@ var adminTeachers = require('./routes/admin_teachers.js');
 var adminStudents = require('./routes/admin_students.js');
 var adminCourses = require('./routes/admin_courses.js');
 var admin_pages = require('./routes/admin_pages.js');
+var quiz = require('./routes/quiz');
 var uploads = require('./routes/upload.js');
 
 app.use('/', pages);
@@ -131,6 +132,7 @@ app.use('/file/upload', uploads);
 app.use('/admin/teachers', adminTeachers);
 app.use('/admin/students', adminStudents);
 app.use('/student', students);
+app.use('/quiz', quiz);
 app.use('/admin/courses', adminCourses);
 
 app.use(function(req, res, next){
