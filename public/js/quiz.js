@@ -64,8 +64,8 @@ $(document).ready(function() {
     // Submit whole quiz
     $('#submit').click(function() {
         var title = $("input[name='title']").val().trim()
-        var startAt = $("input[name='startat']").val().trim()
-        var endAt = $("input[name='endat']").val().trim()
+        var startAt = new Date($("input[name='startat']").val().trim())
+        var endAt = new Date($("input[name='endat']").val().trim())
         var courseTitle = $("select[name='courseTitle']").val().split(':')[0]
         var courseId = $("select[name='courseTitle']").val().split(':')[1]
 

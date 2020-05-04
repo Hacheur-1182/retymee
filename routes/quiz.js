@@ -91,7 +91,6 @@ router.post('/builder', ensureAuthenticated2, (req, res) =>{
 // Afficher les questions une par une
 router.get('/:quizId', ensureAuthenticated2, (req, res) =>{
     const quizId = req.params.quizId;
-
     
     Quiz.findById(quizId, (err, quiz) => {
         if (err) throw err;
@@ -162,7 +161,7 @@ router.get('/:quizId', ensureAuthenticated2, (req, res) =>{
 router.post('/:quizId/:questionId', ensureAuthenticated2, (req, res) =>{
     const quizId = req.params.quizId;
     const questionId = req.params.questionId;
-    let userResponse = req.body.response;
+    let userResponse = req.body.response ? req.body.response: [];
     
     if(!Array.isArray(userResponse)) {
         userResponse = [userResponse]
@@ -181,13 +180,22 @@ router.post('/:quizId/:questionId', ensureAuthenticated2, (req, res) =>{
         let totalQuestionMark = 0;
 
         // Process marks calculation | remove 1 point for each wrong awnser
-        userResponse.forEach(response => {
-            if(trueResponses.includes(response)) {
-                totalQuestionMark+= markPerTrueResponse;
-            } else {
-                totalQuestionMark-=1
-            }
-        });
+        // userResponse.forEach(response => {
+        //     if(trueResponses.includes(response)) {
+        //         totalQuestionMark+= markPerTrueResponse;
+        //     } else {
+        //         totalQuestionMark-=1
+        //     }
+        // });
+
+        // process mark calculation | 0 point if user failed one question
+        if(userResponse.length <= trueResponses.length) {
+            userResponse.forEach(response => {
+                if(trueResponses.includes(response)) {
+                    totalQuestionMark+= markPerTrueResponse;
+                }
+            });
+        }
 
         let newResponse = new QuizResponse({
             quizId: quiz._id,
