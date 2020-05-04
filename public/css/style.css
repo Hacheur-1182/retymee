@@ -75,16 +75,16 @@ header {
     #banner .row .col1 h1, #banner .row .col1 h4 {
       color: white; }
     #banner .row .col1 h1 {
-      font-size: 75px;
+      font-size: 3.5rem;
       font-weight: 1000;
-      margin-top: .8em; }
+      margin-top: 1.2em; }
     #banner .row .col1 h4 {
-      font-size: 28px; }
+      font-size: 1.7rem; }
   #banner a {
     background-color: #ffc03c;
     margin-top: 1.5em;
     color: black;
-    width: 20em; }
+    width: 18em; }
     #banner a:hover {
       background-color: #ffc03c; }
 
