@@ -221,7 +221,7 @@ router.post('/group/send', ensureAuthenticated, (req, res) =>{
 	var query = {_id:  groupid};
     DiscussGroup.updateOne(
         query,
-        {$push: {"messages": {user_id: req.user._id, content: content,date:new Date(), file: file}}},
+        {$push: {"messages": {user_id: req.user._id, content: content, date:new Date(), file: file}}},
         {safe: true, upsert: true},
         function(err, message){
         	if(err) return console.log(err)
@@ -245,7 +245,7 @@ router.get('/course/group/:id', ensureAuthenticated, (req, res) =>{
 
 				if(group){
 					group.messages.forEach( function(msg) {
-						msg.date = moment(msg.date, "YYYY-MM-DD").fromNow();
+						msg.date = moment(msg.date).fromNow();
 					});
 
 					Student.find(function(err, students){

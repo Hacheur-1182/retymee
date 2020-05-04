@@ -156,7 +156,7 @@ router.get('/course/group/:id', ensureAuthenticated2, (req, res) =>{
 
 				if(group){
 					group.messages.forEach( function(msg) {
-						msg.date = moment(msg.date, "YYYY-MM-DD").fromNow();
+						msg.date = moment(msg.date).fromNow();
 					});
 
 					Student.find(function(err, students){
