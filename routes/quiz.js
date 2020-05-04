@@ -23,7 +23,7 @@ var QuizResponse = require('../models/quizResponse');
 router.get('/', ensureAuthenticated2, (req, res) =>{
     Quiz.find({teacherId: req.user._id}, (err, quizzes) => {
         if (err) throw err
-
+        console.log(quizzes)
         res.render('./app/evaluation/quiz_dashboard', {
             isTeacher: true,
             quizzes: quizzes,
@@ -96,7 +96,7 @@ router.get('/:quizId', ensureAuthenticated2, (req, res) =>{
         if (err) throw err;
 
         // Vérifier si la période du cours est effective
-        const startTime = new Date(quiz.startAt).getTime();
+        const startTime = new Date(quiz.²).getTime();
         const endTime = new Date(quiz.endAt).getTime();
 
         const now = new Date().getTime();
