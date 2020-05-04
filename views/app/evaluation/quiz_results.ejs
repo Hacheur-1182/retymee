@@ -30,28 +30,37 @@
                     <a href="/quiz" class="pb-0 mb-0"><i class="fa fa-arrow-left"></i> Gestion des évaluations</a>
                     <h4 class="pb-0 mb-0 mt-3">RESULTATS</h4>
                 </div>
+            </div>
+
+            <div class="row mt-2" id="pagecontent">
+                <div class="col-sm-12 mt-3">
+                    <h4>Résultats: <%=quiz.title%></h4>
+                </div>
                 <div class="col-sm-12 mt-4">
                     <table class="table">
                         <thead class="thead-dark">
-                          <tr>
+                            <tr>
                             <th scope="col">#</th>
                             <th scope="col">Nom</th>
                             <th scope="col">Email</th>
                             <th scope="col">Note</th>
-                          </tr>
+                            </tr>
                         </thead>
                         <tbody>
                             <% results.forEach(function(result, i){ %>
                                 <tr>
-                                  <th scope="row"><%=(i+1)%></th>
-                                  <td><%=result.username%></td>
-                                  <td><%=result.email%></td>
-                                  <td><b><%=result.total%></b></td>
+                                    <th scope="row"><%=(i+1)%></th>
+                                    <td><%=result.username%></td>
+                                    <td><%=result.email%></td>
+                                    <td><b><%=result.total%></b></td>
                                 </tr>
                             <%});%>
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-sm-12 d-flex justify-content-end"><button class="btn button-yellow" id="print">IMPRIMER</button></div>
             </div>
         </div>
     </section>
