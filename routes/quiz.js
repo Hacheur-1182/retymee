@@ -96,10 +96,18 @@ router.get('/:quizId', ensureAuthenticated2, (req, res) =>{
         if (err) throw err;
 
         // Vérifier si la période du cours est effective
-        const startTime = new Date(quiz.startAt).getTime();
-        const endTime = new Date(quiz.endAt).getTime();
+        let startTime = new Date(quiz.startAt)
+        startTime.setHours(startTime.getHours() - 1);
+        startTime = startTime.getTime();
 
-        const now = new Date().getTime();
+
+        let endTime = new Date(quiz.endAt);
+        endTime.setHours(endTime.getHours() - 1); 
+        endTime = endTime.getTime();
+
+        let now = new Date()
+        now.setHours(now.getHours() - 1);
+        now = now.getTime();
 
         if ((startTime - now) > 0) {
             // L'heure du quiz n'est pas encore arrivé
