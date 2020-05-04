@@ -23,9 +23,7 @@ var QuizResponse = require('../models/quizResponse');
 router.get('/', ensureAuthenticated2, (req, res) =>{
     Quiz.find({teacherId: req.user._id}, (err, quizzes) => {
         if (err) throw err
-        console.log(quizzes)
-        quizzes.forEach(e => console.log(e.startAt))
-        quizzes.forEach(e => console.log(new Date(e.startAt)))
+        
         res.render('./app/evaluation/quiz_dashboard', {
             isTeacher: true,
             quizzes: quizzes,

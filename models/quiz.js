@@ -10,11 +10,11 @@ var quizSchema = mongoose.Schema({
         required: true
     },
     startAt:{
-        type: Date,
+        type: String,
         required: true
     },
     endAt:{
-        type: Date,
+        type: String,
         required: true
     },
     courseId:{
