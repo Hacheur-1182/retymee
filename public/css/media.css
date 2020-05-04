@@ -302,6 +302,12 @@
 	#main-footer .p-2 {
 		margin-right: 7px !important;
 	}
+
+	/* Quiz */
+	#quiz-builder, #quiz-dashboard, #quiz-results, #quiz, #quiz-preview  {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
 }
 
 
