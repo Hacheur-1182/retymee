@@ -96,7 +96,7 @@ router.get('/:quizId', ensureAuthenticated2, (req, res) =>{
         if (err) throw err;
 
         // Vérifier si la période du cours est effective
-        const startTime = new Date(quiz.²).getTime();
+        const startTime = new Date(quiz.startAt).getTime();
         const endTime = new Date(quiz.endAt).getTime();
 
         const now = new Date().getTime();
