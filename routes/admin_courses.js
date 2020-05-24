@@ -45,7 +45,7 @@ router.post('/add-course', ensureAuthenticated, function(req, res){
     req.checkBody('startdate', 'Startdate must have a value').notEmpty(); 
     req.checkBody('enddate', 'Endtdate must have a value').notEmpty();
     req.checkBody('content', 'Content must have a value').notEmpty();
-    // req.checkBody('cost', 'Cost must have a value').notEmpty();
+    req.checkBody('cost', 'Cost must have a value').notEmpty();
     // req.checkBody('category', 'Category must have a value').notEmpty();
     req.checkBody('description', 'Description must have a value').notEmpty();
 
@@ -56,7 +56,7 @@ router.post('/add-course', ensureAuthenticated, function(req, res){
     var startdate = req.body.startdate;
     var enddate = req.body.enddate;
     var content = req.body.content;
-    // var cost = req.body.cost ;
+    var cost = req.body.cost ;
     var category = "Enseignement";
     var description = req.body.description;
 

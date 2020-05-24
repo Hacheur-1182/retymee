@@ -70,8 +70,10 @@
                     </div>
                     <div class="col-md-4 col-sm-12 col-lg-4 pr-5 pl-5 right-content">
                         <h5 class="pt-4"><b>Coût de la Formation</b><hr></h5>
-                        <!-- <p class="text-muted">You can test this course for free during 2 days.</p>
-                        <h5 class="py-1"><strong><%=course.cost%> FCFA</strong></h5> -->
+                        <!-- <p class="text-muted">You can test this course for free during 2 days.</p>-->
+                        <%if(course.cost){%>
+                            <h5 class="alert alert-info"><strong><%=course.cost%></strong></h5> 
+                        <%}%>
                         <!-- <div class="alert alert-warning">
                             Cette formation est <b>GRATUITE</b>. Cependant, l'obtention de la certification à la fin est conditionnée par le paiement
                             d'une somme de <b>5000FCFA</b>.
