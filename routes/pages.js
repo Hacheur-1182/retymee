@@ -34,7 +34,7 @@ router.get('/',(req, res) =>{
 			N_TEACH: N_TEACH,
 			N_COURS: N_COURS,
 	    });
-    }).sort({ $natural: -1 }).limit(4)
+    }).sort({ $natural: -1 }).limit(8)
     
 });
 
