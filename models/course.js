@@ -58,6 +58,9 @@ var coursesSchema = mongoose.Schema({
         },
         file:{
             type: String
+        },
+        type:{
+            type: String
         }
     }],
     teachers: [{

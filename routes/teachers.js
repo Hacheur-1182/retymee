@@ -118,7 +118,7 @@ router.post('/add-support', ensureAuthenticated2, (req, res) =>{
 		console.log(req.body)
         Course.updateOne(
             query,
-            {$push: {"supports": {name: support, desc : desc, file: supportFile}}},
+            {$push: {"supports": {name: support, desc : desc, file: supportFile, type: "document"}}},
             {safe: true, upsert: true},
             function(err, message){
                 if(err) return console.log(err)
@@ -135,6 +135,38 @@ router.post('/add-support', ensureAuthenticated2, (req, res) =>{
 	                    return console.log(err);
 	                })
 	            }
+	            req.flash('success', 'Support ajouté avec succès')
+	            res.redirect('/teacher/dashboard')
+			}
+        );
+	}
+
+});
+
+//Ajouter un support de cours video
+router.post('/addvideosupport', ensureAuthenticated2, (req, res) =>{
+
+	req.checkBody('videoname', 'Titre de la vidéo requis').notEmpty();
+	req.checkBody('videolink', 'Lien de la vidéo requis').notEmpty();
+
+	var videoname = req.body.videoname;
+	var videolink = req.body.videolink;
+	var course_id = req.body.course_id;
+
+	var errors = req.validationErrors();
+	if (errors) {
+		res.render('./app/teachers_dashboard', {
+			title : "Teacher Dashboard"
+		})
+	} else {
+		var query = {_id:  course_id};
+        Course.updateOne(
+            query,
+            {$push: {"supports": {name: videoname, desc : videoname, file: videolink, type: "video"}}},
+            {safe: true, upsert: true},
+            function(err, message){
+                if(err) return console.log(err)
+
 	            req.flash('success', 'Support ajouté avec succès')
 	            res.redirect('/teacher/dashboard')
 			}
